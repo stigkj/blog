@@ -1,0 +1,6 @@
+/* @override http://localhost:8000/iphone.css */
+
+#sidebar {
+	display: none;
+	background-color: yellow;
+}
