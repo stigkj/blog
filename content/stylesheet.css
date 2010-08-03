@@ -62,7 +62,7 @@ a:visited {
 }
 
 a:hover {
-	color: #008dff	;
+	color: #008dff;
 }
 
 /* @group Main */
@@ -91,7 +91,7 @@ a:hover {
 #main h1 {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
 	font-size: 40px;
-	font-weight: normal;
+	font-weight: bold;
 
 	line-height: 40px;
 
@@ -100,6 +100,8 @@ a:hover {
 
 #main h2 {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
+	margin-top: 24px;
+	margin-bottom: 12px;
 }
 
 #main h3 {
@@ -110,16 +112,20 @@ a:hover {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
 }
 
+#main p+ul {
+	margin-top: -12px;
+}
+
+#main ul {
+	margin: 10px 0 20px 0;
+}
+
 #main p {
-	margin: 20px 0;
+	margin: 10px 0 20px 0;
 	
 	font-size: 15px;
 	
 	line-height: 20px;
-}
-
-#main ul {
-	margin: 20px;
 }
 
 #main li {
@@ -133,6 +139,19 @@ a:hover {
 /* @end */
 
 /* @group Sidebar */
+
+#sidebar a {
+	font-size: 12pt;
+}
+
+#sidebar a:link,
+#sidebar a:visited {
+	color: #dc0003;
+}
+
+#sidebar a:hover {
+	color: #a60002;
+}
 
 /*
 #sidebar {
@@ -166,9 +185,9 @@ a:hover {
 #sidebar h2 {
 	font-family: "Graublau Web", "Lucida Grande", Arial, sans-serif;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 19px;
 	color: #333;
-	letter-spacing: 1px;
+	letter-spacing: -0.1em;
 	line-height: 20px;
 	margin: 30px 20px 10px 20px;
 	
@@ -197,10 +216,6 @@ a:hover {
 	font-size: 9pt;
 }
 
-pre code {
-	font: inherit;
-}
-
 pre {
 	font-family: "Droid Sans Mono", Courier New, monospace;
 	font-size: 9pt;
@@ -208,6 +223,9 @@ pre {
 	color: #222;
 	border: 1px solid #f7a600;
 	background-color: #fefef1;
+	
+	margin: 10px 0 20px 0;
+	
 	padding: 10px;
 	padding-left: 16px;
 	
@@ -220,8 +238,17 @@ pre {
 	-webkit-box-shadow: 2px 3px 5px #ccc;
 }
 
-img {
+p + pre {
+	margin-top: -10px;
+}
+
+pre code {
+	font: inherit;
+}
+
+#main img {
 	max-width: 500px;
+	float: right;
 }
 
 #footer {
