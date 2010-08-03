@@ -6,7 +6,7 @@
 	     local("Graublau Web Regular"),
 	     local("GraublauWeb"),
 	     local("GraublauWeb-Regular"),
-	     url(fonts/graublau-web.otf) format("opentype")
+	     url(/fonts/graublau-web.otf) format("opentype")
 }
 
 @font-face {
@@ -14,5 +14,5 @@
 	font-weight:700;
 	src: local("Graublau Web Bold"),
 	     local("GraublauWeb-Bold"),
-	     url(fonts/graublau-web-bold.otf) format("opentype")
+	     url(/fonts/graublau-web-bold.otf) format("opentype")
 }
