@@ -1,0 +1,2 @@
+#!/bin/sh
+nanoc autocompile --port 8000
