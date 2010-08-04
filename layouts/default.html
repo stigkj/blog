@@ -16,10 +16,6 @@
 		</div>
 		<div id="main">
 			<%= yield %>
-			<% if @item[:author] %>
-			<h3>Written by: <%= @item[:author] %></h3>
-			<h4>Tags: <%= tags_for(@item) %></h4>
-			<% end %>
 		</div>
 		<div id="sidebar">
 			<ul>

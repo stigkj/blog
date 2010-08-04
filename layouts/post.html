@@ -1,0 +1,7 @@
+<% if @item[:title] %>
+h1. <%= @item[:title] %>
+<% end %>
+<% if @item[:created_at] %>
+p(written-at). Written at: <%= @item[:created_at].strftime('%B %d, %Y') %>
+<% end %>
+<%= yield %>

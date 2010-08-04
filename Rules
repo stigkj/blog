@@ -10,51 +10,87 @@
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
 
+compile '/' do
+	filter :kramdown
+	layout 'default'
+end
+
 compile '/about/' do
 	filter :kramdown
 	layout 'default'
 end
 
+compile '/posts/*/' do
+	@item[:kind] = :article
+	@item[:created_at] = Date::parse(@item.name.split('-', 4)[0..2] * "-")
+	layout 'post'
+	filter :redcloth
+	layout 'default'
+end
+
+#compile '/posts/*/', :rep => :alt_url do
+#	@item[:redirect_url] = @item.identifier.chop + 'index.html'
+#	layout 'redirect'
+#end
+
 compile '/css/*/' do
-	# don’t filter or layout
+	# compress CSS :)
+	filter :rainpress
 end
 
 compile '/images/*/' do
 	# don't compile
 end
 
+compile '/i/*/' do
+	# make images fit the blog's size
+	filter :thumbnailize, :width => 520
+	#if item[:extension] == "png"
+	#	filter :pngcrush, :level => 7
+	#end
+end
+
 compile '/fonts/*/' do
 	# don't compile
 end
 
-compile '/' do
-	filter :kramdown
+compile '*' do
+	filter :erb
 	layout 'default'
 end
 
-compile '*' do
-	if item[:extension] == 'png' or item[:extension] == 'otf'
-	   	# do nothing
-	else
-		filter :erb
-		layout 'default'
-	end
-end
-
 route '/css/*/' do
-	item.identifier.chop + '.' + item[:extension]
+	@item.identifier.chop + '.' + @item[:extension]
 end
 
 route '/images/*/' do
-	item.identifier.chop + '.' + item[:extension]
+	@item.identifier.chop + '.' + @item[:extension]
+end
+
+route '/i/*/' do
+	@item.identifier.chop + '.' + @item[:extension]
 end
 
 route '/fonts/*/' do
-	item.identifier.chop + '.' + item[:extension]
+	@item.identifier.chop + '.' + @item[:extension]
+end
+
+route '/posts/*/' do
+	parts = @item.name.split('-', 4)
+	@item[:created_at] = Date::parse(parts[0..2] * "-")
+	if @item[:created_at]
+		'/posts/' + @item[:created_at].year().to_s + '/' + parts[3] + '/index.html'
+	else
+		puts "Skipping " + @item.name
+	end
+end
+
+route '*', :rep => :alt_url do
+	@item[:alt_url]
 end
 
 route '*' do
-	item.identifier + 'index.html'
+	@item.identifier + 'index.html'
 end
 
 layout '*', :erb
