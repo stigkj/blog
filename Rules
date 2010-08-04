@@ -15,15 +15,7 @@ compile '/about/' do
 	layout 'default'
 end
 
-compile '/stylesheet/' do
-	# don’t filter or layout
-end
-
-compile '/iphone/' do
-	# don’t filter or layout
-end
-
-compile '/fontface/' do
+compile '/css/*/' do
 	# don’t filter or layout
 end
 
@@ -49,16 +41,8 @@ compile '*' do
 	end
 end
 
-route '/stylesheet/' do
-	'/style.css'
-end
-
-route '/iphone/' do
-	'/iphone.css'
-end
-
-route '/fontface/' do
-	'/fontface.css'
+route '/css/*/' do
+	item.identifier.chop + '.' + item[:extension]
 end
 
 route '/images/*/' do
