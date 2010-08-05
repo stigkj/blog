@@ -1,0 +1,7 @@
+---
+title: All posts
+---
+
+<% @site.posts.each do |p| %>
+<%=p[:created_at].year().to_s%>: <%=link_to(p[:title], p.reps.find {|r| r.name == :default})%>
+<% end %>

@@ -11,7 +11,7 @@ include Nanoc3::Helpers::Tagging
 include Nanoc3::Helpers::Text
 include Nanoc3::Helpers::XMLSitemap
 
-# Extend items
+# Extend Item
 class Nanoc3::Item
   def content(opts = {})
     opts[:rep] ||= :default
@@ -21,5 +21,12 @@ class Nanoc3::Item
 
   def name
     identifier.split("/").last
+  end
+end
+
+# Extend Item
+class Nanoc3::Site
+  def posts
+    items.find_all { |i| i[:kind] == "article" }
   end
 end

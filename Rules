@@ -20,6 +20,11 @@ compile '/about/' do
 	layout 'default'
 end
 
+compile '/posts/' do
+	filter :erb
+	layout 'default'
+end
+
 compile '/posts/*/' do
 	@item[:kind] = :article
 	@item[:created_at] = Date::parse(@item.name.split('-', 4)[0..2] * "-")
@@ -28,10 +33,10 @@ compile '/posts/*/' do
 	layout 'default'
 end
 
-#compile '/posts/*/', :rep => :alt_url do
-#	@item[:redirect_url] = @item.identifier.chop + 'index.html'
-#	layout 'redirect'
-#end
+compile '/posts/*/', :rep => :alt_url do
+	@item[:redirect_url] = @item.identifier.chop + 'index.html'
+	layout 'redirect'
+end
 
 compile '/css/*/' do
 	# compress CSS :)

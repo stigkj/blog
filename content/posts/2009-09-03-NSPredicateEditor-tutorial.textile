@@ -1,5 +1,6 @@
 ---
 title: NSPredicateEditor tutorial
+kind: article
 alt_url: /archives/197
 ---
 
