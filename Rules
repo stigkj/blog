@@ -10,8 +10,16 @@
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
 
+compile '/code/' do
+end
+
 compile '/' do
-	filter :kramdown
+	filter :erb
+	filter :redcloth, :hard_breaks => false
+	filter :colorize_syntax,
+	       :colorizers => { :objc => :pygmentize, 
+	                        :python => :pygmentize
+	                      }
 	layout 'default'
 end
 
@@ -29,7 +37,9 @@ compile '/posts/*/' do
 	@item[:kind] = :article
 	@item[:created_at] = Date::parse(@item.name.split('-', 4)[0..2] * "-")
 	layout 'post'
-	filter :redcloth
+	filter :redcloth, :hard_breaks => false
+	filter :colorize_syntax,
+	       :colorizers => { :objc => :pygmentize }
 	layout 'default'
 end
 
@@ -62,6 +72,9 @@ end
 compile '*' do
 	filter :erb
 	layout 'default'
+end
+
+route '/code/' do
 end
 
 route '/css/*/' do

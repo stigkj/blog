@@ -2,40 +2,31 @@
 title: My personal title
 ---
 
-A First Level Header
-====================
+<%=random_text%>
 
-Blah die blah die blah die blah die blah die blah die blah die blah die blah
-die blah die blah die blah die blah die blah die blah die blah die blah die
-blah die blah die blah die blah die blah.  Blah die blah die blah die blah die
-blah die blah die blah die blah die blah die blah die blah die blah die blah
-die blah die blah die blah die blah die blah die blah die blah die blah die
-blah.  Blah die blah die blah die blah die blah die blah die blah die blah die
-blah die blah die blah die blah die blah die blah die blah die blah die blah
-die blah die blah die blah die blah die blah.  Blah die blah die blah die blah
-die blah die blah die blah die blah die blah die blah die blah die blah die
-blah die blah die blah die blah die blah die blah die blah die blah die blah
-die blah.  Blah die blah die blah die blah die blah die blah die blah die blah
-die blah die blah die blah die blah die blah die blah die blah die blah die
-blah die blah die blah die blah die blah die blah.  Blah die blah die blah die
-blah die blah die blah die blah die blah die blah die blah die blah die blah
-die blah die blah die blah die blah die blah die blah die blah die blah die
-blah die blah.
+h2. A Second Level Header
 
-A Second Level Header
----------------------
+Now is the time for all good men to come to the aid of their country. This is
+just a regular paragraph.
 
-Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.
+<pre><code class="language-python">
+import unittest
 
-The quick brown fox jumped over the lazy
-dog's back.
+class MyTestCase(unittest.TestCase):
 
-### Header 3
+    def setUp(self):
+        pass
 
-> This is a blockquote.
->
-> This is the second paragraph in the blockquote.
->
-> ## This is an H2 in a blockquote
+    def testSomething(self):
+        self.assertEquals(2 + 1, 3)
+</code></pre>
+
+The quick brown fox jumped over the lazy dog's back.
+
+h3. Header 3
+
+bq.. This is a blockquote.
+
+This is the second paragraph in the blockquote.
+
+p. This is *normal* again, _finally_!
