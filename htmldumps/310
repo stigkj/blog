@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>nvie.com  &raquo; Blog Archive   &raquo; Auto-generate classes for your Core Data data model, revisited</title>
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com RSS Feed" href="http://nvie.com/feed" />
+	<link rel="pingback" href="http://nvie.com/xmlrpc.php" />
+	
+	<link rel="stylesheet" href="http://nvie.com/wp-content/themes/librio/style.css" type="text/css" media="screen" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="http://nvie.com/wp-content/themes/librio/ie.css" media="screen" /><![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com &raquo; Auto-generate classes for your Core Data data model, revisited Comments Feed" href="http://nvie.com/archives/310/feed" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nvie.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nvie.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='nvie.com' href='http://nvie.com' />
+<link rel='start' title='NSPredicateEditor tutorial' href='http://nvie.com/archives/197' />
+<link rel='prev' title='Automatically generate classes for your Core Data data model' href='http://nvie.com/archives/263' />
+<link rel='next' title='Avoiding fast-forward merges in Git' href='http://nvie.com/archives/319' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://nvie.com/archives/310' />
+<link rel='shortlink' href='http://nvie.com/?p=310' />
+
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-7780973-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+<link rel="stylesheet" href="http://nvie.com/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+		<h1><a href="http://nvie.com/">nvie.com</a><span>Anything that interests me.</span></h1>
+		<div id="search">
+			<form method="get" id="searchform" action="http://nvie.com/">
+				<input type="text" value="Search" name="s" id="s" onfocus="if(this.value=='Search')this.value=''" onblur="if(this.value=='')this.value='Search'" />
+			</form>
+		</div>
+	</div>
+
+	<div id="nav">
+		<ul>
+			<li class="current_page_item"><a href="http://nvie.com/">Home</a></li>
+			<li class="page_item page-item-8"><a href="http://nvie.com/about" title="About">About</a></li>
+		</ul>
+		<a href="http://nvie.com/feed" id="feed">Subscribe</a>
+	</div>
+	
+	<div id="wrapper">
+
+<div id="content">
+
+	
+		<div class="post" id="post-310">
+			<h1 class="post-title">Auto-generate classes for your Core Data data model, revisited</h1>
+
+			<p>A few months ago, I wrote about <a title="Automatically generate classes for your Core Data data model" href="/archives/263">automatically generating classes for your Core Data entities</a> and how to automate Xcode using users scripts, such that, when your model changed, you only needed to run your custom script again and your intermediate model files would reflect the new situation.</p>
+<p>Well, the guys from the <a onclick="javascript:pageTracker._trackPageview('/outgoing/github.com/rentzsch/mogenerator');" title="mogenerator project at Github"  href="http://github.com/rentzsch/mogenerator">mogenerator</a> project have come up with a far superior solution in the mean time. The newest version of mogenerator comes with an Xcode plugin named Xmo&#8217;d, which monitors your *.xcdatamodel file for changes and, as soon as it changes, regenerates all of the neccessary files.</p>
+<p><strong>This means that there is officially no more reason not to use mogenerator.</strong></p>
+<p>To set it up, download the installer package from their (improved) <a onclick="javascript:pageTracker._trackPageview('/outgoing/rentzsch.github.com/mogenerator/');" title="mogenerator project home page"  href="http://rentzsch.github.com/mogenerator/">project website</a> and install it. (Before installing, please read the important release note about the renamed method <code>+newInManagedObjectContext:</code>.)</p>
+<p>When installed, all you need to do is Command-click your *.xcdatamodel file, click Get Info, switch to the Comments tab and add the string &#8220;xmod&#8221; to the comment field. This is the trigger for Xmo&#8217;d to start (re)generating your machine-classes (the underscored class files) when the data model changes. Brilliant!</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/10/comment-field.png');"  href="http://nvie.com/wp-content/uploads/2009/10/comment-field.png"><img class="alignnone size-full wp-image-311" title="Adding the trigger to the comment field." src="http://nvie.com/wp-content/uploads/2009/10/comment-field.png" alt="Adding the trigger to the comment field." width="381" height="545" /></a></p>
+<p>Oh, the default location at which the generated files will be emitted, is in a folder named after your project, right next to where your *.xcdatamodel already sits:</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/10/emission-location.png');"  href="http://nvie.com/wp-content/uploads/2009/10/emission-location.png"><img class="alignnone size-medium wp-image-314" title="Location where output files are generated" src="http://nvie.com/wp-content/uploads/2009/10/emission-location-300x239.png" alt="Location where output files are generated" width="300" height="239" /></a></p>
+<p>Enjoy it and spread the word!</p>
+
+						
+			<div class="post-info">
+				October 19th, 2009 in
+				<a href="http://nvie.com/archives/category/core-data" title="View all posts in Core Data" rel="category tag">Core Data</a>, <a href="http://nvie.com/archives/category/mac" title="View all posts in Mac" rel="category tag">Mac</a>, <a href="http://nvie.com/archives/category/objective-c" title="View all posts in Objective-C" rel="category tag">Objective-C</a>, <a href="http://nvie.com/archives/category/xcode" title="View all posts in Xcode" rel="category tag">Xcode</a>, <a href="http://nvie.com/archives/category/iphone" title="View all posts in iPhone" rel="category tag">iPhone</a>, <a href="http://nvie.com/archives/category/mogenerator" title="View all posts in mogenerator" rel="category tag">mogenerator</a>											</div>
+		</div>
+
+		
+ 
+			<!-- If comments are open, but there are no comments. -->
+		
+
+
+
+
+	<h1 class="comments-title">Leave a comment</h1>
+
+			<form action="http://nvie.com/wp-comments-post.php" method="post" id="commentform">
+			Your comment
+			<p><textarea name="comment" id="comment"></textarea></p>
+			
+						
+				<p><input type="text" name="author" id="author" class="text" value="" />
+				<label for="author">Name (required)</label></p>
+
+				<p><input type="text" name="email" id="email" class="text" value="" />
+				<label for="email">Mail (will not be published) (required)</label></p>
+
+				<p><input type="text" name="url" id="url" class="text" value="" />
+				<label for="url">Website</label></p>
+						
+						
+			<p><input name="submit" type="submit" id="submit" value="Submit Comment" /><input type="hidden" name="comment_post_ID" value="310" /></p>
+			
+			
+
+		</form>
+
+
+
+	
+</div>
+
+<div id="sidebar">
+<div class="block"><h3 class="widgettitle">Author</h3>			<div class="textwidget"><p>Vincent Driessen is a Python and Cocoa enthusiast based in The Netherlands.</p>
+<p>Follow me on Twitter (<a href="https://twitter.com/nvie/">@nvie</a>).</p>
+<p><img src="http://nvie.com/wp-content/themes/librio/images/vin.png" alt="Author" style="margin: 0 0 0 0; width: 170px; padding: 0;" /></p>
+</div>
+		</div><div class="block"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-17"><a href="http://nvie.com/archives/category/core-data" title="View all posts filed under Core Data">Core Data</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://nvie.com/archives/category/general" title="View all posts filed under General">General</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://nvie.com/archives/category/git" title="View all posts filed under Git">Git</a>
+<ul class='children'>
+	<li class="cat-item cat-item-25"><a href="http://nvie.com/archives/category/git/gitflow" title="View all posts filed under gitflow">gitflow</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://nvie.com/archives/category/iphone" title="View all posts filed under iPhone">iPhone</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://nvie.com/archives/category/mac" title="View all posts filed under Mac">Mac</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://nvie.com/archives/category/mogenerator" title="View all posts filed under mogenerator">mogenerator</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://nvie.com/archives/category/objective-c" title="View all posts filed under Objective-C">Objective-C</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://nvie.com/archives/category/python" title="Python">Python</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://nvie.com/archives/category/user-scripts" title="View all posts filed under User scripts">User scripts</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://nvie.com/archives/category/xcode" title="View all posts filed under Xcode">Xcode</a>
+</li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Archives</h3>		<ul>
+			<li><a href='http://nvie.com/archives/date/2010/03' title='March 2010'>March 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2010/01' title='January 2010'>January 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/12' title='December 2009'>December 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/10' title='October 2009'>October 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/07' title='July 2009'>July 2009</a></li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1892">A successful Git branching model</a></li><li class="recentcomments">A on <a href="http://nvie.com/archives/197/comment-page-1#comment-1890">NSPredicateEditor tutorial</a></li><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1884">A successful Git branching model</a></li><li class="recentcomments"><a onclick="javascript:pageTracker._trackPageview('/outgoing/webdev.zalewa.info');"  href='http://webdev.zalewa.info' rel='external nofollow' class='url'>zalun</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1883">A successful Git branching model</a></li><li class="recentcomments"><a onclick="javascript:pageTracker._trackPageview('/outgoing/codeslife.com');"  href='http://codeslife.com' rel='external nofollow' class='url'>Larry Cai</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1882">A successful Git branching model</a></li></ul></div></div>
+	</div>
+	
+	<div id="footer">
+		<p>
+			Copyright &copy; 2008. All right reserved. 
+			Theme by <a href="http://deniart.ru">deniart</a>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>

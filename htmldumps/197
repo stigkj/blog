@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>nvie.com  &raquo; Blog Archive   &raquo; NSPredicateEditor tutorial</title>
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com RSS Feed" href="http://nvie.com/feed" />
+	<link rel="pingback" href="http://nvie.com/xmlrpc.php" />
+	
+	<link rel="stylesheet" href="http://nvie.com/wp-content/themes/librio/style.css" type="text/css" media="screen" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="http://nvie.com/wp-content/themes/librio/ie.css" media="screen" /><![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com &raquo; NSPredicateEditor tutorial Comments Feed" href="http://nvie.com/archives/197/feed" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nvie.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nvie.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='nvie.com' href='http://nvie.com' />
+<link rel='start' title='NSPredicateEditor tutorial' href='http://nvie.com/archives/197' />
+<link rel='next' title='NSManagedObjectContext extensions' href='http://nvie.com/archives/243' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://nvie.com/archives/197' />
+<link rel='shortlink' href='http://nvie.com/?p=197' />
+
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-7780973-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+<link rel="stylesheet" href="http://nvie.com/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+		<h1><a href="http://nvie.com/">nvie.com</a><span>Anything that interests me.</span></h1>
+		<div id="search">
+			<form method="get" id="searchform" action="http://nvie.com/">
+				<input type="text" value="Search" name="s" id="s" onfocus="if(this.value=='Search')this.value=''" onblur="if(this.value=='')this.value='Search'" />
+			</form>
+		</div>
+	</div>
+
+	<div id="nav">
+		<ul>
+			<li class="current_page_item"><a href="http://nvie.com/">Home</a></li>
+			<li class="page_item page-item-8"><a href="http://nvie.com/about" title="About">About</a></li>
+		</ul>
+		<a href="http://nvie.com/feed" id="feed">Subscribe</a>
+	</div>
+	
+	<div id="wrapper">
+
+<div id="content">
+
+	
+		<div class="post" id="post-197">
+			<h1 class="post-title">NSPredicateEditor tutorial</h1>
+
+			<p>Cocoa offers a nice visual editor for editing NSPredicate objects templates, called NSPredicateEditor. The NSPredicateEditor can be set up using code or in Interface Builder, which is preferable for simple use. The setup is fairly easy once you know how to do it. In this tutorial, we&#8217;ll be building a simple predicate editor example which shows the basic functionality of the predicate editor.</p>
+<h3>Setting up the AppDelegate</h3>
+<p>Begin by creating a new Xcode project (Cmd+Shift+N). Name your project wisely and create a new class in the Classes group, called AppDelegate.</p>
+<p>Switch to the header file and declare two IBOutlets for the main window and the sheet on which we&#8217;re going to display the editor in a few minutes. Also, add two IBActions called -openEditor: and -closeEditor:. Finally, add an ivar that holds the NSPredicate we&#8217;re going to be editing.</p>
+<p><img class="alignnone size-full wp-image-202" title="Your project should look like this" src="http://nvie.com/wp-content/uploads/2009/07/appdelegate1.png" alt="Your project should look like this" width="678" height="557" /></p>
+<p>Next, we&#8217;re going to fire up Interface Builder to build the UI. Double click on the MainMenu.xib file under the Resources group.</p>
+<p>Drag an NSObject object from the Library into the XIB and call it App Delegate. Hit Cmd+6 and make it a subclass of the AppDelegate class we just created. Then, hook it up to the delegate property of the File&#8217;s Owner.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/choose-delegate.png');"  href="http://nvie.com/wp-content/uploads/2009/07/choose-delegate.png"><img class="alignnone size-medium wp-image-204" title="Make the object a subclass of the just-defined AppDelegate class" src="http://nvie.com/wp-content/uploads/2009/07/choose-delegate-257x300.png" alt="Make the object a subclass of the just-defined AppDelegate class" width="257" height="300" /></a><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/hookup-appdelegate.png');"  href="http://nvie.com/wp-content/uploads/2009/07/hookup-appdelegate.png"><img class="alignnone size-medium wp-image-203" title="Hooking up the AppDelegate to the application" src="http://nvie.com/wp-content/uploads/2009/07/hookup-appdelegate-300x232.png" alt="Hooking up the AppDelegate to the application" width="300" height="232" /></a></p>
+<p>Drag a new NSWindow to the XIB-file and call it Sheet. Make sure the checkbox &#8220;Visible At Launch&#8221; is deselected or the sheet will not display properly at runtime. Open the main window and add a NSButton and a NSTextView to it. To the sheet window, drag a NSPredicateEditor and a NSButton. They should look somewhat like this now:</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/Picture-5.png');"  href="http://nvie.com/wp-content/uploads/2009/07/Picture-5.png"><img class="alignnone size-medium wp-image-208" title="The main window" src="http://nvie.com/wp-content/uploads/2009/07/Picture-5-300x230.png" alt="The main window" width="300" height="230" /></a><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/Picture-4.png');"  href="http://nvie.com/wp-content/uploads/2009/07/Picture-4.png"><img class="alignnone size-medium wp-image-209" title="The predicate editor window" src="http://nvie.com/wp-content/uploads/2009/07/Picture-4-300x230.png" alt="The predicate editor window" width="300" height="230" /></a></p>
+<p>Now, we can hook up the outlets and actions as usual. Hook up the Edit Predicate button on the main window to -openEditor: and the OK button on the sheet window to closeEditor:. Then hook up the mainWindow and sheet outlets of the AppDelegate class to the respective NSWindow objects.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/hookup-windows.png');"  href="http://nvie.com/wp-content/uploads/2009/07/hookup-windows.png"><img class="alignnone size-medium wp-image-216" title="Hooking up the windows" src="http://nvie.com/wp-content/uploads/2009/07/hookup-windows-300x220.png" alt="Hooking up the windows" width="300" height="220" /></a></p>
+<h3>Configure the NSPredicateEditor</h3>
+<p>Once we have all of the connections between Xcode and Interface Builder set up, we can continue to configure the predicate editor itself, which is actually what this tutorial is all about. An NSPredicateEditor control uses a list of NSPredicateEditorRowTemplate objects that can handle individual (simple) NSPredicate objects. Combining these row templates enables the NSPredicateEditor to edit compound predicates. There is no limitation to the depth of nested compound predicates, although nesting too deep would not be advisable from a usability perspective.</p>
+<p>In the edit window, click a few times until the &#8220;name contains&#8221; row template is selected. In this row template, you define which key paths are supported. Supported here means two things:</p>
+<ul>
+<li><strong>matching</strong>—given an existing predicate with this key path in it on the left-hand side, this row template can be used to alter the predicate;</li>
+<li><strong>generation</strong>—when using the editor to create new predicates, adding a new rule for this key path will generate a predicate for this key path.</li>
+</ul>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/Picture-10.png');"  href="http://nvie.com/wp-content/uploads/2009/07/Picture-10.png"><img class="alignnone size-medium wp-image-221" title="Select the row template" src="http://nvie.com/wp-content/uploads/2009/07/Picture-10-300x230.png" alt="Select the row template" width="300" height="230" /></a><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/Picture-13.png');"  href="http://nvie.com/wp-content/uploads/2009/07/Picture-13.png"><img class="alignnone size-medium wp-image-220" title="Define the left-hand sides that this row template can handle" src="http://nvie.com/wp-content/uploads/2009/07/Picture-13-163x300.png" alt="Define the left-hand sides that this row template can handle" width="163" height="300" /></a></p>
+<h4>Gotcha</h4>
+<p>A small gotcha, at least one that initially put me on the wrong foot, is that there is quite a difference between the rows that you see design-time in Interface Builder and the rows that are available run-time. At design-time, you define the NSPredicateEditorRowTemplate objects while at run-time you see instances of them. Hence, the number of rows at design-time is the <em>number of different row templates available</em>. At run-time, however, the number of rows is the number of <em>(simple) predicates within the compound predicate</em> (which each has an associated row template instance that handles it). Subtle difference.</p>
+<p>In short, in Interface Builder, <strong>create a row template for <em>each type of match</em> that you want to allow</strong>. Typically, this means for each data type that you want to support. In our example, we have the following setup:</p>
+<ul>
+<li>Row template #1 is for all string matches. Here, we have defined it for the key paths &#8220;firstname&#8221;, &#8220;lastname&#8221;, &#8220;address.street&#8221; and &#8220;address.city&#8221;. They, per definition, have the same  allowed operators. If we want to have an other set of operators for a specific key path, we need to define a separate row template for it.</li>
+<li>Row template #2 is for date matches, i.e. our &#8220;birthdate&#8221; key path.</li>
+<li>Row template #3 is for all integer matches, i.e. our &#8220;address.number&#8221; key path.</li>
+</ul>
+<p>The result looks like this:</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/row-templates-setup.png');"  href="http://nvie.com/wp-content/uploads/2009/07/row-templates-setup.png"><img class="alignnone size-medium wp-image-223" title="Row templates setup" src="http://nvie.com/wp-content/uploads/2009/07/row-templates-setup-300x177.png" alt="Row templates setup" width="300" height="177" /></a></p>
+<h3>Using bindings to connect the predicate to the UI</h3>
+<p>Next up, we simply connect both the text view from the main window and the predicate editor from the sheet window to the predicate key path using Cocoa bindings. In order to do so, select the NSPredicateEditor (first click the control to select the scroll view, then click again to select the inner NSPredicateEditor), hit Cmd+4. Then, unfold the &#8220;Value&#8221; binding and hook it up to the App Delegate&#8217;s &#8220;predicate&#8221; key path.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/bindings.png');"  href="http://nvie.com/wp-content/uploads/2009/07/bindings.png"><img class="alignnone size-medium wp-image-224" title="Setting up the Cocoa bindings" src="http://nvie.com/wp-content/uploads/2009/07/bindings-215x300.png" alt="Setting up the Cocoa bindings" width="215" height="300" /></a></p>
+<p>Do the same for the text view in the main window, but this time hook it up to the &#8220;predicate.description&#8221; key path (since only strings can be displayed in a text view). When you do this, make sure that the text view is read-only, since the description property of objects should never be set.</p>
+<h3>Writing the code to wrap it all up</h3>
+<p>Finally, we have only a bit of code to write in our AppDelegate implementation, so let&#8217;s go:</p>
+
+<div class="wp_syntax"><div class="code"><pre class="objc" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">//</span>
+<span style="color: #11740a; font-style: italic;">//  AppDelegate.m</span>
+<span style="color: #11740a; font-style: italic;">//  PredicateEditorTest</span>
+<span style="color: #11740a; font-style: italic;">//</span>
+<span style="color: #11740a; font-style: italic;">//  Created by Vincent on 20-07-09.</span>
+<span style="color: #11740a; font-style: italic;">//</span>
+&nbsp;
+<span style="color: #6e371a;">#import &quot;AppDelegate.h&quot;</span>
+&nbsp;
+<span style="color: #6e371a;">#define DEFAULT_PREDICATE @&quot;(firstname = 'John' AND lastname = 'Doe') &quot; \</span>
+                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR birthdate &amp;gt; CAST('01/01/1985', 'NSDate') &quot;</span> \
+                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR address.city = 'Chicago' &quot;</span> \
+                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;AND address.street != 'Main Street' &quot;</span> \
+                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR address.number &amp;gt; 1000&quot;</span>
+&nbsp;
+<span style="color: #a61390;">@implementation</span> AppDelegate
+&nbsp;
+<span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span><span style="color: #a61390;">id</span><span style="color: #002200;">&#41;</span>init
+<span style="color: #002200;">&#123;</span>
+	self <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span>super init<span style="color: #002200;">&#93;</span>;
+	<span style="color: #a61390;">if</span> <span style="color: #002200;">&#40;</span>self <span style="color: #002200;">!=</span> <span style="color: #a61390;">nil</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span>
+		predicate <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span><span style="color: #002200;">&#91;</span><span style="color: #400080;">NSPredicate</span> predicateWithFormat<span style="color: #002200;">:</span>DEFAULT_PREDICATE<span style="color: #002200;">&#93;</span> retain<span style="color: #002200;">&#93;</span>;
+	<span style="color: #002200;">&#125;</span>
+	<span style="color: #a61390;">return</span> self;
+<span style="color: #002200;">&#125;</span>
+&nbsp;
+<span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span><span style="color: #a61390;">void</span><span style="color: #002200;">&#41;</span>dealloc
+<span style="color: #002200;">&#123;</span>
+	<span style="color: #002200;">&#91;</span>predicate release<span style="color: #002200;">&#93;</span>;
+	<span style="color: #002200;">&#91;</span>super dealloc<span style="color: #002200;">&#93;</span>;
+<span style="color: #002200;">&#125;</span>
+&nbsp;
+<span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span>IBAction<span style="color: #002200;">&#41;</span>openEditor<span style="color: #002200;">:</span><span style="color: #002200;">&#40;</span><span style="color: #a61390;">id</span><span style="color: #002200;">&#41;</span>sender
+<span style="color: #002200;">&#123;</span>
+	<span style="color: #002200;">&#91;</span>NSApp beginSheet<span style="color: #002200;">:</span>sheet
+	   modalForWindow<span style="color: #002200;">:</span>mainWindow
+		modalDelegate<span style="color: #002200;">:</span><span style="color: #a61390;">nil</span>
+	   didEndSelector<span style="color: #002200;">:</span><span style="color: #a61390;">NULL</span>
+		  contextInfo<span style="color: #002200;">:</span><span style="color: #a61390;">nil</span><span style="color: #002200;">&#93;</span>;
+<span style="color: #002200;">&#125;</span>
+&nbsp;
+<span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span>IBAction<span style="color: #002200;">&#41;</span>closeEditor<span style="color: #002200;">:</span><span style="color: #002200;">&#40;</span><span style="color: #a61390;">id</span><span style="color: #002200;">&#41;</span>sender
+<span style="color: #002200;">&#123;</span>
+	<span style="color: #002200;">&#91;</span>NSApp endSheet<span style="color: #002200;">:</span>sheet<span style="color: #002200;">&#93;</span>;
+	<span style="color: #002200;">&#91;</span>sheet orderOut<span style="color: #002200;">:</span>sender<span style="color: #002200;">&#93;</span>;
+<span style="color: #002200;">&#125;</span>
+&nbsp;
+<span style="color: #a61390;">@end</span></pre></div></div>
+
+<p>In the -init: method, we initialize the AppDelegate by setting and retaining a reference to a rather complex default predicate. When the XIB is loaded at run-time, the textbox shows exactly this predicate and it can be edited by invoking the edit sheet.</p>
+<p>The actual implementation of the -openEditor: and -closeEditor: methods aren&#8217;t too exciting.</p>
+<h3>Downloading the source</h3>
+<p>You can download the source code for this tutorial as an Xcode project here.</p>
+<table border="0">
+<tbody>
+<tr>
+<td align="center"><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/PredicateEditorTest.zip');"  href="http://nvie.com/wp-content/uploads/2009/07/PredicateEditorTest.zip"><img class="alignnone size-full wp-image-232" src="http://nvie.com/wp-content/uploads/2009/07/zipfile.png" alt="" width="128" height="128" /></a></td>
+</tr>
+<tr>
+<td align="center"><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2009/07/PredicateEditorTest.zip');"  href="http://nvie.com/wp-content/uploads/2009/07/PredicateEditorTest.zip"><strong>PredicateEditorTest.zip</strong></a></td>
+</tr>
+</tbody>
+</table>
+<p>Have a blast!</p>
+
+						
+			<div class="post-info">
+				July 20th, 2009 in
+				<a href="http://nvie.com/archives/category/mac" title="View all posts in Mac" rel="category tag">Mac</a>, <a href="http://nvie.com/archives/category/objective-c" title="View all posts in Objective-C" rel="category tag">Objective-C</a>				| tags: <a href="http://nvie.com/archives/tag/cocoa-bindings" rel="tag">Cocoa bindings</a>, <a href="http://nvie.com/archives/tag/nspredicate" rel="tag">NSPredicate</a>, <a href="http://nvie.com/archives/tag/nspredicateeditor" rel="tag">NSPredicateEditor</a>, <a href="http://nvie.com/archives/tag/nspredicateeditorrowtemplate" rel="tag">NSPredicateEditorRowTemplate</a>, <a href="http://nvie.com/archives/tag/sheet-programming" rel="tag">Sheet programming</a>							</div>
+		</div>
+
+		
+
+	<h1 class="comments-title">7 Comments</h1>
+
+	<div id="comments">
+
+					<div class="comment" id="comment-13">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://1.gravatar.com/avatar/3aa63bb586c5c59f9fc6b2afb9417821?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.geeks.ltd.uk/Services.html');"  href='http://www.geeks.ltd.uk/Services.html' rel='external nofollow' class='url'>geeks</a></span>August 17th, 2009 at 11:42 </div>
+					
+					
+					<p>It is tuely and amazing tool makes your code cleaner and makes programming more fun than befor.<br />
+I&#8217;ve been using it for a while now and I like it and it workes like a charm</p>
+<p>thanks for introfucing such a powerful tool to us</p>
+				</div>
+			</div>
+					<div class="comment" id="comment-30">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span>Tony Brown</span>September 24th, 2009 at 16:09 </div>
+					
+					
+					<p>I don&#8217;t know If I said it already but &#8230;Excellent site, keep up the good work.  I read a lot of blogs on a daily basis and for the most part, people lack substance but, I just wanted to make a quick comment to say I&#8217;m glad I found your blog.  Thanks, :) </p>
+<p>A definite great read..Tony Brown</p>
+				</div>
+			</div>
+					<div class="comment" id="comment-44">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://1.gravatar.com/avatar/720f0d8b73109b9bfa1d33aa9aae98a8?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span>Jacob</span>October 14th, 2009 at 09:21 </div>
+					
+					
+					<p>Nice.  I have one question, though.   It seems impossible to create your default predicate using the interface. i.e. starting from scratch in the editor, since the compound template (Any, All) menu is unavailable.  The plus sign does not admit adding Any or All, if I&#8217;m not mistaken.</p>
+<p>Is there a way around this?  I often need nested compounded predicates, like the default you create in code.</p>
+				</div>
+			</div>
+					<div class="comment" id="comment-49">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://0.gravatar.com/avatar/c5a7f21b46df698f3db31c37ed0cf55a?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a></span>October 19th, 2009 at 22:39 </div>
+					
+					
+					<p>@Jacob: indeed, that one is pretty tricky. Try holding down the Alt key when you press the &#8220;+&#8221; button. It changes into a &#8220;&#8230;&#8221; button, which allows exactly that.</p>
+				</div>
+			</div>
+					<div class="comment" id="comment-816">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://1.gravatar.com/avatar/327a74d5474204256809817b2b405c42?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.hamsoftengineering.com');"  href='http://www.hamsoftengineering.com' rel='external nofollow' class='url'>Hank</a></span>April 14th, 2010 at 10:13 </div>
+					
+					
+					<p>Thanks for this and good tip about using the  key&#8230; I never knew that. Question: has anyone found a way to alter the width of the text fields in the predicate editor? They&#8217;re very narrow and I see no way to change it. They don&#8217;t resize as the window is resized even though the NSPredicateEditor is set to resize in IB.</p>
+				</div>
+			</div>
+					<div class="comment" id="comment-818">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://1.gravatar.com/avatar/327a74d5474204256809817b2b405c42?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.hamsoftengineering.com');"  href='http://www.hamsoftengineering.com' rel='external nofollow' class='url'>Hank</a></span>April 14th, 2010 at 14:45 </div>
+					
+					
+					<p>Update: I found a way to change the width of text fields. You get the row templates from the predicate editor. Then for each row template you can get the &#8220;templateViews&#8221;. Check the class of each templateView and if it is an NSTextField then you&#8217;ve got one. At that point you just modify the frame of the text field how you like and in my case I just modified the frame.size.width property.</p>
+<p>When I did this in the PredicateEditorTest project from this website I also had to adjust the project. It seemed that since the predicate was being set in the init method of AppDelegate that my changes to the text fields weren&#8217;t happening until after the predicate editor was already created. As such I have to move the creation of the initial predicate into applicationDidFinishLaunching of AppDelegate.</p>
+				</div>
+			</div>
+					<div class="comment" id="comment-1890">
+			
+				<div class="comment-avatar">
+					<img alt='' src='http://1.gravatar.com/avatar/357a20e8c56e69d6f9734d23ef9517e8?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />				</div>
+				
+				<div class="comment-content">
+					<div class="comment-info"><span>A</span>July 15th, 2010 at 23:28 </div>
+					
+					
+					<p>Good clear article. It was difficult to figure out this IB library given its extensive functionality. Thanks.<br />
+How to hook it into the Core Data filter predicate?</p>
+				</div>
+			</div>
+		
+	</div>
+
+
+
+
+
+	<h1 class="comments-title">Leave a comment</h1>
+
+			<form action="http://nvie.com/wp-comments-post.php" method="post" id="commentform">
+			Your comment
+			<p><textarea name="comment" id="comment"></textarea></p>
+			
+						
+				<p><input type="text" name="author" id="author" class="text" value="" />
+				<label for="author">Name (required)</label></p>
+
+				<p><input type="text" name="email" id="email" class="text" value="" />
+				<label for="email">Mail (will not be published) (required)</label></p>
+
+				<p><input type="text" name="url" id="url" class="text" value="" />
+				<label for="url">Website</label></p>
+						
+						
+			<p><input name="submit" type="submit" id="submit" value="Submit Comment" /><input type="hidden" name="comment_post_ID" value="197" /></p>
+			
+			
+
+		</form>
+
+
+
+	
+</div>
+
+<div id="sidebar">
+<div class="block"><h3 class="widgettitle">Author</h3>			<div class="textwidget"><p>Vincent Driessen is a Python and Cocoa enthusiast based in The Netherlands.</p>
+<p>Follow me on Twitter (<a href="https://twitter.com/nvie/">@nvie</a>).</p>
+<p><img src="http://nvie.com/wp-content/themes/librio/images/vin.png" alt="Author" style="margin: 0 0 0 0; width: 170px; padding: 0;" /></p>
+</div>
+		</div><div class="block"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-17"><a href="http://nvie.com/archives/category/core-data" title="View all posts filed under Core Data">Core Data</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://nvie.com/archives/category/general" title="View all posts filed under General">General</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://nvie.com/archives/category/git" title="View all posts filed under Git">Git</a>
+<ul class='children'>
+	<li class="cat-item cat-item-25"><a href="http://nvie.com/archives/category/git/gitflow" title="View all posts filed under gitflow">gitflow</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://nvie.com/archives/category/iphone" title="View all posts filed under iPhone">iPhone</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://nvie.com/archives/category/mac" title="View all posts filed under Mac">Mac</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://nvie.com/archives/category/mogenerator" title="View all posts filed under mogenerator">mogenerator</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://nvie.com/archives/category/objective-c" title="View all posts filed under Objective-C">Objective-C</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://nvie.com/archives/category/python" title="Python">Python</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://nvie.com/archives/category/user-scripts" title="View all posts filed under User scripts">User scripts</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://nvie.com/archives/category/xcode" title="View all posts filed under Xcode">Xcode</a>
+</li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Archives</h3>		<ul>
+			<li><a href='http://nvie.com/archives/date/2010/03' title='March 2010'>March 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2010/01' title='January 2010'>January 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/12' title='December 2009'>December 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/10' title='October 2009'>October 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/07' title='July 2009'>July 2009</a></li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1892">A successful Git branching model</a></li><li class="recentcomments">A on <a href="http://nvie.com/archives/197/comment-page-1#comment-1890">NSPredicateEditor tutorial</a></li><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1884">A successful Git branching model</a></li><li class="recentcomments"><a onclick="javascript:pageTracker._trackPageview('/outgoing/webdev.zalewa.info');"  href='http://webdev.zalewa.info' rel='external nofollow' class='url'>zalun</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1883">A successful Git branching model</a></li><li class="recentcomments"><a onclick="javascript:pageTracker._trackPageview('/outgoing/codeslife.com');"  href='http://codeslife.com' rel='external nofollow' class='url'>Larry Cai</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1882">A successful Git branching model</a></li></ul></div></div>
+	</div>
+	
+	<div id="footer">
+		<p>
+			Copyright &copy; 2008. All right reserved. 
+			Theme by <a href="http://deniart.ru">deniart</a>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>

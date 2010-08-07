@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>nvie.com  &raquo; Blog Archive   &raquo; Avoiding fast-forward merges in Git</title>
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com RSS Feed" href="http://nvie.com/feed" />
+	<link rel="pingback" href="http://nvie.com/xmlrpc.php" />
+	
+	<link rel="stylesheet" href="http://nvie.com/wp-content/themes/librio/style.css" type="text/css" media="screen" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="http://nvie.com/wp-content/themes/librio/ie.css" media="screen" /><![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com &raquo; Avoiding fast-forward merges in Git Comments Feed" href="http://nvie.com/archives/319/feed" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nvie.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nvie.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='nvie.com' href='http://nvie.com' />
+<link rel='start' title='NSPredicateEditor tutorial' href='http://nvie.com/archives/197' />
+<link rel='prev' title='Auto-generate classes for your Core Data data model, revisited' href='http://nvie.com/archives/310' />
+<link rel='next' title='A successful Git branching model' href='http://nvie.com/git-model' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://nvie.com/archives/319' />
+<link rel='shortlink' href='http://nvie.com/?p=319' />
+
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-7780973-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+<link rel="stylesheet" href="http://nvie.com/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+		<h1><a href="http://nvie.com/">nvie.com</a><span>Anything that interests me.</span></h1>
+		<div id="search">
+			<form method="get" id="searchform" action="http://nvie.com/">
+				<input type="text" value="Search" name="s" id="s" onfocus="if(this.value=='Search')this.value=''" onblur="if(this.value=='')this.value='Search'" />
+			</form>
+		</div>
+	</div>
+
+	<div id="nav">
+		<ul>
+			<li class="current_page_item"><a href="http://nvie.com/">Home</a></li>
+			<li class="page_item page-item-8"><a href="http://nvie.com/about" title="About">About</a></li>
+		</ul>
+		<a href="http://nvie.com/feed" id="feed">Subscribe</a>
+	</div>
+	
+	<div id="wrapper">
+
+<div id="content">
+
+	
+		<div class="post" id="post-319">
+			<h1 class="post-title">Avoiding fast-forward merges in Git</h1>
+
+			<p>Just a pointer to an excellent post I wanted to share with you:</p>
+<p>In the section &#8220;Why we shouldn’t fast-forward&#8221; at <a onclick="javascript:pageTracker._trackPageview('/outgoing/robey.lag.net/2009/11/29/more-git.html');"  href="http://robey.lag.net/2009/11/29/more-git.html">http://robey.lag.net/2009/11/29/more-git.html</a>, Robey explains very clearly how fast forwards effectively make you loose historical information that may be crucial to ever reconstruct or understand your own project&#8217;s history.</p>
+
+						
+			<div class="post-info">
+				December 19th, 2009 in
+				<a href="http://nvie.com/archives/category/git" title="View all posts in Git" rel="category tag">Git</a>											</div>
+		</div>
+
+		
+ 
+			<!-- If comments are open, but there are no comments. -->
+		
+
+
+
+
+	<h1 class="comments-title">Leave a comment</h1>
+
+			<form action="http://nvie.com/wp-comments-post.php" method="post" id="commentform">
+			Your comment
+			<p><textarea name="comment" id="comment"></textarea></p>
+			
+						
+				<p><input type="text" name="author" id="author" class="text" value="" />
+				<label for="author">Name (required)</label></p>
+
+				<p><input type="text" name="email" id="email" class="text" value="" />
+				<label for="email">Mail (will not be published) (required)</label></p>
+
+				<p><input type="text" name="url" id="url" class="text" value="" />
+				<label for="url">Website</label></p>
+						
+						
+			<p><input name="submit" type="submit" id="submit" value="Submit Comment" /><input type="hidden" name="comment_post_ID" value="319" /></p>
+			
+			
+
+		</form>
+
+
+
+	
+</div>
+
+<div id="sidebar">
+<div class="block"><h3 class="widgettitle">Author</h3>			<div class="textwidget"><p>Vincent Driessen is a Python and Cocoa enthusiast based in The Netherlands.</p>
+<p>Follow me on Twitter (<a href="https://twitter.com/nvie/">@nvie</a>).</p>
+<p><img src="http://nvie.com/wp-content/themes/librio/images/vin.png" alt="Author" style="margin: 0 0 0 0; width: 170px; padding: 0;" /></p>
+</div>
+		</div><div class="block"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-17"><a href="http://nvie.com/archives/category/core-data" title="View all posts filed under Core Data">Core Data</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://nvie.com/archives/category/general" title="View all posts filed under General">General</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://nvie.com/archives/category/git" title="View all posts filed under Git">Git</a>
+<ul class='children'>
+	<li class="cat-item cat-item-25"><a href="http://nvie.com/archives/category/git/gitflow" title="View all posts filed under gitflow">gitflow</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://nvie.com/archives/category/iphone" title="View all posts filed under iPhone">iPhone</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://nvie.com/archives/category/mac" title="View all posts filed under Mac">Mac</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://nvie.com/archives/category/mogenerator" title="View all posts filed under mogenerator">mogenerator</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://nvie.com/archives/category/objective-c" title="View all posts filed under Objective-C">Objective-C</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://nvie.com/archives/category/python" title="Python">Python</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://nvie.com/archives/category/user-scripts" title="View all posts filed under User scripts">User scripts</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://nvie.com/archives/category/xcode" title="View all posts filed under Xcode">Xcode</a>
+</li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Archives</h3>		<ul>
+			<li><a href='http://nvie.com/archives/date/2010/03' title='March 2010'>March 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2010/01' title='January 2010'>January 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/12' title='December 2009'>December 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/10' title='October 2009'>October 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/07' title='July 2009'>July 2009</a></li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1892">A successful Git branching model</a></li><li class="recentcomments">A on <a href="http://nvie.com/archives/197/comment-page-1#comment-1890">NSPredicateEditor tutorial</a></li><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1884">A successful Git branching model</a></li><li class="recentcomments"><a onclick="javascript:pageTracker._trackPageview('/outgoing/webdev.zalewa.info');"  href='http://webdev.zalewa.info' rel='external nofollow' class='url'>zalun</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1883">A successful Git branching model</a></li><li class="recentcomments"><a onclick="javascript:pageTracker._trackPageview('/outgoing/codeslife.com');"  href='http://codeslife.com' rel='external nofollow' class='url'>Larry Cai</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1882">A successful Git branching model</a></li></ul></div></div>
+	</div>
+	
+	<div id="footer">
+		<p>
+			Copyright &copy; 2008. All right reserved. 
+			Theme by <a href="http://deniart.ru">deniart</a>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>
