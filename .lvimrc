@@ -1,2 +1,2 @@
 map <buffer> <F5> <Esc>:w<CR>:!nanoc compile<CR>
-map!  <buffer><F5> <Esc>:w<CR>:!nanoc compile<CR>
+map!  <buffer> <F5> <Esc>:w<CR>:!nanoc compile<CR>
