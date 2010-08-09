@@ -41,7 +41,6 @@ def convert_file(fname):
     with open(fname, 'r') as f:
         input = BeautifulSoup(f.read())
 
-    #print input.find('title').content
     title = input.head.title.string.split("&raquo;")[2].strip()
 
     date_string = input.body.find('div', {'class': 'post-info'}) \
@@ -95,7 +94,6 @@ def convert(fragment):
     if n in ['pre']:
         langclass = ""
         if fragment.has_key('class'):
-            print "I've found language %s!" % fragment['class']
             langclass = ' class="language-%s"' % fragment['class']
         code = strip_tags(fragment)
         content = '\n\n<pre><code%s>%s</code></pre>\n\n' % (langclass, code)
