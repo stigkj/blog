@@ -95,14 +95,16 @@ def convert(fragment):
         prefix = suffix = '@'
     elif n in ['br']:
         prefix = "\n"
-    elif n in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']:
+    elif n in ['h1']:
+        content = ''  # skip H1
+    elif n in ['h2', 'h3', 'h4', 'h5', 'h6']:
         prefix = "\n%s%s. " % (n, attrs)
         suffix = "\n"
     elif n in ['ul']:
         prefix = '\n'
         suffix = '\n'
     elif n in ['li']:
-        prefix = '- '
+        prefix = '* '
         suffix = "\n"
     elif n in ['ol']:
         prefix = '# '
@@ -135,5 +137,15 @@ if __name__ == '__main__':
     import codecs
     for file in ['197', '243', '263', '310', '319', '343', '420', '435', '438', '470', '492']:
         meta, text = convert_file(file)
-        f = codecs.open(file + '.textile', encoding='utf-8', mode='w')
+        meta['alt_url'] = '/archives/%s' % file
+        output = '../content/posts/%s-%s.textile' % (meta['created_at'], \
+                meta['title'] \
+                        .replace('.', '') \
+                        .replace(',', '') \
+                        .replace(' ', '-'))
+        f = codecs.open(output, encoding='utf-8', mode='w')
+        f.write('---\n')
+        for key, val in meta.items():
+            f.write('%s: %s\n' % (key, val))
+        f.write('---\n')
         f.write(text.strip())
