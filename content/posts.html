@@ -2,6 +2,21 @@
 title: All posts
 ---
 
-<% @site.posts.each do |p| %>
-<%=p[:created_at].year().to_s%>: <%=link_to(p[:title], p.reps.find {|r| r.name == :default})%>
+<%
+	last_year = 0
+	@site.sorted_articles.each do |post|
+%>
+
+<% if post[:created_at].year != last_year
+	last_year = post[:created_at].year
+%>
+<% if last_year != 0 %>
+</ul>
 <% end %>
+<h2><%= last_year %></h2>
+<ul>
+<% end %>
+
+<li><%= link_to(post[:title], post.reps.find {|r| r.name == :default}) %></li>
+<% end %>
+</ul>
