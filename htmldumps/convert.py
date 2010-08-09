@@ -65,6 +65,13 @@ def convert_file(fname):
     return (meta, convert(post))
 
 
+def strip_tags(fragment):
+    if isinstance(fragment, NavigableString):
+        return unicode(my_unescape(fragment))
+    strings = [strip_tags(part) for part in fragment.contents]
+    return filter(lambda c: ord(c) <= 127, ''.join(strings))
+
+
 def convert(fragment):
     if isinstance(fragment, NavigableString):
         return unicode(my_unescape(fragment)).replace('\n', '')
@@ -83,15 +90,24 @@ def convert(fragment):
         attrs += '{%s}' % fragment['style']
 
     prefix = suffix = content = ''
+    strip_content = False
     n = fragment.name
     if n in ['pre']:
-        prefix = '\n\n<pre><code>'
-        suffix = '</code></pre>\n\n'
-    elif n in ['table']:
+        langclass = ""
+        if fragment.has_key('class'):
+            print "I've found language %s!" % fragment['class']
+            langclass = ' class="language-%s"' % fragment['class']
+        code = strip_tags(fragment)
+        content = '\n\n<pre><code%s>%s</code></pre>\n\n' % (langclass, code)
+    elif n in ['script', 'table']:
         return "\n%s\n" % unicode(fragment)
     elif n in ['p', 'div']:
         prefix = "\n\n"
         suffix = "\n"
+    elif n in ['blockquote']:
+        prefix = '\n\nbq. '
+        strip_content = True
+        suffix = '\n\n'
     elif n in ['code']:
         prefix = suffix = '@'
     elif n in ['br']:
@@ -134,13 +150,23 @@ def convert(fragment):
     result = []
     for part in fragment.contents:
         result.append(convert(part))
-    joined = prefix + ''.join(result) + suffix
-    return re.sub("\n{3,}", "\n\n", joined)
+    joined = ''.join(result)
+    if strip_content:
+        joined = joined.strip()
+    joined = prefix + joined + suffix
+    joined = re.sub("\n{3,}", "\n\n", joined)
+    return joined
 
 
 if __name__ == '__main__':
+    import sys
     import codecs
-    for file in ['197', '243', '263', '310', '319', '343', '420', '435', '438', '470', '492']:
+    if len(sys.argv) > 1:
+        filelist = [sys.argv[1]]
+    else:
+        filelist = ['197', '243', '263', '310', '319', '343', '420', '435', '438', '470', '492']
+
+    for file in filelist:
         meta, text = convert_file(file)
         meta['alt_url'] = '/archives/%s' % file
         output = '../content/posts/%s-%s.textile' % (meta['created_at'], \
