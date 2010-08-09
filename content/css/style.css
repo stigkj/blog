@@ -224,7 +224,7 @@ a:hover {
 /* @end */
 
 /* <code> is for inline code in paragraphs */
-#main p code {
+#main code {
 	font-family: "Droid Sans Mono", Courier New, monospace;
 	font-size: 9pt;
 }
