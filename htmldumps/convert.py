@@ -85,11 +85,12 @@ def convert(fragment):
     prefix = suffix = content = ''
     n = fragment.name
     if n in ['pre']:
-        return unicode(fragment)
+        prefix = '\n\n<pre><code>'
+        suffix = '</code></pre>\n\n'
     elif n in ['table']:
         return "\n%s\n" % unicode(fragment)
     elif n in ['p', 'div']:
-        prefix = "\n"
+        prefix = "\n\n"
         suffix = "\n"
     elif n in ['code']:
         prefix = suffix = '@'
@@ -98,10 +99,10 @@ def convert(fragment):
     elif n in ['h1']:
         content = ''  # skip H1
     elif n in ['h2', 'h3', 'h4', 'h5', 'h6']:
-        prefix = "\n%s%s. " % (n, attrs)
+        prefix = "\n\n%s%s. " % (n, attrs)
         suffix = "\n"
     elif n in ['ul']:
-        prefix = '\n'
+        prefix = '\n\n'
         suffix = '\n'
     elif n in ['li']:
         prefix = '* '
@@ -120,6 +121,10 @@ def convert(fragment):
         prefix = suffix = '**'
     elif n in ['i', 'em']:
         prefix = suffix = '_'
+    elif n == 'ins':
+        prefix = suffix = '+'
+    elif n == 'del':
+        prefix = suffix = '-'
     else:
         prefix = '%s%s. ' % (n, attrs)
 
