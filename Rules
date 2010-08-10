@@ -10,9 +10,6 @@
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
 
-compile '/code/' do
-end
-
 compile '/' do
 	filter :erb
 	filter :redcloth, :hard_breaks => false
@@ -75,9 +72,6 @@ end
 compile '*' do
 	filter :erb
 	layout 'default'
-end
-
-route '/code/' do
 end
 
 route '/css/*/' do
