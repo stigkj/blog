@@ -1,0 +1,37 @@
+---
+alt_url: /archives/420
+kind: article
+author: Vincent Driessen
+created_at: 2010-01-13
+title: Building Git from scratch on Snow Leopard
+---
+Building Git from scratch on Snow Leopard
+
+When you try to build Git "from scratch":http://github.com/git/git on a Snow Leopard machine, you may have ran into the following problem:
+
+<pre><code>$ git clone git://github.com/git/git.git
+Initialized empty Git repository in /Users/nvie/git/.git/
+remote: Counting objects: 111619, done.
+remote: Compressing objects: 100% (28007/28007), done.
+remote: Total 111619 (delta 82192), reused 111264 (delta 81852)
+Receiving objects: 100% (111619/111619), 27.60 MiB | 531 KiB/s, done.
+Resolving deltas: 100% (82192/82192), done.
+$ cd git
+$ make prefix=/usr/local/bin/git
+GIT_VERSION = 1.6.2.rc0.90.g0753
+    * new build flags or prefix
+    CC fast-import.o
+    CC abspath.o
+    :
+    :
+ld: warning: in /opt/local/lib/libexpat.dylib, file is not of required architecture
+    ...
+ld: symbol(s) not found
+collect2: ld returned 1 exit status
+</code></pre>
+
+Then, you have a pretty big change you are having an old Darwin ports ("macports":http://www.macports.org) collection in use which has not yet been upgraded to Snow Leopard's new x64 architecture.
+
+There is, however, a simple solution to this, namely to have the @git@ build ignore the Darwin ports, simply by adding the following parameter to the build:
+
+<pre><code>$ make NO_DARWIN_PORTS=1 prefix=/usr/local/bin/git</code></pre>
