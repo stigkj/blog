@@ -1,11 +1,6 @@
 ---
 title: All posts
 ---
-<code>
-<%=sorted_articles.map { |i| i.identifier }.inspect %>
-</code>
-<hr />
-
 <% sorted_articles.map { |a| a[:created_at].year }.uniq.sort.reverse.each do |year| %>
 <h2><%= year %></h2>
 <ul><% sorted_articles.select { |a| a[:created_at].year == year }.sort { |x,y| x[:created_at] <=> y[:created_at]}.reverse.each do |post| %>
