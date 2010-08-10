@@ -10,22 +10,23 @@
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
 
-compile '/' do
-	filter :erb
-	filter :redcloth, :hard_breaks => false
-	filter :colorize_syntax,
-	       :colorizers => { :objc => :pygmentize, 
-	                        :python => :pygmentize,
-	                        :sh => :pygmentize
-	                      }
-	layout 'default'
+# Static content (simply copied into output) {{{
+compile '/static/css/*/' do
+	# compress CSS :)
+	filter :rainpress
 end
 
-compile '/about/' do
-	filter :kramdown
-	layout 'default'
+compile '/static/*/' do
+	# don't compile
 end
 
+route '/static/*/' do
+	path = @item.identifier.chop.gsub(/^\/static/, '')
+	path + '.' + @item[:extension]
+end
+# }}}
+
+# Compiling blog posts {{{
 compile '/posts/' do
 	filter :erb
 	layout 'default'
@@ -48,48 +49,6 @@ compile '/posts/*/', :rep => :alt_url do
 	layout 'redirect'
 end
 
-compile '/css/*/' do
-	# compress CSS :)
-	filter :rainpress
-end
-
-compile '/images/*/' do
-	# don't compile
-end
-
-compile '/i/*/' do
-	# make images fit the blog's size
-	filter :thumbnailize, :width => 520
-	#if item[:extension] == "png"
-	#	filter :pngcrush, :level => 7
-	#end
-end
-
-compile '/fonts/*/' do
-	# don't compile
-end
-
-compile '*' do
-	filter :erb
-	layout 'default'
-end
-
-route '/css/*/' do
-	@item.identifier.chop + '.' + @item[:extension]
-end
-
-route '/images/*/' do
-	@item.identifier.chop + '.' + @item[:extension]
-end
-
-route '/i/*/' do
-	@item.identifier.chop + '.' + @item[:extension]
-end
-
-route '/fonts/*/' do
-	@item.identifier.chop + '.' + @item[:extension]
-end
-
 route '/posts/*/' do
 	parts = @item.name.split('-', 4)
 	if @item[:created_at]
@@ -99,8 +58,48 @@ route '/posts/*/' do
 	end
 end
 
-route '*', :rep => :alt_url do
+route '/posts/*/', :rep => :alt_url do
 	@item[:alt_url]
+end
+# }}}
+
+# Blog post imagery {{{
+compile '/i/*/' do
+	# make images fit the blog's size
+	filter :thumbnailize, :width => 520
+	#if item[:extension] == "png"
+	#	filter :pngcrush, :level => 7
+	#end
+end
+
+route '/i/*/' do
+	@item.identifier.chop + '.' + @item[:extension]
+end
+# }}}
+
+# Home page {{{
+compile '/' do
+	filter :erb
+	filter :redcloth, :hard_breaks => false
+	filter :colorize_syntax,
+	       :colorizers => { :objc => :pygmentize, 
+	                        :python => :pygmentize,
+	                        :sh => :pygmentize
+	                      }
+	layout 'default'
+end
+# }}}
+
+# About me {{{
+compile '/about/' do
+	filter :kramdown
+	layout 'default'
+end
+# }}}
+
+compile '*' do
+	filter :erb
+	layout 'default'
 end
 
 route '*' do
