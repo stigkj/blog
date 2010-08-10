@@ -1,3 +1,5 @@
 #!/bin/sh
+rm -rf output content/posts/*.textile
+mkdir -p content/posts/
 ( cd htmldumps; ./convert.py )
 rake
