@@ -36,7 +36,6 @@ end
 
 compile '/posts/*/' do
 	@item[:kind] = :article
-	@item[:created_at] = Date::parse(@item.name.split('-', 4)[0..2] * "-")
 	layout 'post'
 	filter :redcloth, :hard_breaks => false
 	filter :colorize_syntax,
@@ -99,7 +98,6 @@ end
 
 route '/posts/*/' do
 	parts = @item.name.split('-', 4)
-	@item[:created_at] = Date::parse(parts[0..2] * "-")
 	if @item[:created_at]
 		'/posts/' + @item[:created_at].year().to_s + '/' + parts[3] + '/index.html'
 	else
