@@ -47,7 +47,7 @@ compile '/posts/*/' do
 end
 
 compile '/posts/*/', :rep => :alt_url do
-	@item[:redirect_url] = @item.identifier.chop + '/index.html'
+	@item[:source_url] = @item.identifier.chop + '/index.html'
 	layout 'redirect'
 end
 
