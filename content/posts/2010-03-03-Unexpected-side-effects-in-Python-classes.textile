@@ -5,8 +5,6 @@ author: Vincent Driessen
 created_at: 2010-03-03
 title: Unexpected side effects in Python classes
 ---
-Unexpected side effects in Python classes
-
 Today, I lost several hours while debugging a language implementation detail in Python that I did not know of and that really feels counterintuitive and dangerous to me.
 
 I was writing unit tests for a Python class that I was implementing, when one of the tests that had repeatedly been passing suddenly failed. Moreover, the failing test case was really for testing some completely unrelated piece of functionaly. This simply could not be broken!

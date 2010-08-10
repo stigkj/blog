@@ -5,8 +5,6 @@ author: Vincent Driessen
 created_at: 2009-09-19
 title: Auto-generate classes for your Core Data data model, revisited
 ---
-Auto-generate classes for your Core Data data model, revisited
-
 A few months ago, I wrote about "automatically generating classes for your Core Data entities":/archives/263 and how to automate Xcode using users scripts, such that, when your model changed, you only needed to run your custom script again and your intermediate model files would reflect the new situation.
 
 Well, the guys from the "mogenerator":http://github.com/rentzsch/mogenerator project have come up with a far superior solution in the mean time. The newest version of mogenerator comes with an Xcode plugin named Xmo'd, which monitors your *.xcdatamodel file for changes and, as soon as it changes, regenerates all of the neccessary files.

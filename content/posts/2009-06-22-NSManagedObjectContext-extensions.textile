@@ -5,8 +5,6 @@ author: Vincent Driessen
 created_at: 2009-06-22
 title: NSManagedObjectContext extensions
 ---
-NSManagedObjectContext extensions
-
 The Core Data framework rules, and its API is really really powerful. But really, why does the Core Data API require us to write so much boilerplate code? Simple things need to be simple.
 
 Why is the deletion of a managed object from the NSManagedObjectContext so easy:

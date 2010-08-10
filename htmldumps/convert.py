@@ -88,7 +88,8 @@ def convert(fragment):
     if fragment.has_key('style'):
         attrs += '{%s}' % fragment['style']
 
-    prefix = suffix = content = ''
+    content = None
+    prefix = suffix = ''
     strip_content = False
     n = fragment.name
     if n in ['pre']:
@@ -142,7 +143,7 @@ def convert(fragment):
     else:
         prefix = '%s%s. ' % (n, attrs)
 
-    if content:
+    if not content is None:
         return content
 
     result = []

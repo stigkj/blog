@@ -5,8 +5,6 @@ author: Vincent Driessen
 created_at: 2010-03-04
 title: An upgrade of gitflow
 ---
-An upgrade of gitflow
-
 Last week, I silently tagged "gitflow 0.2":http://github.com/nvie/gitflow/tree/0.2. The most important changes since 0.1 are:
 
 * Order of arguments changed to have a more "gitish" subcommand structure. For example, you now say:
