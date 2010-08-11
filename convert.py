@@ -3,6 +3,9 @@ import htmlentitydefs
 import re
 from BeautifulSoup import BeautifulSoup, NavigableString
 
+import os
+os.chdir(os.path.join(os.path.dirname(__file__), 'htmldumps'))
+
 MONTHS = ['January', 'February', 'March', 'April', 'June', 'July', 'August',
         'September', 'October', 'November', 'December']
 
@@ -165,6 +168,7 @@ if __name__ == '__main__':
     else:
         filelist = ['197', '243', '263', '310', '319', '343', '420', '435', '438', '470', '492']
 
+    count = 0
     for file in filelist:
         meta, text = convert_file(file)
         meta['alt_url'] = '/archives/%s' % file
@@ -173,9 +177,13 @@ if __name__ == '__main__':
                         .replace('.', '') \
                         .replace(',', '') \
                         .replace(' ', '-'))
+
+        print "Writing %s..." % output.replace('../', '')
+        count += 1
         f = codecs.open(output, encoding='utf-8', mode='w')
         f.write('---\n')
         for key, val in meta.items():
             f.write('%s: %s\n' % (key, val))
         f.write('---\n')
         f.write(text.strip())
+    print "Converted %d blog posts." % count

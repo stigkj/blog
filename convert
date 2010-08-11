@@ -1,3 +1,0 @@
-#!/bin/sh
-cd htmldumps
-./convert.py
