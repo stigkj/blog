@@ -36,10 +36,7 @@ compile '/posts/*/' do
 	layout 'post'
 	filter :redcloth, :hard_breaks => false
 	filter :colorize_syntax,
-	       :colorizers => { :objc => :pygmentize,
-	                        :python => :pygmentize,
-	                        :sh => :pygmentize
-	                      }
+	       :default_colorizer => :pygmentize
 	layout 'default'
 end
 
@@ -81,10 +78,7 @@ compile '/' do
 	filter :erb
 	filter :redcloth, :hard_breaks => false
 	filter :colorize_syntax,
-	       :colorizers => { :objc => :pygmentize, 
-	                        :python => :pygmentize,
-	                        :sh => :pygmentize
-	                      }
+	       :default_colorizer => :pygmentize
 	layout 'default'
 end
 # }}}
