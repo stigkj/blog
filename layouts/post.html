@@ -1,4 +1,4 @@
-<% if @item[:publish_date] %>
-p(written-at). Written at: <%= @item[:publish_date].strftime('%B %d, %Y') %>
+<% if @item[:created_at] %>
+p(written-at). Written at: <%= @item[:created_at].strftime('%B %d, %Y') %>
 <% end %>
 <%= yield %>

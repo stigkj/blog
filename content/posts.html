@@ -1,9 +1,9 @@
 ---
 title: All posts
 ---
-<% sorted_articles.map { |a| a[:publish_date].year }.uniq.each do |year| %>
+<% sorted_articles.map { |a| a[:created_at].year }.uniq.each do |year| %>
 <h2><%= year %></h2>
-<ul><% sorted_articles.select { |a| a[:publish_date].year == year }.each do |post| %>
-<li><%= link_to(post[:title], post) %></li>
+<ul><% sorted_articles.select { |a| a[:created_at].year == year }.each do |post| %>
+	<li><%= link_to(post[:title], post) %><%= ' (' + post[:status] + ')' if post[:status] != 'published' %></li>
 <% end %></ul>
 <% end %>

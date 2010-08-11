@@ -9,17 +9,7 @@
 #	 “content/about.html”). To select all children, grandchildren, … of an
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
-
-# Preprocess items {{{
-preprocess do
-	@items.each do |i|
-		if i.identifier =~ %r{^/posts/.+$}
-		    i[:kind] = :article
-			i[:publish_date] = Date::parse(i.name.split('-', 4)[0..2] * "-")
-		end
-	end
-end
-# }}}
+debug = true
 
 # Static content (simply copied into output) {{{
 compile '/static/css/*/' do
@@ -44,29 +34,37 @@ compile '/posts/' do
 end
 
 compile '/posts/*/' do
+    if debug or @item[:status] == 'published' then
 	layout 'post'
 	filter :redcloth, :hard_breaks => false
 	filter :colorize_syntax,
 	       :default_colorizer => :pygmentize
 	layout 'default'
+	end
 end
 
 compile '/posts/*/', :rep => :alt_url do
+    if debug or @item[:status] == 'published' then
 	@item[:source_url] = @item.identifier.chop + '/index.html'
 	layout 'redirect'
+	end
 end
 
 route '/posts/*/' do
-	parts = @item.name.split('-', 4)
-	if @item[:publish_date]
-		'/posts/' + @item[:publish_date].year().to_s + '/' + parts[3] + '/index.html'
-	else
-		puts "Skipping " + @item.name
+    if debug or @item[:status] == 'published' then
+		parts = @item.name.split('-', 4)
+		if @item[:created_at]
+			'/posts/' + @item[:created_at].year().to_s + '/' + parts[3] + '/index.html'
+		else
+			puts "Skipping " + @item.name
+		end
 	end
 end
 
 route '/posts/*/', :rep => :alt_url do
-	@item[:alt_url]
+    if debug or @item[:status] == 'published' then
+		@item[:alt_url]
+	end
 end
 # }}}
 

@@ -1,7 +1,10 @@
 ---
-alt_url: /archives/310
+status: published
+kind: article
 author: Vincent Driessen
+created_at: 2009-09-19
 title: Auto-generate classes for your Core Data data model, revisited
+alt_url: /archives/310
 ---
 A few months ago, I wrote about "automatically generating classes for your Core Data entities":/archives/263 and how to automate Xcode using users scripts, such that, when your model changed, you only needed to run your custom script again and your intermediate model files would reflect the new situation.
 

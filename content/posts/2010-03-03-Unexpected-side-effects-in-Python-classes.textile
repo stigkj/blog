@@ -1,7 +1,10 @@
 ---
-alt_url: /archives/470
+status: published
+kind: article
 author: Vincent Driessen
+created_at: 2010-03-03
 title: Unexpected side effects in Python classes
+alt_url: /archives/470
 ---
 Today, I lost several hours while debugging a language implementation detail in Python that I did not know of and that really feels counterintuitive and dangerous to me.
 

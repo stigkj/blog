@@ -1,7 +1,10 @@
 ---
-alt_url: /archives/197
+status: published
+kind: article
 author: Vincent Driessen
+created_at: 2009-06-20
 title: NSPredicateEditor tutorial
+alt_url: /archives/197
 ---
 Cocoa offers a nice visual editor for editing NSPredicate objects templates, called NSPredicateEditor. The NSPredicateEditor can be set up using code or in Interface Builder, which is preferable for simple use. The setup is fairly easy once you know how to do it. In this tutorial, we'll be building a simple predicate editor example which shows the basic functionality of the predicate editor.
 

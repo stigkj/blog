@@ -1,7 +1,10 @@
 ---
-alt_url: /archives/438
+status: published
+kind: article
 author: Vincent Driessen
+created_at: 2010-01-26
 title: gitflow 0.1 released
+alt_url: /archives/438
 ---
 After the overwhelming attention and feedback on the "Git branching model post":/archives/323, a general consensus was that this workflow would benefit from some form of proper scriptability. The workflow works seamlessly if you perform the steps involved manually, but hey… manually is manually, really.
 
