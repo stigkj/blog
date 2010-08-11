@@ -33,7 +33,6 @@ compile '/posts/' do
 end
 
 compile '/posts/*/' do
-	@item[:kind] = :article
 	layout 'post'
 	filter :redcloth, :hard_breaks => false
 	filter :colorize_syntax,
