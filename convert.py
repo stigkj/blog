@@ -61,10 +61,8 @@ def convert_file(fname):
     # output the resulting *.textile file
     meta = {}
     meta['title'] = title
-    meta['kind'] = 'article'
-    meta['created_at'] = date
     meta['author'] = 'Vincent Driessen'
-    return (meta, convert(post))
+    return (date, meta, convert(post))
 
 
 def strip_tags(fragment):
@@ -170,9 +168,9 @@ if __name__ == '__main__':
 
     count = 0
     for file in filelist:
-        meta, text = convert_file(file)
+        publish_date, meta, text = convert_file(file)
         meta['alt_url'] = '/archives/%s' % file
-        output = '../content/posts/%s-%s.textile' % (meta['created_at'], \
+        output = '../content/posts/%s-%s.textile' % (publish_date, \
                 meta['title'] \
                         .replace('.', '') \
                         .replace(',', '') \
