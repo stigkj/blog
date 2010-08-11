@@ -2,7 +2,7 @@
 status: draft
 kind: article
 author: Vincent Driessen
-created_at: 2010-07-11
+created_at: 2010-07-12
 title: Mastering Vim
 alt_url: /archives/537
 ---
