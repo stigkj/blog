@@ -62,6 +62,8 @@ def convert_file(fname):
     meta = {}
     meta['title'] = title
     meta['author'] = 'Vincent Driessen'
+    meta['kind'] = 'article'
+    meta['created_at'] = date
     return (date, meta, convert(post))
 
 
@@ -164,13 +166,28 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         filelist = [sys.argv[1]]
     else:
-        filelist = ['197', '243', '263', '310', '319', '343', '420', '435', '438', '470', '492']
+        filelist = ['published/197',
+                    'published/243',
+                    'published/263',
+                    'published/310',
+                    'published/319',
+                    'published/343',
+                    'published/420',
+                    'published/435',
+                    'published/438',
+                    'published/470',
+                    'published/492',
+                    'draft/515',
+                    'draft/537',
+                   ]
 
     count = 0
     for file in filelist:
-        publish_date, meta, text = convert_file(file)
-        meta['alt_url'] = '/archives/%s' % file
-        output = '../content/posts/%s-%s.textile' % (publish_date, \
+        created_at, meta, text = convert_file(file)
+        status, basename = os.path.split(file)
+        meta['status'] = status
+        meta['alt_url'] = '/archives/%s' % basename
+        output = '../content/posts/%s-%s.textile' % (created_at, \
                 meta['title'] \
                         .replace('.', '') \
                         .replace(',', '') \

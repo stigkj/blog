@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>nvie.com  &raquo; Blog Archive   &raquo; How I took control over my Python packages again</title>
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com RSS Feed" href="http://nvie.com/feed" />
+	<link rel="pingback" href="http://nvie.com/xmlrpc.php" />
+	
+	<link rel="stylesheet" href="http://nvie.com/wp-content/themes/librio/style.css" type="text/css" media="screen" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="http://nvie.com/wp-content/themes/librio/ie.css" media="screen" /><![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com &raquo; How I took control over my Python packages again Comments Feed" href="http://nvie.com/?p=515/feed" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nvie.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nvie.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='nvie.com' href='http://nvie.com' />
+<link rel='start' title='NSPredicateEditor tutorial' href='http://nvie.com/archives/197' />
+<link rel='prev' title='An upgrade of gitflow' href='http://nvie.com/archives/492' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://nvie.com/?p=515' />
+<link rel='shortlink' href='http://nvie.com/?p=515' />
+
+<!-- tracker not added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<!-- tracker is not added for a logged on user of this level -->
+
+<link rel="stylesheet" href="http://nvie.com/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+		<h1><a href="http://nvie.com/">nvie.com</a><span>Anything that interests me.</span></h1>
+		<div id="search">
+			<form method="get" id="searchform" action="http://nvie.com/">
+				<input type="text" value="Search" name="s" id="s" onfocus="if(this.value=='Search')this.value=''" onblur="if(this.value=='')this.value='Search'" />
+			</form>
+		</div>
+	</div>
+
+	<div id="nav">
+		<ul>
+			<li class="current_page_item"><a href="http://nvie.com/">Home</a></li>
+			<li class="page_item page-item-8"><a href="http://nvie.com/about" title="About">About</a></li>
+		</ul>
+		<a href="http://nvie.com/feed" id="feed">Subscribe</a>
+	</div>
+	
+	<div id="wrapper">
+
+<div id="content">
+
+	
+		<div class="post" id="post-515">
+			<h1 class="post-title">How I took control over my Python packages again</h1>
+
+			<p>Starting development with Python is really easy. It has one of the easiest package management systems out there and with an internet connection, you are up and running with about any Python package in under a minute.</p>
+<p>Especially when you have installed <code>easy_install</code>, it&#8217;s extremely easy:</p>
+<pre>$ easy_install <em>mypackage</em></pre>
+<p>In fact, it&#8217;s so easy that at a certain moment, you find yourself having installed a <a href="http://pastie.org/990457">scary amount of packages</a>. The problem with this is that it&#8217;s one big pile of packages.</p>
+<ol>
+<li>All of the package paths are scanned when Python imports modules. Although the performance of Python is really good, you may start to feel an impact in the long term.</li>
+<li>Packages are versioned, but at most one version of a package can be used at a time. Mostly, this is no problem. But what if two different Python projects have different version requirements?</li>
+<li>There is no uninstaller. No really. You cannot uninstall packages.</li>
+<li>There is no way of telling which package belongs to which project.</li>
+<li>Since the packages are all put in the global Python&#8217;s directory by default, you must be root to use new packages.</li>
+</ol>
+<h2>Using virtual environments</h2>
+<p>Advanced Python developers know of <a href="http://pypi.python.org/pypi/virtualenv">virtualenv</a>, a great tool by <a href="http://twitter.com/ianbicking">@ianbicking</a>. For those who don&#8217;t: <code>virtualenv</code> lets you create a new, isolated virtual environment, an isolated installation of Python. With that comes an isolated copy of your packages (the so called <code>site-packages</code> directory).</p>
+<p>Creating one is really easy:</p>
+<pre>$ <strong>which python</strong>
+/usr/bin/python
+$ <strong>mkdir virtualenvs</strong>
+$ <strong>cd virtualenvs</strong>
+$ <strong>virtualenv --no-site-packages main</strong>
+New python executable in main/bin/python
+Installing setuptools............done.
+$ <strong>source main/bin/activate</strong>
+(main)$ <strong>which python</strong>
+/home/nvie/virtualenvs/main/bin/python</pre>
+<p>As you can see, the <code>activate</code> script puts you &#8220;into&#8221; this virtual environment. Actually, all that it does is modify your environment variable <code>$PATH</code> to put the virtual env&#8217;s <code>python</code> (and <code>easy_install</code>, and <code>pip</code>) binaries before the system-wide ones. You can always &#8220;quit&#8221; a virtual env by typing <code>deactivate</code>.</p>
+<h2>Never ever run <code>/usr/bin/python</code> again</h2>
+<p>I recommend setting up a &#8220;main&#8221; Python virtual env in your home dir, and always use that one, instead of the system-wide one. This would already be useful if it merely relieved you of becoming root every time you want to install a package. But there&#8217;s more. You <em>own</em> the packages now.</p>
+<p>Use that virtual env while you&#8217;re developing your common Python code, but for larger projects you can consider creating a dedicated virtual env. That way, you are completely in control.</p>
+<h2>Building requirement lists</h2>
+<p>Another chief advantage of using virtual env </p>
+
+						
+			<div class="post-info">
+				August 11th, 2010 in
+				<a href="http://nvie.com/archives/category/python" title="View all posts in Python" rel="category tag">Python</a>								<a class="post-edit-link" href="http://nvie.com/wp-admin/post.php?post=515&amp;action=edit" title="Edit Post">[Edit this entry]</a>			</div>
+		</div>
+
+		
+ 
+			<!-- If comments are open, but there are no comments. -->
+		
+
+
+
+
+	<h1 class="comments-title">Leave a comment</h1>
+
+			<form action="http://nvie.com/wp-comments-post.php" method="post" id="commentform">
+			Your comment
+			<p><textarea name="comment" id="comment"></textarea></p>
+			
+							<p>Logged in as <a href="http://nvie.com/wp-admin/profile.php">Vincent Driessen</a>&nbsp;&nbsp;&nbsp;<a href="http://nvie.com/wp-login.php?action=logout" title="Log out of this account">Log out</a></p>
+						
+			<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="1c90e50110" />			
+			<p><input name="submit" type="submit" id="submit" value="Submit Comment" /><input type="hidden" name="comment_post_ID" value="515" /></p>
+			
+			
+
+		</form>
+
+
+
+	
+</div>
+
+<div id="sidebar">
+<div class="block"><h3 class="widgettitle">Author</h3>			<div class="textwidget"><p>Vincent Driessen is a Python and Cocoa enthusiast based in The Netherlands.</p>
+<p>Follow me on Twitter (<a href="https://twitter.com/nvie/">@nvie</a>).</p>
+<p><img src="http://nvie.com/wp-content/themes/librio/images/vin.png" alt="Author" style="margin: 0 0 0 0; width: 170px; padding: 0;" /></p>
+</div>
+		</div><div class="block"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-17"><a href="http://nvie.com/archives/category/core-data" title="View all posts filed under Core Data">Core Data</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://nvie.com/archives/category/general" title="View all posts filed under General">General</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://nvie.com/archives/category/git" title="View all posts filed under Git">Git</a>
+<ul class='children'>
+	<li class="cat-item cat-item-25"><a href="http://nvie.com/archives/category/git/gitflow" title="View all posts filed under gitflow">gitflow</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://nvie.com/archives/category/iphone" title="View all posts filed under iPhone">iPhone</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://nvie.com/archives/category/mac" title="View all posts filed under Mac">Mac</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://nvie.com/archives/category/mogenerator" title="View all posts filed under mogenerator">mogenerator</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://nvie.com/archives/category/objective-c" title="View all posts filed under Objective-C">Objective-C</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://nvie.com/archives/category/python" title="Python">Python</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://nvie.com/archives/category/user-scripts" title="View all posts filed under User scripts">User scripts</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://nvie.com/archives/category/xcode" title="View all posts filed under Xcode">Xcode</a>
+</li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Archives</h3>		<ul>
+			<li><a href='http://nvie.com/archives/date/2010/03' title='March 2010'>March 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2010/01' title='January 2010'>January 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/12' title='December 2009'>December 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/10' title='October 2009'>October 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/07' title='July 2009'>July 2009</a></li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1892">A successful Git branching model</a></li><li class="recentcomments">A on <a href="http://nvie.com/archives/197/comment-page-1#comment-1890">NSPredicateEditor tutorial</a></li><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1884">A successful Git branching model</a></li><li class="recentcomments"><a href='http://webdev.zalewa.info' rel='external nofollow' class='url'>zalun</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1883">A successful Git branching model</a></li><li class="recentcomments"><a href='http://codeslife.com' rel='external nofollow' class='url'>Larry Cai</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1882">A successful Git branching model</a></li></ul></div></div>
+	</div>
+	
+	<div id="footer">
+		<p>
+			Copyright &copy; 2008. All right reserved. 
+			Theme by <a href="http://deniart.ru">deniart</a>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>

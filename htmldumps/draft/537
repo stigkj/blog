@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>nvie.com  &raquo; Blog Archive   &raquo; Mastering Vim</title>
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com RSS Feed" href="http://nvie.com/feed" />
+	<link rel="pingback" href="http://nvie.com/xmlrpc.php" />
+	
+	<link rel="stylesheet" href="http://nvie.com/wp-content/themes/librio/style.css" type="text/css" media="screen" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="http://nvie.com/wp-content/themes/librio/ie.css" media="screen" /><![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="nvie.com &raquo; Mastering Vim Comments Feed" href="http://nvie.com/vim/feed" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nvie.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nvie.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='nvie.com' href='http://nvie.com' />
+<link rel='start' title='NSPredicateEditor tutorial' href='http://nvie.com/archives/197' />
+<link rel='prev' title='An upgrade of gitflow' href='http://nvie.com/archives/492' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://nvie.com/vim' />
+<link rel='shortlink' href='http://nvie.com/?p=537' />
+
+<!-- tracker not added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<!-- tracker is not added for a logged on user of this level -->
+
+<link rel="stylesheet" href="http://nvie.com/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+		<h1><a href="http://nvie.com/">nvie.com</a><span>Anything that interests me.</span></h1>
+		<div id="search">
+			<form method="get" id="searchform" action="http://nvie.com/">
+				<input type="text" value="Search" name="s" id="s" onfocus="if(this.value=='Search')this.value=''" onblur="if(this.value=='')this.value='Search'" />
+			</form>
+		</div>
+	</div>
+
+	<div id="nav">
+		<ul>
+			<li class="current_page_item"><a href="http://nvie.com/">Home</a></li>
+			<li class="page_item page-item-8"><a href="http://nvie.com/about" title="About">About</a></li>
+		</ul>
+		<a href="http://nvie.com/feed" id="feed">Subscribe</a>
+	</div>
+	
+	<div id="wrapper">
+
+<div id="content">
+
+	
+		<div class="post" id="post-537">
+			<h1 class="post-title">Mastering Vim</h1>
+
+			<p>After reading this <a href="http://jeffkreeftmeijer.com/2010/stumbling-into-vim/">blog post</a> by Jeff Kreeftmeijer (and the <a href="http://vimeo.com/user1690209/videos">Vim video series of Derek Wyatt</a>) on configuring Vim, I felt inspired to have a critical look at my own <code>.vimrc</code> file and reevaluate how it had evolved over the years. I grabbed the opportunity to read up on new tips and tricks and decided to take the next plunge in mastering Vim.<br />
+<span id="more-537"></span></p>
+<p>It must have been somewhere around 2001 that I first started using Vim for any serious work, and learning it has paid off a million times since then. They say Vim has a steep learning curve, which is true. It takes time, patience, and repetitive practice on a day-to-day basis to slowly let the keyboard mappings become part of your muscle memory. But once you get the hang of this, it pays off so many times. It cannot be stressed enough.</p>
+<p>In those early years, I learned a lot. Most essentially, I&#8217;ve learned how to efficiently edit source code, with as few keystrokes as possible. After those years, I kept on using those skills for almost all editing work. However, since that first learning curve, I&#8217;ve never really extended those skills. Yeah, occasionally you learn even shorter keyboard mappings for tasks that you do often, but even those don&#8217;t stick with your finger muscles if unused for too long. As another example, once I considered my <code>.vimrc</code> okay, I&#8217;ve never touched it again (apart from adding the NERDTree plugin). Call it laziness, sure. But by reading Jeff&#8217;s blog post, I realized it has cost me hours and hours of inefficiency over the last few years! [footnote: Of course, "inefficient" is a relative term when using Vim already.] Let me explain.</p>
+<p>In the blog post, Jeff shows how he learned the basics of configuring and working with Vim. Assuming his knowledge was absolutely zero before, he did a magnificent job in setting up a personalized editor in no-time. He even configured features that I added to my editor only recently (e.g. NERDTree), which made me realize that I haven&#8217;t upgraded my Vim environment (and knowledge!) in a long time. (If someone new to Vim can get to that level so fast, how come I&#8217;m still stuck at my configuration level?)</p>
+<p>Time for some reevaluation.</p>
+<h2>Reflect on your daily work</h2>
+<p>&#8230; (what do you do often?)</p>
+<h2>Learn from others</h2>
+<p>&#8230; there are lots of <code>.vimrc</code> files / plugins out there<br />
+<!--more--></p>
+<h2>A short history</h2>
+<p>It must have been somewhere around 2001 that I first started using Vim for any serious work, and learning it has paid off a million times since then. They say Vim has a steep learning curve, which is true. It takes time, patience, and repetitive practice on a day-to-day basis to have the keyboard mappings become part of your muscle memory. But once you get the hang of this, it pays off so many times. It cannot be stressed enough.</p>
+<h2>Reflect on your daily work</h2>
+<p>&#8230; (what do you do often?)</p>
+<h2>Learn from others</h2>
+<p>&#8230; there are lots of .vimrc files / plugins out there</p>
+<p>H2: getting started with plugins</p>
+<p>If I have any first tip al all, it would be to install pathogen. Plugins in vim are files that you drop in subdirectories of your .vim/ directory. Many plugins exist of only a single file that should be dropped in .vim/plugin, but some exist of multiple files. For example, they come with documentation, or ships syntax files. In those cases, files need to be dropped into .vim/doc and .vim/syntax. This makes it difficult to remove the plugin afterwards. After installing pathogen, you can simply unzip a plugin distribution into .vim/bundle/myplugin, under which the required doc, syntax, plugin, etc directories are created. Removing the plugin, then, is as simple as removing the myplugin directory.</p>
+<p>Having said that, let&#8217;s move on to the actual plugins.</p>
+<p>H2: NERDTree explorer<br />
+by ???<br />
+An absolute MUST. A quick file browser.</p>
+<p>H2: Fugitive (fuGITive?)<br />
+by Tim Pope<br />
+Plugin for Git integration. I *love* the :Gedit command, for quickly editing a file in the index.</p>
+<p>H2: Python: PEP8, pyflakes and unit test integration<br />
+by myself<br />
+Sometimes, you need functionality that you cannot find in an already available plugin (or in a way that doesn&#8217;t fit your need). In those cases, you can extend Vim yourself.</p>
+<p>For example, I often want to run QA tools (like pep8 or pyflakes) on my Python source code. There are plugins for those tools available, but</p>
+<p>- they don&#8217;t allow me to customize any key mappings<br />
+- they don&#8217;t look/act/behave the same, although they may be considered the same type of tools (i.e. they tell me on what lines there&#8217;s something wrong with my Python source)<br />
+- in he best case, they are merely a simple wrapper around a shell invocation</p>
+<p>Before I&#8217;ve tried these plugins, I had a key mapping defined to simply call pep8 -r on the current file. Vim would show me the shell output, I&#8217;d remember a line number, press Return, type :
+<the line number> and start fixing it.</p>
+<p>OK, but not good enough :-)</the>
+
+						
+			<div class="post-info">
+				August 11th, 2010 in
+				<a href="http://nvie.com/archives/category/general" title="View all posts in General" rel="category tag">General</a>								<a class="post-edit-link" href="http://nvie.com/wp-admin/post.php?post=537&amp;action=edit" title="Edit Post">[Edit this entry]</a>			</div>
+		</div>
+
+		
+ 
+			<!-- If comments are open, but there are no comments. -->
+		
+
+
+
+
+	<h1 class="comments-title">Leave a comment</h1>
+
+			<form action="http://nvie.com/wp-comments-post.php" method="post" id="commentform">
+			Your comment
+			<p><textarea name="comment" id="comment"></textarea></p>
+			
+							<p>Logged in as <a href="http://nvie.com/wp-admin/profile.php">Vincent Driessen</a>&nbsp;&nbsp;&nbsp;<a href="http://nvie.com/wp-login.php?action=logout" title="Log out of this account">Log out</a></p>
+						
+			<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="7e0b8ac241" />			
+			<p><input name="submit" type="submit" id="submit" value="Submit Comment" /><input type="hidden" name="comment_post_ID" value="537" /></p>
+			
+			
+
+		</form>
+
+
+
+	
+</div>
+
+<div id="sidebar">
+<div class="block"><h3 class="widgettitle">Author</h3>			<div class="textwidget"><p>Vincent Driessen is a Python and Cocoa enthusiast based in The Netherlands.</p>
+<p>Follow me on Twitter (<a href="https://twitter.com/nvie/">@nvie</a>).</p>
+<p><img src="http://nvie.com/wp-content/themes/librio/images/vin.png" alt="Author" style="margin: 0 0 0 0; width: 170px; padding: 0;" /></p>
+</div>
+		</div><div class="block"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-17"><a href="http://nvie.com/archives/category/core-data" title="View all posts filed under Core Data">Core Data</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://nvie.com/archives/category/general" title="View all posts filed under General">General</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://nvie.com/archives/category/git" title="View all posts filed under Git">Git</a>
+<ul class='children'>
+	<li class="cat-item cat-item-25"><a href="http://nvie.com/archives/category/git/gitflow" title="View all posts filed under gitflow">gitflow</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://nvie.com/archives/category/iphone" title="View all posts filed under iPhone">iPhone</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://nvie.com/archives/category/mac" title="View all posts filed under Mac">Mac</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://nvie.com/archives/category/mogenerator" title="View all posts filed under mogenerator">mogenerator</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://nvie.com/archives/category/objective-c" title="View all posts filed under Objective-C">Objective-C</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://nvie.com/archives/category/python" title="Python">Python</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://nvie.com/archives/category/user-scripts" title="View all posts filed under User scripts">User scripts</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://nvie.com/archives/category/xcode" title="View all posts filed under Xcode">Xcode</a>
+</li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Archives</h3>		<ul>
+			<li><a href='http://nvie.com/archives/date/2010/03' title='March 2010'>March 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2010/01' title='January 2010'>January 2010</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/12' title='December 2009'>December 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/10' title='October 2009'>October 2009</a></li>
+	<li><a href='http://nvie.com/archives/date/2009/07' title='July 2009'>July 2009</a></li>
+		</ul>
+</div><div class="block"><h3 class="widgettitle">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1892">A successful Git branching model</a></li><li class="recentcomments">A on <a href="http://nvie.com/archives/197/comment-page-1#comment-1890">NSPredicateEditor tutorial</a></li><li class="recentcomments"><a href='http://nvie.com' rel='external nofollow' class='url'>Vincent Driessen</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1884">A successful Git branching model</a></li><li class="recentcomments"><a href='http://webdev.zalewa.info' rel='external nofollow' class='url'>zalun</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1883">A successful Git branching model</a></li><li class="recentcomments"><a href='http://codeslife.com' rel='external nofollow' class='url'>Larry Cai</a> on <a href="http://nvie.com/git-model/comment-page-2#comment-1882">A successful Git branching model</a></li></ul></div></div>
+	</div>
+	
+	<div id="footer">
+		<p>
+			Copyright &copy; 2008. All right reserved. 
+			Theme by <a href="http://deniart.ru">deniart</a>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>
