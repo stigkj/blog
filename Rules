@@ -10,6 +10,17 @@
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
 
+# Preprocess items {{{
+preprocess do
+	@items.each do |i|
+		if i.identifier =~ %r{^/posts/.+$}
+		    i[:kind] = :article
+			i[:publish_date] = Date::parse(i.name.split('-', 4)[0..2] * "-")
+		end
+	end
+end
+# }}}
+
 # Static content (simply copied into output) {{{
 compile '/static/css/*/' do
 	# compress CSS :)
@@ -47,8 +58,8 @@ end
 
 route '/posts/*/' do
 	parts = @item.name.split('-', 4)
-	if @item[:created_at]
-		'/posts/' + @item[:created_at].year().to_s + '/' + parts[3] + '/index.html'
+	if @item[:publish_date]
+		'/posts/' + @item[:publish_date].year().to_s + '/' + parts[3] + '/index.html'
 	else
 		puts "Skipping " + @item.name
 	end
