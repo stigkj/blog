@@ -64,7 +64,7 @@ end
 # }}}
 
 # Blog post imagery {{{
-compile '/i/*/' do
+compile '/img/*/' do
 	# make images fit the blog's size
 	filter :thumbnailize, :width => 520
 	#if item[:extension] == "png"
@@ -72,7 +72,7 @@ compile '/i/*/' do
 	#end
 end
 
-route '/i/*/' do
+route '/img/*/' do
 	@item.identifier.chop + '.' + @item[:extension]
 end
 # }}}

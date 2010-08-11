@@ -11,8 +11,8 @@ body {
 	padding: 0;
 
 	font-family: Georgia, Arial, sans-serif;
-	/*background: #333 url(/images/leftbg.png) repeat-y;*/
-	background: #333 url(/images/bg.png) repeat-y;
+	/*background: #333 url(/img/leftbg.png) repeat-y;*/
+	background: #333 url(/img/bg.png) repeat-y;
 }
 
 /* @group Header */
