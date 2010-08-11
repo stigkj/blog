@@ -1,9 +1,9 @@
 ---
 title: All posts
 ---
-<% sorted_articles.map { |a| a[:created_at].year }.uniq.sort.reverse.each do |year| %>
+<% sorted_articles.map { |a| a[:created_at].year }.uniq.each do |year| %>
 <h2><%= year %></h2>
-<ul><% sorted_articles.select { |a| a[:created_at].year == year }.sort { |x,y| x[:created_at] <=> y[:created_at]}.reverse.each do |post| %>
+<ul><% sorted_articles.select { |a| a[:created_at].year == year }.each do |post| %>
 <li><%= link_to(post[:title], post) %></li>
 <% end %></ul>
 <% end %>
