@@ -231,6 +231,10 @@ a:hover {
 	margin-right: 12px;
 }
 
+#sidebar li.all {
+	margin-bottom: 8px;
+}
+
 #sidebar li {
 	font-size: 14px;
 }

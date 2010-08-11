@@ -30,7 +30,7 @@
 
 			<h2><span>Recent posts</span></h2>
 			<ul>
-				<li><a href="/posts/">All posts</a></li>
+				<li class="all"><a href="/posts/">All posts</a></li>
 				<% sorted_articles.first(3).each do |p| %>
 				   <li><%= link_to(p[:title], p) %></li>
 				<% end %>
