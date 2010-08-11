@@ -1,8 +1,6 @@
 ---
 alt_url: /archives/435
-kind: article
 author: Vincent Driessen
-created_at: 2010-01-25
 title: sudo make sandwich
 ---
 This one is just too funny not to link.
