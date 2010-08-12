@@ -96,11 +96,16 @@ def convert(fragment):
     strip_content = False
     n = fragment.name
     if n in ['pre']:
-        langclass = ""
+        langclass = preclass = ""
         if fragment.has_key('class'):
-            langclass = ' class="language-%s"' % fragment['class']
+            classes = fragment['class'].split()
+            if len(classes) > 1:
+                preclass = ' class="%s"' % ' '.join(classes[1:])
+                langclass = ' class="language-%s"' % classes[0]
+            else:
+                langclass = ' class="language-%s"' % fragment['class']
         code = strip_tags(fragment)
-        content = '\n\n<pre><code%s>%s</code></pre>\n\n' % (langclass, code)
+        content = '\n\n<pre%s><code%s>%s</code></pre>\n\n' % (preclass, langclass, code)
     elif n in ['script', 'table']:
         return "\n%s\n" % unicode(fragment)
     elif n in ['p', 'div']:
