@@ -6,52 +6,127 @@ created_at: 2010-03-03
 title: Unexpected side effects in Python classes
 alt_url: /archives/470
 ---
-Today, I lost several hours while debugging a language implementation detail in Python that I did not know of and that really feels counterintuitive and dangerous to me.
+Today, I lost several hours while debugging a language implementation detail
+in Python that I did not know of and that really feels counterintuitive and
+dangerous to me.
 
-I was writing unit tests for a Python class that I was implementing, when one of the tests that had repeatedly been passing suddenly failed. Moreover, the failing test case was really for testing some completely unrelated piece of functionaly. This simply could not be broken!
+I was writing unit tests for a Python class that I was implementing, when one
+of the tests that had repeatedly been passing suddenly failed. Moreover, the
+failing test case was really for testing some completely unrelated piece of
+functionaly. This simply could not be broken!
 
-After at least an hour of scrutinizing the code, I was able to distill the real problem, which I think is summarized here in the most compact way:
+After at least an hour of scrutinizing the code, I was able to distill the
+real problem, which I think is summarized here in the most compact way:
 
-<script src="http://gist.github.com/321150.js"></script>
+<pre><code class="language-python">
+class Foo:
+  x = {}
+  
+  def __init__(self, id):
+    self.x[id] = id
 
-Creating a simple @Foo@ instance twice exposes the ugly side effect: the second @Foo@ instance has an already initialized @x@ instance variable when the constructor enters! Yuck! Moreover, now, too:
+f1 = Foo(5)
+print f1.x     # {5:5}, as expected
+f2 = Foo(6)
+print f2.x     # {5:5,6:6} ?!
+</code></pre>
 
-<script src="http://gist.github.com/321155.js"></script>
+Creating a simple @Foo@ instance twice exposes the ugly side effect: the
+second @Foo@ instance has an already initialized @x@ instance variable when
+the constructor enters! Yuck! Moreover, now, too:
 
-Apparently, the @x@ "instance variable" is a shared object, much like a global or class variable.
+<pre><code class="language-python">
+print f1.x     # {5:5,6:6}, too!
+</code></pre>
 
-To be even more confusing, this doesn't seem to hold for basic data types. For example, change the dictionary to an integer, and the example behaves as expected:
+Apparently, the @x@ "instance variable" is a shared object, much like a global
+or class variable.
 
-<script src="http://gist.github.com/321157.js"></script>
+To be even more confusing, this doesn't seem to hold for basic data types. For
+example, change the dictionary to an integer, and the example behaves as
+expected:
+
+<pre><code class="language-python">
+class Foo:
+  x = 3
+
+  def __init__(self, id):
+    self.x = id
+
+f1 = Foo(5)
+print f1.x     # 5, as expected
+f2 = Foo(6)
+print f2.x     # 6, as expected
+</code></pre>
 
 h2. The behaviour demystified
 
-The real confusion here is that I was thinking that I was creating "instance variables", like you would in C++ or Java. As the "Python documentation":http://docs.python.org/tutorial/classes.html#instance-objects mentions:
+The real confusion here is that I was thinking that I was creating "instance
+variables", like you would in C++ or Java. As the "Python
+documentation":http://docs.python.org/tutorial/classes.html#instance-objects
+mentions:
 
-bq. "data attributes correspond to [...] to data members in C++. Data attributes need not be declared; like local variables, they spring into existence when they are first assigned to."
+bq. "data attributes correspond to [...] to data members in C++. Data
+attributes need not be declared; like local variables, they spring into
+existence when they are first assigned to."
 
-Yes, I knew that, but nonetheless my real-world class is much bigger than @Foo@ and I wanted an explicit overview on which instance variables are in this class. Hence the data member.
+Yes, I knew that, but nonetheless my real-world class is much bigger than @Foo@
+and I wanted an explicit overview on which instance variables are in this
+class. Hence the data member.
 
-However, this is not how the Python interpreter processes Python code. In fact, upon class definition, the statement @x = {}@ is executed within the scope of the newly defined class. To prove this:
+However, this is not how the Python interpreter processes Python code. In fact,
+upon class definition, the statement @x = {}@ is executed within the scope of
+the newly defined class. To prove this:
 
-<script src="http://gist.github.com/321158.js"></script>
+<pre><code class="language-python">
+class Bar:
+  x = {}
 
-Even without a constructor or instance variable, we can access the data member @x@. Of course. Now this suddenly seems obvious.
+print Bar.x     # {}
+</code></pre>
 
-But what about our instance variables? Apparently, when we create a new instance of @Bar@, the instance data member @x@ is initially _pointing to the same object_ as the class data member @x@. The following example proves this:
+Even without a constructor or instance variable, we can access the data member
+@x@. Of course. Now this suddenly seems obvious.
 
-<script src="http://gist.github.com/321172.js"></script>
+But what about our instance variables? Apparently, when we create a new
+instance of @Bar@, the instance data member @x@ is initially _pointing to the
+same object_ as the class data member @x@. The following example proves this:
 
-This example also demonstrates the subtlety of the accidentally discovered side-effect. Remember how we were changing the dictionary in our initial example? @self.x[id] = id@
-The instance data member was pointing to the same object as the class data member. By updating the dictionary, the single dictionary object was changed, causing unwanted side effects in other class instances.
+<pre><code class="language-python">
+class Foo:
+  x = {}
+  
+  def __init__(self, id):
+    self.x = { id: id }
 
-In the gist above, we force @x@ to point to a new dictionary by the assignment @self.x = { id:id }@. In other words, @x@ points to a new object! This also perfectly explains why the integer example worked—it's the same kind of assignment.
+f1 = Foo(5)
+print f1.x     # { 5:5 }, as expected
+f2 = Foo(6)
+print f2.x     # { 6:6 }, as expected
+print Foo.x    # {}, didn't intend this!
+</code></pre>
+
+This example also demonstrates the subtlety of the accidentally discovered
+side-effect. Remember how we were changing the dictionary in our initial
+example? @self.x[id] = id@<br />
+The instance data member was pointing to the same object as the class data
+member. By updating the dictionary, the single dictionary object was changed,
+causing unwanted side effects in other class instances.
+
+In the listing above, @x@ is forced to point to a new dictionary by the
+assignment @self.x = { id:id }@. In other words, @x@ points to a new object!
+This also perfectly explains why the integer example worked—it's the same kind
+of assignment.
 
 h2. Conclusion
 
 To summarize, I learned some important lessons today:
 
-* All the time, I have been creating class data members in all my classes, without knowing this.
-* I initialized those members to default values, effectively creating useless objects that are never accessed and just claiming memory.
-* Although it can be explained, a seemingly innocent statement like @x = {}@ can have very ugly side effects. Be warned!
-* Never underestimate the power of unit tests. It is absolutely worth the investment.
+* All the time, I have been creating class data members in all my classes,
+  without knowing this.
+* I initialized those members to default values, effectively creating useless
+  objects that are never accessed and just claiming memory.
+* Although it can be explained, a seemingly innocent statement like @x = {}@
+  can have very ugly side effects. Be warned!
+* Never underestimate the power of unit tests. It is absolutely worth the
+  investment.
