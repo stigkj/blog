@@ -67,7 +67,7 @@ h3. Writing the code to wrap it all up
 
 Finally, we have only a bit of code to write in our AppDelegate implementation, so let's go:
 
-<pre><code class="language-objc">//
+<pre class="big-box"><code class="language-objc">//
 //  AppDelegate.m
 //  PredicateEditorTest
 //
@@ -77,41 +77,41 @@ Finally, we have only a bit of code to write in our AppDelegate implementation, 
 #import "AppDelegate.h"
 
 #define DEFAULT_PREDICATE @"(firstname = 'John' AND lastname = 'Doe') " \
-                          @"OR birthdate &gt; CAST('01/01/1985', 'NSDate') " \
-                          @"OR address.city = 'Chicago' " \
-                          @"AND address.street != 'Main Street' " \
-                          @"OR address.number &gt; 1000"
+                    @"OR birthdate &gt; CAST('01/01/1985', 'NSDate') " \
+                    @"OR address.city = 'Chicago' " \
+                    @"AND address.street != 'Main Street' " \
+                    @"OR address.number &gt; 1000"
 
 @implementation AppDelegate
 
 - (id)init
 {
-	self = [super init];
-	if (self != nil) {
-		predicate = [[NSPredicate predicateWithFormat:DEFAULT_PREDICATE] retain];
-	}
-	return self;
+   self = [super init];
+   if (self != nil) {
+      predicate = [[NSPredicate predicateWithFormat:DEFAULT_PREDICATE] retain];
+   }
+   return self;
 }
 
 - (void)dealloc
 {
-	[predicate release];
-	[super dealloc];
+   [predicate release];
+   [super dealloc];
 }
 
 - (IBAction)openEditor:(id)sender
 {
-	[NSApp beginSheet:sheet
-	   modalForWindow:mainWindow
-		modalDelegate:nil
-	   didEndSelector:NULL
-		  contextInfo:nil];
+   [NSApp beginSheet:sheet
+      modalForWindow:mainWindow
+      modalDelegate:nil
+      didEndSelector:NULL
+        contextInfo:nil];
 }
 
 - (IBAction)closeEditor:(id)sender
 {
-	[NSApp endSheet:sheet];
-	[sheet orderOut:sender];
+   [NSApp endSheet:sheet];
+   [sheet orderOut:sender];
 }
 
 @end</code></pre>

@@ -104,7 +104,7 @@ pageTracker._trackPageview();
 <h3>Writing the code to wrap it all up</h3>
 <p>Finally, we have only a bit of code to write in our AppDelegate implementation, so let&#8217;s go:</p>
 
-<div class="wp_syntax"><div class="code"><pre class="objc" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">//</span>
+<div class="wp_syntax"><div class="code"><pre class="objc big-box" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">//</span>
 <span style="color: #11740a; font-style: italic;">//  AppDelegate.m</span>
 <span style="color: #11740a; font-style: italic;">//  PredicateEditorTest</span>
 <span style="color: #11740a; font-style: italic;">//</span>
@@ -114,41 +114,41 @@ pageTracker._trackPageview();
 <span style="color: #6e371a;">#import &quot;AppDelegate.h&quot;</span>
 &nbsp;
 <span style="color: #6e371a;">#define DEFAULT_PREDICATE @&quot;(firstname = 'John' AND lastname = 'Doe') &quot; \</span>
-                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR birthdate &amp;gt; CAST('01/01/1985', 'NSDate') &quot;</span> \
-                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR address.city = 'Chicago' &quot;</span> \
-                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;AND address.street != 'Main Street' &quot;</span> \
-                          <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR address.number &amp;gt; 1000&quot;</span>
+                    <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR birthdate &amp;gt; CAST('01/01/1985', 'NSDate') &quot;</span> \
+                    <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR address.city = 'Chicago' &quot;</span> \
+                    <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;AND address.street != 'Main Street' &quot;</span> \
+                    <span style="color: #bf1d1a;">@</span><span style="color: #bf1d1a;">&quot;OR address.number &amp;gt; 1000&quot;</span>
 &nbsp;
 <span style="color: #a61390;">@implementation</span> AppDelegate
 &nbsp;
 <span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span><span style="color: #a61390;">id</span><span style="color: #002200;">&#41;</span>init
 <span style="color: #002200;">&#123;</span>
-	self <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span>super init<span style="color: #002200;">&#93;</span>;
-	<span style="color: #a61390;">if</span> <span style="color: #002200;">&#40;</span>self <span style="color: #002200;">!=</span> <span style="color: #a61390;">nil</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span>
-		predicate <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span><span style="color: #002200;">&#91;</span><span style="color: #400080;">NSPredicate</span> predicateWithFormat<span style="color: #002200;">:</span>DEFAULT_PREDICATE<span style="color: #002200;">&#93;</span> retain<span style="color: #002200;">&#93;</span>;
-	<span style="color: #002200;">&#125;</span>
-	<span style="color: #a61390;">return</span> self;
+   self <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span>super init<span style="color: #002200;">&#93;</span>;
+   <span style="color: #a61390;">if</span> <span style="color: #002200;">&#40;</span>self <span style="color: #002200;">!=</span> <span style="color: #a61390;">nil</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span>
+      predicate <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span><span style="color: #002200;">&#91;</span><span style="color: #400080;">NSPredicate</span> predicateWithFormat<span style="color: #002200;">:</span>DEFAULT_PREDICATE<span style="color: #002200;">&#93;</span> retain<span style="color: #002200;">&#93;</span>;
+   <span style="color: #002200;">&#125;</span>
+   <span style="color: #a61390;">return</span> self;
 <span style="color: #002200;">&#125;</span>
 &nbsp;
 <span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span><span style="color: #a61390;">void</span><span style="color: #002200;">&#41;</span>dealloc
 <span style="color: #002200;">&#123;</span>
-	<span style="color: #002200;">&#91;</span>predicate release<span style="color: #002200;">&#93;</span>;
-	<span style="color: #002200;">&#91;</span>super dealloc<span style="color: #002200;">&#93;</span>;
+   <span style="color: #002200;">&#91;</span>predicate release<span style="color: #002200;">&#93;</span>;
+   <span style="color: #002200;">&#91;</span>super dealloc<span style="color: #002200;">&#93;</span>;
 <span style="color: #002200;">&#125;</span>
 &nbsp;
 <span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span>IBAction<span style="color: #002200;">&#41;</span>openEditor<span style="color: #002200;">:</span><span style="color: #002200;">&#40;</span><span style="color: #a61390;">id</span><span style="color: #002200;">&#41;</span>sender
 <span style="color: #002200;">&#123;</span>
-	<span style="color: #002200;">&#91;</span>NSApp beginSheet<span style="color: #002200;">:</span>sheet
-	   modalForWindow<span style="color: #002200;">:</span>mainWindow
-		modalDelegate<span style="color: #002200;">:</span><span style="color: #a61390;">nil</span>
-	   didEndSelector<span style="color: #002200;">:</span><span style="color: #a61390;">NULL</span>
-		  contextInfo<span style="color: #002200;">:</span><span style="color: #a61390;">nil</span><span style="color: #002200;">&#93;</span>;
+   <span style="color: #002200;">&#91;</span>NSApp beginSheet<span style="color: #002200;">:</span>sheet
+      modalForWindow<span style="color: #002200;">:</span>mainWindow
+      modalDelegate<span style="color: #002200;">:</span><span style="color: #a61390;">nil</span>
+      didEndSelector<span style="color: #002200;">:</span><span style="color: #a61390;">NULL</span>
+        contextInfo<span style="color: #002200;">:</span><span style="color: #a61390;">nil</span><span style="color: #002200;">&#93;</span>;
 <span style="color: #002200;">&#125;</span>
 &nbsp;
 <span style="color: #002200;">-</span> <span style="color: #002200;">&#40;</span>IBAction<span style="color: #002200;">&#41;</span>closeEditor<span style="color: #002200;">:</span><span style="color: #002200;">&#40;</span><span style="color: #a61390;">id</span><span style="color: #002200;">&#41;</span>sender
 <span style="color: #002200;">&#123;</span>
-	<span style="color: #002200;">&#91;</span>NSApp endSheet<span style="color: #002200;">:</span>sheet<span style="color: #002200;">&#93;</span>;
-	<span style="color: #002200;">&#91;</span>sheet orderOut<span style="color: #002200;">:</span>sender<span style="color: #002200;">&#93;</span>;
+   <span style="color: #002200;">&#91;</span>NSApp endSheet<span style="color: #002200;">:</span>sheet<span style="color: #002200;">&#93;</span>;
+   <span style="color: #002200;">&#91;</span>sheet orderOut<span style="color: #002200;">:</span>sender<span style="color: #002200;">&#93;</span>;
 <span style="color: #002200;">&#125;</span>
 &nbsp;
 <span style="color: #a61390;">@end</span></pre></div></div>
