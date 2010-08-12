@@ -1,0 +1,2 @@
+#!/bin/sh
+vim $(find -L posts -type f | sort | tail -n1)
