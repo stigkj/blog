@@ -8,4 +8,8 @@ alt_url: /archives/319
 ---
 Just a pointer to an excellent post I wanted to share with you:
 
-In the section "Why we shouldn’t fast-forward" at "http://robey.lag.net/2009/11/29/more-git.html":http://robey.lag.net/2009/11/29/more-git.html, Robey explains very clearly how fast forwards effectively make you loose historical information that may be crucial to ever reconstruct or understand your own project's history.
+In the section "Why we shouldn’t fast-forward" at
+"http://robey.lag.net/2009/11/29/more-git.html":http://robey.lag.net/2009/11/29/more-git.html,
+Robey explains very clearly how fast forwards effectively make you loose
+historical information that may be crucial to ever reconstruct or understand
+your own project's history.
