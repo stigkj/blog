@@ -336,6 +336,20 @@ pre code {
 	margin-left: -195px;
 }
 
+img.bordered {
+	border: 8px solid white;
+	background-color: white;
+	padding: 10px 16px;
+	
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	
+	box-shadow: 2px 3px 5px #ccc;
+	-moz-box-shadow: 2px 3px 5px #ccc;
+	-webkit-box-shadow: 2px 3px 5px #777;
+}
+
 #footer {
 	color: white;
 	background-color: #333;
