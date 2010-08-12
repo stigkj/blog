@@ -21,8 +21,17 @@ compile '/static/*/' do
 	# don't compile
 end
 
+compile '/files/*/' do
+	# don't compile
+end
+
 route '/static/*/' do
 	path = @item.identifier.chop.gsub(/^\/static/, '')
+	path + '.' + @item[:extension]
+end
+
+route '/files/*/' do
+	path = @item.identifier.chop.gsub(/^\/content/, '')
 	path + '.' + @item[:extension]
 end
 # }}}
