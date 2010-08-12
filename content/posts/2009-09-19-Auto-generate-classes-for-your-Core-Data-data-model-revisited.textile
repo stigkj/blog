@@ -6,20 +6,36 @@ created_at: 2009-09-19
 title: Auto-generate classes for your Core Data data model, revisited
 alt_url: /archives/310
 ---
-A few months ago, I wrote about "automatically generating classes for your Core Data entities":/archives/263 and how to automate Xcode using users scripts, such that, when your model changed, you only needed to run your custom script again and your intermediate model files would reflect the new situation.
+A few months ago, I wrote about "automatically generating classes for your Core
+Data entities":/archives/263 and how to automate Xcode using users scripts,
+such that, when your model changed, you only needed to run your custom script
+again and your intermediate model files would reflect the new situation.
 
-Well, the guys from the "mogenerator":http://github.com/rentzsch/mogenerator project have come up with a far superior solution in the mean time. The newest version of mogenerator comes with an Xcode plugin named Xmo'd, which monitors your *.xcdatamodel file for changes and, as soon as it changes, regenerates all of the neccessary files.
+Well, the guys from the "mogenerator":http://github.com/rentzsch/mogenerator
+project have come up with a far superior solution in the mean time. The newest
+version of mogenerator comes with an Xcode plugin named Xmo'd, which monitors
+your @*.xcdatamodel@ file for changes and, as soon as it changes, regenerates
+all of the neccessary files.
 
-**This means that there is officially no more reason not to use mogenerator.**
+*This means that there is officially no more reason not to use mogenerator.*
 
-To set it up, download the installer package from their (improved) "project website":http://rentzsch.github.com/mogenerator/ and install it. (Before installing, please read the important release note about the renamed method @+newInManagedObjectContext:@.)
+To set it up, download the installer package from their (improved) "project
+website":http://rentzsch.github.com/mogenerator/ and install it. (Before
+installing, please read the important release note about the renamed method
+@+newInManagedObjectContext:@.)
 
-When installed, all you need to do is Command-click your *.xcdatamodel file, click Get Info, switch to the Comments tab and add the string "xmod" to the comment field. This is the trigger for Xmo'd to start (re)generating your machine-classes (the underscored class files) when the data model changes. Brilliant!
+When installed, all you need to do is Command-click your @*.xcdatamodel@ file,
+click Get Info, switch to the Comments tab and add the string "xmod" to the
+comment field. This is the trigger for Xmo'd to start (re)generating your
+machine-classes (the underscored class files) when the data model changes.
+Brilliant!
 
-"!http://nvie.com/wp-content/uploads/2009/10/comment-field.png!":http://nvie.com/wp-content/uploads/2009/10/comment-field.png
+!/img/2009/10/comment-field.png!
 
-Oh, the default location at which the generated files will be emitted, is in a folder named after your project, right next to where your *.xcdatamodel already sits:
+Oh, the default location at which the generated files will be emitted, is in a
+folder named after your project, right next to where your @*.xcdatamodel@
+already sits:
 
-"!http://nvie.com/wp-content/uploads/2009/10/emission-location-300x239.png!":http://nvie.com/wp-content/uploads/2009/10/emission-location.png
+!/img/2009/10/emission-location.png!
 
 Enjoy it and spread the word!
