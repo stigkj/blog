@@ -10,39 +10,81 @@ When designing a Core Data data model for your Xcode projects, you can choose to
 
 h3. Meet mogenerator
 
-Fortunately, there is a great way for automating this process, using mogenerator. The tool can be downloaded as a "DMG installer":http://aralbalkan.com/2152 (Aral Balkan's blog mentions a workaround for older Xcode versions, but for Xcode 3.1.3 it worked out of the box for me), or you can checkout the sources from "github":http://github.com/rentzsch/mogenerator/ and build it yourself.
+Fortunately, there is a great way for automating this process, using
+mogenerator. The tool can be downloaded as a "DMG
+installer":http://aralbalkan.com/2152 (Aral Balkan's blog mentions a workaround
+for older Xcode versions, but for Xcode 3.1.3 it worked out of the box for me),
+or you can checkout the sources from
+"github":http://github.com/rentzsch/mogenerator/ and build it yourself.
 
-The mogenerator command line tool eases this generation process by reading the *.xcdatamodel file and generating both class files and intermediate class files for each entity. The intermediate classes (called _machine_ classes) are continuously overwritten by subsequent regenerations, so you should never edit the contents of these files. The actual model object classes (called _human_ classes) inherit from those intermediate classes with a default empty implementation, allowing for all manual extensions.
+The mogenerator command line tool eases this generation process by reading the
+@*.xcdatamodel@ file and generating both class files and intermediate class files
+for each entity. The intermediate classes (called _machine_ classes) are
+continuously overwritten by subsequent regenerations, so you should never edit
+the contents of these files. The actual model object classes (called _human_
+classes) inherit from those intermediate classes with a default empty
+implementation, allowing for all manual extensions.
 
-For example, when you design a model with two entities Foo and Bar, mogenerator can be invokes as follows:
+For example, when you design a model with two entities Foo and Bar, mogenerator
+can be invokes as follows:
 
-<pre><code>mogenerator -m MyDocument.xcdatamodel -M Entities -H Model</code></pre>
+bc. mogenerator -m MyDocument.xcdatamodel -M Entities -H Model
 
-The flag -m sets the input model file, while -M and -H specify the output directories where the machine and human classes should be generated respectively.
+The flag @-m@ sets the input model file, while @-M@ and @-H@ specify the output
+directories where the machine and human classes should be generated
+respectively.
 
 This does a few things:
 
-* In the Entities subdirectory, there will be generated header and implementation files for NSManagedObject subclasses called _Foo and _Bar;
-* In the Model subdirectory, there will be generated classes called Foo and Bar—respective subclasses of _Foo and _Bar. These are only created if not available yet. Otherwise, they are left as is.
+* In the Entities subdirectory, there will be generated header and
+  implementation files for NSManagedObject subclasses called _Foo and _Bar;
+* In the Model subdirectory, there will be generated classes called Foo and
+  Bar—respective subclasses of _Foo and _Bar. These are only created if not
+  available yet. Otherwise, they are left as is.
 
 h3. Wrapping it up
 
-The trick of how mogenerator works is that you can run the script as often as you want. After every change in your model, you'll want to re-run the generation again to update the machine classes. You could easily leave Xcode, switch over to Terminal and issue the command above. But you'll get quite tired of that after a few times.
+The trick of how mogenerator works is that you can run the script as often as
+you want. After every change in your model, you'll want to re-run the
+generation again to update the machine classes. You could easily leave Xcode,
+switch over to Terminal and issue the command above. But you'll get quite tired
+of that after a few times.
 
-Therefore, I've written a custom user script that can be added to Xcode (see figure), which does the following:
+Therefore, I've written a custom user script that can be added to Xcode (see
+figure), which does the following:
 
-* You can configure the output directories in the first lines of the script. There is no per-project configuration, so choose them as you would like to use them with all your projects;
-* Mind that these generated files are not automatically included in your Xcode project. Drag them there once and ideally put the machine generated classes into a group under "Other resource", so you never have to see them again. Whenever you add a new class to your model, new files will be generated, so again you must drag the new files to reference those, of course!
-* The script can be run with any file in the project opened. It starts out with that file and walks up the directory tree to search for your Xcode project. If found, it executes all the rest from your project directory. (Suggestions are welcome, I could not find a better implementation since a variable like %%%{PBXProjectPath}%%% does not seem to exist.)
-* It invokes mogenerator to generate all model classes for the project. It is smart enough to detect whether you are using Brian Webster's "BWOrderedManagedObject":http://www.fatcatsoftware.com/blog/2008/per-object-ordered-relationships-using-core-data in your project. If so, your generated machine classes will inherit from BWOrderedManagedObject instead of NSManagedObject.
+* You can configure the output directories in the first lines of the script.
+  There is no per-project configuration, so choose them as you would like to
+  use them with all your projects;
+* Mind that these generated files are not automatically included in your Xcode
+  project. Drag them there once and ideally put the machine generated classes
+  into a group under "Other resource", so you never have to see them again.
+  Whenever you add a new class to your model, new files will be generated, so
+  again you must drag the new files to reference those, of course!
+* The script can be run with any file in the project opened. It starts out with
+  that file and walks up the directory tree to search for your Xcode project.
+  If found, it executes all the rest from your project directory. (Suggestions
+  are welcome, I could not find a better implementation since a variable like
+  @%%%{PBXProjectPath}%%%@ does not seem to exist.)
+* It invokes mogenerator to generate all model classes for the project. It is
+  smart enough to detect whether you are using Brian Webster's
+  "BWOrderedManagedObject":http://www.fatcatsoftware.com/blog/2008/per-object-ordered-relationships-using-core-data
+  in your project. If so, your generated machine classes will inherit from
+  BWOrderedManagedObject instead of NSManagedObject.
 
-"!http://nvie.com/wp-content/uploads/2009/07/set-user-script-300x211.png!":http://nvie.com/wp-content/uploads/2009/07/set-user-script.png
+!/img/2009/07/set-user-script.png!
 
-To add this script to Xcode, open the menu Scripts (the icon) > Edit User Scripts… Click the "+"-button on the bottom-left and select "New shell script". Set the values for Input, Directory, Output and Errors as in the screenshot above, then copy-paste the script below into the code window. Add a nice keyboard shortcut to this action to top it off :-) I've chosen ^⌥⌘G for this.
+To add this script to Xcode, open the menu Scripts (the icon) > Edit User
+Scripts... Click the "+"-button on the bottom-left and select "New shell
+script".  Set the values for Input, Directory, Output and Errors as in the
+screenshot above, then copy-paste the script below into the code window. Add a
+nice keyboard shortcut to this action to top it off :-) I've chosen ^⌥⌘G for
+this.
 
 Please feel free to leave any comments if this helped you.
 
-<pre><code class="language-sh">#!/bin/sh
+<pre class="big-box"><code class="language-sh">
+#!/bin/sh
 #
 # Automatic (re)generation of model classes for all *.xcdatamodel files.
 # Written by Vincent Driessen
@@ -68,14 +110,14 @@ done
 echo "Project directory is `pwd`"
 
 #
-# Check to see whether the base class is just a default (NSManagedObject) or maybe
-# Brian Webster's excellent BWOrderedManagedObject.
-# http://www.fatcatsoftware.com/blog/2008/per-object-ordered-relationships-using-core-data
+# Check to see whether the base class is just a default (NSManagedObject) or
+# maybe Brian Webster's excellent BWOrderedManagedObject.
+# http://fatcatsoftware.com/blog/2008/per-object-ordered-relationships-using-core-data
 #
 # NOTE:
-# The check really is quite arbitrary: if there exists a file called BWOrderedManagedObject.h
-# somewhere below the project root directory, we assume that we want to use this as the base
-# class for all generated classes.
+# The check really is quite arbitrary: if there exists a file called
+# BWOrderedManagedObject.h somewhere below the project root directory, we
+# assume that we want to use this as the base class for all generated classes.
 #
 EXTRA_FLAGS=
 if [ `find . -name BWOrderedManagedObject.h | wc -l` -gt 0 ]; then
@@ -84,7 +126,8 @@ fi
 
 # Generate the model classes using mogenerator
 for model in `find . -name '*.xcdatamodel'`; do
-	# The output directories have to exist, so create them
-    mkdir -p "${MACHINE_DIR}" "${MODEL_DIR}"
-    mogenerator ${EXTRA_FLAGS} -m "${model}" -M "${MACHINE_DIR}" -H "${MODEL_DIR}"
-done</code></pre>
+   # The output directories have to exist, so create them
+   mkdir -p "${MACHINE_DIR}" "${MODEL_DIR}"
+   mogenerator ${EXTRA_FLAGS} -m "${model}" -M "${MACHINE_DIR}" -H "${MODEL_DIR}"
+done
+</code></pre>

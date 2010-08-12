@@ -184,7 +184,7 @@ if __name__ == '__main__':
     else:
         filelist = [#'published/197',   # already converted
                     #'published/243',
-                    'published/263',
+                    #'published/263',
                     'published/310',
                     'published/319',
                     'published/343',
