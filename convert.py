@@ -172,7 +172,7 @@ if __name__ == '__main__':
         filelist = [sys.argv[1]]
     else:
         filelist = [#'published/197',   # already converted
-                    'published/243',
+                    #'published/243',
                     'published/263',
                     'published/310',
                     'published/319',

@@ -6,34 +6,49 @@ created_at: 2009-06-22
 title: NSManagedObjectContext extensions
 alt_url: /archives/243
 ---
-The Core Data framework rules, and its API is really really powerful. But really, why does the Core Data API require us to write so much boilerplate code? Simple things need to be simple.
+The Core Data framework rules, and its API is really really powerful. But
+really, why does the Core Data API require us to write so much boilerplate
+code? Simple things need to be simple.
 
-Why is the deletion of a managed object from the NSManagedObjectContext so easy:
+Why is the deletion of a managed object from the NSManagedObjectContext so
+easy:
 
-<pre><code class="language-objc">[context deleteObject:someObject];</code></pre>
+<pre><code class="language-objc">
+[context deleteObject:someObject];
+</code></pre>
 
 Compared to its creation:
 
-<pre><code class="language-objc">[NSEntityDescription insertNewObjectForEntityForName:@"someObjectClassName"
-                              inManagedObjectContext:context];</code></pre>
+<pre class="big-box"><code class="language-objc">
+[NSEntityDescription insertNewObjectForEntityForName:@"someObjectClassName"
+                              inManagedObjectContext:context];
+</code></pre>
 
 h3. Extending NSManagedObjectContext
 
-Add the following category on NSManagedObjectContext to all of your Core Data projects and your pains will be history.
+Add the following category on NSManagedObjectContext to all of your Core Data
+projects and your pains will be history.
 
-<pre><code class="language-objc">@implementation NSManagedObjectContext (NSManagedObjectContextConvenienceMethods)
+<pre class="big-box"><code class="language-objc">
+@implementation NSManagedObjectContext(NSManagedObjectContextConvenienceMethods)
 
 - (id)newObject:(Class)entity {
-    return [NSEntityDescription insertNewObjectForEntityForName:[entity description]
-                                         inManagedObjectContext:self];
+   return [NSEntityDescription insertNewObjectForEntityForName:[entity description]
+                                        inManagedObjectContext:self];
 }
 
-@end</code></pre>
+@end
+</code></pre>
 
 Now, a call to create a new object is as easy as deleting it.
 
-<pre><code class="language-objc">[context newObject:[someEntity class]];</code></pre>
+<pre><code class="language-objc">
+[context newObject:[someEntity class]];
+</code></pre>
 
 h3. Further enhancements of NSManagedObject
 
-Matt Gallagher has written an "excellent article":http://cocoawithlove.com/2008/03/core-data-one-line-fetch.html about how to further enhance NSManagedObject for adding simple, one-line fetch support. Be sure to check it out.
+Matt Gallagher has written an
+"excellent article":http://cocoawithlove.com/2008/03/core-data-one-line-fetch.html
+about how to further enhance NSManagedObject for adding simple, one-line fetch
+support. Be sure to check it out.
