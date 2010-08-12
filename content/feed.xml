@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nvie.com</title>
+	<atom:link href="http://nvie.com/feed" rel="self" type="application/rss+xml" />
+	<link>http://nvie.com</link>
+	<description>Anything that interests me.</description>
+	<lastBuildDate>Mon, 03 May 2010 17:54:41 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>nanoc</generator>
+
+    <!-- Repeat this! -->
+    <% sorted_articles.each do |p| %>
+	<item>
+        <title><%=p[:title]%></title>
+		<link>http://nvie.com/archives/492</link>
+		<comments>http://nvie.com/archives/492#comments</comments>
+		<pubDate>Thu, 04 Mar 2010 00:44:20 +0000</pubDate>
+        <dc:creator><%=p[:author]%></dc:creator>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[gitflow]]></category>
+
+		<guid isPermaLink="false">http://nvie.com/?p=492</guid>
+		<description><![CDATA[DO AN EXCERPT HERE]]></description>
+        <content:encoded><![CDATA[A LOT OF
+            DATA 
+            GOES IN
+            HERE
+]]></content:encoded>
+		<wfw:commentRss>http://nvie.com/archives/492/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+	</item>
+    <% end %>
+
+</channel>
+</rss>

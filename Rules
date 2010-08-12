@@ -119,6 +119,16 @@ end
 
 # }}}
 
+# Compiling the RSS feed {{{
+compile '/feed/' do
+	filter :erb
+end
+
+route '/feed/' do
+	'/feed'
+end
+# }}}
+
 # Blog post imagery {{{
 compile '/img/postimgs/*/' do
 end
