@@ -10,4 +10,3 @@ include Nanoc3::Helpers::Text
 include Nanoc3::Helpers::XMLSitemap
 
 include RandomTextHelper
-require 'pathname'
