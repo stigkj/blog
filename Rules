@@ -72,7 +72,7 @@ end
 compile '/img/*/' do
 	# make images fit the blog's size
 	if @item[:extension] == 'png' then
-		filter :thumbnailize, :width => 520, :height => 800
+		filter :thumbnailize, :width => 500, :height => 800
 		#if item[:extension] == "png"
 		#	filter :pngcrush, :level => 7
 		#end
