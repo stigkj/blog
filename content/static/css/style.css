@@ -1,8 +1,4 @@
-/* @override 
-	http://localhost:8000/style.css
-	http://localhost:8000/css/style.css
-	http://localhost/css/style.css
-*/
+/* @override http://lolcathost/css/style.css */
 
 @import url(/fontface.css);
 
@@ -94,6 +90,10 @@ a:hover {
 	padding: 20px;
 }
 
+#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
+	clear: both;
+}
+
 #main h1 {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
 	font-size: 40px;
@@ -140,6 +140,10 @@ a:hover {
 	font-size: 15px;
 	
 	line-height: 20px;
+}
+
+#main p.clear {
+	clear: both;
 }
 
 #main li {
@@ -299,11 +303,37 @@ pre code {
 	max-width: 520px;
 }
 
+#main img.center {
+	display: block;
+	margin: 0 auto;
+}
+
+#main img.left {
+	float: left;
+	position: relative;
+	right: 100px;
+	margin-right: -95px;
+}
+
+#main img.veryleft {
+	float: left;
+	position: relative;
+	right: 200px;
+	margin-right: -195px;
+}
+
 #main img.right {
 	float: right;
 	position: relative;
 	left: 100px;
 	margin-left: -95px;
+}
+
+#main img.veryright {
+	float: right;
+	position: relative;
+	left: 200px;
+	margin-left: -195px;
 }
 
 #footer {
