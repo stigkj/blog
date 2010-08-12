@@ -65,6 +65,11 @@ a:hover {
 	color: #008dff;
 }
 
+span.reldate {
+	color: #888;
+	font-size: smaller;
+}
+
 /* @group Main */
 
 #main {
