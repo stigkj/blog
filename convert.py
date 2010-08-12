@@ -42,7 +42,7 @@ def unescape(text):
 
 def convert_file(fname):
     with open(fname, 'r') as f:
-        input = BeautifulSoup(f.read())
+        input = BeautifulSoup(re.sub('-[0-9]+x[0-9]+\.png', '.png', f.read()))
 
     title = input.head.title.string.split("&raquo;")[2].strip()
 
@@ -73,6 +73,17 @@ def strip_tags(fragment):
     strings = [strip_tags(part) for part in fragment.contents]
     return filter(lambda c: ord(c) <= 127, ''.join(strings))
 
+
+def make_relative(link, subdir='img'):
+    strip_pattern = r'^http://nvie\.com/wp-content/uploads/([0-9]{4})/([0-9]{2})/(.*)$'
+    if re.match(strip_pattern, link):
+        dir = re.sub(strip_pattern, r'content/%s/\1/\2' % subdir, link)
+        outputfile = re.sub(strip_pattern, dir + r'/\3', link)
+        outputurl = re.sub(strip_pattern, r'/%s/\1/\2/\3' % subdir, link)
+        print '(if [ ! -f "%s" ]; then mkdir -p "%s"; wget -O "%s" "%s"; fi)' % (outputfile, dir, outputfile, link)
+        return outputurl
+    else:
+        return link
 
 def convert(fragment):
     if isinstance(fragment, NavigableString):
@@ -135,13 +146,13 @@ def convert(fragment):
         suffix = "\n"
     elif n in ['a']:
         prefix = '"'
-        suffix = '":%s' % fragment['href']
+        suffix = '":%s' % make_relative(fragment['href'])
     elif n in ['img']:
-        content = "!%s!" % fragment['src']
+        content = "!%s!" % make_relative(fragment['src'])
     elif n == 'b':
-        prefix = suffix = '*'
-    elif n == 'strong':
         prefix = suffix = '**'
+    elif n == 'strong':
+        prefix = suffix = '*'
     elif n in ['i', 'em']:
         prefix = suffix = '_'
     elif n == 'ins':
@@ -198,7 +209,7 @@ if __name__ == '__main__':
                         .replace(',', '') \
                         .replace(' ', '-'))
 
-        print "Writing %s..." % output.replace('../', '')
+        #print "Writing %s..." % output.replace('../', '')
         count += 1
         f = codecs.open(output, encoding='utf-8', mode='w')
         f.write('---\n')
@@ -206,4 +217,4 @@ if __name__ == '__main__':
             f.write('%s: %s\n' % (key, val))
         f.write('---\n')
         f.write(text.strip())
-    print "Converted %d blog posts." % count
+    #print "Converted %d blog posts." % count
