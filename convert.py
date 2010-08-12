@@ -171,7 +171,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         filelist = [sys.argv[1]]
     else:
-        filelist = ['published/197',
+        filelist = [#'published/197',   # already converted
                     'published/243',
                     'published/263',
                     'published/310',
