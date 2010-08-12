@@ -39,7 +39,7 @@
 			<ul>
 				<li class="all"><a href="/posts/">All posts</a></li>
 				<% sorted_articles.select { |a| a[:status] == 'published' }.first(3).each do |p| %>
-				<li><%= link_to(p[:title], p) %> - <span class="reldate"><%=p[:created_at].strftime("%B %d, %Y")%></span></li>
+				<li><%= link_to_unless_current(p[:title], p) %> - <span class="reldate"><%=p[:created_at].strftime("%B %d, %Y")%></span></li>
 				<% end %>
 			</ul>
 
