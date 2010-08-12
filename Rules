@@ -44,18 +44,18 @@ end
 
 compile '/posts/*/' do
     if debug or @item[:status] == 'published' then
-	layout 'post'
-	filter :redcloth, :hard_breaks => false
-	filter :colorize_syntax,
-	       :default_colorizer => :pygmentize
-	layout 'default'
+		layout 'post'
+		filter :redcloth, :hard_breaks => false
+		filter :colorize_syntax,
+			:default_colorizer => :pygmentize
+		layout 'default'
 	end
 end
 
 compile '/posts/*/', :rep => :alt_url do
     if debug or @item[:status] == 'published' then
-	@item[:source_url] = @item.identifier.chop + '/index.html'
-	layout 'redirect'
+		@item[:source_url] = @item.identifier.chop + '/index.html'
+		layout 'redirect'
 	end
 end
 
