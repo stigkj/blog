@@ -8,7 +8,7 @@ class Thumbnailize < Nanoc3::Filter
       'gm',
       'convert',
       '-resize',
-      params[:width].to_s + ">",  # '>' makes sure we don't enlarge the image!
+      params[:width].to_s + "x" + params[:height].to_s + ">",  # '>' makes sure we don't enlarge the image!
       filename,
       output_filename
     )

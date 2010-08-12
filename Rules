@@ -71,10 +71,12 @@ end
 # Blog post imagery {{{
 compile '/img/*/' do
 	# make images fit the blog's size
-	filter :thumbnailize, :width => 520
-	#if item[:extension] == "png"
-	#	filter :pngcrush, :level => 7
-	#end
+	if @item[:extension] == 'png' then
+		filter :thumbnailize, :width => 520, :height => 800
+		#if item[:extension] == "png"
+		#	filter :pngcrush, :level => 7
+		#end
+	end
 end
 
 route '/img/*/' do
