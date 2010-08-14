@@ -11,42 +11,69 @@ After reading this "blog
 post":http://jeffkreeftmeijer.com/2010/stumbling-into-vim/ by Jeff Kreeftmeijer
 (and the "Vim video series of Derek Wyatt":http://vimeo.com/user1690209/videos)
 on configuring Vim, I felt inspired to have a critical look at my own @.vimrc@
-file and reevaluate how it had evolved over the years. I grabbed the
+file and reevaluate how it had evolved over the years.  I grabbed the
 opportunity to read up on new tricks and decided to take the next plunge in
 mastering Vim.
 
-It must have been somewhere around 2001 that I first started using Vim for any
-serious work, and learning it has paid off a million times since then. They say
-Vim has a steep learning curve, which is true. It takes time, patience, and
-repetitive practice on a day-to-day basis to slowly let the keyboard mappings
-become part of your muscle memory. But once you get the hang of this, it pays
-off so many times. It cannot be stressed enough.
+They say Vim has a steep learning curve, which is true.  It
+takes time, patience, and repetitive practice on a day-to-day basis to slowly
+let the keyboard mappings become part of your muscle memory.  But once you get
+the hang of this, it pays off so many times.  It cannot be stressed enough.
 
-In those early years, I learned a lot. Most essentially, I've learned how to
-efficiently edit source code, with as few keystrokes as possible. After those
-years, I kept on using those skills for almost all editing work. However, since
-that first learning curve, I've never really extended those skills. Yeah,
-occasionally you learn even shorter keyboard mappings for tasks that you do
-often, but even those don't stick with your finger muscles if unused for too
-long. As another example, once I considered my @.vimrc@ okay, I've never
-touched it again (apart from adding the NERDTree plugin). Call it laziness,
-sure. But by reading Jeff's blog post, I realized it has cost me hours and
-hours of inefficiency over the last few years! [footnote: Of course,
-"inefficient" is a relative term when using Vim already.] Let me explain.
+h2. A bit of history
+
+It must have been somewhere around 2001 that I first started using Vim for any
+serious work, and learning it has paid off a million times since then.  In
+those early years, I learned a lot.  Essentially, I've learned how to
+efficiently edit source code, with as few keystrokes as possible.  After those
+years, I kept on using those skills for almost all editing work.  However,
+since that first learning curve, I've never really extended those skills.
+Yeah, occasionally you learn some tricks for tasks that you do often, but those
+don't stick with your finger muscles if unused for too long.
+
+Once I considered my @.vimrc@ okay, I've never touched it again (apart from
+adding the NERDTree plugin).  Call it laziness, sure.  But by reading Jeff's
+blog post, I realized it has cost me hours and hours of inefficiency over the
+last few years[1]! Let me explain.
 
 In the blog post, Jeff shows how he learned the basics of configuring and
-working with Vim. Assuming his knowledge was absolutely zero before, he did a
-magnificent job in setting up a personalized editor in no-time. He even
+working with Vim.  Assuming his knowledge was absolutely zero before, he did a
+magnificent job in setting up a personalized editor in no-time.  He even
 configured features that I added to my editor only recently (e.g. NERDTree),
 which made me realize that I haven't upgraded my Vim environment (and
-knowledge!) in a long time. (If someone new to Vim can get to that level so
+knowledge!) in a long time.  (If someone new to Vim can get to that level so
 fast, how come I'm still stuck at my configuration level?)
 
 Time for some reevaluation.
 
-h2. Reflect on your daily work
+h2. Reflecting on your daily work
 
-(what do you do often?)
+Ask a random Vim user if he[2] has ever deliberately taken the effort of
+fine-tuning his @.vimrc@, and the answer is probably one of these two:
+
+# "Only for the things that I was _tired_ of typing over and over again."
+# "No, but I've occassionally come across nice stuff on the internet that I
+  copied into it."
+
+That was true for me for a long time, too.  But I realised there are a *lot* of
+repetitions that you perform every day that do not tire you _that_ much, but
+that eventually add up to hundreds or thousands of wasted hours.
+
+A few weeks ago, I forced myself to reflect on what I do most in my editor.
+For so many years I've been doing the following repetition blindly:
+
+# Make some source code change;
+# Save the file to disk with @:w@;
+# Press @C-z@ to put Vim in the background and return to shell;
+# Run a command (this could be a compiler, @make@, a test runner, whatever).
+
+I've started to optimize from there, but in the process I came across many
+resources on the internet that I've collected too.  This blog post is a summary
+of that yourney.
+
+
+h2. Doing more from within Vim
+
 
 h2. Learn from others
 
@@ -55,11 +82,11 @@ there are lots of @.vimrc@ files / plugins out there
 h2. A short history
 
 It must have been somewhere around 2001 that I first started using Vim for any
-serious work, and learning it has paid off a million times since then. They say
-Vim has a steep learning curve, which is true. It takes time, patience, and
-repetitive practice on a day-to-day basis to have the keyboard mappings become
-part of your muscle memory. But once you get the hang of this, it pays off so
-many times. It cannot be stressed enough.
+serious work, and learning it has already paid off a million times since then.
+They say Vim has a steep learning curve, which is true.  It takes time,
+patience, and repetitive practice on a day-to-day basis to have the keyboard
+mappings become part of your muscle memory.  But once you get the hang of this,
+it pays off so many times.  It cannot be stressed enough.
 
 h2. Reflect on your daily work
 
@@ -71,15 +98,15 @@ there are lots of .vimrc files / plugins out there
 
 h2. getting started with plugins
 
-If I have any first tip al all, it would be to install pathogen. Plugins in vim
-are files that you drop in subdirectories of your .vim/ directory. Many plugins
+If I have any first tip al all, it would be to install pathogen.  Plugins in vim
+are files that you drop in subdirectories of your .vim/ directory.  Many plugins
 exist of only a single file that should be dropped in .vim/plugin, but some
-exist of multiple files. For example, they come with documentation, or ships
-syntax files. In those cases, files need to be dropped into .vim/doc and
-.vim/syntax. This makes it difficult to remove the plugin afterwards. After
+exist of multiple files.  For example, they come with documentation, or ships
+syntax files.  In those cases, files need to be dropped into .vim/doc and
+.vim/syntax.  This makes it difficult to remove the plugin afterwards.  After
 installing pathogen, you can simply unzip a plugin distribution into
 .vim/bundle/myplugin, under which the required doc, syntax, plugin, etc
-directories are created. Removing the plugin, then, is as simple as removing
+directories are created.  Removing the plugin, then, is as simple as removing
 the myplugin directory.
 
 Having said that, let's move on to the actual plugins.
@@ -87,23 +114,23 @@ Having said that, let's move on to the actual plugins.
 h2. NERDTree explorer
 by ???
 
-An absolute MUST. A quick file browser.
+An absolute MUST.  A quick file browser.
 
 h2. Fugitive (fuGITive?)
 by Tim Pope
 
-Plugin for Git integration. I *love* the :Gedit command, for quickly editing a
+Plugin for Git integration.  I *love* the :Gedit command, for quickly editing a
 file in the index.
 
 h2. Python: PEP8, pyflakes and unit test integration
 by myself
 
 Sometimes, you need functionality that you cannot find in an already available
-plugin (or in a way that doesn't fit your need). In those cases, you can extend
+plugin (or in a way that doesn't fit your need).  In those cases, you can extend
 Vim yourself.
 
 For example, I often want to run QA tools (like pep8 or pyflakes) on my Python
-source code. There are plugins for those tools available, but
+source code.  There are plugins for those tools available, but
 
 - they don't allow me to customize any key mappings
 - they don't look/act/behave the same, although they may be considered the same
@@ -112,7 +139,11 @@ source code. There are plugins for those tools available, but
 - in he best case, they are merely a simple wrapper around a shell invocation
 
 Before I've tried these plugins, I had a key mapping defined to simply call
-pep8 -r on the current file. Vim would show me the shell output, I'd remember a
+pep8 -r on the current file.  Vim would show me the shell output, I'd remember a
 line number, press Return, type :the.  and start fixing it.
 
 OK, but not good enough :-)
+
+fn1. Of course, "inefficient" is a relative term when using Vim already.
+
+fn2. Or she. But probably he.
