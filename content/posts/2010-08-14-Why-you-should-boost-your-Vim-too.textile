@@ -1,8 +1,8 @@
 ---
 title: Why you should boost your Vim, too
 author: Vincent Driessen
-created_at: 2010-08-12
-modified_at: 2010-08-14
+created_at: 2010-08-14
+modified_at: 2010-08-15
 kind: article
 status: draft
 alt_url: /archives/537
@@ -32,59 +32,100 @@ since that first learning curve, I've never really extended those skills.
 Yeah, occasionally you learn some tricks for tasks that you do often, but those
 don't stick with your finger muscles if unused for too long.
 
-Once I considered my @.vimrc@ okay, I've never touched it again (apart from
-adding the NERDTree plugin).  Call it laziness, sure.  But by reading Jeff's
-blog post, I realized it has cost me hours and hours of inefficiency over the
-last few years[1]! Let me explain.
+For long I have considered my @.vimrc@ to be okay, and I almost never touched
+it again for years.  Call it laziness, sure.  But by reading Jeff's blog post,
+I realized it has cost me hours and hours of inefficiency over the last few
+years[1]! Let me explain.
+
+
+h2. Boosting your Vim configuration
 
 In the blog post, Jeff shows how he learned the basics of configuring and
 working with Vim.  Assuming his knowledge was absolutely zero before, he did a
 magnificent job in setting up a personalized editor in no-time.  He even
-configured features that I added to my editor only recently (e.g. NERDTree),
-which made me realize that I haven't upgraded my Vim environment (and
-knowledge!) in a long time.  (If someone new to Vim can get to that level so
-fast, how come I'm still stuck at my configuration level?)
+configured features that I've done years without (NERDTree), which made me
+realize that I hadn't given my Vim configuration (and knowledge!) some proper
+attention in a long time.  (If someone new to Vim can get to that level so
+fast, how come I didn't invest in the last years?)
 
-Time for some reevaluation.
+Time to do some catching up.  I forced myself to reflect on what I did most in
+my editor.  The results were shocking to me, and I took care of the issues.  I
+encourage you to do the same.
+
+The rest of this article is a summary of that reflection.
 
 
-h2. Reflecting on your daily work
+h3. Lesson #1: Reflect on your daily work
 
-Ask a random Vim user if he[2] has ever deliberately taken the effort of
-fine-tuning his @.vimrc@, and the answer is probably one of these two:
+I bet most Vim users have never deliberately taken the effort of fine-tuning
+their @.vimrc@.  Either because of lacking incentive or plain ignorance.
 
-# "Only for the things that I was _tired_ of typing over and over again."
-# "No, but I've occassionally come across nice stuff on the internet that I
-  copied into it."
+We have all found nice tricks on the internet and copy-and-pasted them into our
+@.vimrc@.  All is fine, and you should keep doing that, but it is a rather
+reactive approach.  The past me pleas guilty on this subject, too.
 
-That was true for me for a long time, too.  But I realised there are a *lot* of
-repetitions that you perform every day that do not tire you _that_ much, but
-that eventually add up to hundreds or thousands of wasted hours.
+But reflecting on my editing workflow has turned the way I customized Vim into
+a proactive measure, really targeting my needs.
 
-A few weeks ago, I forced myself to reflect on what I do most in my editor.
-For so many years I've been doing the following repetition blindly:
+Here's the key--try to realize how many hundreds or thousands of hours will you
+be spending doing certain tasks in Vim and ask yourself how you could improve
+on those.  Vim is so highly configurable that there is a solution for each
+problem you are having, but it's not on by default.  Invest in finding a
+structural solution.  The time it costs you now will most definitely turn into
+profit in the long run.
+
+
+h3. Lesson #2: Do more from within Vim
+
+Of all observations, there was one repetition that I used shockingly often, but
+which is a monster, really.  It's a blind repetition that I have been doing for
+as long as I can remember[3]:
 
 # Make some source code change;
 # Save the file to disk with @:w@;
 # Press @C-z@ to put Vim in the background and return to shell;
-# Run a command (this could be a compiler, @make@, a test runner, whatever).
+# Run a command (this could be a compiler, or a test runner, whatever);
+# Some error occurs.  I interpret the stack dump, remember the line number and
+  go back into Vim;
+# I type the line number followed by @G@, to jump to the line.
 
-I've started to optimize from there, but in the process I came across many
-resources on the internet that I've collected too.  This blog post is a summary
-of that yourney.
+I'll pause for a moment to let you laugh now.  Fact of the matter is that I see
+many people work like this, not realizing that there _is_ a better way.
+
+Vim can perform such actions for you, by running the command on your behalf,
+parsing the error output for lines and presenting the output of the process
+somehow useful (in a window Vim calls the quickfix window).  All of this is
+easily configurable by setting the @makeprg@ and @makeformat@ options.  For
+non-compiler like actions like source code checkers or test runners, you can
+use @grepprg@ and @grepformat@.  They are identical, but this enables you to
+set both a compiler and a grep/check/test tool at the same time.
+
+The @makeformat@ string tells Vim which lines should be interpreted as errors
+that relate back to certain lines of source files.  Lines that do not match the
+pattern are ignored.  The final result is a list of jump locations (you can
+show the quickfix window with the command @:copen@), which looks somewhat like
+this:
+
+!/img/2010/08/quickfix-window.png!
+
+Then, in the quickfix window, you can simply navigate to an error, press Return
+and Vim takes you to it, even to the right column if that info is available.
+
+See the help files for a more detailed explanation (@:h 'makeprg'@).
 
 
-h2. Do more from within Vim
+h3. Lesson #3: Define key bindings for your favorite actions
 
-...
+I also found it shocking how often I typed out full commands over and over
+again.  One of the biggest time savers 
 
 
-h2. Learn from others
+h3. Lesson #3: Learn from others
 
 there are lots of @.vimrc@ files / plugins out there
 
 
-h2. Learn at least the basics of Vim plugins
+h3. Lesson #4: Learn at least the basics of Vim plugins
 
 If I have any first tip al all, it would be to install pathogen.  Plugins in vim
 are files that you drop in subdirectories of your .vim/ directory.  Many plugins
@@ -137,3 +178,5 @@ OK, but not good enough :-)
 fn1. Of course, "inefficient" is a relative term when using Vim already.
 
 fn2. Or she. But probably he.
+
+fn3. Which made it hard to notice, even!
