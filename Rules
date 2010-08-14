@@ -11,6 +11,19 @@
 #	 because “*” matches zero or more characters.
 debug = true
 
+preprocess do
+	sorted_articles.each do |p|
+		if not p[:excerpt] then
+			# Extract the excerpt from the body, if not already given explicitly.
+			p[:excerpt] = p.raw_content.split("\n\n")[0]
+		end
+
+  		if p[:excerpt] then
+			p[:excerpt] = Nanoc3::Filters::RedCloth.new.run(p[:excerpt], :hard_breaks => false)
+		end
+	end
+end
+
 # Static content (simply copied into output) {{{
 compile '/static/css/*/' do
 	# compress CSS :)
