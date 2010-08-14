@@ -45,11 +45,11 @@ Time for some reevaluation.
 
 h2. Reflect on your daily work
 
-... (what do you do often?)
+(what do you do often?)
 
 h2. Learn from others
 
-... there are lots of @.vimrc@ files / plugins out there
+there are lots of @.vimrc@ files / plugins out there
 
 h2. A short history
 
@@ -62,11 +62,11 @@ many times. It cannot be stressed enough.
 
 h2. Reflect on your daily work
 
-... (what do you do often?)
+(what do you do often?)
 
 h2. Learn from others
 
-... there are lots of .vimrc files / plugins out there
+there are lots of .vimrc files / plugins out there
 
 h2. getting started with plugins
 
