@@ -3,6 +3,7 @@ status: published
 kind: article
 author: Vincent Driessen
 created_at: 2010-08-12
+modified_at: 2010-08-14
 title: Mastering Vim
 alt_url: /archives/537
 ---

@@ -1,2 +1,4 @@
-map <buffer> <F5> <Esc>:w<CR>:!nanoc compile<CR>
-map!  <buffer> <F5> <Esc>:w<CR>:!nanoc compile<CR>
+map <buffer> <F5> <Esc>:w<CR>:!rake<CR>
+map!  <buffer> <F5> <Esc>:w<CR>:!rake<CR>
+
+autocmd BufWritePre *posts/*.textile execute ':%s/^modified_at: .*$/\=strftime("modified_at: %Y-%m-%d")/'

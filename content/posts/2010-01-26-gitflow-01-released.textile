@@ -3,6 +3,7 @@ status: published
 kind: article
 author: Vincent Driessen
 created_at: 2010-01-26
+modified_at: 2010-01-26
 title: gitflow 0.1 released
 alt_url: /archives/438
 ---

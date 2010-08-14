@@ -3,6 +3,7 @@ status: published
 kind: article
 author: Vincent Driessen
 created_at: 2010-03-03
+modified_at: 2010-03-03
 title: Unexpected side effects in Python classes
 alt_url: /archives/470
 ---

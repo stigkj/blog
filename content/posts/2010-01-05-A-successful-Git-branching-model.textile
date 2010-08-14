@@ -3,6 +3,7 @@ status: published
 kind: article
 author: Vincent Driessen
 created_at: 2010-01-05
+modified_at: 2010-01-05
 title: A successful Git branching model
 alt_url: /archives/343
 ---

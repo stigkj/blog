@@ -3,6 +3,7 @@ status: draft
 kind: article
 author: Vincent Driessen
 created_at: 2010-07-11
+modified_at: 2010-07-11
 title: How I took control over my Python packages again
 alt_url: /archives/515
 ---

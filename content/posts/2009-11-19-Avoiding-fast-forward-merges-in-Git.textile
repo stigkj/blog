@@ -3,6 +3,7 @@ status: published
 kind: article
 author: Vincent Driessen
 created_at: 2009-11-19
+modified_at: 2009-11-19
 title: Avoiding fast-forward merges in Git
 alt_url: /archives/319
 ---

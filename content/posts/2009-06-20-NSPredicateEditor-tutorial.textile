@@ -3,6 +3,7 @@ status: published
 kind: article
 author: Vincent Driessen
 created_at: 2009-06-20
+modified_at: 2009-06-20
 title: NSPredicateEditor tutorial
 alt_url: /archives/197
 ---
