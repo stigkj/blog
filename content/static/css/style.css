@@ -151,11 +151,12 @@ span.reldate {
 	clear: both;
 }
 
-#main li {
+#main ul li {
 	list-style-type: square;
+}
 
+#main li {
 	font-size: 15px;
-	
 	line-height: 20px;
 }
 
