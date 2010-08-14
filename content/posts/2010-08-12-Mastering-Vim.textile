@@ -11,8 +11,8 @@ post":http://jeffkreeftmeijer.com/2010/stumbling-into-vim/ by Jeff Kreeftmeijer
 (and the "Vim video series of Derek Wyatt":http://vimeo.com/user1690209/videos)
 on configuring Vim, I felt inspired to have a critical look at my own @.vimrc@
 file and reevaluate how it had evolved over the years. I grabbed the
-opportunity to read up on new tips and tricks and decided to take the next
-plunge in mastering Vim.
+opportunity to read up on new tricks and decided to take the next plunge in
+mastering Vim.
 
 It must have been somewhere around 2001 that I first started using Vim for any
 serious work, and learning it has paid off a million times since then. They say
