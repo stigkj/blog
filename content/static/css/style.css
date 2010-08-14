@@ -117,6 +117,15 @@ span.reldate {
 	margin-bottom: 8px;
 }
 
+#main p.footnote {
+	font-size: 10px;
+	line-height: 1em;
+	color: #333;
+	padding: 0;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
 #main h2 {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
 	margin-top: 24px;
