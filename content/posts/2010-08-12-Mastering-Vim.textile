@@ -1,5 +1,5 @@
 ---
-title: Mastering Vim
+title: Why you should boost your Vim, too
 author: Vincent Driessen
 created_at: 2010-08-12
 modified_at: 2010-08-14
@@ -74,31 +74,17 @@ resources on the internet that I've collected too.  This blog post is a summary
 of that yourney.
 
 
-h2. Doing more from within Vim
+h2. Do more from within Vim
+
+...
 
 
 h2. Learn from others
 
 there are lots of @.vimrc@ files / plugins out there
 
-h2. A short history
 
-It must have been somewhere around 2001 that I first started using Vim for any
-serious work, and learning it has already paid off a million times since then.
-They say Vim has a steep learning curve, which is true.  It takes time,
-patience, and repetitive practice on a day-to-day basis to have the keyboard
-mappings become part of your muscle memory.  But once you get the hang of this,
-it pays off so many times.  It cannot be stressed enough.
-
-h2. Reflect on your daily work
-
-(what do you do often?)
-
-h2. Learn from others
-
-there are lots of .vimrc files / plugins out there
-
-h2. getting started with plugins
+h2. Learn at least the basics of Vim plugins
 
 If I have any first tip al all, it would be to install pathogen.  Plugins in vim
 are files that you drop in subdirectories of your .vim/ directory.  Many plugins
@@ -111,18 +97,19 @@ installing pathogen, you can simply unzip a plugin distribution into
 directories are created.  Removing the plugin, then, is as simple as removing
 the myplugin directory.
 
-Having said that, let's move on to the actual plugins.
 
 h2. NERDTree explorer
 by ???
 
 An absolute MUST.  A quick file browser.
 
+
 h2. Fugitive (fuGITive?)
 by Tim Pope
 
 Plugin for Git integration.  I *love* the :Gedit command, for quickly editing a
 file in the index.
+
 
 h2. Python: PEP8, pyflakes and unit test integration
 by myself
@@ -145,6 +132,7 @@ pep8 -r on the current file.  Vim would show me the shell output, I'd remember a
 line number, press Return, type :the.  and start fixing it.
 
 OK, but not good enough :-)
+
 
 fn1. Of course, "inefficient" is a relative term when using Vim already.
 
