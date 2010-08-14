@@ -1,10 +1,10 @@
 ---
-status: published
-kind: article
+title: Mastering Vim
 author: Vincent Driessen
 created_at: 2010-08-12
 modified_at: 2010-08-14
-title: Mastering Vim
+kind: article
+status: draft
 alt_url: /archives/537
 ---
 After reading this "blog
@@ -19,6 +19,7 @@ They say Vim has a steep learning curve, which is true.  It
 takes time, patience, and repetitive practice on a day-to-day basis to slowly
 let the keyboard mappings become part of your muscle memory.  But once you get
 the hang of this, it pays off so many times.  It cannot be stressed enough.
+
 
 h2. A bit of history
 
@@ -45,6 +46,7 @@ knowledge!) in a long time.  (If someone new to Vim can get to that level so
 fast, how come I'm still stuck at my configuration level?)
 
 Time for some reevaluation.
+
 
 h2. Reflecting on your daily work
 
