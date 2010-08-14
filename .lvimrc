@@ -1,4 +1,9 @@
 map <buffer> <F5> <Esc>:w<CR>:!rake<CR>
 map!  <buffer> <F5> <Esc>:w<CR>:!rake<CR>
 
-autocmd BufWritePre *posts/*.textile execute ':%s/^modified_at: .*$/\=strftime("modified_at: %Y-%m-%d")/'
+autocmd BufWritePre,FileWritePre *posts/*.textile call LastMod()
+fun LastMod()
+    norm mz
+    execute ":%s/^modified_at: .*$/modified_at: " . strftime("%Y-%m-%d") . "/"
+    norm 'z
+endfun
