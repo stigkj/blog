@@ -1,0 +1,248 @@
+---
+title: How I boosted my Vim
+author: Vincent Driessen
+created_at: 2010-08-15
+modified_at: 2010-08-15
+kind: article
+status: draft
+---
+A few weeks ago, I took some time to configure and fine-tune my Vim
+environment.  A lot of stuff got into my @.vimrc@ file and my @.vim@ directory.
+This blog post is a summary describing what I've added and how I use it in my
+daily work.
+
+Before doing anything else, make sure you have the following line in your
+@.vimrc@ file:
+
+bc. " This must be first, because it changes other options as side effect
+set nocompatible
+
+
+h2. First: making the configuration process easier
+
+Before starting configuring, it's useful to install
+"pathogen":http://www.vim.org/scripts/script.php?script_id=2332.  Plugins in
+Vim are files that you drop in subdirectories of your @.vim/@ directory.  Many
+plugins exist of only a single file that should be dropped in @.vim/plugin@,
+but some exist of multiple files.  For example, they come with documentation,
+or ships syntax files.  In those cases, files need to be dropped into
+@.vim/doc@ and @.vim/syntax@.  This makes it difficult to remove the plugin
+afterwards.  After installing pathogen, you can simply unzip a plugin
+distribution into @.vim/bundle/myplugin@, under which the required
+subdirectories are created.  Removing the plugin, then, is as simple as
+removing the @myplugin@ directory.
+
+So, download @pathogen.vim@, move it into the @.vim/autoload@ directory (create
+it if necessary) and add the following lines to your @.vimrc@, to activate it:
+
+bc. " Use pathogen to easily modify the runtime path to include all
+" plugins under the ~/.vim/bundle directory
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
+Finally, this is a little tweak that is a time-saver when you're building up
+your @.vimrc@:
+
+bc. " Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+This maps the @,ev@ and @,sv@ keys to edit/source @.vimrc@.
+
+Note that I've remapped the default leader key to @,@ (comma) instead of @\@.
+This is pretty usual.  Since Vim has defined a command for almost any key,
+there needs to be some sort of standard "free" key where you can place custom
+mappings under.  This is called the "mapleader", and can be defined like this:
+
+bc. " change the mapleader from \ to ,
+let mapleader=","
+
+
+h2. Changing editor behaviour
+
+bc. " set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
+
+This lets Vim detect file types (by extension, or by peeking inside the file).
+It also enabled Vim to load plugins that are only useful in the context of
+specific file types.  For example, a Python syntax checker plugin only makes
+sense in a Python file.  Finally, indenting intelligence is enabled based on
+the syntax rules for the file type.
+
+<hr style="border: none; margin: 20px 0; border-bottom: 1px dashed lightgray; height: 0px;"/>
+
+bc. set ignorecase     " ignore case when searching
+set smartcase      " ignore case if search pattern is all lowercase,
+                   "    case-sensitive otherwise
+
+This combination of settings enables smart searches.
+
+<hr style="border: none; margin: 20px 0; border-bottom: 1px dashed lightgray; height: 0px;"/>
+
+bc(big-box). set listchars=tab:»·,trail:·,extends:#,nbsp:·
+set pastetoggle=<F2>            " when in insert mode, press <F2> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+set mouse=a                     " enable using the mouse if terminal emulator
+                                "    supports it (xterm does)
+
+p{color:red;font-size:30pt}. *TODO* explain @listchars@, @list@, @mouse@ and @pastetoggle@!
+
+
+h2. Changing Vim behaviour
+
+bc(big-box).. set hidden                  " hide buffers instead of closing them this
+                            "    means that the current buffer can be put
+                            "    to background without being written; and
+                            "    that marks and undo history are preserved
+set history=1000            " remember more commands and search history
+set undolevels=1000         " use many muchos levels of undo
+set nobackup                " do not keep backup files, it's 70's style cluttering
+set noswapfile              " do not write annoying intermediate swap files,
+                            "    who did ever restore from swap files anyway?
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title                   " change the terminal's title
+set visualbell              " don't beep
+set noerrorbells            " don't beep
+
+p{color:red;font-size:30pt}. Einde
+
+
+h2. Enable syntax highlighting
+
+Vim uses syntax definitions to highlight source code.  Syntax definitions
+simply declare where a function name starts, which pieces are commented out and
+what are keywords.  To color them, Vim uses colorschemes.  You can load custom
+color schemes by placing them in @.vim/colors@, then load them using the
+@colorscheme@ command.  You have to try what you like most.  I like
+"mustang":http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484 a
+lot.
+
+bc.. if &t_Co >= 256 || has("gui_running")
+   colorscheme mustang
+endif
+
+if &t_Co > 2 || has("gui_running")
+   " switch syntax highlighting on, when the terminal has colors
+   syntax on
+endif
+
+p. In this case, mustang is only loaded if the terminal emulator Vim runs in
+supports at least 256 colors (or if you use the GUI version of Vim).
+
+*Hint*: if you're using a terminal emulator that can show 256 colors, try
+setting @TERM=xterm-256color@ in your shell's .rc file.
+
+
+h2. Getting efficient: shortcut mappings
+
+The following trick is a really small one, but a super-efficient one, since it
+strips off two full keystrokes from almost every Vim command:
+
+bc. nnoremap ; :
+
+For example, to save a file, you type @:w@ normally, which means:
+
+# Press and hold Shift
+# Press @;@
+# Release the Shift key
+# Press @w@
+# Press Return
+
+This trick strips off steps 1 and 3 for *each* Vim command.  It takes some
+times for your muscle memory to get used to this new @;w@ command, but once you
+use it, you don't want to go back!
+
+I also find this key binding very useful, since I like to reformat paragraph
+text often.  Just set your cursor inside a paragraph and press @Q@ (or select a
+visual block and press @Q@).
+
+bc. " Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
+
+If you are still getting used to Vim and want to force yourself to stop using
+the arrow keys, add this:
+
+bc. map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+If you like long lines with line wrapping enabled, this solves the problem that
+pressing down jumpes your cursor "over" the current line to the next line.  It
+changes behaviour so that it jumps to the next row in the editor (much more
+natural):
+
+bc. nnoremap j gj
+nnoremap k gk
+
+When you start to use Vim more professionally, you want to work with multiple
+windows open.  Navigating requires you to press @C-w@ first, then a navigation
+command (h, j, k, l).  This makes it easier to navigate focus through windows:
+
+bc. " Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+Tired of clearing searches by searching for @ldsfhj khgakjksgdhgksjd@ (or
+similar)?  Use this:
+
+bc. nmap <silent> ,/ :let @/=""<CR>
+
+It clears the search buffer when you press @,/@
+
+Finally, a trick by "Steve
+Losh":http://forrst.com/posts/Use_w_to_sudo_write_a_file_with_Vim-uAN for when
+you forgot to @sudo@ before editing a file that requires root privileges
+(typically @/etc/hosts@).  This lets you use @w!!@ to do that *after* you
+opened the file already:
+
+bc. cmap w!! w !sudo tee % >/dev/null
+
+
+h2. NERDTree explorer
+by ???
+
+An absolute MUST.  A quick file browser.
+
+
+h2. Fugitive (fuGITive?)
+by Tim Pope
+
+Plugin for Git integration.  I *love* the :Gedit command, for quickly editing a
+file in the index.
+
+
+h2. Python: PEP8, pyflakes and unit test integration
+by myself
+
+Sometimes, you need functionality that you cannot find in an already available
+plugin (or in a way that doesn't fit your need).  In those cases, you can extend
+Vim yourself.
+
+For example, I often want to run QA tools (like pep8 or pyflakes) on my Python
+source code.  There are plugins for those tools available, but
+
+- they don't allow me to customize any key mappings
+- they don't look/act/behave the same, although they may be considered the same
+  type of tools (i.e. they tell me on what lines there's something wrong with
+  my Python source)
+- in he best case, they are merely a simple wrapper around a shell invocation
+
+Before I've tried these plugins, I had a key mapping defined to simply call
+pep8 -r on the current file.  Vim would show me the shell output, I'd remember a
+line number, press Return, type :the.  and start fixing it.
+
+OK, but not good enough :-)
+
+
+fn1. Of course, "inefficient" is a relative term when using Vim already.
+
+fn2. Or she. But probably he.
+
+fn3. Which made it hard to notice, even!
