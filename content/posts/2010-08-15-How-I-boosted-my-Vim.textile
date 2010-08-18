@@ -2,7 +2,7 @@
 title: How I boosted my Vim
 author: Vincent Driessen
 created_at: 2010-08-15
-modified_at: 2010-08-15
+modified_at: 2010-08-18
 kind: article
 status: draft
 ---
@@ -14,11 +14,13 @@ daily work.
 Before doing anything else, make sure you have the following line in your
 @.vimrc@ file:
 
-bc. " This must be first, because it changes other options as side effect
+<pre><code class="language-vim">
+" This must be first, because it changes other options as side effect
 set nocompatible
+</code></pre>
 
 
-h2. First: making the configuration process easier
+h2(#pathogen). First: making the configuration process easier
 
 Before starting configuring, it's useful to install
 "pathogen":http://www.vim.org/scripts/script.php?script_id=2332.  Plugins in
@@ -35,77 +37,156 @@ removing the @myplugin@ directory.
 So, download @pathogen.vim@, move it into the @.vim/autoload@ directory (create
 it if necessary) and add the following lines to your @.vimrc@, to activate it:
 
-bc. " Use pathogen to easily modify the runtime path to include all
+<pre><code class="language-vim">
+" Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+</code></pre>
 
 Finally, this is a little tweak that is a time-saver when you're building up
 your @.vimrc@:
 
-bc. " Quickly edit/reload the vimrc file
+<pre><code class="language-vim">
+" Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+</code></pre>
 
-This maps the @,ev@ and @,sv@ keys to edit/source @.vimrc@.
+This maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.
 
 Note that I've remapped the default leader key to @,@ (comma) instead of @\@.
 This is pretty usual.  Since Vim has defined a command for almost any key,
 there needs to be some sort of standard "free" key where you can place custom
 mappings under.  This is called the "mapleader", and can be defined like this:
 
-bc. " change the mapleader from \ to ,
+<pre><code class="language-vim">
+" change the mapleader from \ to ,
 let mapleader=","
+</code></pre>
+
+
+h2. Use file type plugins
+
+Most Vim users will have this setting enabled already somehow.  Vim can detect
+file types (by their extension, or by peeking inside the file).  It also
+enabled Vim to load plugins that are only useful in the context of specific
+file types.  For example, a Python syntax checker plugin only makes sense in a
+Python file.  Finally, indenting intelligence is enabled based on the syntax
+rules for the file type.
+
+<pre><code class="language-vim">
+" set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
+</code></pre>
 
 
 h2. Changing editor behaviour
 
-bc. " set filetype stuff to on
-filetype on
-filetype plugin on
-filetype indent on
+When you write a lot of code, you probably want to obey certain style rules.
+In some programming languages (like Python), whitespace is important, so you
+may not just swap tabs for spaces and even the number of spaces is important.
 
-This lets Vim detect file types (by extension, or by peeking inside the file).
-It also enabled Vim to load plugins that are only useful in the context of
-specific file types.  For example, a Python syntax checker plugin only makes
-sense in a Python file.  Finally, indenting intelligence is enabled based on
-the syntax rules for the file type.
+Vim can highlight whitespaces for you in a convenient way:
 
-<hr style="border: none; margin: 20px 0; border-bottom: 1px dashed lightgray; height: 0px;"/>
+<pre><code class="language-vim">
+set listchars=tab:»·,trail:·,extends:#,nbsp:·
+</code></pre>
 
-bc. set ignorecase     " ignore case when searching
-set smartcase      " ignore case if search pattern is all lowercase,
-                   "    case-sensitive otherwise
+(If you can't make any sense of all those &Acirc; characters, you will have to change
+the encoding your browser uses.)
 
-This combination of settings enables smart searches.
+This line sets 
 
-<hr style="border: none; margin: 20px 0; border-bottom: 1px dashed lightgray; height: 0px;"/>
-
-bc(big-box). set listchars=tab:»·,trail:·,extends:#,nbsp:·
+<pre><code class="language-vim">
 set pastetoggle=<F2>            " when in insert mode, press <F2> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
-set mouse=a                     " enable using the mouse if terminal emulator
-                                "    supports it (xterm does)
+</code></pre>
 
-p{color:red;font-size:30pt}. *TODO* explain @listchars@, @list@, @mouse@ and @pastetoggle@!
+p{color:red;font-size:30pt}. *TODO* explain @listchars@, @list@, and @pastetoggle@!
+
+
+h2. Using the mouse
+
+While using the mouse is considered a deadly sin among Vim users, there _are_ a
+few features about the mouse that can really come to your advantage.  Most
+notably--scrolling.  In fact, it's the only thing I use it for.
+
+Also, if you are a rookie Vim user, setting this value will make your Vim
+experience definitively feel more natural.
+
+To enable the mouse, use:
+
+<pre><code class="language-vim">
+set mouse=a
+</code></pre>
+
+However, this comes at one big disadvantage: when you run Vim inside a
+terminal, the terminal itself cannot control your mouse anymore.  Therefore,
+you cannot select text anymore with the terminal (to copy it to the system
+clipboard, for example).
+
+To be able to have the best of both worlds, I wrote this simple Vim plugin:
+"vim-togglemouse":http://github.com/nvie/vim-togglemouse.  It maps @<F12>@ to
+toggle your mouse "focus" between Vim and the terminal.
+
+Small plugins like these are really useful, yet have the additional benefit of
+lowering the barrier of learning the Vim scripting language.  At the core, this
+plugin exists of only one simple function:
+
+<pre><code class="language-vim">
+fun! s:ToggleMouse()
+    if !exists("s:old_mouse")
+        let s:old_mouse = "a"
+    endif
+
+    if &mouse == ""
+        let &mouse = s:old_mouse
+        echo "Mouse is for Vim (" . &mouse . ")"
+    else
+        let s:old_mouse = &mouse
+        let &mouse=""
+        echo "Mouse is for terminal"
+    endif
+endfunction
+</code></pre>
 
 
 h2. Changing Vim behaviour
 
-bc(big-box).. set hidden                  " hide buffers instead of closing them this
-                            "    means that the current buffer can be put
-                            "    to background without being written; and
-                            "    that marks and undo history are preserved
-set history=1000            " remember more commands and search history
-set undolevels=1000         " use many muchos levels of undo
-set nobackup                " do not keep backup files, it's 70's style cluttering
-set noswapfile              " do not write annoying intermediate swap files,
-                            "    who did ever restore from swap files anyway?
+One particularly useful setting is @hidden@.  Its name isn't too descriptive,
+though.  It _hides_ buffers instead of _closing_ them.  This means that you can
+have unwritten changes to a file and open a new file using @:e@, without being
+forced to write or undo your changes first.  Also, undo buffers and marks are
+preserved while the buffer is open.
+
+<pre><code class="language-vim">
+set hidden
+</code></pre>
+
+blaat
+
+<pre><code class="language-vim">
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
-set title                   " change the terminal's title
-set visualbell              " don't beep
-set noerrorbells            " don't beep
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+</code></pre>
+
+Oh man, never ever let Vim write a backup file.  They did that in the 70's.
+Use "modern":http://git-scm.com/ ways for tracking your changes, for God's
+sake.
+
+<pre><code class="language-vim">
+set nobackup
+set noswapfile
+</code></pre>
+
 
 p{color:red;font-size:30pt}. Einde
 
@@ -120,7 +201,8 @@ color schemes by placing them in @.vim/colors@, then load them using the
 "mustang":http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484 a
 lot.
 
-bc.. if &t_Co >= 256 || has("gui_running")
+<pre><code class="language-vim">
+if &t_Co >= 256 || has("gui_running")
    colorscheme mustang
 endif
 
@@ -128,12 +210,14 @@ if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
    syntax on
 endif
+</code></pre>
 
-p. In this case, mustang is only loaded if the terminal emulator Vim runs in
+In this case, mustang is only loaded if the terminal emulator Vim runs in
 supports at least 256 colors (or if you use the GUI version of Vim).
 
 *Hint*: if you're using a terminal emulator that can show 256 colors, try
-setting @TERM=xterm-256color@ in your shell's .rc file.
+setting @TERM=xterm-256color@ in your terminal configuration or in your shell's
+.rc file.
 
 
 h2. Getting efficient: shortcut mappings
@@ -141,7 +225,9 @@ h2. Getting efficient: shortcut mappings
 The following trick is a really small one, but a super-efficient one, since it
 strips off two full keystrokes from almost every Vim command:
 
-bc. nnoremap ; :
+<pre><code class="language-vim">
+nnoremap ; :
+</code></pre>
 
 For example, to save a file, you type @:w@ normally, which means:
 
@@ -159,40 +245,50 @@ I also find this key binding very useful, since I like to reformat paragraph
 text often.  Just set your cursor inside a paragraph and press @Q@ (or select a
 visual block and press @Q@).
 
-bc. " Use Q for formatting the current paragraph (or selection)
+<pre><code class="language-vim">
+" Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
+</code></pre>
 
 If you are still getting used to Vim and want to force yourself to stop using
 the arrow keys, add this:
 
-bc. map <up> <nop>
+<pre><code class="language-vim">
+map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+</code></pre>
 
 If you like long lines with line wrapping enabled, this solves the problem that
 pressing down jumpes your cursor "over" the current line to the next line.  It
 changes behaviour so that it jumps to the next row in the editor (much more
 natural):
 
-bc. nnoremap j gj
+<pre><code class="language-vim">
+nnoremap j gj
 nnoremap k gk
+</code></pre>
 
 When you start to use Vim more professionally, you want to work with multiple
 windows open.  Navigating requires you to press @C-w@ first, then a navigation
 command (h, j, k, l).  This makes it easier to navigate focus through windows:
 
-bc. " Easy window navigation
+<pre><code class="language-vim">
+" Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+</code></pre>
 
 Tired of clearing searches by searching for @ldsfhj khgakjksgdhgksjd@ (or
 similar)?  Use this:
 
-bc. nmap <silent> ,/ :let @/=""<CR>
+<pre><code class="language-vim">
+nmap <silent> ,/ :let @/=""<CR>
+</code></pre>
 
 It clears the search buffer when you press @,/@
 
@@ -202,13 +298,16 @@ you forgot to @sudo@ before editing a file that requires root privileges
 (typically @/etc/hosts@).  This lets you use @w!!@ to do that *after* you
 opened the file already:
 
-bc. cmap w!! w !sudo tee % >/dev/null
+<pre><code class="language-vim">
+cmap w!! w !sudo tee % >/dev/null
+</code></pre>
 
 
 h2. NERDTree explorer
-by ???
 
-An absolute MUST.  A quick file browser.
+Vim's NERDTree plugin is an absolute must for almost any Vim user.  For those
+who don't know it yet, NERDTree is a file browser that allows you to quickly
+open files by navigating onto it and pressing Return.
 
 
 h2. Fugitive (fuGITive?)
@@ -219,26 +318,110 @@ file in the index.
 
 
 h2. Python: PEP8, pyflakes and unit test integration
-by myself
 
-Sometimes, you need functionality that you cannot find in an already available
-plugin (or in a way that doesn't fit your need).  In those cases, you can extend
-Vim yourself.
+In essence, Vim is a text editor.  It is not an integrated development
+environment.  However, since it is so extendible, you can come a long way to
+such a situation nevertheless.
 
-For example, I often want to run QA tools (like pep8 or pyflakes) on my Python
-source code.  There are plugins for those tools available, but
+Many plugins are available that cover a lot of "IDE functionality" already.
+Sometimes however, you need functionality that you cannot find in an already
+available plugin (or in a way that doesn't fit your need).  In those cases, you
+can extend Vim yourself.
 
-- they don't allow me to customize any key mappings
-- they don't look/act/behave the same, although they may be considered the same
+This happened to me when I started doing a lot of Python development.  I often
+want to run QA tools (like @pep8@ or @pyflakes@) on my Python source code.
+There are plugins for those tools available, but
+
+* they don't allow me to customize any key mappings
+* they don't look/act/behave the same, although they may be considered the same
   type of tools (i.e. they tell me on what lines there's something wrong with
   my Python source)
-- in he best case, they are merely a simple wrapper around a shell invocation
+* in the best case, they are merely a simple wrapper around a shell invocation
 
-Before I've tried these plugins, I had a key mapping defined to simply call
-pep8 -r on the current file.  Vim would show me the shell output, I'd remember a
-line number, press Return, type :the.  and start fixing it.
+Before I've tried these plugins, I had an ad hoc key mapping defined to call
+@pep8 -r@ on the current file.  Vim would show me the shell output, I'd
+remember a line number, press Return, type [@:n@] (where @n@ is the line
+number) and start fixing it.
 
-OK, but not good enough :-)
+However, you can get it a lot better than that.  I dove into the details of
+@makeprg@, @makeformat@ and the quickfix window, and came up with the following
+coherent set of plugins:
+
+* "vim-pep8":http://github.com/nvie/vim-pep8
+* vim-pyflakes
+* vim-pyunit
+
+Each of them is usable on its own, but they complete each other beautifully.
+
+I started creating the first two, since those where the simplest.  The base
+where I started off from was a list of functions I found in Gary Bernhardt's
+"@.vimrc@":http://bitbucket.org/garybernhardt/dotfiles/src/tip/.vimrc file.  I
+liked the idea of his unit testing functions showing a red or a green bar,
+since it somehow is a visually pleasing result.  Gary did a splendid job
+already in setting up the basic logic for this, but his code was rather
+intertwined within his @.vimrc@ file and not easily reusable.
+
+Going from there, I decided to learn a bit of the Vim script language and come
+up with my own.
+
+h3. PEP8
+
+The PEP8-plugin checks whether your Python file comforms to the "PEP8 style
+guide":http://www.python.org/dev/peps/pep-0008/. There is a simple tool called
+"@pep8@":http://pypi.python.org/pypi/pep8 that can do that check automatically
+for you.  It simply returns output that looks like this:
+
+bc. $ pep8 urls.py
+urls.py:10:1: E302 expected 2 blank lines, found 1
+urls.py:12:3: E111 indentation is not a multiple of four
+urls.py:16:80: E501 line too long (99 characters)
+
+The "@vim-pep8@":http://github.com/nvie/vim-pep8 plugin uses Vim's @grepprg@
+functionality to turn that output into a quickfix list (see @:h quickfix@) that
+looks something like this:
+
+!/img/2010/08/quickfix-window.png!
+
+Or something like this when the file is clean:
+
+!/img/2010/08/pep8-safe.png!
+
+When you install the plugin into your @.vim/bundle/pep8@ directory (you use
+"pathogen":#pathogen, right?), you get this functionality mapped by default
+under the @<F6>@ key.  If you wish to remap this, you can easily do so with the
+following command (which puts it under @,p@ for example):
+
+<pre><code class="language-vim">
+autocmd filetype python map <buffer> ,p :call Pep8()<CR>
+</code></pre>
+
+
+h3. pyflakes
+
+The static compile-time syntax checker
+"pyflakes":http://divmod.org/trac/wiki/DivmodPyflakes is a tool for quickly
+checking whether there are typo's or bugs in your code that could lead to
+untime issues.
+
+
+h3. PyUnit
+
+...
+
+
+
+
+<hr style="border: 10px solid red;"/>
+
+This combination of settings enables smart searches.
+
+<pre><code class="language-vim">
+set ignorecase     " ignore case when searching
+set smartcase      " ignore case if search pattern is all lowercase,
+                   "    case-sensitive otherwise
+</code></pre>
+
+
 
 
 fn1. Of course, "inefficient" is a relative term when using Vim already.

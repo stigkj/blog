@@ -47,7 +47,8 @@ compile '/posts/*/' do
 		layout 'post'
 		filter :redcloth, :hard_breaks => false
 		filter :colorize_syntax,
-			:default_colorizer => :pygmentize
+			:default_colorizer => :pygmentize,
+			:pygmentize => { :encoding => "utf-8" }
 		layout 'default'
 	end
 end
