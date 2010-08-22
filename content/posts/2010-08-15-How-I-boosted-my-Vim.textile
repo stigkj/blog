@@ -2,7 +2,7 @@
 title: How I boosted my Vim
 author: Vincent Driessen
 created_at: 2010-08-15
-modified_at: 2010-08-18
+modified_at: 2010-08-22
 kind: article
 status: draft
 ---
@@ -27,7 +27,7 @@ Before starting configuring, it's useful to install
 Vim are files that you drop in subdirectories of your @.vim/@ directory.  Many
 plugins exist of only a single file that should be dropped in @.vim/plugin@,
 but some exist of multiple files.  For example, they come with documentation,
-or ships syntax files.  In those cases, files need to be dropped into
+or ship syntax files.  In those cases, files need to be dropped into
 @.vim/doc@ and @.vim/syntax@.  This makes it difficult to remove the plugin
 afterwards.  After installing pathogen, you can simply unzip a plugin
 distribution into @.vim/bundle/myplugin@, under which the required
