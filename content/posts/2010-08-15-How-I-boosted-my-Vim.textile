@@ -55,10 +55,11 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 This maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.
 
-Note that I've remapped the default leader key to @,@ (comma) instead of @\@.
-This is pretty usual.  Since Vim has defined a command for almost any key,
-there needs to be some sort of standard "free" key where you can place custom
-mappings under.  This is called the "mapleader", and can be defined like this:
+Note that I've remapped the default leader key to @,@ (comma) instead of @\@
+(backslash), which is a pretty common remapping.  Since in Vim's default
+configuration, almost every key is already mapped to a command, there needs to
+be some sort of standard "free" key where you can place custom mappings under.
+This is called the "mapleader", and can be defined like this:
 
 <pre><code class="language-vim">
 " change the mapleader from \ to ,
