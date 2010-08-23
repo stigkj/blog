@@ -2,14 +2,14 @@
 title: How I boosted my Vim
 author: Vincent Driessen
 created_at: 2010-08-15
-modified_at: 2010-08-22
+modified_at: 2010-08-24
 kind: article
 status: draft
 ---
 A few weeks ago, I took some time to configure and fine-tune my Vim
-environment.  A lot of stuff got into my @.vimrc@ file and my @.vim@ directory.
-This blog post is a summary describing what I've added and how I use it in my
-daily work.
+environment.  A lot of new stuff made it into my @.vimrc@ file and my @.vim@
+directory.  This blog post is a summary describing what I've added and how I
+use it in my daily work.
 
 Before doing anything else, make sure you have the following line in your
 @.vimrc@ file:
@@ -20,7 +20,7 @@ set nocompatible
 </code></pre>
 
 
-h2(#pathogen). First: making the configuration process easier
+h2(#pathogen). Step 0: make the customization process easier
 
 Before starting configuring, it's useful to install
 "pathogen":http://www.vim.org/scripts/script.php?script_id=2332.  Plugins in
@@ -44,8 +44,8 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 </code></pre>
 
-Finally, this is a little tweak that is a time-saver when you're building up
-your @.vimrc@:
+Besides that, this is a little tweak that is a time-saver while you're building
+up your @.vimrc@:
 
 <pre><code class="language-vim">
 " Quickly edit/reload the vimrc file
@@ -53,10 +53,11 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 </code></pre>
 
-This maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.
+This maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.  (I got this from
+Derek Wyatt's @.vimrc@ file.)
 
-Note that I've remapped the default leader key to @,@ (comma) instead of @\@
-(backslash), which is a pretty common remapping.  Since in Vim's default
+Notice that I've remapped the leader key to @,@ (comma) instead of the default
+@\@ (backslash), just because I like it better.  Since in Vim's default
 configuration, almost every key is already mapped to a command, there needs to
 be some sort of standard "free" key where you can place custom mappings under.
 This is called the "mapleader", and can be defined like this:
@@ -67,14 +68,76 @@ let mapleader=","
 </code></pre>
 
 
+h2. Change Vim behaviour
+
+One particularly useful setting is @hidden@.  Its name isn't too descriptive,
+though.  It _hides_ buffers instead of _closing_ them.  This means that you can
+have unwritten changes to a file and open a new file using @:e@, without being
+forced to write or undo your changes first.  Also, undo buffers and marks are
+preserved while the buffer is open.  This is an absolute must-have.
+
+<pre><code class="language-vim">
+set hidden
+</code></pre>
+
+These are some of the most basic settings that you probably want to enable,
+too:
+
+<pre class="big-box"><code class="language-vim">
+set nowrap        " don't wrap lines
+set tabstop=4     " a tab is four spaces
+set backspace=indent,eol,start
+                  " allow backspacing over everything in insert mode
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch     " set show matching parenthesis
+set ignorecase    " ignore case when searching
+set smartcase     " ignore case if search pattern is all lowercase,
+                  "    case-sensitive otherwise
+set smarttab      " insert tabs on the start of a line according to
+                  "    shiftwidth, not tabstop
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+</code></pre>
+
+There is a lot more goodness in my
+"@.vimrc@":http://github.com/nvie/vimrc/raw/master/vimrc file, which is put in
+there with a lot of love.  I've commented most of it, too.  Feel free to poke
+around in it.
+
+Also, I like Vim to have a large undo buffer, a large history of commands,
+ignore some file extensions when completing names by pressing Tab, and be
+silent about invalid cursor moves and other errors.
+
+<pre><code class="language-vim">
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+</code></pre>
+
+Oh, and man... never ever let Vim write a backup file!  They did that in the
+70's.  Use "modern":http://git-scm.com/ ways for tracking your changes, for
+God's sake.
+
+<pre><code class="language-vim">
+set nobackup
+set noswapfile
+</code></pre>
+
+
 h2. Use file type plugins
 
-Most Vim users will have this setting enabled already somehow.  Vim can detect
-file types (by their extension, or by peeking inside the file).  It also
-enabled Vim to load plugins that are only useful in the context of specific
-file types.  For example, a Python syntax checker plugin only makes sense in a
-Python file.  Finally, indenting intelligence is enabled based on the syntax
-rules for the file type.
+Vim can detect file types (by their extension, or by peeking inside the file).
+This enabled Vim to load plugins, settings or key mappings that are only useful
+in the context of specific file types.  For example, a Python syntax checker
+plugin only makes sense in a Python file.  Finally, indenting intelligence is
+enabled based on the syntax rules for the file type.
 
 <pre><code class="language-vim">
 " set filetype stuff to on
@@ -83,8 +146,54 @@ filetype plugin on
 filetype indent on
 </code></pre>
 
+To set some file type specific settings, you can now use the following:
 
-h2. Changing editor behaviour
+<pre><code class="language-vim">
+autocmd filetype python set expandtab
+</code></pre>
+
+To remain compatible with older versions of Vim that do not have the @autocmd@
+functions, always wrap those functions inside a block like this:
+
+<pre><code class="language-vim">
+if has('autocmd')
+    ...
+endif
+</code></pre>
+
+
+h2. Enable syntax highlighting
+
+Somewhat related to the file type plugins is the syntax highlighting of
+different types of source files.  Vim uses syntax definitions to highlight
+source code.  Syntax definitions simply declare where a function name starts,
+which pieces are commented out and what are keywords.  To color them, Vim uses
+colorschemes.  You can load custom color schemes by placing them in
+@.vim/colors@, then load them using the @colorscheme@ command.  You have to try
+what you like most.  I like
+"mustang":http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484 a
+lot.
+
+<pre><code class="language-vim">
+if &t_Co >= 256 || has("gui_running")
+   colorscheme mustang
+endif
+
+if &t_Co > 2 || has("gui_running")
+   " switch syntax highlighting on, when the terminal has colors
+   syntax on
+endif
+</code></pre>
+
+In this case, mustang is only loaded if the terminal emulator Vim runs in
+supports at least 256 colors (or if you use the GUI version of Vim).
+
+*Hint*: if you're using a terminal emulator that can show 256 colors, try
+setting @TERM=xterm-256color@ in your terminal configuration or in your shell's
+.rc file.
+
+
+h2. Change editing behaviour
 
 When you write a lot of code, you probably want to obey certain style rules.
 In some programming languages (like Python), whitespace is important, so you
@@ -93,24 +202,52 @@ may not just swap tabs for spaces and even the number of spaces is important.
 Vim can highlight whitespaces for you in a convenient way:
 
 <pre><code class="language-vim">
-set listchars=tab:»·,trail:·,extends:#,nbsp:·
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 </code></pre>
 
-(If you can't make any sense of all those &Acirc; characters, you will have to change
-the encoding your browser uses.)
+This line will make Vim set out tab characters, trailing whitespace and
+invisible spaces visually, and additionally use the @#@ sign at the end of
+lines to mark lines that extend off-screen.  For more info, see @:h listchars@.
 
-This line sets 
+In some files, like HTML and XML files, tabs are fine and showing them is
+really annoying, you can disable them easily using an @autocmd@ declaration:
 
 <pre><code class="language-vim">
-set pastetoggle=<F2>            " when in insert mode, press <F2> to go to
-                                "    paste mode, where you can paste mass data
-                                "    that won't be autoindented
+autocmd filetype html,xml set listchars-=tab:>.
 </code></pre>
 
-p{color:red;font-size:30pt}. *TODO* explain @listchars@, @list@, and @pastetoggle@!
+One caveat when setting @listchars@: if nothing happens, you have probably not
+enabled @list@, so try @:set list@, too.
 
 
-h2. Using the mouse
+h3. Pasting large amounts of text into Vim
+
+Every Vim user likes to enable auto-indenting of source code, so Vim can
+intelligently position you cursor on the next line as you type.  This has one
+big ugly consequence however: when you paste text into your terminal-based Vim,
+Vim cannot know it is coming from a paste.  To Vim, it looks like text entered
+by someone who can type incredibly fast :)  You often find something similar to
+this as a result:
+
+p=. !/img/2010/08/ugly-paste2.png!
+
+There is an easy option to prevent this, however.  You can temporarily switch
+to "paste mode", simply by setting the following option:
+
+<pre><code class="language-vim">
+set pastetoggle=<F2>
+</code></pre>
+
+Then, when in insert mode, ready to paste, if you press @<F2>@, Vim will switch
+to paste mode, disabling all kinds of smartness and just pasting a whole buffer
+of text.  Then, you can disable paste mode again with another press of @<F2>@.
+Nice and simple.  Compare:
+
+p=. !/img/2010/08/better-paste2.png!
+
+
+h2. Enable the mouse
 
 While using the mouse is considered a deadly sin among Vim users, there _are_ a
 few features about the mouse that can really come to your advantage.  Most
@@ -156,72 +293,7 @@ endfunction
 </code></pre>
 
 
-h2. Changing Vim behaviour
-
-One particularly useful setting is @hidden@.  Its name isn't too descriptive,
-though.  It _hides_ buffers instead of _closing_ them.  This means that you can
-have unwritten changes to a file and open a new file using @:e@, without being
-forced to write or undo your changes first.  Also, undo buffers and marks are
-preserved while the buffer is open.
-
-<pre><code class="language-vim">
-set hidden
-</code></pre>
-
-blaat
-
-<pre><code class="language-vim">
-set history=1000         " remember more commands and search history
-set undolevels=1000      " use many muchos levels of undo
-set wildignore=*.swp,*.bak,*.pyc,*.class
-set title                " change the terminal's title
-set visualbell           " don't beep
-set noerrorbells         " don't beep
-</code></pre>
-
-Oh man, never ever let Vim write a backup file.  They did that in the 70's.
-Use "modern":http://git-scm.com/ ways for tracking your changes, for God's
-sake.
-
-<pre><code class="language-vim">
-set nobackup
-set noswapfile
-</code></pre>
-
-
-p{color:red;font-size:30pt}. Einde
-
-
-h2. Enable syntax highlighting
-
-Vim uses syntax definitions to highlight source code.  Syntax definitions
-simply declare where a function name starts, which pieces are commented out and
-what are keywords.  To color them, Vim uses colorschemes.  You can load custom
-color schemes by placing them in @.vim/colors@, then load them using the
-@colorscheme@ command.  You have to try what you like most.  I like
-"mustang":http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484 a
-lot.
-
-<pre><code class="language-vim">
-if &t_Co >= 256 || has("gui_running")
-   colorscheme mustang
-endif
-
-if &t_Co > 2 || has("gui_running")
-   " switch syntax highlighting on, when the terminal has colors
-   syntax on
-endif
-</code></pre>
-
-In this case, mustang is only loaded if the terminal emulator Vim runs in
-supports at least 256 colors (or if you use the GUI version of Vim).
-
-*Hint*: if you're using a terminal emulator that can show 256 colors, try
-setting @TERM=xterm-256color@ in your terminal configuration or in your shell's
-.rc file.
-
-
-h2. Getting efficient: shortcut mappings
+h2. Get efficient: shortcut mappings
 
 The following trick is a really small one, but a super-efficient one, since it
 strips off two full keystrokes from almost every Vim command:
@@ -408,19 +480,6 @@ untime issues.
 h3. PyUnit
 
 ...
-
-
-
-
-<hr style="border: 10px solid red;"/>
-
-This combination of settings enables smart searches.
-
-<pre><code class="language-vim">
-set ignorecase     " ignore case when searching
-set smartcase      " ignore case if search pattern is all lowercase,
-                   "    case-sensitive otherwise
-</code></pre>
 
 
 
