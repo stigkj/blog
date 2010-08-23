@@ -1,2 +1,7 @@
 #!/bin/sh
-vim $(find -L posts -type f | sort | tail -n1)
+if [ -z "$1" ]; then
+	LAST_N=1
+else
+	LAST_N=$1
+fi
+vim $(find -L posts -type f | sort | tail -n${LAST_N} | head -n1)
