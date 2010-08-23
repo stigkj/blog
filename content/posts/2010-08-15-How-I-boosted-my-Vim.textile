@@ -227,10 +227,9 @@ Every Vim user likes to enable auto-indenting of source code, so Vim can
 intelligently position you cursor on the next line as you type.  This has one
 big ugly consequence however: when you paste text into your terminal-based Vim,
 Vim cannot know it is coming from a paste.  To Vim, it looks like text entered
-by someone who can type incredibly fast :)  You often find something similar to
-this as a result:
-
-p=. !/img/2010/08/ugly-paste2.png!
+by someone who can type incredibly fast :)  Since Vim thinks this is regular
+key strokes, it applies all auto-indenting and auto-expansion of defined
+abbreviations to the input, resulting in often cascading indents of paragraphs.
 
 There is an easy option to prevent this, however.  You can temporarily switch
 to "paste mode", simply by setting the following option:
@@ -242,9 +241,10 @@ set pastetoggle=<F2>
 Then, when in insert mode, ready to paste, if you press @<F2>@, Vim will switch
 to paste mode, disabling all kinds of smartness and just pasting a whole buffer
 of text.  Then, you can disable paste mode again with another press of @<F2>@.
-Nice and simple.  Compare:
+Nice and simple.  Compare paste mode disabled vs enabled:
 
-p=. !/img/2010/08/better-paste2.png!
+!(left)/img/2010/08/ugly-paste.png!
+!(veryright)/img/2010/08/better-paste.png!
 
 
 h2. Enable the mouse
@@ -356,7 +356,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 </code></pre>
 
-Tired of clearing searches by searching for @ldsfhj khgakjksgdhgksjd@ (or
+Tired of clearing searches by searching for @ldsfhjkhgakjksgdhgksjd@ (or
 similar)?  Use this:
 
 <pre><code class="language-vim">
