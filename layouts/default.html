@@ -14,6 +14,36 @@
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.reldate').relatizeDate();
+
+				// Top-off the any width above 400px
+				$("pre code").each(function (index) {
+					var w = $(this).width() + 40;
+					if (w > 400) {
+						$(this).parent().css({ width: "400px" });
+   					} else {
+						$(this).parent().css({ width: w + "px" });
+					}
+				});
+
+				// Have them expand when necessary
+				$("pre code").hover(
+					function(event) {
+						var should = $(this).width() + 40;
+						var has = $(this).parent().width();
+						console.log("HOVER " + event + " : should: " + should + ", has: " + has);
+						if (should > has) {
+							$(this).parent().stop(true, false).animate({width: should + "px"});
+						}
+					},
+					function(event) {
+						var should = Math.min($(this).width() + 40, 400);
+						var has = $(this).parent().width();
+						console.log("BLUR " + event + " : should: " + should + ", has: " + has);
+						if (has > should) {
+							$(this).parent().stop(true, false).animate({ width: should });
+						}
+					}
+				);
 			});
 		</script>
 		<meta name="generator" content="nanoc 3.1.4"/>

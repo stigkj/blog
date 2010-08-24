@@ -93,6 +93,8 @@ span.reldate {
 	color:#000;
 	
 	padding: 20px;
+
+	overflow: visible;
 }
 
 #main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
@@ -288,7 +290,7 @@ pre code {
 	border: 1px solid #f7a600;
 	background-color: #fefef1;
 	
-	margin: 10px 0 20px 0;
+	margin: 10px 0 20px 20px;
 	
 	padding: 10px;
 	padding-left: 16px;
@@ -301,7 +303,7 @@ pre code {
 	-moz-box-shadow: 2px 3px 5px #ccc;
 	-webkit-box-shadow: 2px 3px 5px #ccc;
 	
-	overflow: auto;
+	overflow: hidden;
 }
 
 #main pre.small-font {
