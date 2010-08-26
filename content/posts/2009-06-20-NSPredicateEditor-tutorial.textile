@@ -127,7 +127,7 @@ h3. Writing the code to wrap it all up
 Finally, we have only a bit of code to write in our AppDelegate implementation,
 so let's go:
 
-<pre class="big-box"><code class="language-objc">//
+<pre><code class="language-objc">//
 //  AppDelegate.m
 //  PredicateEditorTest
 //

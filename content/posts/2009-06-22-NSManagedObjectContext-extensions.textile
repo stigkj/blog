@@ -20,7 +20,7 @@ easy:
 
 Compared to its creation:
 
-<pre class="big-box"><code class="language-objc">
+<pre><code class="language-objc">
 [NSEntityDescription insertNewObjectForEntityForName:@"someObjectClassName"
                               inManagedObjectContext:context];
 </code></pre>
@@ -30,7 +30,7 @@ h3. Extending NSManagedObjectContext
 Add the following category on NSManagedObjectContext to all of your Core Data
 projects and your pains will be history.
 
-<pre class="big-box"><code class="language-objc">
+<pre><code class="language-objc">
 @implementation NSManagedObjectContext(NSManagedObjectContextConvenienceMethods)
 
 - (id)newObject:(Class)entity {

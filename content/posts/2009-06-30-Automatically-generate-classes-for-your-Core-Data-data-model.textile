@@ -84,7 +84,7 @@ this.
 
 Please feel free to leave any comments if this helped you.
 
-<pre class="big-box"><code class="language-sh">
+<pre><code class="language-sh">
 #!/bin/sh
 #
 # Automatic (re)generation of model classes for all *.xcdatamodel files.
