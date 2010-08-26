@@ -169,7 +169,7 @@ if the merge could be performed with a fast-forward. This avoids losing
 information about the historical existence of a feature branch and groups
 together all commits that together added the feature. Compare:
 
-!/img/2010/01/merge-without-ff.png!
+!(center)/img/2010/01/merge-without-ff.png!
 
 In the latter case, it is impossible to see from the Git history which of the
 commit objects together have implemented a feature—you would have to manually
