@@ -243,8 +243,9 @@ to paste mode, disabling all kinds of smartness and just pasting a whole buffer
 of text.  Then, you can disable paste mode again with another press of @<F2>@.
 Nice and simple.  Compare paste mode disabled vs enabled:
 
-!(left)/img/2010/08/ugly-paste.png!
-!(veryright)/img/2010/08/better-paste.png!
+p(autoalign). 
+!/img/2010/08/ugly-paste.png!
+!/img/2010/08/better-paste.png!
 
 
 h2. Enable the mouse

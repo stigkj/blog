@@ -33,8 +33,9 @@ Drag an NSObject object from the Library into the XIB and call it App Delegate.
 Hit Cmd+6 and make it a subclass of the AppDelegate class we just created.
 Then, hook it up to the delegate property of the File's Owner.
 
-!(veryleft)/img/2009/07/hookup-appdelegate.png!
-!(right)/img/2009/07/choose-delegate.png!
+p(autoalign). 
+!/img/2009/07/hookup-appdelegate.png!
+!/img/2009/07/choose-delegate.png!
 
 p(clear). Drag a new NSWindow to the XIB-file and call it Sheet. Make sure the
 checkbox "Visible At Launch" is deselected or the sheet will not display
@@ -42,8 +43,8 @@ properly at runtime. Open the main window and add a NSButton and a NSTextView
 to it. To the sheet window, drag a NSPredicateEditor and a NSButton. They
 should look somewhat like this now:
 
+p(autoalign). 
 !/img/2009/07/Picture-5.png!
-
 !/img/2009/07/Picture-4.png!
 
 Now, we can hook up the outlets and actions as usual. Hook up the Edit
@@ -51,7 +52,7 @@ Predicate button on the main window to @-openEditor:@ and the OK button on the
 sheet window to closeEditor:. Then hook up the mainWindow and sheet outlets of
 the AppDelegate class to the respective NSWindow objects.
 
-!/img/2009/07/hookup-windows.png!
+!(center)/img/2009/07/hookup-windows.png!
 
 h3. Configure the NSPredicateEditor
 
@@ -73,8 +74,9 @@ Supported here means two things:
 * [*generation*]--when using the editor to create new predicates, adding a new
   rule for this key path will generate a predicate for this key path.
 
-!(veryleft)/img/2009/07/Picture-10.png!
-!(right)/img/2009/07/Picture-13.png!
+p(autoalign). 
+!/img/2009/07/Picture-10.png!
+!/img/2009/07/Picture-13.png!
 
 h4. Gotcha
 

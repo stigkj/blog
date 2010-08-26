@@ -73,7 +73,7 @@ figure), which does the following:
   in your project. If so, your generated machine classes will inherit from
   BWOrderedManagedObject instead of NSManagedObject.
 
-!/img/2009/07/set-user-script.png!
+!(center)/img/2009/07/set-user-script.png!
 
 To add this script to Xcode, open the menu Scripts (the icon) > Edit User
 Scripts... Click the "+"-button on the bottom-left and select "New shell

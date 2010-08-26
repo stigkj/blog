@@ -17,12 +17,27 @@
 				// Have them expand when necessary
 				$('pre').hover(
 					function(event) {
-						$('code', this).stop(true, false).animate({maxWidth: "700px"}, 'fast');
+						$('code', this).stop(true, false).animate({'max-width': "700px"}, 'fast');
 					},
 					function(event) {
-						$('code', this).stop(true, false).delay(500).animate({maxWidth: "440px"}, 'fast');
+						$('code', this).stop(true, false).delay(500).animate({'max-width': "440px"}, 'fast');
 					}
 				);
+			});
+
+			// Once all image's are loaded
+			$(window).load(function () {
+				var MAIN_WIDTH = 600;
+				$('p.autoalign').each(function () {
+					var sum = 0;
+					$('img', this).each(function () {
+						console.log('this image\'s width is: ' + $(this).width());
+						sum = sum + $(this).width();
+					});
+					var l = (MAIN_WIDTH - sum) / 2;
+					console.log('setting width to ' + sum + ', left to ' + l);
+					$(this).css({'width': sum, 'left': l});
+				});
 			});
 		</script>
 		<meta name="generator" content="nanoc 3.1.4"/>
