@@ -112,6 +112,14 @@ compile '/about/' do
 end
 # }}}
 
+compile '/migrations/' do
+	filter :erb
+end
+
+route '/migrations/' do
+	'/migrations.csv'
+end
+
 compile '*' do
 	filter :erb
 	layout 'default'
