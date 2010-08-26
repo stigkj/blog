@@ -106,7 +106,8 @@ end
 
 # About me {{{
 compile '/about/' do
-	filter :kramdown
+	filter :erb
+	filter :redcloth, :hard_breaks => false
 	layout 'default'
 end
 # }}}
