@@ -11,23 +11,25 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.relatize_date.js"></script>
 		<script type="text/javascript">
+			var MAIN_WIDTH = 600;
+			var RESTORE_WIDTH = 520;
+
 			$(document).ready(function () {
 				$('.reldate').relatizeDate();
 
 				// Have them expand when necessary
 				$('pre').hover(
 					function(event) {
-						$('code', this).stop(true, false).animate({'max-width': "700px"}, 'fast');
+						$('code', this).stop(true, false).animate({'max-width': "1000px"}, 'fast');
 					},
 					function(event) {
-						$('code', this).stop(true, false).delay(500).animate({'max-width': "440px"}, 'fast');
+						$('code', this).stop(true, false).delay(500).animate({'max-width': RESTORE_WIDTH + "px"}, 'fast');
 					}
 				);
 			});
 
 			// Once all image's are loaded
 			$(window).load(function () {
-				var MAIN_WIDTH = 600;
 				$('p.autoalign').each(function () {
 					var sum = 0;
 					$('img', this).each(function () {
