@@ -6,41 +6,21 @@
 		<title>nvie.com - <%= @item[:title] %></title>
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="/css/fontface.css" />
 		<link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+		<link rel="stylesheet" type="text/css" href="/css/fontface.css" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.relatize_date.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.reldate').relatizeDate();
 
-				// Top-off the any width above 400px
-				$("pre code").each(function (index) {
-					var w = $(this).width() + 40;
-					if (w > 400) {
-						$(this).parent().css({ width: "400px" });
-   					} else {
-						$(this).parent().css({ width: w + "px" });
-					}
-				});
-
 				// Have them expand when necessary
-				$("pre code").hover(
+				$('pre').hover(
 					function(event) {
-						var should = $(this).width() + 40;
-						var has = $(this).parent().width();
-						console.log("HOVER " + event + " : should: " + should + ", has: " + has);
-						if (should > has) {
-							$(this).parent().stop(true, false).animate({width: should + "px"});
-						}
+						$('code', this).stop(true, false).animate({maxWidth: "700px"}, 'fast');
 					},
 					function(event) {
-						var should = Math.min($(this).width() + 40, 400);
-						var has = $(this).parent().width();
-						console.log("BLUR " + event + " : should: " + should + ", has: " + has);
-						if (has > should) {
-							$(this).parent().stop(true, false).animate({ width: should });
-						}
+						$('code', this).stop(true, false).delay(500).animate({maxWidth: "440px"}, 'fast');
 					}
 				);
 			});

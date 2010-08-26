@@ -1,7 +1,5 @@
 /* @override http://lolcathost/css/style.css */
 
-@import url(/fontface.css);
-
 body {
 	margin: 0;
 	padding: 0;
@@ -267,33 +265,30 @@ span.reldate {
 
 /* @end */
 
-/* <code> is for inline code in paragraphs */
-#main code {
-	font-family: "Droid Sans Mono", Courier New, monospace;
-	font-size: 9pt;
-}
-
 /* allow <code> blocks inside <pre>, but let the <pre> rules dictate the formatting */
-pre code {
-	font: inherit;
+#main pre code {
+	font-family: "Droid Sans Mono", Courier New, monospace !important;
+	font-size: 9pt;
 	margin: 0;
 	padding: 0;
+	display: block;
+	max-width: 440px;
+	overflow: visible;
 }
 
 /* <pre> are (large) code blocks */
 #main pre {
-	font-family: "Droid Sans Mono", Courier New, monospace;
+	font-family: "Droid Sans Mono", Courier New, monospace !important;
 	font-size: 9pt;
 	line-height: 1.4em;
-	
+
 	color: #222;
 	border: 1px solid #f7a600;
 	background-color: #fefef1;
 	
+	display: table;
 	margin: 10px 0 20px 20px;
-	
-	padding: 10px;
-	padding-left: 16px;
+	padding: 10px 16px;
 	
 	border-left-width: 5px;
 	border-left-style: solid;
@@ -308,13 +303,6 @@ pre code {
 
 #main pre.small-font {
 	font-size: 7pt;
-}
-
-#main pre.big-box {
-	width: 600px;
-	box-shadow: 2px 3px 5px #ccc;
-	-moz-box-shadow: 2px 3px 5px #ccc;
-	-webkit-box-shadow: 2px 3px 5px #777;
 }
 
 #main p + pre {
