@@ -188,7 +188,7 @@ h3. Downloading the source
 
 You can download the source code for this tutorial as an Xcode project here.
 
-p=. !http://nvie.com/wp-content/uploads/2009/07/zipfile.png!:/files/PredicateEditorTest.zip<br />
+p=. !/img/zip.png!:/files/PredicateEditorTest.zip<br />
 "PredicateEditorTest.zip":/files/PredicateEditorTest.zip
 
 Have a blast!

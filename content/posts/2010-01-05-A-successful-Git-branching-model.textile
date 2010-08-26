@@ -371,18 +371,10 @@ A high-quality PDF version of the figure is provided here. Go ahead and hang it
 on the wall for quick reference at any time.
 
 +*Update:* And for anyone who requested it: here's the
-"gitflow-model.src.key":/img/2010/01/gitflow-model.src.key_.zip of the main
-diagram image (Apple Keynote).+
+"gitflow-model.src.key":http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip
+of the main diagram image (Apple Keynote).+
 
-<table border="0">
-<tbody>
-<tr>
-<td align="center"><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2010/01/Git-branching-model.pdf');" href="http://nvie.com/wp-content/uploads/2010/01/Git-branching-model.pdf"><img class="alignnone size-full wp-image-383" title="Download PDF" src="http://nvie.com/wp-content/uploads/2010/01/pdf_icon.png" alt="" width="128" height="128" /></a></td>
-</tr>
-<tr>
-<td align="center"><strong><a onclick="javascript:pageTracker._trackPageview('/wp-content/uploads/wp-content/uploads/2010/01/Git-branching-model.pdf');" href="http://nvie.com/wp-content/uploads/2010/01/Git-branching-model.pdf">Git-branching-model.pdf</a></strong></td>
-</tr>
-</tbody>
-</table>
+p=. !/img/pdf.png!:http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf<br />
+"Git-branching-model.pdf":http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf
 
 Feel free to add your comments!
