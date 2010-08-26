@@ -291,10 +291,6 @@ p.autoalign {
 	overflow: hidden;
 }
 
-#main pre.small-font {
-	font-size: 7pt;
-}
-
 #main p + pre {
 	margin-top: -10px;
 }
