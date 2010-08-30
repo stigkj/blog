@@ -33,11 +33,11 @@
 				$('p.autoalign').each(function () {
 					var sum = 0;
 					$('img', this).each(function () {
-						console.log('this image\'s width is: ' + $(this).width());
+						//console.log('this image\'s width is: ' + $(this).width());
 						sum = sum + $(this).width();
 					});
 					var l = (MAIN_WIDTH - sum) / 2;
-					console.log('setting width to ' + sum + ', left to ' + l);
+					//console.log('setting width to ' + sum + ', left to ' + l);
 					$(this).css({'width': sum, 'left': l});
 				});
 			});
