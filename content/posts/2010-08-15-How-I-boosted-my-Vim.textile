@@ -379,21 +379,63 @@ cmap w!! w !sudo tee % >/dev/null
 </code></pre>
 
 
-h2. NERDTree explorer
+h2. Use plugins
 
-Vim's NERDTree plugin is an absolute must for almost any Vim user.  For those
-who don't know it yet, NERDTree is a file browser that allows you to quickly
-open files by navigating onto it and pressing Return.
-
-
-h2. Fugitive (fuGITive?)
-by Tim Pope
-
-Plugin for Git integration.  I *love* the :Gedit command, for quickly editing a
-file in the index.
+Ah, finally.  Arrived at the magical stuff that is Vim plugins.  This is a
+listing of the Vim plugins I depend on most and that really offer added value
+when you work with Vim every day.
 
 
-h2. Python: PEP8, pyflakes and unit test integration
+h3. NERDTree explorer
+
+The NERDTree plugin is an absolute must for almost any Vim user.  For those
+who don't know it yet, NERDTree is a visual file browser that allows you to
+quickly open files by navigating onto it and pressing Return.
+
+You can open the NERDTree using the @:NERDTree@ command, or by using
+@:NERDTreeToggle@.  To close the tree window, use @:NERDTreeClose@.
+
+!/img/2010/08/nerdtree.png!
+
+I have I've mapped some shortcuts to these commands, for quick access to the list:
+
+<pre><code class="language-vim">
+nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
+nmap ,N :NERDTreeClose<CR>
+</code></pre>
+
+You can add quick bookmarks to directories that you often visit (like project
+directories), which works really well.  I have configured the following
+settings, which tells the plugin where the bookmark file is, which extensions
+to ignore, to show hidden files and to quit on open (which I like to have on,
+to have screen real estate for my code):
+
+<pre><code class="language-vim">
+" Store the bookmarks file
+let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
+
+" Don't display these kinds of files
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
+            \ '\.o$', '\.so$', '\.egg$', '^\.git$' ]
+
+let NERDTreeShowBookmarks=1       " Show the bookmarks table on startup
+let NERDTreeShowFiles=1           " Show hidden files, too
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1          " Quit on opening files from the tree
+let NERDTreeHighlightCursorline=1 " Highlight the selected entry in the tree
+let NERDTreeMouseMode=2           " Use a single click to fold/unfold directories
+                                  " and a double click to open files
+</code></pre>
+
+You can add quick bookmarks to directories that you often visit (like project
+directories), which works really well, too.
+
+More documentation available at: the "plugin
+page":http://www.vim.org/scripts/script.php?script_id=1658.
+
+
+h3. Python: PEP8, pyflakes and unit test integration
 
 In essence, Vim is a text editor.  It is not an integrated development
 environment.  However, since it is so extendible, you can come a long way to
