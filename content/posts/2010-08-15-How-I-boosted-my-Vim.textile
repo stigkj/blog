@@ -4,7 +4,7 @@ author: Vincent Driessen
 created_at: 2010-08-15
 modified_at: 2010-08-30
 kind: article
-status: draft
+status: published
 ---
 A few weeks ago, I felt inspired by articles from ["Jeff
 Kreeftmeijer":http://jeffkreeftmeijer.com/2010/stumbling-into-vim/] and ["Armin
@@ -488,8 +488,8 @@ regularly):
   "pastie.org":http://pastie.org.  It even has automatic filetype recognition.
 * "surround":http://www.vim.org/scripts/script.php?script_id=1697: quickly
   change surroundings of a piece of code. For example, to change @dict(mykey)@
-  into @dict[mykey]@, put the cursor on @mykey@, then type @cs(]@ (for "change
-  surroundings from () to []).
+  into @dict[mykey]@, put the cursor on @mykey@, then type @cs(]@ (change
+  surroundings from @()@ to @[]@).
 * "repeat":http://www.vim.org/scripts/script.php?script_id=2136: lets you
   repeat the changing of surroundings using the default Vim repeat operator @.@
   (dot).
@@ -591,6 +591,8 @@ h3. PyUnit
 ...
 
 
+I hope you like these tips.  Please add your comments below if you do, or if
+you have any Vim improvements or tips you'd like to bring on yourself.
 
 
 fn1. Of course, "inefficient" is a relative term when using Vim already.
