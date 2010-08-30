@@ -63,11 +63,7 @@ end
 route '/posts/*/' do
     if debug or @item[:status] == 'published' then
 		parts = @item.name.split('-', 4)
-		if @item[:created_at]
-			'/posts/' + @item[:created_at].year().to_s + '/' + parts[3] + '/index.html'
-		else
-			puts "Skipping " + @item.name
-		end
+		'/posts/' + @item.slug
 	end
 end
 
