@@ -6,6 +6,7 @@ created_at: 2010-01-05
 modified_at: 2010-01-05
 title: A successful Git branching model
 alt_url: /archives/343
+flattr: 53766
 ---
 In this post I present the development model that I've introduced for all of my
 projects (both at work and private) about a year ago, and which has turned out
