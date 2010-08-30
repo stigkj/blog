@@ -26,6 +26,11 @@
 						$('code', this).stop(true, false).delay(500).animate({'max-width': RESTORE_WIDTH + "px"}, 'fast');
 					}
 				);
+
+				$('#footer img').hover(
+					function () { $(this).attr('src', '/img/' + $(this).attr('id') + '1.png'); },
+					function () { $(this).attr('src', '/img/' + $(this).attr('id') + '0.png'); }
+				);
 			});
 
 			// Once all image's are loaded
@@ -85,11 +90,11 @@
 			which is &quot;as designed&quot;.
 			</p>
 			<p>This blog is rendered as intended in
-			<img src="/img/chrome.png" alt="Google Chrome" valign="middle" />, 
-			<img src="/img/safari.png" alt="Safari" valign="middle" />, 
-			<img src="/img/firefox.png" alt="Firefox" valign="middle" />, and
-			<img src="/img/opera.png" alt="Opera" valign="middle" />, but not in
-			<img src="/img/ie.png" alt="Internet Exporer" valign="middle" />
+			<img id="chrome" src="/img/chrome.png" alt="Google Chrome" />,
+			<img id="safari" src="/img/safari.png" alt="Safari" />,
+			<img id="firefox" src="/img/firefox.png" alt="Firefox" />, and
+			<img id="opera" src="/img/opera.png" alt="Opera" />, but not in
+			<img id="ie" src="/img/ie.png" alt="Internet Exporer" />
 			(since it doesn't adopt HTML and CSS standards).
 			</p>
 			</div>

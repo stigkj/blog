@@ -353,6 +353,10 @@ img.bordered {
 	padding: 44px 0 40px 100px;
 }
 
+#footer img {
+	vertical-align: middle;
+}
+
 #footer .boxed {
 	width: 600px;
 }
