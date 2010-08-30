@@ -51,7 +51,8 @@ follow-up actions are required by the user. This output will be polished in
 future versions to improve the
 "UX":http://en.wikipedia.org/wiki/User_experience_design. An example output:
 
-bc. $ gitflow finish feature foo
+<pre><code class="language-console">
+$ gitflow finish feature foo
 Branches 'develop' and 'origin/develop' have diverged.
 And local branch 'develop' is ahead of 'origin/develop'.
 Switched to branch "develop"
@@ -65,6 +66,7 @@ Summary of actions:
 - The feature branch 'foo' was merged into 'develop'
 - Feature branch 'foo' has been removed
 - You are now on branch 'develop'
+</code></pre>
 
 h3. Limitations
 

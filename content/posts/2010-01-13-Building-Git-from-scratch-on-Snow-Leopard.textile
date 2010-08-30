@@ -10,7 +10,8 @@ alt_url: /archives/420
 When you try to build Git "from scratch":http://github.com/git/git on a Snow
 Leopard machine, you may have ran into the following problem:
 
-bc. $ git clone git://github.com/git/git.git
+<pre><code class="language-console">
+$ git clone git://github.com/git/git.git
 Initialized empty Git repository in /Users/nvie/git/.git/
 remote: Counting objects: 111619, done.
 remote: Compressing objects: 100% (28007/28007), done.
@@ -29,6 +30,7 @@ ld: warning: in /opt/local/lib/libexpat.dylib, file is not of required architect
     ...
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
+</code></pre>
 
 Then, you have a pretty big change you are having an old Darwin ports
 ("macports":http://www.macports.org) collection in use which has not yet been
@@ -37,4 +39,6 @@ upgraded to Snow Leopard's new x64 architecture.
 There is, however, a simple solution to this, namely to have the @git@ build
 ignore the Darwin ports, simply by adding the following parameter to the build:
 
-bc. $ make NO_DARWIN_PORTS=1 prefix=/usr/local/bin/git
+<pre><code class="language-console">
+$ make NO_DARWIN_PORTS=1 prefix=/usr/local/bin/git
+</code></pre>
