@@ -147,22 +147,26 @@ h4. Creating a feature branch
 
 When starting work on a new feature, branch off from the @develop@ branch.
 
-bc. $ git checkout -b myfeature develop
+<pre><code class="language-console">
+$ git checkout -b myfeature develop
 Switched to a new branch "myfeature"
+</code></pre>
 
 h4. Incorporating a finished feature on develop
 
 Finished features may be merged into the @develop@ branch definitely add them
 to the upcoming release:
 
-bc. $ git checkout develop
+<pre><code class="language-console">
+$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff myfeature
 Updating ea1b82a..05e9557
 (Summary of changes)
 $ git branch -d myfeature
 Deleted branch myfeature (was 05e9557).
-$ git push origin develop</code></pre>
+$ git push origin develop
+</code></pre>
 
 The @--no-ff@ flag causes the merge to always create a new commit object, even
 if the merge could be performed with a fast-forward. This avoids losing
@@ -217,13 +221,15 @@ decided that this will become version 1.2 (rather than 1.1.6 or 2.0). So we
 branch off and give the release branch a name reflecting the new version
 number:
 
-bc. $ git checkout -b release-1.2 develop
+<pre><code class="language-console">
+$ git checkout -b release-1.2 develop
 Switched to a new branch "release-1.2"
 $ ./bump-version.sh 1.2
 Files modified successfully, version bumped to 1.2.
 $ git commit -a -m "Bumped version number to 1.2"
 [release-1.2 74d9424] Bumped version number to 1.2
 1 files changed, 1 insertions(+), 1 deletions(-)
+</code></pre>
 
 After creating a new branch and switching to it, we bump the version number.
 Here, [@bump-version.sh@] is a fictional shell script that changes some files
@@ -249,12 +255,14 @@ contain these bug fixes.
 
 The first two steps in Git:
 
-bc. $ git checkout master
+<pre><code class="language-console">
+$ git checkout master
 Switched to branch 'master'
 $ git merge --no-ff release-1.2
 Merge made by recursive.
 (Summary of changes)
 $ git tag -a 1.2
+</code></pre>
 
 The release is now done, and tagged for future reference.<br />
 +*Edit:* You might as well want to use the @-s@ or @-u <key>@ flags to sign
@@ -263,11 +271,13 @@ your tag cryptographically.+
 To keep the changes made in the release branch, we need to merge those back
 into @develop@, though. In Git:
 
-bc. $ git checkout develop
+<pre><code class="language-console">
+$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff release-1.2
 Merge made by recursive.
 (Summary of changes)
+</code></pre>
 
 This step may well lead to a merge conflict (probably even, since we have
 changed the version number). If so, fix it and commit.
@@ -305,21 +315,25 @@ version 1.2 is the current production release running live and causing troubles
 due to a severe bug. But changes on @develop@ are yet unstable. We may then
 branch off a hotfix branch and start fixing the problem:
 
-bc. $ git checkout -b hotfix-1.2.1 master
+<pre><code class="language-console">
+$ git checkout -b hotfix-1.2.1 master
 Switched to a new branch "hotfix-1.2.1"
 $ ./bump-version.sh 1.2.1
 Files modified successfully, version bumped to 1.2.1.
 $ git commit -a -m "Bumped version number to 1.2.1"
 [hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
 1 files changed, 1 insertions(+), 1 deletions(-)
+</code></pre>
 
 Don't forget to bump the version number after branching off!
 
 Then, fix the bug and commit the fix in one or more separate commits.
 
-bc. $ git commit -m "Fixed severe production problem"
+<pre><code class="language-console">
+$ git commit -m "Fixed severe production problem"
 [hotfix-1.2.1 abbe5d6] Fixed severe production problem
 5 files changed, 32 insertions(+), 17 deletions(-)
+</code></pre>
 
 *Finishing a hotfix branch*
 
@@ -330,23 +344,27 @@ branches are finished.
 
 First, update @master@ and tag the release.
 
-bc. $ git checkout master
+<pre><code class="language-console">
+$ git checkout master
 Switched to branch 'master'
 $ git merge --no-ff hotfix-1.2.1
 Merge made by recursive.
 (Summary of changes)
 $ git tag -a 1.2.1
+</code></pre>
 
 +*Edit:* You might as well want to use the @-s@ or @-u <key>@ flags to sign
 your tag cryptographically.+
 
 Next, include the bugfix in @develop@, too:
 
-bc. $ git checkout develop
+<pre><code class="language-console">
+$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff hotfix-1.2.1
 Merge made by recursive.
 (Summary of changes)
+</code></pre>
 
 The one exception to the rule here is that, [*when a release branch currently
 exists, the hotfix changes need to be merged into that release branch, instead
@@ -358,8 +376,10 @@ merge the bugfix into @develop@ now already as well.)
 
 Finally, remove the temporary branch:
 
-bc. $ git branch -d hotfix-1.2.1
+<pre><code class="language-console">
+$ git branch -d hotfix-1.2.1
 Deleted branch hotfix-1.2.1 (was abbe5d6).
+</code></pre>
 
 h2. Summary
 
