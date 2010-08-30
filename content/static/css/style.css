@@ -304,32 +304,9 @@ p.autoalign {
 	margin: 0 auto;
 }
 
-#main img.left {
-	float: left;
-	position: relative;
-	right: 100px;
-	margin-right: -95px;
-}
-
-#main img.veryleft {
-	float: left;
-	position: relative;
-	right: 200px;
-	margin-right: -195px;
-}
-
 #main img.right {
 	float: right;
-	position: relative;
-	left: 100px;
-	margin-left: -95px;
-}
-
-#main img.veryright {
-	float: right;
-	position: relative;
-	left: 200px;
-	margin-left: -195px;
+	margin: 0 0 12px 12px;
 }
 
 img.bordered {

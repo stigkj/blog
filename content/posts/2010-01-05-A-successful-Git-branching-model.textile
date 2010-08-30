@@ -14,7 +14,7 @@ I've never really found the time to do so thoroughly, until now. I won't talk
 about any of the projects' details, merely about the branching strategy and
 release management.
 
-!/img/2009/12/Screen-shot-2009-12-24-at-11.32.03.png!
+!(center)/img/2009/12/Screen-shot-2009-12-24-at-11.32.03.png!
 
 It focuses around "Git":http://git-scm.com as the tool for the versioning of
 all of our source code.
@@ -57,7 +57,7 @@ to be the central one (since Git is a DVCS, there is no such thing as a central
 repo at a technical level). We will refer to this repo as @origin@, since this
 name is familiar to all Git users.
 
-!/img/2010/01/centr-decentr.png!
+!(center)/img/2010/01/centr-decentr.png!
 
 Each developer pulls and pushes to origin. But besides the centralized
 push-pull relationships, each developer may also pull changes from other peers
@@ -71,7 +71,7 @@ named @bob@, pointing to Bob's repository, and vice versa.
 
 h2. The main branches
 
-!(right bordered)/img/2009/12/bm002.png!
+!(right)/img/2009/12/bm002.png!
 
 At the core, the development model is greatly inspired by existing models out
 there. The central repo holds two main branches with an infinite lifetime:
@@ -126,7 +126,7 @@ Git branches.
 
 h3. Feature branches
 
-!(right bordered)/img/2009/12/fb.png!
+!(right)/img/2009/12/fb.png!
 
 May branch off from: [@develop@]<br />
 Must merge back into: [@develop@]<br />
@@ -275,12 +275,14 @@ changed the version number). If so, fix it and commit.
 Now we are really done and the release branch may be removed, since we don't
 need it anymore:
 
-bc. $ git branch -d release-1.2
+<pre><code class="language-console">
+$ git branch -d release-1.2
 Deleted branch release-1.2 (was ff452fe).
+</code></pre>
 
 h3. Hotfix branches
 
-!(right bordered)/img/2010/01/hotfix-branches1.png!
+!(right)/img/2010/01/hotfix-branches1.png!
 
 May branch off from: [@master@]<br />
 Must merge back into: [@develop@] and @master@<br />
