@@ -229,12 +229,15 @@ p.autoalign {
 #sidebar h2 {
 	font-family: "Graublau Web", "Lucida Grande", Arial, sans-serif;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 18px;
 	color: #333;
-	letter-spacing: -0.1em;
-	line-height: 18px;
-	margin: 10px 20px 4px;
+	line-height: 20px;
+	margin: 16px 20px 4px;
 	border-bottom: 1px solid #ccc;
+}
+
+#sidebar h2.first {
+	margin-top: 10px;
 }
 
 #sidebar h2 span {
@@ -249,8 +252,6 @@ p.autoalign {
 }
 
 #sidebar ul {
-	/* list-style: none; */
-	/* list-style-image: url(/img/raquo.png); */
 	list-style: none;
 }
 
@@ -270,7 +271,13 @@ p.autoalign {
 	font-size: 8pt;
 	top: -20px;
 	float: right;
+	background: none;
 }
+
+#sidebar li.all:hover {
+	background: none;
+}
+
 
 /* @end */
 
