@@ -92,7 +92,7 @@
 			<h2><span>Recent posts</span></h2>
 			<ul>
 				<li class="all"><a href="/posts/">All posts</a></li>
-				<% all_articles.first(3).each do |p| %>
+				<% all_articles.first($recent_posts_limit).each do |p| %>
 				<li><%= link_to_unless_current(p[:title], p) %></li>
 				<% end %>
 			</ul>
