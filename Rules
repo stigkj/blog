@@ -69,7 +69,7 @@ end
 route '/posts/*/' do
     if $include_drafts or @item[:status] == 'published' then
 		parts = @item.name.split('-', 4)
-		'/posts/' + @item.slug
+		'/posts/' + @item.slug + '/index.html'
 	end
 end
 

@@ -9,7 +9,7 @@ class Nanoc3::Item
 
   def slug
 	parts = self.name.split('-', 4)
-	parts[3].downcase + '/index.html'
+	parts[3].downcase
   end
 end
 
