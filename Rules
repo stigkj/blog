@@ -49,7 +49,7 @@ compile '/posts/' do
 end
 
 compile '/posts/*/' do
-    if @item[:status] == 'published' then
+    if $include_drafts or @item[:status] == 'published' then
 		layout 'post'
 		filter :redcloth, :hard_breaks => false
 		filter :colorize_syntax,
@@ -60,21 +60,21 @@ compile '/posts/*/' do
 end
 
 compile '/posts/*/', :rep => :alt_url do
-    if @item[:status] == 'published' then
+    if $include_drafts or @item[:status] == 'published' then
 		@item[:source_url] = @item.identifier.chop + '/index.html'
 		layout 'redirect'
 	end
 end
 
 route '/posts/*/' do
-    if @item[:status] == 'published' then
+    if $include_drafts or @item[:status] == 'published' then
 		parts = @item.name.split('-', 4)
 		'/posts/' + @item.slug
 	end
 end
 
 route '/posts/*/', :rep => :alt_url do
-    if @item[:status] == 'published' then
+    if $include_drafts or @item[:status] == 'published' then
 		@item[:alt_url]
 	end
 end
