@@ -185,10 +185,6 @@ p.autoalign {
 
 /* @group Sidebar */
 
-#sidebar a {
-	font-size: 12pt;
-}
-
 #sidebar a:link,
 #sidebar a:visited {
 	color: #dc0003;
@@ -227,11 +223,11 @@ p.autoalign {
 #sidebar h2 {
 	font-family: "Graublau Web", "Lucida Grande", Arial, sans-serif;
 	font-weight: bold;
-	font-size: 19px;
+	font-size: 16px;
 	color: #333;
 	letter-spacing: -0.1em;
-	line-height: 20px;
-	margin: 30px 20px 10px 20px;
+	line-height: 18px;
+	margin: 10px 20px 4px;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -239,18 +235,26 @@ p.autoalign {
 	padding-right: 6px;
 }
 
-#sidebar ul {
+#sidebar p, #sidebar ul {
 	font-family: "Graublau Web", "Lucida Grande", Arial, sans-serif;
-	list-style-type: none;
+	display: block;
 	margin-right: 12px;
+	margin-top: 4px;
+	margin-left: 30px;
 }
 
-#sidebar li.all {
-	margin-bottom: 8px;
+#sidebar ul {
+	list-style: none;
+	/* list-style-image: url(/img/safari.png); */
+	/* border:  1px solid red; */
 }
 
 #sidebar li {
-	font-size: 14px;
+	margin-left: -3em;
+}
+
+#sidebar {
+	font-size: 10pt;
 }
 
 /* @end */
