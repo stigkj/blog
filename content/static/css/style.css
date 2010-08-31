@@ -250,12 +250,19 @@ p.autoalign {
 
 #sidebar ul {
 	/* list-style: none; */
-	list-style-image: url(/img/raquo.png);
-	list-style-position: inside;
+	/* list-style-image: url(/img/raquo.png); */
+	list-style: none;
 }
 
 #sidebar li {
-	margin-left: -3em;
+	margin-left: -3.8em;
+	padding-left: 17px;
+	padding-bottom: 4px;
+	background: url(/img/raquo0.png) no-repeat 0 3px;
+}
+
+#sidebar li:hover {
+	background: url(/img/raquo1.png) no-repeat 0 3px;
 }
 
 #sidebar li.all {
