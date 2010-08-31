@@ -270,6 +270,11 @@ p.autoalign {
 	overflow: visible;
 }
 
+#main p code {
+	font-family: "Droid Sans Mono", Courier New, monospace !important;
+	font-size: 9pt;
+}
+
 /* <pre> are (large) code blocks */
 #main pre {
 	font-family: "Droid Sans Mono", Courier New, monospace !important;
