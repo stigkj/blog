@@ -56,7 +56,7 @@ a {
 
 a:link,
 a:visited {
-	color: #0072e4;
+	color: #3270ae;
 }
 
 a:hover {
@@ -187,11 +187,11 @@ p.autoalign {
 
 #sidebar a:link,
 #sidebar a:visited {
-	color: #dc0003;
+	color: #3270ae;
 }
 
 #sidebar a:hover {
-	color: #a60002;
+	color: #5a96c5;
 }
 
 #sidebar {
@@ -224,6 +224,8 @@ p.autoalign {
 
 #sidebar li span.active {
 	font-weight: bold;
+	color: #31587f;
+	/*	color: #547085; */
 }
 
 #sidebar h2 {
@@ -375,7 +377,7 @@ img.bordered {
 }
 
 #footer p {
-	font-family: "Arial", Helvetica, sans-serif;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	font-size: 10pt;
 	margin-top: 8px;
 }
