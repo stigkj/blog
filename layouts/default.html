@@ -64,17 +64,6 @@
 			});
 		</script>
 		<meta name="generator" content="nanoc 3.2.0a2"/>
-		<% if $add_google_analytics then %>
-		<script type="text/javascript"> 
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		</script> 
-		<script type="text/javascript"> 
-		var pageTracker = _gat._getTracker("UA-7780973-1");
-		pageTracker._initData();
-		pageTracker._trackPageview();
-		</script>
-		<% end %>
 	</head>
 	<body>
 		<div id="header">
@@ -132,6 +121,19 @@
 			</p>
 			</div>
 		</div>
+
+		<%# Google analytics tracker %>
+		<% if $add_google_analytics then %>
+		<script type="text/javascript"> 
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script> 
+		<script type="text/javascript"> 
+		var pageTracker = _gat._getTracker("UA-7780973-1");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+		</script>
+		<% end %>
 
 		<%# Disqus comment counter%>
 		<% if $add_disqus_comments then %>
