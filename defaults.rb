@@ -5,3 +5,5 @@ $use_googles_jquery = true
 # Include this
 $add_google_analytics = true
 $add_disqus_comments = true
+$disqus_develop_mode = false
+$disqus_shortname = 'nvie'

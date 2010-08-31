@@ -15,6 +15,10 @@
 		   end %>
 		<script type="text/javascript" src="/js/relatize_date.js"></script>
 		<script type="text/javascript">
+  			<% if $disqus_develop_mode then
+  			%>var disqus_developer = 1;<%
+
+  			end %>
 			var MAIN_WIDTH = 600;
 			var RESTORE_WIDTH = 520;
 
@@ -128,5 +132,17 @@
 			</p>
 			</div>
 		</div>
+
+		<%# Disqus comment counter%>
+		<% if $add_disqus_comments then %>
+		<script type="text/javascript">
+			var disqus_shortname = '<%= $disqus_shortname %>';
+			(function () {
+			var s = document.createElement('script'); s.async = true;
+			s.src = 'http://disqus.com/forums/<%= $disqus_shortname %>/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+			}());
+		</script>
+		<% end %>
 	</body>
 </html>
