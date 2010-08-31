@@ -8,7 +8,11 @@
 		<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/css/syntax.css" />
 		<link rel="stylesheet" type="text/css" href="/css/fontface.css" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<% if $use_googles_jquery then
+		%><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script><%
+	   	   else
+		%><script type="text/javascript" src="/js/jquery.min.js"></script><%
+		   end %>
 		<script type="text/javascript" src="/js/relatize_date.js"></script>
 		<script type="text/javascript">
 			var MAIN_WIDTH = 600;
@@ -55,7 +59,7 @@
 				});
 			});
 		</script>
-		<meta name="generator" content="nanoc 3.1.4"/>
+		<meta name="generator" content="nanoc 3.2.0a2"/>
 	</head>
 	<body>
 		<div id="header">
