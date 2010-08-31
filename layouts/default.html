@@ -27,6 +27,14 @@
 					}
 				);
 
+				$('a').each(function (index) {
+					var external = $(this).attr('href').indexOf('/') != 0;
+					//alert(index + ": " + $(this).attr('href') + ' => ' + external);
+					if (external) {
+						$(this).attr('target', '_blank');
+					}
+				});
+
 				$('#footer img').hover(
 					function () { $(this).attr('src', '/img/' + $(this).attr('id') + '1.png'); },
 					function () { $(this).attr('src', '/img/' + $(this).attr('id') + '0.png'); }
