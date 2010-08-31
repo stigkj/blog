@@ -195,6 +195,8 @@ p.autoalign {
 }
 
 #sidebar {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 10pt;
 	position: absolute;
 
 	top: 140px;
@@ -220,6 +222,10 @@ p.autoalign {
 	-moz-box-shadow: 1px 2px 5px black;
 }
 
+#sidebar li span.active {
+	font-weight: bold;
+}
+
 #sidebar h2 {
 	font-family: "Graublau Web", "Lucida Grande", Arial, sans-serif;
 	font-weight: bold;
@@ -236,7 +242,6 @@ p.autoalign {
 }
 
 #sidebar p, #sidebar ul {
-	font-family: "Graublau Web", "Lucida Grande", Arial, sans-serif;
 	display: block;
 	margin-right: 12px;
 	margin-top: 4px;
@@ -244,35 +249,36 @@ p.autoalign {
 }
 
 #sidebar ul {
-	list-style: none;
-	/* list-style-image: url(/img/safari.png); */
-	/* border:  1px solid red; */
+	/* list-style: none; */
+	list-style-image: url(/img/raquo.png);
+	list-style-position: inside;
 }
 
 #sidebar li {
 	margin-left: -3em;
 }
 
-#sidebar {
-	font-size: 10pt;
+#sidebar li.all {
+	position: relative;
+	font-size: 8pt;
+	top: -20px;
+	float: right;
 }
 
 /* @end */
 
 /* allow <code> blocks inside <pre>, but let the <pre> rules dictate the formatting */
-#main pre code {
+#main code {
 	font-family: "Droid Sans Mono", Courier New, monospace !important;
 	font-size: 9pt;
+}
+
+#main pre code {
 	margin: 0;
 	padding: 0;
 	display: block;
 	max-width: 520px;
 	overflow: visible;
-}
-
-#main p code {
-	font-family: "Droid Sans Mono", Courier New, monospace !important;
-	font-size: 9pt;
 }
 
 /* <pre> are (large) code blocks */
