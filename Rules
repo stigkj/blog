@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+require 'defaults'
+begin
+	require 'settings'
+rescue LoadError => boom
+	# All is fine
+end
+
 # A few helpful tips about the Rules file:
 #
 # * The order of rules is important: for each item, only the first matching
