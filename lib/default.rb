@@ -21,7 +21,7 @@ class Nanoc3::Site
 end
 
 def all_articles
-	if ENV['DRAFTS'] then
+	if $include_drafts then
 		sorted_articles
 	else
 		sorted_articles.select { |a| a[:status] == 'published' }
