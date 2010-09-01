@@ -61,14 +61,21 @@ end
 
 compile '/posts/*/', :rep => :alt_url do
     if $include_drafts or @item[:status] == 'published' then
-		@item[:source_url] = @item.identifier.chop + '/index.html'
+		@item[:source_url] = '/posts/' + @item.slug
+		layout 'redirect'
+	end
+end
+
+# Exactly the same as alt_url, but a second one
+compile '/posts/*/', :rep => :alt_url2 do
+    if $include_drafts or @item[:status] == 'published' then
+		@item[:source_url] = '/posts/' + @item.slug
 		layout 'redirect'
 	end
 end
 
 route '/posts/*/' do
     if $include_drafts or @item[:status] == 'published' then
-		parts = @item.name.split('-', 4)
 		'/posts/' + @item.slug + '/index.html'
 	end
 end
@@ -78,6 +85,14 @@ route '/posts/*/', :rep => :alt_url do
 		@item[:alt_url]
 	end
 end
+
+# Exactly the same as alt_url, but a second one
+route '/posts/*/', :rep => :alt_url2 do
+    if $include_drafts or @item[:status] == 'published' then
+		@item[:alt_url2]
+	end
+end
+
 # }}}
 
 # Blog post imagery {{{
