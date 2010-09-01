@@ -46,8 +46,8 @@
 				});
 
 				$('#footer img').hover(
-					function () { $(this).attr('src', '/img/' + $(this).attr('id') + '1.png'); },
-					function () { $(this).attr('src', '/img/' + $(this).attr('id') + '0.png'); }
+					function () { $(this).attr('src', '/img/' + $(this).attr('id').substr(1) + '1.png'); },
+					function () { $(this).attr('src', '/img/' + $(this).attr('id').substr(1) + '0.png'); }
 				);
 			});
 
@@ -116,11 +116,11 @@
 			which is &quot;as designed&quot;.
 			</p>
 			<p>This blog is rendered as intended in
-			<img id="chrome" src="/img/chrome0.png" alt="Google Chrome" title="Google Chrome" />,
-			<img id="safari" src="/img/safari0.png" alt="Safari" title="Safari" />,
-			<img id="firefox" src="/img/firefox0.png" alt="Firefox" title="Firefox" />, and
-			<img id="opera" src="/img/opera0.png" alt="Opera" title="Opera" />, but not in
-			<img id="ie" src="/img/ie0.png" alt="Internet Exporer" title="...and I couldn't care less about it." />.
+			<img id="_chrome" src="/img/chrome0.png" alt="Google Chrome" title="Google Chrome" />,
+			<img id="_safari" src="/img/safari0.png" alt="Safari" title="Safari" />,
+			<img id="_firefox" src="/img/firefox0.png" alt="Firefox" title="Firefox" />, and
+			<img id="_opera" src="/img/opera0.png" alt="Opera" title="Opera" />, but not in
+			<img id="_ie" src="/img/ie0.png" alt="Internet Exporer" title="...and I couldn't care less about it." />.
 			</p>
 			</div>
 		</div>
