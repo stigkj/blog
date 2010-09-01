@@ -5,9 +5,11 @@
 		<meta charset="utf-8"/>
 		<title>nvie.com - <%= @item[:title] %></title>
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
-		<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="/css/syntax.css" />
 		<link rel="stylesheet" type="text/css" href="/css/fontface.css" />
+		<meta name="viewport" content="width=500, user-scalable=yes, maximum-scale=1.0" />
+		<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" /> 
 		<% if $use_googles_jquery then
 		%><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script><%
 	   	   else
@@ -78,13 +80,13 @@
 		<div id="sidebar">
 			<h2 class="first"><span>Default</span></h2>
 			<ul>
-				<li><%= link_to_unless_current('Home', '/') %></li>
-				<li><%= link_to_unless_current('About me', '/about/') %></li>
+				<li class="menu"><%= link_to_unless_current('Home', '/') %></li>
+				<li class="menu"><%= link_to_unless_current('About me', '/about/') %></li>
 			</ul>
 
 			<h2><span>Recent posts</span></h2>
 			<ul>
-				<li class="all"><a href="/posts/">All posts</a></li>
+				<li class="all menu"><%= link_to_unless_current('All posts', '/posts/') %></a></li>
 				<% all_articles.first($recent_posts_limit).each do |p| %>
 				<li><%= link_to_unless_current(p[:title], p) %></li>
 				<% end %>
@@ -92,6 +94,7 @@
 
 			<h2><span>Projects</span></h2>
 			<ul>
+				<li class="all menu"><%= link_to_unless_current('All projects', '/projects/') %></a></li>
 				<li><a href="http://github.com/nvie/gitflow/">git-flow</a></li>
 				<li><a href="http://github.com/nvie/vim-pep8/">vim-pep8</a></li>
 				<li><a href="http://github.com/nvie/vim-pyflakes/">vim-pyflakes</a></li>
