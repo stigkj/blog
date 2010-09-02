@@ -5,7 +5,8 @@ author: Vincent Driessen
 
 This blog is maintained by Vincent Driessen. I work as a software engineer at
 the IT department of the "Dutch Tax and Customs
-Administration":http://www.belastingdienst.nl by day, but I'm a Cocoa/Python
+Administration":http://www.belastingdienst.nl by day, designing and building
+one of the coolest enterprise deployment tools, but I'm a Python and Cocoa
 developer by night/weekends.
 
 !/img/vincent.png!
