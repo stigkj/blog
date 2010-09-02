@@ -8,7 +8,7 @@ the IT department of the "Dutch Tax and Customs
 Administration":http://www.belastingdienst.nl by day, but I'm a Cocoa/Python
 developer by night/weekends.
 
-!http://nvie.com/wp-content/uploads/2009/02/author2.png!
+!/img/vincent.png!
 
 
 h2. Programming
