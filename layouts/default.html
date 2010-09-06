@@ -49,6 +49,32 @@
 					function () { $(this).attr('src', '/img/' + $(this).attr('id').substr(1) + '1.png'); },
 					function () { $(this).attr('src', '/img/' + $(this).attr('id').substr(1) + '0.png'); }
 				);
+
+				function showhide_rss(id, show) {
+					$(id).stop(true, true)
+						.css({'left': 889, 'z-index': (show) ? 1 : 3})
+						.animate({ 'left': '+=30px' }, 150, function() { $(id).css({'z-index': (show) ? 3 : 1 }); })
+						.animate({ 'left': '-=30px' }, 150);
+				}
+
+				var func_timer = null;
+				$('#rss').hover(
+					function () {
+						if (func_timer != null) {
+							clearTimeout(func_timer);
+							func_timer = null;
+						} else {
+							showhide_rss('#rss', true);
+						}
+					}
+					,
+					function () {
+						func_timer = setTimeout(function () {
+							showhide_rss('#rss', false);
+							func_timer = null;
+						}, 2000);
+					}
+				);
 			});
 
 			// Once all image's are loaded
