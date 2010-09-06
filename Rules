@@ -27,6 +27,8 @@ preprocess do
   		if p[:excerpt] then
 			p[:excerpt] = Nanoc3::Filters::RedCloth.new.run(p[:excerpt], :hard_breaks => false)
 		end
+
+		p[:source_url] = '/posts/' + p.slug
 	end
 end
 
@@ -74,7 +76,6 @@ end
 
 compile '/posts/*/', :rep => :alt_url do
     if $include_drafts or @item[:status] == 'published' then
-		@item[:source_url] = '/posts/' + @item.slug
 		layout 'redirect'
 	end
 end
@@ -82,7 +83,6 @@ end
 # Exactly the same as alt_url, but a second one
 compile '/posts/*/', :rep => :alt_url2 do
     if $include_drafts or @item[:status] == 'published' then
-		@item[:source_url] = '/posts/' + @item.slug
 		layout 'redirect'
 	end
 end
