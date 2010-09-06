@@ -5,6 +5,7 @@ author: Vincent Driessen
 created_at: 2009-06-20
 modified_at: 2009-06-20
 title: NSPredicateEditor tutorial
+image: nspreded-tut.png
 alt_url: /archives/197
 ---
 Cocoa offers a nice visual editor for editing NSPredicate objects templates,

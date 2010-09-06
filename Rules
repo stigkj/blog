@@ -109,6 +109,9 @@ end
 # }}}
 
 # Blog post imagery {{{
+compile '/img/postimgs/*/' do
+end
+
 compile '/img/*/' do
 	# make images fit the blog's size
 	if @item[:extension] == 'png' then

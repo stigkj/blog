@@ -12,8 +12,8 @@ These are the most recent blog posts on this website:
 	end
 %>
 <div class="post-summary">
-<h2><%= link_to(post[:title], post) %></h2>
 <%= img_html %>
+<h2 style="clear: none"><%= link_to(post[:title], post) %></h2>
 <%=post[:excerpt]%>
 </div>
 <% end %>

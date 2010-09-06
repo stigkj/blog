@@ -7,6 +7,7 @@ modified_at: 2010-01-05
 title: A successful Git branching model
 alt_url: /archives/343
 alt_url2: /git-model
+image: git-model.png
 flattr: 53766
 ---
 In this post I present the development model that I've introduced for all of my
