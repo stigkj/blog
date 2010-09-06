@@ -68,6 +68,13 @@ span.reldate {
 	font-size: smaller;
 }
 
+#rss {
+	position: absolute;
+	top: 125px;
+	left: 889px;
+	z-index: 1;
+}
+
 /* @group Main */
 
 #main {
