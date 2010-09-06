@@ -102,6 +102,23 @@ span.reldate {
 	overflow: visible;
 }
 
+#main div.post-summary {
+	border-top: 1px solid #5a96c5;
+	padding: 0;
+	margin: 0;
+	clear: both;
+}
+
+#main img.postimg {
+	float: right;
+
+	box-shadow: 1px 3px 20px #888;
+	-moz-box-shadow: 1px 3px 20px #888;
+	-webkit-box-shadow: 1px 3px 20px #888;
+
+	margin: 20px 0 20px 20px;
+}
+
 #main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
 	clear: both;
 }

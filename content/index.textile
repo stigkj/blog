@@ -4,7 +4,16 @@ title: Recent posts
 
 These are the most recent blog posts on this website:
 
-<% all_articles.each do |post| %>
+<% all_articles.each do |post|
+	img_html = ""
+	if post[:image] then
+		img_html = "<img class=\"postimg\" src=\"/img/postimgs/#{post[:image]}\" alt=\"#{post[:title]}\" />"
+		img_html = link_to(img_html, post)
+	end
+%>
+<div class="post-summary">
 <h2><%= link_to(post[:title], post) %></h2>
+<%= img_html %>
 <%=post[:excerpt]%>
+</div>
 <% end %>
