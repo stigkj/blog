@@ -1,6 +1,6 @@
 #!/bin/sh
 for jsfile in content/static/js/*.js; do
-	if [ "${jsfile%.min.js}" = "$jsfile" ]; then
+	if [ "${jsfile%.min.js}" = "$jsfile" -a "${jsfile%-min.js}" = "$jsfile" ]; then
 		bare=${jsfile%.js}
 		java -jar ~/Downloads/clojure-compiler.jar --js "$jsfile" --js_output_file "$bare-min.js"
 	fi
