@@ -2,7 +2,7 @@
 
 sorted_articles.each do |a|
 	parts = a.name.split('-', 4)
-	new_url = '/posts/' + a.slug + '/index.html'
+	new_url = '/posts/' + a.slug + '/' #+ 'index.html'
 	old_url = a[:alt_url]
     if old_url then
 %><%= old_url %>,<%= new_url %>
