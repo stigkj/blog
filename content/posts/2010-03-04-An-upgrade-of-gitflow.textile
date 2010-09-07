@@ -1,11 +1,15 @@
 ---
-status: published
-kind: article
+title: An upgrade of gitflow
 author: Vincent Driessen
+kind: article
+status: published
 created_at: 2010-03-04
 modified_at: 2010-03-04
-title: An upgrade of gitflow
 alt_url: /archives/492
+excerpt: |
+   Last week, I silently tagged "gitflow
+   0.2":http://github.com/nvie/gitflow/tree/0.2. These are the most important
+   changes since 0.1.
 ---
 Last week, I silently tagged "gitflow
 0.2":http://github.com/nvie/gitflow/tree/0.2. The most important changes since
