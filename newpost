@@ -9,11 +9,11 @@ TITLE=$(echo "$RAW_TITLE" | sed -e 's/[ _]/-/g' -e 's/[^a-zA-Z0-9-]//g' -e 's/-$
 
 echo "---
 title: $RAW_TITLE
+kind: article
 author: Vincent Driessen
 created_at: $YEAR-$MONTH-$DAY
 modified_at: $YEAR-$MONTH-$DAY
-kind: article
-status: draft
+published: false
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula,
 accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus

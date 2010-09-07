@@ -64,7 +64,7 @@ compile '/posts/' do
 end
 
 compile '/posts/*/' do
-    if $include_drafts or @item[:status] == 'published' then
+    if $include_drafts or @item[:published] then
 		layout 'post'
 		filter :redcloth, :hard_breaks => false
 		filter :colorize_syntax,
@@ -75,33 +75,33 @@ compile '/posts/*/' do
 end
 
 compile '/posts/*/', :rep => :alt_url do
-    if $include_drafts or @item[:status] == 'published' then
+    if $include_drafts or @item[:published] then
 		layout 'redirect'
 	end
 end
 
 # Exactly the same as alt_url, but a second one
 compile '/posts/*/', :rep => :alt_url2 do
-    if $include_drafts or @item[:status] == 'published' then
+    if $include_drafts or @item[:published] then
 		layout 'redirect'
 	end
 end
 
 route '/posts/*/' do
-    if $include_drafts or @item[:status] == 'published' then
+    if $include_drafts or @item[:published] then
 		'/posts/' + @item.slug + '/index.html'
 	end
 end
 
 route '/posts/*/', :rep => :alt_url do
-    if $include_drafts or @item[:status] == 'published' then
+    if $include_drafts or @item[:published] then
 		@item[:alt_url]
 	end
 end
 
 # Exactly the same as alt_url, but a second one
 route '/posts/*/', :rep => :alt_url2 do
-    if $include_drafts or @item[:status] == 'published' then
+    if $include_drafts or @item[:published] then
 		@item[:alt_url2]
 	end
 end

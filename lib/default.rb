@@ -21,7 +21,7 @@ class Nanoc3::Item
 
 	title_link = link_to(self[:title], self)
 	post_status = ""
-	post_status = " (#{self[:status]})" unless self[:status] == "published"
+	post_status = " (draft)" unless self[:published]
 	post_date = self[:created_at].strftime('%B %d, %Y')
 	html = "<div class=\"post-summary\">#{img_html}" +
 		   "<h2 style=\"clear: none\">#{title_link}#{post_status}</h2>" +
@@ -43,6 +43,6 @@ def all_articles
 	if $include_drafts then
 		sorted_articles
 	else
-		sorted_articles.select { |a| a[:status] == 'published' }
+		sorted_articles.select { |a| a[:published] }
 	end
 end

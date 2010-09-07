@@ -4,7 +4,7 @@ author: Vincent Driessen
 created_at: 2010-08-14
 modified_at: 2010-08-15
 kind: article
-status: draft
+published: false
 alt_url: /archives/537
 ---
 After reading this "blog

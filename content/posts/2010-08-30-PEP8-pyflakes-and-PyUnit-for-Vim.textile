@@ -5,7 +5,7 @@ image: ppp.png
 created_at: 2010-08-30
 modified_at: 2010-09-07
 kind: article
-status: draft
+published: false
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula,
 accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus

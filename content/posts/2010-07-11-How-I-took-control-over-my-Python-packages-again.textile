@@ -1,5 +1,5 @@
 ---
-status: draft
+published: false
 kind: article
 author: Vincent Driessen
 created_at: 2010-07-11

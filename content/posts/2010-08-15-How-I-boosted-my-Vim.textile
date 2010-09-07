@@ -5,7 +5,7 @@ image: vim-config.png
 created_at: 2010-08-15
 modified_at: 2010-08-31
 kind: article
-status: draft
+published: false
 ---
 A few weeks ago, I felt inspired by articles from ["Jeff
 Kreeftmeijer":http://jeffkreeftmeijer.com/2010/stumbling-into-vim/] and ["Armin

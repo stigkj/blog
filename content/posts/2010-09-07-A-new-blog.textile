@@ -5,7 +5,7 @@ image: old-blog.png
 created_at: 2010-09-07
 modified_at: 2010-09-07
 kind: article
-status: draft
+published: false
 alt_url: /newblog
 ---
 Finally, I've made the move to a static blog engine!  I'm using nanoc now.
