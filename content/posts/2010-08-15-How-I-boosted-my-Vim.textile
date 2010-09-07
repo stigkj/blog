@@ -501,10 +501,3 @@ regularly):
 
 I hope you like these tips.  Please add your comments below if you do, or if
 you have any Vim improvements or tips you'd like to bring on yourself.
-
-
-fn1. Of course, "inefficient" is a relative term when using Vim already.
-
-fn2. Or she. But probably he.
-
-fn3. Which made it hard to notice, even!
