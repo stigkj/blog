@@ -1,8 +1,7 @@
 ---
 title: Recent posts
 ---
-
-These are the most recent blog posts on this website:
+<p>These are the most recent blog posts on this website:</p>
 
 <% all_articles.first($recent_posts_limit).each do |post| %>
 <%= post.html_summary %>

@@ -1,7 +1,7 @@
 ---
 title: All posts
 ---
-These are the most recent blog posts on this website:
+<p>These are the most recent blog posts on this website:</p>
 
 <% all_articles.map { |a| a[:created_at].year }.uniq.each do |year| %>
 <h1 class="year"><%= year %></h1>

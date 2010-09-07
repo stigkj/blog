@@ -130,9 +130,6 @@ end
 # Home page {{{
 compile '/' do
 	filter :erb
-	filter :redcloth, :hard_breaks => false
-	filter :colorize_syntax,
-	       :default_colorizer => :pygmentize
 	layout 'default'
 end
 # }}}
