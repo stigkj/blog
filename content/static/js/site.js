@@ -37,7 +37,7 @@ function open_external_links_in_new_window() {
 }
 
 function hover_browser_icons() {
-	$('#footer img').hover(
+	$('img.browser, img.misfit').hover(
 		function () { $(this).attr('src', '/img/' + $(this).attr('id').substr(1) + '1.png'); },
 		function () { $(this).attr('src', '/img/' + $(this).attr('id').substr(1) + '0.png'); }
 	);
