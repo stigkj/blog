@@ -424,8 +424,20 @@ img.bordered {
 	padding: 44px 0 40px 100px;
 }
 
+#footer a {
+	color: white;
+	text-decoration: none;
+}
+
 #footer img {
 	vertical-align: middle;
+}
+
+#footer img#mini-flattr {
+	vertical-align: baseline;
+	position: relative;
+	top: 1px;
+	margin: 0 0 0 2px;
 }
 
 #footer .boxed {
