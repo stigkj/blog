@@ -43,31 +43,36 @@ function hover_browser_icons() {
 	);
 }
 
-function showhide_rss(id, show) {
+function showhide_ricon(id, show) {
    	var pixels_string = (RSS_LOGO_WIDTH / 2) + "px";
-   	$(id).stop(true, true)
+   	$('#' + id).stop(true, true)
    		.css({'left': RSS_LOGO_LEFT, 'z-index': (show) ? 1 : 3})
-   		.animate({ 'left': '+=' + pixels_string }, 150, function() { $(id).css({'z-index': (show) ? 3 : 1 }); })
+   		.animate({ 'left': '+=' + pixels_string }, 150, function() { $('#' + id).css({'z-index': (show) ? 3 : 1 }); })
    		.animate({ 'left': '-=' + pixels_string }, 150);
 }
 
 function hover_rightbar_icons() {
-	var func_timer = null;
-	$('#rss').hover(
+	var func_timers = {};
+	$('.ricon').hover(
 		function () {
-			if (func_timer != null) {
-				clearTimeout(func_timer);
-				func_timer = null;
+			var id = $(this).attr('id');
+			if (func_timers[id] != null) {
+				clearTimeout(func_timers[id]);
+				delete func_timers[id];
+				console.log('Removed key ' + id + 'from func_timers');
 			} else {
-				showhide_rss('#rss', true);
+				showhide_ricon(id, true);
 			}
 		}
 		,
 		function () {
-			func_timer = setTimeout(function () {
-				showhide_rss('#rss', false);
-				func_timer = null;
+			var id = $(this).attr('id');
+			func_timers[id] = setTimeout(function () {
+				showhide_ricon(id, false);
+				delete func_timers[id];
+				console.log('Removed key ' + id + 'from func_timers');
 			}, 2000);
+			console.log('Added key ' + id + 'to func_timers');
 		}
 	);
 }

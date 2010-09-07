@@ -68,12 +68,23 @@ span.reldate {
 	font-size: smaller;
 }
 
-#rss {
+/* @group Rightbar icons */
+
+img#rss {
 	position: absolute;
-	top: 125px;
 	left: 905px;
 	z-index: 1;
+	top: 125px;
 }
+
+img#twitter {
+	position: absolute;
+	left: 905px;
+	z-index: 1;
+	top: 165px;
+}
+
+/* @end */
 
 /* @group Main */
 
