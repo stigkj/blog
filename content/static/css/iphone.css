@@ -66,6 +66,30 @@ body {
 	max-width: 540px;
 }
 
+/* @group Rightbar icons */
+
+div.ricon {
+	position: absolute;
+	z-index: 3;
+}
+
+div#rss {
+	top: 74px;
+	left: 460px;
+}
+
+div#twitter {
+	top: 74px;
+	left: 500px;
+}
+
+div#flattr {
+	top: 74px;
+	left: 540px;
+}
+
+/* @end */
+
 #footer {
 	display: none;
 }

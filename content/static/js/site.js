@@ -52,6 +52,10 @@ function showhide_ricon(id, show) {
 }
 
 function hover_rightbar_icons() {
+	// Skip this for the iPhone
+	if (/(iphone|ipad)/i.test(navigator.userAgent))
+		return;
+
 	var func_timers = {};
 	$('.ricon').hover(
 		function () {
