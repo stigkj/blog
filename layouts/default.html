@@ -28,8 +28,13 @@
 		<div id="header">
 			<h1><a href="/"><span id="nvie">nvie</span><span id="dot">.</span><span id="ext">com</span></a></h1>
 		</div>
-		<div id="rss"><a href="/feed.xml"><img src="/img/rss.png" alt="Subscribe" title="Subscribe" /></a></div>
-		<div id="twitter"><a href="http://twitter.com/nvie"><img src="/img/twitter.png" alt="Follow me on Twitter" title="Follow me on Twitter" /></a></div>
+		<div class="ricon" id="rss"><a href="/feed.xml"><img src="/img/rss.png" alt="Subscribe" title="Subscribe" /></a></div>
+		<div class="ricon" id="twitter"><a href="http://twitter.com/nvie"><img src="/img/twitter.png" alt="Follow me on Twitter" title="Follow me on Twitter" /></a></div>
+		<% if @item[:flattr] %>
+		<div class="ricon" id="flattr"><a href="https://flattr.com/thing/<%=@item[:flattr]%>/"><img src="/img/flattr.png" alt="Flattr this post" title="Flattr this post" /></a></div>
+		<% else %>
+		<div class="ricon" id="flattr"><a href="https://flattr.com/thing/53766/"><img src="/img/flattr.png" alt="Flattr this post" title="Flattr this post" /></a></div>
+		<% end %>
 		<div id="main">
 			<% if @item[:title] %>
 			<h1><%= @item[:title] %></h1>

@@ -70,18 +70,22 @@ span.reldate {
 
 /* @group Rightbar icons */
 
-img#rss {
+div.ricon {
 	position: absolute;
 	left: 905px;
 	z-index: 1;
+}
+
+div#rss {
 	top: 125px;
 }
 
-img#twitter {
-	position: absolute;
-	left: 905px;
-	z-index: 1;
+div#twitter {
 	top: 165px;
+}
+
+div#flattr {
+	top: 204px;
 }
 
 /* @end */
