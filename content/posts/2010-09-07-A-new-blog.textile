@@ -1,0 +1,43 @@
+---
+title: A whole new blog
+author: Vincent Driessen
+image: old-blog.png
+created_at: 2010-09-07
+modified_at: 2010-09-07
+kind: article
+status: draft
+alt_url: /newblog
+---
+Finally, I've made the move to a static blog engine!  I'm using nanoc now.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula,
+accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus
+consequat nisi. Integer hendrerit lacus sagittis erat fermentum tincidunt. Cras
+vel dui neque. In sagittis commodo luctus. Mauris non metus dolor, ut suscipit
+dui. Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum. Donec
+gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque
+elit in tortor. Mauris gravida, purus at ultrices sollicitudin, purus diam
+dapibus leo, ut eleifend dolor tellus feugiat lacus. Class aptent taciti
+sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam ut
+fringilla dolor. Cras elit tellus, egestas eget congue sit amet, consequat in
+orci.
+
+h2(#flattring). Flattr'ing this
+
+Since a few days, this blog features a Flattr link for anyone who is interested
+in it.  Flattr is a micropayment platform and a great way to show your love and
+appreciation to people that offer free online content.  I was tipped about this
+one by a few readers, and have already received my first Flattrs.  I will put
+the revenue I get out of this into other Flattr-aware blogs or open source
+projects, to stimulate high-quality online content further.
+
+!(center)/img/2010/09/flattr-logo.png!:https://flattr.com
+
+!(right)/img/2010/09/flattr-this-button.png!
+
+This site features a "Flattr this" button, on the "icon sidebar" on the right,
+right under the Twitter button.  The icon uses minimal space, but provides an
+instant link to the Flattr thing for that article, or, in case I consider the
+article too small to be Flattr'able, to the general blog's Flattr thing.  You
+can see where this one links to for the current page by hovering your mouse
+over it.
