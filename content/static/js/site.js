@@ -28,7 +28,7 @@ function expand_pre_boxes() {
 
 function open_external_links_in_new_window() {
 	$('a').each(function (index) {
-		var external = $(this).attr('href').indexOf('/') != 0;
+		var external = $(this).attr('href').indexOf('http') == 0;
 		//alert(index + ": " + $(this).attr('href') + ' => ' + external);
 		if (external) {
 			$(this).attr('target', '_blank');
