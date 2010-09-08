@@ -1,4 +1,4 @@
 <% if @item[:created_at] %>
-p(written-at). Written: <span class="reldate"><%= @item[:created_at].strftime('%B %d, %Y') %></span>
+<p class="written-at">Written: <span class="reldate"><%= @item[:created_at].strftime('%B %d, %Y') %></span></p>
 <% end %>
 <%= yield %>
