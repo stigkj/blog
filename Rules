@@ -72,11 +72,16 @@ end
 
 compile '/posts/*/' do
     if $include_drafts or @item[:published] then
-		layout 'post'
 		filter :redcloth, :hard_breaks => false
 		filter :colorize_syntax,
 			:default_colorizer => :pygmentize,
 			:pygmentize => { :encoding => "utf-8" }
+		snapshot :for_feed
+		layout 'post'
+		#layout 'flattr_notice'
+		if $add_disqus_comments then
+			layout 'disqus_comments'
+		end
 		layout 'default'
 	end
 end
@@ -117,6 +122,24 @@ route '/posts/*/', :rep => :alt_url2 do
 	end
 end
 
+# }}}
+
+# Compiling the RSS feed {{{
+compile '/feed/' do
+	filter :erb
+end
+
+compile '/feed/', :rep => :alt_url do
+	filter :erb
+end
+
+route '/feed/' do
+	'/feed/index.html'
+end
+
+route '/feed/', :rep => :alt_url do
+	'/feed.xml'
+end
 # }}}
 
 # Blog post imagery {{{

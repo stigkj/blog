@@ -1,3 +1,4 @@
+include Nanoc3::Extra::TimeExtensions
 include Nanoc3::Helpers::Blogging
 include Nanoc3::Helpers::Breadcrumbs
 include Nanoc3::Helpers::Capturing

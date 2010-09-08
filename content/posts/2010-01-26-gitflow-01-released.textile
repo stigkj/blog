@@ -4,7 +4,7 @@ kind: article
 author: Vincent Driessen
 published: true
 created_at: 2010-01-26
-modified_at: 2010-01-26
+updated_at: 2010-01-26
 alt_url: /archives/438
 excerpt: |
    After the overwhelming attention and feedback on the "Git branching model

@@ -2,7 +2,7 @@
 title: Why you should boost your Vim, too
 author: Vincent Driessen
 created_at: 2010-08-14
-modified_at: 2010-08-15
+updated_at: 2010-08-15
 kind: article
 published: false
 alt_url: /archives/537

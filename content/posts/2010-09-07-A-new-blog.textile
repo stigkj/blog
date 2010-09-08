@@ -3,7 +3,7 @@ title: A whole new blog
 author: Vincent Driessen
 image: old-blog.png
 created_at: 2010-09-07
-modified_at: 2010-09-07
+updated_at: 2010-09-07
 kind: article
 published: false
 alt_url: /newblog

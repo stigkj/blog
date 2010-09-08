@@ -176,13 +176,21 @@ div#flattr {
 	letter-spacing: -1px;
 }
 
-#main p.written-at {
+#main p.dateline {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
 	font-size: 12px;
 	color: #ccc;
 	text-align: left;
 	padding: 0;
-	margin-top: -23px;
+}
+
+#main p.created_at {
+	margin-top: -16px;
+	margin-bottom: 8px;
+}
+
+#main p.updated_at {
+	margin-top: -12px;
 	margin-bottom: 8px;
 }
 
