@@ -8,18 +8,16 @@ author: Vincent Driessen
 This blog is maintained by Vincent Driessen. I work as a software engineer at
 the IT department of the "Dutch Tax and Customs
 Administration":http://www.belastingdienst.nl by day, designing and building
-one of the coolest enterprise deployment tools, but I'm a Python and Cocoa
-developer by night/weekends.
+one of the coolest enterprise deployment tools, but I'm a
+"Python":http://python.org and
+"Cocoa":http://developer.apple.com/technologies/mac/cocoa.html developer by
+night/weekends.
 
-!/img/vincent.png!
-
-
-h2. Programming
-
-This blog essentially has nothing to do my daily work, but has merely been
+This blog essentially has nothing to do with my daily work, but has merely been
 created to share ideas on anything that I find interesting hobby-wise.  I'm an
-"Apple":http://www.apple.com fan and I like getting to know new frameworks for
-programming the Mac and the "iPhone":http://www.apple.com/iphone/ platforms.
+Apple fan and I like getting to know new frameworks for programming the Mac,
+"iPad":http://www.apple.com/ipad and the "iPhone":http://www.apple.com/iphone/
+platforms.
 
 
 h2. Contact
