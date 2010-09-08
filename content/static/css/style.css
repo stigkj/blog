@@ -389,6 +389,12 @@ p.autoalign {
 	margin-top: -10px;
 }
 
+img.shadow {
+	box-shadow: 2px 3px 5px #aaa;
+	-moz-box-shadow: 2px 3px 5px #aaa;
+	-webkit-box-shadow: 2px 3px 5px #aaa;
+}
+
 #main img {
 	max-width: 580px;
 }
