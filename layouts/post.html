@@ -1,4 +1,7 @@
-<% if @item[:created_at] %>
-<p class="written-at">Written: <span class="reldate"><%= @item[:created_at].strftime('%B %d, %Y') %></span></p>
+<% if @item[:created_at] then %>
+<p class="created_at dateline">Published: <span class="reldate"><%= @item[:created_at].strftime('%B %d, %Y') %></span></p>
+<% end %>
+<% if @item[:updated_at] and @item[:updated_at] != @item[:created_at] then %>
+<p class="updated_at dateline">Last updated: <span class="reldate"><%= @item[:updated_at].strftime('%B %d, %Y') %></span></p>
 <% end %>
 <%= yield %>
