@@ -22,6 +22,8 @@ programming the Mac and the "iPhone":http://www.apple.com/iphone/ platforms.
 
 h2. Contact
 
+You can always e-mail me at <a href="me at this domain" class="email">me at this domain</a>.
+
 You can find my public GPG below. I mainly use it to tag my public "Git
 repos":http://github.com/nvie, not for encrypting mail traffic.  You can use
 this key to verify my tags.

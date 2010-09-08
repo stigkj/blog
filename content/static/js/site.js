@@ -94,6 +94,15 @@ function auto_align_images() {
 	});
 }
 
+function resolve_anti_spam_link() {
+	$('a.email').each(function(i) {
+		var text = $(this).text();
+		var address = text.replace(" at ", "@").replace("this domain", "nvie.com");
+		$(this).attr('href', 'mailto:' + address);
+		$(this).text(address);
+	});
+}
+
 // Once the DOM is fully loaded
 $(document).ready(function () {
 	relatize_dates();
@@ -101,6 +110,7 @@ $(document).ready(function () {
 	open_external_links_in_new_window();
 	hover_browser_icons();
 	hover_rightbar_icons();
+	resolve_anti_spam_link();
 });
 
 // Once all image's are loaded
