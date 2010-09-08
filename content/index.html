@@ -6,3 +6,7 @@ title: Recent posts
 <% all_articles.first($recent_posts_limit).each do |post| %>
 <%= post.html_summary %>
 <% end %>
+
+<form action="/posts/" method="get">
+<input type="submit" id="allposts" class="button" value="All posts" />
+</form>
