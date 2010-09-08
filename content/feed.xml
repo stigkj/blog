@@ -1,4 +1,4 @@
-<%= atom_feed :title => "Kutterdekut",
+<%= atom_feed :title => "nvie.com",
               :author_name => "Vincent Driessen",
 			  :author_uri => "http://nvie.com/about"
 %>
