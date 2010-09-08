@@ -1,4 +1,13 @@
-<%= atom_feed :title => "nvie.com",
-              :author_name => "Vincent Driessen",
-			  :author_uri => "http://nvie.com/about"
+<%=
+#
+# TODO items:
+#
+# - Remove the limit of 5 posts (*all* posts must be included)
+# - NO draft posts should be included!
+# - Make sure the *compiled* content is included, not the Textile content
+#
+
+atom_feed :title => "nvie.com",
+   :author_name => "Vincent Driessen",
+   :author_uri => "http://nvie.com/about"
 %>
