@@ -6,8 +6,19 @@
 # - NO draft posts should be included!
 # - Make sure the *compiled* content is included, not the Textile content
 #
+# Read this carefully:
+# http://nanoc.stoneship.org/docs/api/3.1/Nanoc3/Helpers/Blogging.html
+#
 
-atom_feed :title => "nvie.com",
-   :author_name => "Vincent Driessen",
-   :author_uri => "http://nvie.com/about"
+params = {
+	:title => "nvie.com", 
+	:author_name => "Vincent Driessen",
+	:author_uri => "http://nvie.com/about",
+	:articles => all_articles,
+	:limit => 9999999,
+	:content_proc => lambda { |article| article.compiled_content(:snapshot => :for_feed) },
+	:excerpt_proc => lambda { |article| article[:excerpt] }
+}
+
+atom_feed(params)
 %>
