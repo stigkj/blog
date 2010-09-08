@@ -38,6 +38,13 @@ compile '/static/css/*/' do
 	filter :rainpress
 end
 
+compile '/static/js/*/' do
+	# minify JS :)
+	if $use_minified_js then
+		filter :shellcmd, :cmd => "java -jar js-compiler.jar"
+	end
+end
+
 compile '/static/*/' do
 	# don't compile
 end
