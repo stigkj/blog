@@ -4,6 +4,6 @@ map!  <buffer> <F5> <Esc>:w<CR>:!rake<CR>
 autocmd BufWritePre,FileWritePre *posts/*.textile call LastMod()
 fun! LastMod()
     norm mz
-    execute ":%s/^modified_at: .*$/modified_at: " . strftime("%Y-%m-%d") . "/"
+    execute ":%s/^updated_at: .*$/updated_at: " . strftime("%Y-%m-%d") . "/"
     norm 'z
 endfun
