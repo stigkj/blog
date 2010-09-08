@@ -95,14 +95,18 @@ end
 
 route '/posts/*/', :rep => :alt_url do
     if $include_drafts or @item[:published] then
-		@item[:alt_url]
+		# We can safely add "/index.html", since we use Apache, so
+		# both "/foo" and "/foo/" will work!
+		@item[:alt_url] + "/index.html" if @item[:alt_url]
 	end
 end
 
 # Exactly the same as alt_url, but a second one
 route '/posts/*/', :rep => :alt_url2 do
     if $include_drafts or @item[:published] then
-		@item[:alt_url2]
+		# We can safely add "/index.html", since we use Apache, so
+		# both "/foo" and "/foo/" will work!
+		@item[:alt_url2] + "/index.html" if @item[:alt_url2]
 	end
 end
 
