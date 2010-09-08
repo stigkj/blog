@@ -124,8 +124,16 @@ compile '/feed/' do
 	filter :erb
 end
 
+compile '/feed/', :rep => :alt_url do
+	filter :erb
+end
+
 route '/feed/' do
-	'/feed'
+	'/feed/index.html'
+end
+
+route '/feed/', :rep => :alt_url do
+	'/feed.xml'
 end
 # }}}
 
