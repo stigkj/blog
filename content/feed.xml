@@ -1,3 +1,6 @@
+---
+feed_url: http://feeds.feedburner.com/nvie
+---
 <%=
 #
 # TODO items:
