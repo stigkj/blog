@@ -2,24 +2,3 @@
 p(written-at). Written: <span class="reldate"><%= @item[:created_at].strftime('%B %d, %Y') %></span>
 <% end %>
 <%= yield %>
-
-<% if @item[:flattr] %>
-<hr />
-<p>If you liked this article, please consider Flattr'ing this.</p>
-<p><a href="http://flattr.com/thing/<%= @item[:flattr] %>" target="_blank">
-	<img src="http://api.flattr.com/button/button-compact-static-100x17.png" alt="Flattr this" title="Flattr this" border="0" /></a>
-</p>
-<% end %>
-
-<% if $add_disqus_comments then %>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_identifier = '<%= @item.slug %>';
-  (function() {
-   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-   dsq.src = 'http://<%= $disqus_shortname %>.disqus.com/embed.js';
-   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=<%= $disqus_shortname %>">comments powered by Disqus.</a></noscript>
-<% end %>
