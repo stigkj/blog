@@ -23,8 +23,9 @@ class Nanoc3::Item
 	post_status = ""
 	post_status = " (draft)" unless self[:published]
 	post_date = self[:created_at].strftime('%B %d, %Y')
-	html = "<div class=\"post-summary\">#{img_html}" +
+	html = "<div class=\"post-summary\">" +
 		   "<h2 style=\"clear: none\">#{title_link}#{post_status}</h2>" +
+		   "#{img_html}" +
 	       "<p class=\"postdate\"><span class=\"reldate\">#{post_date}</span></p>" +
 	       "#{self[:excerpt]}" +
 	       "</div>"
