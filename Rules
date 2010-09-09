@@ -67,6 +67,7 @@ end
 # Compiling blog posts {{{
 compile '/posts/' do
 	filter :erb
+	layout 'item'
 	layout 'default'
 end
 
@@ -164,6 +165,7 @@ end
 # Home page {{{
 compile '/' do
 	filter :erb
+	layout 'item'
 	layout 'default'
 end
 # }}}
@@ -172,6 +174,7 @@ end
 compile '/about/' do
 	filter :erb
 	filter :redcloth, :hard_breaks => false
+	layout 'item'
 	layout 'default'
 end
 # }}}
@@ -186,6 +189,7 @@ end
 
 compile '*' do
 	filter :erb
+	layout 'item'
 	layout 'default'
 end
 

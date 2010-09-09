@@ -38,9 +38,6 @@
 		<div class="ricon" id="flattr"><a href="https://flattr.com/thing/53766/nvie-com"><img src="/img/flattr.png" alt="Flattr this blog" title="Flattr this blog" /></a></div>
 		<% end %>
 		<div id="main">
-			<% if @item[:title] %>
-			<h1><%= @item[:title] %></h1>
-			<% end %>
 			<%= yield %>
 		</div>
 		<div id="sidebar">
