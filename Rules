@@ -35,6 +35,7 @@ end
 # Static content (simply copied into output) {{{
 compile '/static/css/*/' do
 	# compress CSS :)
+	filter :less
 	filter :rainpress
 end
 
@@ -51,6 +52,11 @@ end
 
 compile '/files/*/' do
 	# don't compile
+end
+
+route '/static/css/*/' do
+	path = @item.identifier.chop.gsub(/^\/static/, '')
+	path + '.css'
 end
 
 route '/static/*/' do
