@@ -71,7 +71,6 @@ a:hover {
 
 span.reldate {
 	color: #888;
-	font-size: smaller;
 }
 
 /* @group Rightbar icons */
@@ -123,10 +122,6 @@ div#flattr {
 	border-top: 1px solid #5a96c5;
 }
 
-#main div.post-summary p.postdate {
-	margin: 0;
-}
-
 #main img.postimg {
 	float: right;
 
@@ -136,6 +131,20 @@ div#flattr {
 
 	margin: 26px 0 20px 20px;
 }
+
+/* @group Dateline */
+
+#main div.post-summary p.created_at {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#main div.post-summary p.updated_at {
+	margin-top: -4px;
+	margin-bottom: 8px;
+}
+
+/* @end */
 
 /* @end */
 
@@ -176,6 +185,8 @@ div#flattr {
 	letter-spacing: -1px;
 }
 
+/* @group Dateline */
+
 #main p.dateline {
 	font-family: "Graublau Web", Georgia, Arial, sans-serif;
 	font-size: 12px;
@@ -193,6 +204,8 @@ div#flattr {
 	margin-top: -12px;
 	margin-bottom: 8px;
 }
+
+/* @end */
 
 #main p sup.footnote {
 	margin-top: 6px;
