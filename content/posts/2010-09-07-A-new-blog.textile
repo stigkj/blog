@@ -3,24 +3,93 @@ title: A whole new blog
 author: Vincent Driessen
 image: old-blog.png
 created_at: 2010-09-07
-updated_at: 2010-09-07
+updated_at: 2010-09-10
 kind: article
 published: false
 alt_url: /newblog
 ---
-Finally, I've made the move to a static blog engine!  I'm using nanoc now.
+Finally, I've made the move to a static blog engine!  I'm using
+"nanoc":http://nanoc.stoneship.org/ now. nanoc is a very flexible and
+customizable static site generator, written by "Denis
+Defreyne":http://twitter.com/ddfreyne.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula,
-accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus
-consequat nisi. Integer hendrerit lacus sagittis erat fermentum tincidunt. Cras
-vel dui neque. In sagittis commodo luctus. Mauris non metus dolor, ut suscipit
-dui. Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum. Donec
-gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque
-elit in tortor. Mauris gravida, purus at ultrices sollicitudin, purus diam
-dapibus leo, ut eleifend dolor tellus feugiat lacus. Class aptent taciti
-sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam ut
-fringilla dolor. Cras elit tellus, egestas eget congue sit amet, consequat in
-orci.
+As with all static site generators, nanoc lets you write your source files in a
+simple markup language.  Out of the box, nanoc offers you the choice of using
+Markdown, Textile, reStructuredText or plain HTML (with or without embedded
+Ruby).  In fact, nanoc is nothing more than a generator honoring a @Rules@-file
+that tells it how to compile, layout and route the site's items.
+
+An "item" is a file on your website.  It can be any kind of file, like a web
+site page (HTML), an image, a JavaScript or CSS file or an RSS feed.  During
+the compile phase, you specify which sequential actions should be performed on
+the _content_ of that item.  These actions are called *filters*.  Some examples
+of filters are an embedded ruby filter, a
+"Textile-to-HTML":http://redcloth.org/ converter, a "less":http://lesscss.org/
+compiler, or minify "CSS":http://code.google.com/p/rainpress/.  Filters can be
+chained, for example:
+
+<pre><code class="language-ruby">
+compile '/static/css/*/' do
+    # compress CSS :)
+    filter :less
+    filter :rainpress
+end
+</code></pre>
+
+Which turns less files into compressed CSS:
+
+!/img/2010/09/less2css.png!
+
+Any filter you can imagine, nanoc can handle.
+And nanoc comes with a lot of filters
+"out of the box":http://nanoc.stoneship.org/docs/4-basic-concepts/#filters.
+
+After compiling (i.e. transforming content through filters) comes the routing
+of the items.  This is a means of assigning file names to compiled content.
+nanoc calculates default files names from the input, but you can use this to
+influence the default naming.  A special case is where you set the route to
+@Nil@ which doesn't write the file at all.  I use this to test draft posts
+locally, like this (oh, did I mention the @Rules@ file is 100% Ruby?):
+
+<pre><code class="language-ruby">
+route '/posts/*/' do
+    if $include_drafts or @item[:published] then
+        '/posts/' + @item.slug + '/index.html'
+    end
+end
+</code></pre>
+
+Finally, layouts are applied.  Layouts are kind of templates that can be used
+to "frame" the item's contents.  For example, the blog posts are compiled into
+(partial) HTML, and the layout rules put the site's container HTML around it,
+adding CSS styling, jQuery scripts, the header, sidebars and footer and Google
+Analytics tracking (these go for each page).  There's a special extra layout
+rule for blog post pages, which additionally adds Disqus comments.
+
+Each build of this blog also automatically:
+
+* Convert "Textile":http://redcloth.org/ content to HTML
+* Highlights syntax using "pygments":http://pygments.org/
+* Convert "less":http://lesscss.org/ to CSS
+* Minifies "CSS":http://code.google.com/p/rainpress/
+* Minifies "JavaScript":http://code.google.com/closure/compiler/
+* "Downsize":http://www.graphicsmagick.org/convert.html source images
+* Generate redirect pages for alternative (old-style) URL's (for user that have
+  existing bookmarks to old Wordpress URL's)
+* Generate a new blog post
+  "RSS feed":http://nanoc.stoneship.org/docs/api/3.1/Nanoc3/Helpers/Blogging.html
+
+In short, now nanoc is fully configured to my wishes, I can simply focus on
+writing *blog content*, without preparing image content (it is done
+automatically), and without having to choose between either a "WYSIWYG" editor
+or writing HTML manually.  And I can do it in an offline fashion, too, which
+was one my main frustrations about Wordpress.
+
+So I'm happy.
+
+Oh, and since I converted my blog, I also created a new look and feel.  I hope
+you like it.
+
 
 h2(#flattring). Flattr'ing this
 
