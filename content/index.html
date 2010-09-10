@@ -1,11 +1,16 @@
 ---
 title: Recent posts
 ---
-<p>These are the most recent blog posts on this website:</p>
-
-<% all_articles.first($recent_posts_limit).each do |post| %>
-<%= post.html_summary %>
-<% end %>
+<%
+html = ""
+first = true
+all_articles.first($recent_posts_limit).each do |post|
+   	html += "<hr />" if not first
+   	html += post.html_summary
+   	first = false
+end
+%>
+<%=html%>
 
 <form action="/posts/" method="get">
 <input type="submit" id="moreposts" class="button" value="All posts" />
