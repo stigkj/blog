@@ -19,6 +19,8 @@ Markdown, Textile, reStructuredText or plain HTML (with or without embedded
 Ruby).  In fact, nanoc is nothing more than a generator honoring a @Rules@-file
 that tells it how to compile, layout and route the site's items.
 
+h2. Compiling items
+
 An "item" is a file on your website.  It can be any kind of file, like a web
 site page (HTML), an image, a JavaScript or CSS file or an RSS feed.  During
 the compile phase, you specify which sequential actions should be performed on
@@ -36,13 +38,16 @@ compile '/static/css/*/' do
 end
 </code></pre>
 
-Which turns less files into compressed CSS:
+Which turns @.less@-files into compressed CSS:
 
 !/img/2010/09/less2css.png!
 
-Any filter you can imagine, nanoc can handle.
-And nanoc comes with a lot of filters
-"out of the box":http://nanoc.stoneship.org/docs/4-basic-concepts/#filters.
+Any filter you can imagine, nanoc can handle. nanoc comes with a lot of filters
+"out of the box":http://nanoc.stoneship.org/docs/4-basic-concepts/#filters, but
+even "writing your own":http://nanoc.stoneship.org/docs/5-advanced-concepts/#writing-filters
+filters really is a piece of cake.
+
+h2. Routing items
 
 After compiling (i.e. transforming content through filters) comes the routing
 of the items.  This is a means of assigning file names to compiled content.
@@ -59,36 +64,41 @@ route '/posts/*/' do
 end
 </code></pre>
 
+h2. Laying out items
+
 Finally, layouts are applied.  Layouts are kind of templates that can be used
-to "frame" the item's contents.  For example, the blog posts are compiled into
+to "frame" the item's contents.  This is typically used for HTML files only,
+Obut isn't limited to it.  For example, the blog posts are compiled into
 (partial) HTML, and the layout rules put the site's container HTML around it,
 adding CSS styling, jQuery scripts, the header, sidebars and footer and Google
 Analytics tracking (these go for each page).  There's a special extra layout
 rule for blog post pages, which additionally adds Disqus comments.
 
+h2. Summary
+
 Each build of this blog also automatically:
 
-* Convert "Textile":http://redcloth.org/ content to HTML
+* Converts "Textile":http://redcloth.org/ content to HTML
 * Highlights syntax using "pygments":http://pygments.org/
-* Convert "less":http://lesscss.org/ to CSS
+* Converts "less":http://lesscss.org/ to CSS
 * Minifies "CSS":http://code.google.com/p/rainpress/
 * Minifies "JavaScript":http://code.google.com/closure/compiler/
-* "Downsize":http://www.graphicsmagick.org/convert.html source images
-* Generate redirect pages for alternative (old-style) URL's (for user that have
+* "Downsizes":http://www.graphicsmagick.org/convert.html source images
+* Generates redirect pages for alternative (old-style) URL's (for user that have
   existing bookmarks to old Wordpress URL's)
-* Generate a new blog post
+* Generates a new blog post
   "RSS feed":http://nanoc.stoneship.org/docs/api/3.1/Nanoc3/Helpers/Blogging.html
 
 In short, now nanoc is fully configured to my wishes, I can simply focus on
 writing *blog content*, without preparing image content (it is done
 automatically), and without having to choose between either a "WYSIWYG" editor
 or writing HTML manually.  And I can do it in an offline fashion, too, which
-was one my main frustrations about Wordpress.
+was one my main complaints about Wordpress.
 
 So I'm happy.
 
-Oh, and since I converted my blog, I also created a new look and feel.  I hope
-you like it.
+Oh, and since I converted my blog, I also created a new look and feel for it.
+I hope you like it.
 
 
 h2(#flattring). Flattr'ing this
