@@ -199,13 +199,15 @@ compile '/flattring/' do
 end
 # }}}
 
-compile '/migrations/' do
+# {{{ .htaccess File
+compile '/htaccess/' do
 	filter :erb
 end
 
-route '/migrations/' do
-	'/migrations.csv'
+route '/htaccess/' do
+	'/.htaccess'
 end
+# }}}
 
 compile '*' do
 	filter :erb
