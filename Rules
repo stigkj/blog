@@ -115,7 +115,7 @@ compile '/feed/' do
 end
 
 route '/feed/' do
-	'/feed.xml'
+	'/private_feed.xml'
 end
 # }}}
 
