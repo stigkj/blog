@@ -2,10 +2,10 @@
 title: A whole new blog
 author: Vincent Driessen
 image: old-blog.png
-created_at: 2010-09-07
-updated_at: 2010-09-10
+created_at: 2010-09-12
+updated_at: 2010-09-12
 kind: article
-published: false
+published: true
 alt_url: /newblog
 ---
 Finally, I've made the move to a static blog engine!  I'm using
