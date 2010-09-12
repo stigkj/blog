@@ -42,7 +42,7 @@ end
 compile '/static/js/*/' do
 	# minify JS :)
 	if $use_minified_js then
-		filter :shellcmd, "java -jar js-compiler.jar"
+		filter :shellcmd, "java -jar scripts/js-compiler.jar"
 	end
 end
 
