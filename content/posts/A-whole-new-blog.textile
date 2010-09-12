@@ -9,8 +9,8 @@ published: true
 alt_url: /newblog
 ---
 Finally, I've made the move to a static blog engine!  I'm using
-"nanoc":http://nanoc.stoneship.org/ now. nanoc is a very flexible and
-customizable static site generator, written by "Denis
+"nanoc":http://nanoc.stoneship.org/ now (bye bye WordPress). nanoc is a very
+flexible and customizable static site generator, written by "Denis
 Defreyne":http://twitter.com/ddfreyne.
 
 As with all static site generators, nanoc lets you write your source files in a
@@ -85,7 +85,7 @@ Each build of this blog also automatically:
 * Minifies "JavaScript":http://code.google.com/closure/compiler/
 * "Downsizes":http://www.graphicsmagick.org/convert.html source images
 * Generates redirect pages for alternative (old-style) URL's (for user that have
-  existing bookmarks to old Wordpress URL's)
+  existing bookmarks to old WordPress URL's)
 * Generates a new blog post
   "RSS feed":http://nanoc.stoneship.org/docs/api/3.1/Nanoc3/Helpers/Blogging.html
 
@@ -93,7 +93,7 @@ In short, now nanoc is fully configured to my wishes, I can simply focus on
 writing *blog content*, without preparing image content (it is done
 automatically), and without having to choose between either a "WYSIWYG" editor
 or writing HTML manually.  And I can do it in an offline fashion, too, which
-was one my main complaints about Wordpress.
+was one my main complaints about WordPress.
 
 So I'm happy.
 
