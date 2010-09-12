@@ -1,7 +1,12 @@
 <%=yield%>
 <div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_identifier = '<%= @item.slug %>';
+<script type="text/javascript"><%
+  disqus_id = (@item[:disqus_id]) ? @item[:disqus_id] : @item.slug
+  %>
+  var disqus_identifier = '<%= disqus_id %>';
+  var disqus_url = '<%= @config[:base_url] + '/posts/' + @item.slug %>';
+  var disqus_shortname = '<%= $disqus_shortname %>';
+  var disqus_title = "<%= @item[:title] %>";
   (function() {
    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
    dsq.src = 'http://<%= $disqus_shortname %>.disqus.com/embed.js';

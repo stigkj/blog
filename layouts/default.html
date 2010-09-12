@@ -102,9 +102,8 @@
 		<% end %>
 
 		<%# Disqus comment counter%>
-		<% if $add_disqus_comments then %>
+		<% if @item[:kind] == 'article' and $add_disqus_comments then %>
 		<script type="text/javascript">
-			var disqus_shortname = '<%= $disqus_shortname %>';
 			(function () {
 			var s = document.createElement('script'); s.async = true;
 			s.src = 'http://disqus.com/forums/<%= $disqus_shortname %>/count.js';
