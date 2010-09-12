@@ -63,7 +63,7 @@ function hover_rightbar_icons() {
 			if (func_timers[id] != null) {
 				clearTimeout(func_timers[id]);
 				delete func_timers[id];
-				console.log('Removed key ' + id + 'from func_timers');
+				//console.log('Removed key ' + id + 'from func_timers');
 			} else {
 				showhide_ricon(id, true);
 			}
@@ -74,9 +74,9 @@ function hover_rightbar_icons() {
 			func_timers[id] = setTimeout(function () {
 				showhide_ricon(id, false);
 				delete func_timers[id];
-				console.log('Removed key ' + id + 'from func_timers');
+				//console.log('Removed key ' + id + 'from func_timers');
 			}, 2000);
-			console.log('Added key ' + id + 'to func_timers');
+			//console.log('Added key ' + id + 'to func_timers');
 		}
 	);
 }
