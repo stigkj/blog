@@ -8,8 +8,7 @@ class Nanoc3::Item
   end
 
   def slug
-	parts = self.name.split('-', 4)
-	parts[3].downcase
+	self.name.downcase
   end
 
   def html_dateline
