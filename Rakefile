@@ -16,3 +16,7 @@ task :deploy => 'deploy:rsync'
 task :compile do
 	system('nanoc', 'compile')
 end
+
+task :ping do
+	system('scripts/ping.sh')
+end
