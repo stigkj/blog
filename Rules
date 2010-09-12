@@ -95,7 +95,6 @@ end
 compile '/posts/*/', :rep => :rss_content do
 		filter :redcloth, :hard_breaks => false
 		filter :absolutify  # make links/images all absolute for RSS readers
-		snapshot :for_feed
 end
 
 route '/posts/*/', :rep => :rss_content do
