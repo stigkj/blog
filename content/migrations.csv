@@ -5,7 +5,7 @@ sorted_articles.each do |a|
 	new_url = '/posts/' + a.slug + '/' #+ 'index.html'
 	old_url = a[:alt_url]
     if old_url then
-%><%= old_url %>,<%= new_url %>
+%><%=@config[:base_url]%><%= old_url %>,<%=@config[:base_url]%><%= new_url %>
 <%
 	end
 end
