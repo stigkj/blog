@@ -76,7 +76,7 @@ h2. Laying out items
 
 Finally, layouts are applied.  Layouts are kind of templates that can be used
 to "frame" the item's contents.  This is typically used for HTML files only,
-Obut isn't limited to it.  For example, the blog posts are compiled into
+but isn't limited to it.  For example, the blog posts are compiled into
 (partial) HTML, and the layout rules put the site's container HTML around it,
 adding CSS styling, jQuery scripts, the header, sidebars and footer and Google
 Analytics tracking (these go for each page).  There's a special extra layout
