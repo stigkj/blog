@@ -68,7 +68,7 @@
     distanceOfTimeInWords: function(fromTime, toTime, includeTime) {
       var delta = parseInt((toTime.getTime() - fromTime.getTime()) / 1000);
       if (delta < (24*60*60)) {
-          return 'less than a day ago'
+          return 'today'
       } else if (delta < (48*60*60)) {
           return 'yesterday'
       } else {
