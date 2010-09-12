@@ -1,0 +1,8 @@
+<%
+output = ''
+all_articles.select { |a| a[:alt_url] }.each do |a|
+	output += "Redirect 301 #{a[:alt_url]} #{@config[:base_url]}/posts/#{a.slug}\n"
+	output += "Redirect 301 #{a[:alt_url2]} #{@config[:base_url]}/posts/#{a.slug}\n" if a[:alt_url2]
+end
+output += "Redirect 301 /feed #{@config[:base_url]}/feed.xml\n"
+%><%= output %>
