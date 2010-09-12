@@ -7,6 +7,14 @@ updated_at: 2010-09-12
 kind: article
 published: true
 alt_url: /newblog
+excerpt: |
+   Finally, I've made the move to a static blog engine!  I'm using
+   "nanoc":http://nanoc.stoneship.org/ now. nanoc is a very
+   flexible and customizable static site generator, written by "Denis
+   Defreyne":http://twitter.com/ddfreyne.  As with all static site generators,
+   nanoc lets you write your source files in a simple markup language.
+   However, nanoc is much more flexible and customizable than most of the
+   others out there.  Let me show you a sneak peak of its internals.
 ---
 Finally, I've made the move to a static blog engine!  I'm using
 "nanoc":http://nanoc.stoneship.org/ now (bye bye WordPress). nanoc is a very
