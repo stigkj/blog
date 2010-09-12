@@ -5,6 +5,7 @@ author: Vincent Driessen
 created_at: 2009-06-20
 updated_at: 2009-06-20
 title: NSPredicateEditor tutorial
+flattr: 61445
 image: nspreded-tut.png
 alt_url: /archives/197
 disqus_id: '197 http://nvie.com/?p=197'
