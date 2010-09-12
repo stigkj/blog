@@ -25,4 +25,5 @@ elit in tortor. Mauris gravida, purus at ultrices sollicitudin, purus diam
 dapibus leo, ut eleifend dolor tellus feugiat lacus. Class aptent taciti
 sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam ut
 fringilla dolor. Cras elit tellus, egestas eget congue sit amet, consequat in
-orci." > "./posts/$YEAR-$MONTH-$DAY-$TITLE.textile"
+orci." > "./posts/$TITLE.textile"
+echo "Created ./posts/$TITLE.textile"
