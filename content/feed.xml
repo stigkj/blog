@@ -2,25 +2,14 @@
 feed_url: http://feeds.feedburner.com/nvie
 ---
 <%=
-#
-# TODO items:
-#
-# - Remove the limit of 5 posts (*all* posts must be included)
-# - NO draft posts should be included!
-# - Make sure the *compiled* content is included, not the Textile content
-#
-# Read this carefully:
-# http://nanoc.stoneship.org/docs/api/3.1/Nanoc3/Helpers/Blogging.html
-#
-
 params = {
 	:title => "nvie.com", 
 	:author_name => "Vincent Driessen",
 	:author_uri => "http://nvie.com/about",
 	:articles => all_articles,
 	:limit => 9999999,
-	:content_proc => lambda { |article| article.compiled_content(:snapshot => :for_feed) },
-	:excerpt_proc => lambda { |article| article[:excerpt] }
+	:excerpt_proc => lambda { |article| article[:excerpt] },
+	:content_proc => lambda { |article| article.compiled_content(:rep => :rss_content) }
 }
 
 atom_feed(params)

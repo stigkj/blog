@@ -83,7 +83,6 @@ compile '/posts/*/' do
 		filter :colorize_syntax,
 			:default_colorizer => :pygmentize,
 			:pygmentize => { :encoding => "utf-8" }
-		snapshot :for_feed
 		layout 'post'
 		#layout 'flattr_notice'
 		if $add_disqus_comments then
@@ -91,6 +90,16 @@ compile '/posts/*/' do
 		end
 		layout 'default'
 	end
+end
+
+compile '/posts/*/', :rep => :rss_content do
+		filter :redcloth, :hard_breaks => false
+		filter :absolutify  # make links/images all absolute for RSS readers
+		snapshot :for_feed
+end
+
+route '/posts/*/', :rep => :rss_content do
+	nil
 end
 
 compile '/posts/*/', :rep => :alt_url do
