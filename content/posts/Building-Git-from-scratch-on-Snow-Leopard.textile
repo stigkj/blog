@@ -6,6 +6,7 @@ created_at: 2010-01-13
 updated_at: 2010-01-13
 title: Building Git from scratch on Snow Leopard
 alt_url: /archives/420
+disqus_id: '420 http://nvie.com/?p=420'
 ---
 When you try to build Git "from scratch":http://github.com/git/git on a Snow
 Leopard machine, you may have ran into the following problem:

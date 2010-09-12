@@ -6,6 +6,7 @@ created_at: 2009-06-22
 updated_at: 2009-06-22
 title: NSManagedObjectContext extensions
 alt_url: /archives/243
+disqus_id: '243 http://nvie.com/?p=243'
 ---
 The Core Data framework rules, and its API is really really powerful. But
 really, why does the Core Data API require us to write so much boilerplate

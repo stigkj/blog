@@ -7,6 +7,7 @@ updated_at: 2010-01-05
 title: A successful Git branching model
 alt_url: /archives/343
 alt_url2: /git-model
+disqus_id: '323 http://nvie.com/?p=323'
 image: git-model.png
 flattr: 59406
 ---

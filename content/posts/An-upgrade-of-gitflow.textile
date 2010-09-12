@@ -6,6 +6,7 @@ published: true
 created_at: 2010-03-04
 updated_at: 2010-03-04
 alt_url: /archives/492
+disqus_id: '492 http://nvie.com/?p=492'
 excerpt: |
    Last week, I silently tagged "gitflow
    0.2":http://github.com/nvie/gitflow/tree/0.2. These are the most important

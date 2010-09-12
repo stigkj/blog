@@ -6,6 +6,7 @@ created_at: 2010-03-03
 updated_at: 2010-03-03
 title: Unexpected side effects in Python classes
 alt_url: /archives/470
+disqus_id: '470 http://nvie.com/?p=470'
 ---
 Today, I lost several hours while debugging a language implementation detail
 in Python that I did not know of and that really feels counterintuitive and

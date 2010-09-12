@@ -6,6 +6,7 @@ updated_at: 2010-08-15
 kind: article
 published: false
 alt_url: /archives/537
+disqus_id: 'why-you-should-boost-your-vim-too'
 ---
 After reading this "blog
 post":http://jeffkreeftmeijer.com/2010/stumbling-into-vim/ by Jeff Kreeftmeijer
