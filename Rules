@@ -114,8 +114,16 @@ compile '/feed/' do
 	filter :erb
 end
 
+compile '/feed/', :rep => :old_feed do
+	filter :erb
+end
+
 route '/feed/' do
 	'/private_feed.xml'
+end
+
+route '/feed/', :rep => :old_feed do
+	'/feed/index.html'
 end
 # }}}
 
