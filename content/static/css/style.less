@@ -7,6 +7,8 @@
 @code_font: "Droid Sans Mono", Courier New, monospace;
 @alt_font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+@darkgray: #333;
+
 @link_color: #3270ae;
 @link_hover: #008dff;
 
@@ -29,7 +31,7 @@ body, div, p, h1, h2, h3, h4 {
 
 body {
 	font-family: @body_font;
-	background: #333 url(/img/bg.png) repeat-y;
+	background: @darkgray url(/img/bg.png) repeat-y;
 }
 
 img {
@@ -87,7 +89,7 @@ img.bordered {
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	background-color: #333;
+	background-color: @darkgray;
 	color: #eee;
 	
 	h1 {
@@ -328,6 +330,16 @@ div#flattr {
 		margin: 26px 0 20px 20px;
 	}
 
+	.flattr-reminder {
+		font-size: 10pt;
+		color: @darkgray;
+		text-align: right;
+	}
+
+	a.flattr-link {
+		color: @darkgray;
+	}
+
 }
 /* }}} */
 
@@ -376,7 +388,7 @@ div#flattr {
 		font-family: @header_font;
 		font-weight: bold;
 		font-size: 18px;
-		color: #333;
+		color: @darkgray;
 		line-height: 20px;
 		margin: 16px 20px 4px;
 		border-bottom: 1px solid #ccc;
@@ -429,7 +441,7 @@ div#flattr {
 /* Site footer {{{ */
 #footer {
 	color: white;
-	background-color: #333;
+	background-color: @darkgray;
 	margin: 0;
 	padding: 44px 0 40px 100px;
 
@@ -439,14 +451,9 @@ div#flattr {
 	}
 
 	img {
-		vertical-align: middle;
-	}
-
-	img#mini-flattr {
 		vertical-align: baseline;
 		position: relative;
 		top: 1px;
-		margin: 0 0 0 2px;
 	}
 
 	.boxed {
