@@ -2,10 +2,11 @@
 title: How I boosted my Vim
 author: Vincent Driessen
 image: vim-config.png
-created_at: 2010-08-15
-updated_at: 2010-08-31
+created_at: 2010-09-14
+updated_at: 2010-09-14
 kind: article
-published: false
+flattr: 61588
+published: true
 disqus_id: 'how-i-boosted-my-vim'
 ---
 A few weeks ago, I felt inspired by articles from ["Jeff
