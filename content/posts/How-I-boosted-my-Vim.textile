@@ -237,11 +237,12 @@ h3. Pasting large amounts of text into Vim
 
 Every Vim user likes to enable auto-indenting of source code, so Vim can
 intelligently position you cursor on the next line as you type.  This has one
-big ugly consequence however: when you paste text into your terminal-based Vim,
-Vim cannot know it is coming from a paste.  To Vim, it looks like text entered
-by someone who can type incredibly fast :)  Since Vim thinks this is regular
-key strokes, it applies all auto-indenting and auto-expansion of defined
-abbreviations to the input, resulting in often cascading indents of paragraphs.
+big ugly consequence however: when you paste text into your terminal-based Vim
+with a right mouse click, Vim cannot know it is coming from a paste.  To Vim,
+it looks like text entered by someone who can type incredibly fast :)  Since
+Vim thinks this is regular key strokes, it applies all auto-indenting and
+auto-expansion of defined abbreviations to the input, resulting in often
+cascading indents of paragraphs.
 
 There is an easy option to prevent this, however.  You can temporarily switch
 to "paste mode", simply by setting the following option:
@@ -258,6 +259,11 @@ Nice and simple.  Compare paste mode disabled vs enabled:
 p(autoalign). 
 !/img/2010/08/ugly-paste.png!
 !/img/2010/08/better-paste.png!
+
+p. <ins>*Update*: Another great trick I read in a "reddit
+comment":http://www.reddit.com/r/programming/comments/ddbuc/how_i_boosted_my_vim/c0zelsm
+is to use @<C-r>+@ to paste right from the OS paste board.  Of course, this
+only works when running Vim locally (i.e. not over an SSH connection).</ins>
 
 
 h3. Enable the mouse
