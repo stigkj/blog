@@ -83,9 +83,11 @@ end
 compile '/posts/*/' do
     if $include_drafts or @item[:published] then
 		filter :redcloth, :hard_breaks => false
-		filter :colorize_syntax,
-			:default_colorizer => :pygmentize,
-			:pygmentize => { :encoding => "utf-8" }
+		if $highlight_syntax then
+			filter :colorize_syntax,
+				:default_colorizer => :pygmentize,
+				:pygmentize => { :encoding => "utf-8" }
+		end
 		layout 'post'
 		if $add_disqus_comments then
 			layout 'disqus_comments'

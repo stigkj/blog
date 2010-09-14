@@ -1,6 +1,7 @@
 $include_drafts = false
 $recent_posts_limit = 7
 $use_googles_jquery = true
+$highlight_syntax = true
 $use_minified_js = true
 $use_minified_css = true
 
