@@ -2,6 +2,7 @@ $include_drafts = false
 $recent_posts_limit = 7
 $use_googles_jquery = true
 $use_minified_js = true
+$use_minified_css = true
 
 # Include this
 $add_google_analytics = true

@@ -34,9 +34,12 @@ end
 
 # Static content (simply copied into output) {{{
 compile '/static/css/*/' do
-	# compress CSS :)
 	filter :less
-	filter :rainpress
+	
+	if $use_minified_css then
+		# compress CSS :)
+		filter :rainpress
+	end
 end
 
 compile '/static/js/*/' do
