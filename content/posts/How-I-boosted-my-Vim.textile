@@ -135,6 +135,13 @@ set nobackup
 set noswapfile
 </code></pre>
 
++*Update*: There have been some passionate responses about this in comments, so
+a warning may be appropriate here.  If you care about recovering after a Vim or
+terminal emulator crash, do *not* disable the swapfile.  I personally
+save/commit so often that the swap file adds nothing.  Sometimes I conciously
+kill a terminal forcefully, and I only find the swap file recovery process
+annoying.+
+
 
 h2. Use file type plugins
 
