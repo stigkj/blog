@@ -502,4 +502,6 @@ regularly):
   (@crm@) to UPPER_CASE (@cru@) and vice versa.
 
 I hope you like these tips.  Please add your comments below if you do, or if
-you have any Vim improvements or tips you'd like to bring on yourself.
+you have any Vim improvements or tips you'd like to bring on yourself.  +You can
+have a look at my full Vim configuration in my
+"Github repo":http://github.com/nvie/vimrc.+
