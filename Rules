@@ -87,7 +87,6 @@ compile '/posts/*/' do
 			:default_colorizer => :pygmentize,
 			:pygmentize => { :encoding => "utf-8" }
 		layout 'post'
-		#layout 'flattr_notice'
 		if $add_disqus_comments then
 			layout 'disqus_comments'
 		end
