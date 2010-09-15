@@ -59,7 +59,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 </code></pre>
 
 This maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.  (I got this from
-Derek Wyatt's @.vimrc@ file.)
+["Derek Wyatt":http://derekwyatt.org/]'s @.vimrc@ file.)
 
 Notice that I've remapped the leader key to @,@ (comma) instead of the default
 @\@ (backslash), just because I like it better.  Since in Vim's default
