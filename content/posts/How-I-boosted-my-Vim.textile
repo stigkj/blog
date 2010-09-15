@@ -3,7 +3,7 @@ title: How I boosted my Vim
 author: Vincent Driessen
 image: vim-config.png
 created_at: 2010-09-14
-updated_at: 2010-09-14
+updated_at: 2010-09-15
 kind: article
 flattr: 61588
 published: true
@@ -380,7 +380,7 @@ Tired of clearing highlighted searches by searching for "ldsfhjkhgakjks"?  Use
 this:
 
 <pre><code class="language-vim">
-nmap <silent> ,/ :let @/=""<CR>
+nmap <silent> ,/ :nohlsearch<CR>
 </code></pre>
 
 It clears the search buffer when you press @,/@
