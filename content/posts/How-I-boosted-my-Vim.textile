@@ -383,6 +383,10 @@ this:
 nmap <silent> ,/ :nohlsearch<CR>
 </code></pre>
 
++*Update*: I used to have it mapped to @:let @/=""<CR>@, but some users kindly
+pointed out that it is better to use @:nohlsearch@, because it keeps the search
+history intact.+
+
 It clears the search buffer when you press @,/@
 
 Finally, a trick by "Steve
