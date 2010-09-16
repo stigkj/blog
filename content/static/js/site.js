@@ -106,16 +106,16 @@ function resolve_anti_spam_link() {
 function toggle_edits() {
 	$('a#toggle-edits').toggle(
 		function() {
-			$('ins').css({ 'text-decoration': 'underline', color: 'green' });
-			$('del').css({ 'text-decoration': 'line-through', color: 'red' });
+			$('ins,div.ins').css({ 'text-decoration': 'underline', color: 'green' });
+			$('del,div.del').css({ 'text-decoration': 'line-through', color: 'red', display: 'inherit' });
 			$(this).html('(hide updates)');
-			var $target = $('ins,del').first();
+			var $target = $('ins,del,div.ins,div.del').first();
 			var offset = $target.offset().top - 40;
 			$('html,body').animate({ scrollTop: offset }, 800);
 		},
 		function() {
-			$('ins').css({ 'text-decoration': 'none', color: 'inherit' });
-			$('del').css({ 'text-decoration': 'none', color: 'inherit' });
+			$('ins,div.ins').css({ 'text-decoration': 'none', color: 'inherit' });
+			$('del,div.del').css({ 'text-decoration': 'none', color: 'inherit', display: 'none' });
 			$(this).html('(highlight updates)');
 		}
 	);
