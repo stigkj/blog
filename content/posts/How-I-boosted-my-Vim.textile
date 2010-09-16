@@ -570,6 +570,9 @@ regularly):
   autocorrections (abbreviations) for many conjugations of words and smart
   conversion of words from snake_case (@crs@) to camelCase (@cr_@) or MixedCase
   (@crm@) to UPPER_CASE (@cru@) and vice versa.
+* +"LustyJuggler":http://www.vim.org/scripts/script.php?script_id=2050: a quick
+  buffer switcher and a great companion to Command-T. See "this
+  screencast":http://lococast.net/archives/185 to get excited.+
 
 I hope you like these tips.  Please add your comments below if you do, or if
 you have any Vim improvements or tips you'd like to bring on yourself.  +You can
