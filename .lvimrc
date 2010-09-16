@@ -1,2 +1,11 @@
-map <buffer> <F5> <Esc>:w<CR>:!nanoc compile<CR>
-map!  <buffer> <F5> <Esc>:w<CR>:!nanoc compile<CR>
+map <buffer> <F5> <Esc>:w<CR>:!rake<CR>
+map!  <buffer> <F5> <Esc>:w<CR>:!rake<CR>
+
+autocmd BufWritePre,FileWritePre *posts/*.textile call LastMod()
+fun! LastMod()
+    norm mz
+    execute ":%s/^updated_at: .*$/updated_at: " . strftime("%Y-%m-%d") . "/"
+    norm 'z
+endfun
+
+set makeprg=rake

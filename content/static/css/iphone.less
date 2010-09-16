@@ -1,0 +1,95 @@
+body {
+	background-color: #333;
+	background-image: none !important;
+}
+
+#header {
+	background: none;
+}
+
+#sidebar {
+	position: absolute;
+	display: block;
+	top: 60px;
+	left: 0;
+	height: 50px;
+	width: 550px;
+	padding: 16px;
+}
+
+#sidebar h2,
+#sidebar p {
+	display: none;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+#sidebar ul li {
+	display: none;
+}
+
+#sidebar ul li, #sidebar ul li:hover {
+	background: none;
+}
+
+#sidebar ul li.all {
+	/* Revert what's set in style.css */
+	font-size: inherit;
+	top: 0;
+	float: none;
+}
+
+#sidebar ul li.menu {
+	display: inline;
+	margin-left: 0;
+	padding-left: 12px;
+	border: none;
+	list-style: none;
+}
+
+#sidebar a {
+	background: none;
+}
+
+#main {
+	position: absolute;
+	left: 0px;
+	top: 120px;
+	width: 550px;
+}
+
+#main img {
+	max-width: 540px;
+}
+
+/* @group Rightbar icons */
+
+div.ricon {
+	position: absolute;
+	z-index: 3;
+}
+
+div#rss {
+	top: 74px;
+	left: 460px;
+}
+
+div#twitter {
+	top: 74px;
+	left: 500px;
+}
+
+div#flattr {
+	top: 74px;
+	left: 540px;
+}
+
+/* @end */
+
+#footer {
+	display: none;
+}

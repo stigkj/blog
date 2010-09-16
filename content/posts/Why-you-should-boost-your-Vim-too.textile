@@ -1,0 +1,183 @@
+---
+title: Why you should boost your Vim, too
+author: Vincent Driessen
+created_at: 2010-08-14
+updated_at: 2010-08-15
+kind: article
+published: false
+alt_url: /archives/537
+disqus_id: 'why-you-should-boost-your-vim-too'
+---
+After reading this "blog
+post":http://jeffkreeftmeijer.com/2010/stumbling-into-vim/ by Jeff Kreeftmeijer
+(and the "Vim video series of Derek Wyatt":http://vimeo.com/user1690209/videos)
+on configuring Vim, I felt inspired to have a critical look at my own @.vimrc@
+file and reevaluate how it had evolved over the years.  I grabbed the
+opportunity to read up on new tricks and decided to take the next plunge in
+mastering Vim.
+
+They say Vim has a steep learning curve, which is true.  It
+takes time, patience, and repetitive practice on a day-to-day basis to slowly
+let the keyboard mappings become part of your muscle memory.  But once you get
+the hang of this, it pays off so many times.  It cannot be stressed enough.
+
+
+h2. A bit of history
+
+It must have been somewhere around 2001 that I first started using Vim for any
+serious work, and learning it has paid off a million times since then.  In
+those early years, I learned a lot.  Essentially, I've learned how to
+efficiently edit source code, with as few keystrokes as possible.  After those
+years, I kept on using those skills for almost all editing work.  However,
+since that first learning curve, I've never really extended those skills.
+Yeah, occasionally you learn some tricks for tasks that you do often, but those
+don't stick with your finger muscles if unused for too long.
+
+For long I have considered my @.vimrc@ to be okay, and I almost never touched
+it again for years.  Call it laziness, sure.  But by reading Jeff's blog post,
+I realized it has cost me hours and hours of inefficiency over the last few
+years[1]! Let me explain.
+
+
+h2. Boosting your Vim configuration
+
+In the blog post, Jeff shows how he learned the basics of configuring and
+working with Vim.  Assuming his knowledge was absolutely zero before, he did a
+magnificent job in setting up a personalized editor in no-time.  He even
+configured features that I've done years without (NERDTree), which made me
+realize that I hadn't given my Vim configuration (and knowledge!) some proper
+attention in a long time.  (If someone new to Vim can get to that level so
+fast, how come I didn't invest in the last years?)
+
+Time to do some catching up.  I forced myself to reflect on what I did most in
+my editor.  The results were shocking to me, and I took care of the issues.  I
+encourage you to do the same.
+
+The rest of this article is a summary of that reflection.
+
+
+h3. Lesson #1: Reflect on your daily work
+
+I bet most Vim users have never deliberately taken the effort of fine-tuning
+their @.vimrc@.  Either because of lacking incentive or plain ignorance.
+
+We have all found nice tricks on the internet and copy-and-pasted them into our
+@.vimrc@.  All is fine, and you should keep doing that, but it is a rather
+reactive approach.  The past me pleas guilty on this subject, too.
+
+But reflecting on my editing workflow has turned the way I customized Vim into
+a proactive measure, really targeting my needs.
+
+Here's the key--try to realize how many hundreds or thousands of hours will you
+be spending doing certain tasks in Vim and ask yourself how you could improve
+on those.  Vim is so highly configurable that there is a solution for each
+problem you are having, but it's not on by default.  Invest in finding a
+structural solution.  The time it costs you now will most definitely turn into
+profit in the long run.
+
+
+h3. Lesson #2: Do more from within Vim
+
+Of all observations, there was one repetition that I used shockingly often, but
+which is a monster, really.  It's a blind repetition that I have been doing for
+as long as I can remember[3]:
+
+# Make some source code change;
+# Save the file to disk with @:w@;
+# Press @C-z@ to put Vim in the background and return to shell;
+# Run a command (this could be a compiler, or a test runner, whatever);
+# Some error occurs.  I interpret the stack dump, remember the line number and
+  go back into Vim;
+# I type the line number followed by @G@, to jump to the line.
+
+I'll pause for a moment to let you laugh now.  Fact of the matter is that I see
+many people work like this, not realizing that there _is_ a better way.
+
+Vim can perform such actions for you, by running the command on your behalf,
+parsing the error output for lines and presenting the output of the process
+somehow useful (in a window Vim calls the quickfix window).  All of this is
+easily configurable by setting the @makeprg@ and @makeformat@ options.  For
+non-compiler like actions like source code checkers or test runners, you can
+use @grepprg@ and @grepformat@.  They are identical, but this enables you to
+set both a compiler and a grep/check/test tool at the same time.
+
+The @makeformat@ string tells Vim which lines should be interpreted as errors
+that relate back to certain lines of source files.  Lines that do not match the
+pattern are ignored.  The final result is a list of jump locations (you can
+show the quickfix window with the command @:copen@), which looks somewhat like
+this:
+
+!/img/2010/08/quickfix-window.png!
+
+Then, in the quickfix window, you can simply navigate to an error, press Return
+and Vim takes you to it, even to the right column if that info is available.
+
+See the help files for a more detailed explanation (@:h 'makeprg'@).
+
+
+h3. Lesson #3: Define key bindings for your favorite actions
+
+I also found it shocking how often I typed out full commands over and over
+again.  One of the biggest time savers 
+
+
+h3. Lesson #3: Learn from others
+
+there are lots of @.vimrc@ files / plugins out there
+
+
+h3. Lesson #4: Learn at least the basics of Vim plugins
+
+If I have any first tip al all, it would be to install pathogen.  Plugins in vim
+are files that you drop in subdirectories of your .vim/ directory.  Many plugins
+exist of only a single file that should be dropped in .vim/plugin, but some
+exist of multiple files.  For example, they come with documentation, or ships
+syntax files.  In those cases, files need to be dropped into .vim/doc and
+.vim/syntax.  This makes it difficult to remove the plugin afterwards.  After
+installing pathogen, you can simply unzip a plugin distribution into
+.vim/bundle/myplugin, under which the required doc, syntax, plugin, etc
+directories are created.  Removing the plugin, then, is as simple as removing
+the myplugin directory.
+
+
+h2. NERDTree explorer
+by ???
+
+An absolute MUST.  A quick file browser.
+
+
+h2. Fugitive (fuGITive?)
+by Tim Pope
+
+Plugin for Git integration.  I *love* the :Gedit command, for quickly editing a
+file in the index.
+
+
+h2. Python: PEP8, pyflakes and unit test integration
+by myself
+
+Sometimes, you need functionality that you cannot find in an already available
+plugin (or in a way that doesn't fit your need).  In those cases, you can extend
+Vim yourself.
+
+For example, I often want to run QA tools (like pep8 or pyflakes) on my Python
+source code.  There are plugins for those tools available, but
+
+- they don't allow me to customize any key mappings
+- they don't look/act/behave the same, although they may be considered the same
+  type of tools (i.e. they tell me on what lines there's something wrong with
+  my Python source)
+- in he best case, they are merely a simple wrapper around a shell invocation
+
+Before I've tried these plugins, I had a key mapping defined to simply call
+pep8 -r on the current file.  Vim would show me the shell output, I'd remember a
+line number, press Return, type :the.  and start fixing it.
+
+OK, but not good enough :-)
+
+
+fn1. Of course, "inefficient" is a relative term when using Vim already.
+
+fn2. Or she. But probably he.
+
+fn3. Which made it hard to notice, even!

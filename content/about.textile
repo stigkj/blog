@@ -1,0 +1,60 @@
+---
+title: About me
+author: Vincent Driessen
+---
+
+!(right shadow)/img/vincent.png!
+
+This blog is maintained by Vincent Driessen. I work as a software engineer at
+the IT department of the "Dutch Tax and Customs
+Administration":http://www.belastingdienst.nl by day, designing and building
+one of the coolest enterprise deployment tools, but I'm a
+"Python":http://python.org and
+"Cocoa":http://developer.apple.com/technologies/mac/cocoa.html developer by
+night/weekends.
+
+This blog essentially has nothing to do with my daily work, but has merely been
+created to share ideas on anything that I find interesting hobby-wise.  I'm an
+Apple fan and I like getting to know new frameworks for programming the Mac,
+"iPad":http://www.apple.com/ipad and the "iPhone":http://www.apple.com/iphone/
+platforms.
+
+
+h2. Contact
+
+You can always e-mail me at <a href="me at this domain" class="email">me at this domain</a>.
+
+You can find my public GPG below. I mainly use it to tag my public "Git
+repos":http://github.com/nvie, not for encrypting mail traffic.  You can use
+this key to verify my tags.
+
+bc.. -----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.9 (Darwin)
+
+mQGiBEttZpsRBACuQ8e1uttjT+q1CwGmtChHXIOqcSR4ksx5UElhwDeJABldVmkS
+5cL1oSQ1c9Z/BBinaBJD/WPol47IxTYJr+Tlio5+bhao6AD+xTAYF83zgXSKD+ph
+PFsYBsHnDVf1pn3b820gJZFCA8Knr0V5DbEclGvtMOUD29PQwvMkLkWpPwCgrJ0W
+0iRZ/LZgFd7fuLpG950NKg0D/Aiy+ajhtxRiuMsFTjJUFVzpuj+xs5eZ92ysGBNk
++0E+fkRTEtnEQZ+oBLXYo05U7xBICqrsDoBlNAiNAnEt1eture9nU1poYmi2x/pg
+liLNUfuxu0oKkIBILgJ7J60019w3tC372DE4YqZUwZ8gvjMDNSgSfhPa7PUIAL7R
+8AOWBACaj6n1GKLmZd8fYCrJNCsBwfAtnJIv+7wtv01QfebWLCR8GEsSoVYTWN3t
+hxdqRKnC9vybqYoS7ZXrGekhRY3JeEuPeSOtt8JQHZlJfNmyKDpcZk8xOQtk9W+0
+gh322LlMbiOy1+FBUmO63q874OsXt1lmRjulfxqjtkwv9v037rQlVmluY2VudCBE
+cmllc3NlbiA8dmluY2VudEBkYXRhZm94Lm5sPohgBBMRAgAgBQJLbWabAhsDBgsJ
+CAcDAgQVAggDBBYCAwECHgECF4AACgkQwR2iPEKBjsopZwCfQ9FFXn3hCTINPQTZ
+9ewXZMr6rlAAn0ehjfrOSGCFj/LmktoSNIYHuydVuQINBEttZpsQCACuPxaUK6dg
+Bpqw7+niW/5wkmwYV+VEUGGGnz3KH4krtgexssbIM1D6S4OrSNa18G5y0zjK8+yD
+mJFxSGjNYLLxRnr/xtQam2EKAWI8j8nYe4C8lbZIWLw/S+HvtxPkVSB56qus9GAE
+Uq0WMSe3eaq289mxLAjin1wU6Y242KhwIiHssrVwjJ5TxYx9df/8pHsVEVgMregX
+NMB59N1aYin9ghsn9LQoqLMUQ/Oas7FeLCLyUdB7WRrO5f16MACROpQmO1ARtkCJ
+WArJGfaAY3+OrBn8cgA0bb9UOpOg04L4zzwJRI7px1ucqBcmjfm9vKHS6o+ZVhNo
+9muJA1IJoydDAAMFB/9dJelJKGMqODvRugy5QMC04XLLrW4v2InaMesC61JIPby1
+Hg+9jlWLwQx+pg6OMc9uVnZHvW74/BnwSSv3KvpQFYs6jPf9DA6aOJgi/yAfyVLg
+/iUGuk094w1XWOS2ERQRA/ty07w+wBUszN4keRwzaFd9ELXAwdwORX4/l9RGTNyR
+zpy4yrDWVnCfguZUONE0LEaqW42qkUdThA/vPznO32g51vbWfs6I7DbnZQs1hs/V
+Cyboae15FEDwQTDY2fKPnCL93wtFaDCeD3boBh9wNkuPpTDiNFfBkDwOYFU/mIZx
+WBAs3DImcwslfEq9Gg1kj1vFjIUow4fdNWyskXnviEkEGBECAAkFAkttZpsCGwwA
+CgkQwR2iPEKBjsq8eACdG0ruFiGF4cUGWrhwZkEF8FOuZgAAoJOmMOubhH7a3NaA
+vhPrOcO87yUq
+=vNwf
+-----END PGP PUBLIC KEY BLOCK-----

@@ -5,63 +5,113 @@
 		<meta charset="utf-8"/>
 		<title>nvie.com - <%= @item[:title] %></title>
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
-		<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="only screen and (max-width: 480px)"/>
-		<link rel="stylesheet" type="text/css" href="/css/fontface.css" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="/css/syntax.css" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/jquery.relatize_date.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/fontface.css" />
+		<meta name="viewport" content="width=500, user-scalable=yes, maximum-scale=2.0" />
+		<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" /> 
+		<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css" /> 
+		<% if $use_googles_jquery then
+		%><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script><%
+	   	   else
+		%><script type="text/javascript" src="/js/jquery.min.js"></script><%
+		   end %>
+		<script type="text/javascript" src="/js/relatize_date.js"></script>
+		<% if $disqus_develop_mode then %>
 		<script type="text/javascript">
-			$(document).ready(function () {
-				$('.reldate').relatizeDate();
-			});
+  			var disqus_developer = 1;
 		</script>
-		<meta name="generator" content="nanoc 3.1.4"/>
+  		<% end %>
+		<script type="text/javascript" src="/js/site.js"></script>
+		<meta name="generator" content="nanoc 3.2.0a2"/>
+		<link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
+		<link href="/img/icon.png" rel="apple-touch-icon" /> 
+		<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/nvie" />
 	</head>
 	<body>
 		<div id="header">
 			<h1><a href="/"><span id="nvie">nvie</span><span id="dot">.</span><span id="ext">com</span></a></h1>
 		</div>
+		<div class="ricon" id="rss"><a href="http://feeds.feedburner.com/nvie"><img src="/img/rss.png" alt="Subscribe" title="Subscribe" /></a></div>
+		<div class="ricon" id="twitter"><a href="http://twitter.com/nvie"><img src="/img/twitter.png" alt="Follow me on Twitter" title="Follow me on Twitter" /></a></div>
+		<% if @item[:flattr] %>
+		<div class="ricon" id="flattr"><a href="https://flattr.com/thing/<%=@item[:flattr]%>/"><img src="/img/flattr.png" alt="Flattr &quot;<%=@item[:title]%>&quot;" title="Flattr &quot;<%=@item[:title]%>&quot;" /></a></div>
+		<% else %>
+		<div class="ricon" id="flattr"><a href="https://flattr.com/thing/53766/nvie-com"><img src="/img/flattr.png" alt="Flattr this blog" title="Flattr this blog" /></a></div>
+		<% end %>
 		<div id="main">
-			<% if @item[:title] %>
-			<h1><%= @item[:title] %></h1>
-			<% end %>
 			<%= yield %>
 		</div>
 		<div id="sidebar">
-			<h2><span>Default</span></h2>
+			<h2 class="first"><span>Default</span></h2>
 			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/about/">About me</a></li>
+				<li class="menu"><%= link_to_unless_current('Home', '/') %></li>
+				<li class="menu"><%= link_to_unless_current('About me', '/about/') %></li>
 			</ul>
 
 			<h2><span>Recent posts</span></h2>
 			<ul>
-				<li class="all"><a href="/posts/">All posts</a></li>
-				<% sorted_articles.select { |a| a[:status] == 'published' }.first(3).each do |p| %>
-				<li><%= link_to_unless_current(p[:title], p) %> - <span class="reldate"><%=p[:created_at].strftime("%B %d, %Y")%></span></li>
+				<li class="all menu"><%= link_to_unless_current('All posts', '/posts/') %></li>
+				<% all_articles.first($recent_posts_limit).each do |p| %>
+				<li><%= link_to_unless_current(p[:title], p) %></li>
 				<% end %>
 			</ul>
 
+			<% if false %>
 			<h2><span>Projects</span></h2>
 			<ul>
+				<li class="all menu"><%= link_to_unless_current('All projects', '/projects/') %></li>
 				<li><a href="http://github.com/nvie/gitflow/">git-flow</a></li>
 				<li><a href="http://github.com/nvie/vim-pep8/">vim-pep8</a></li>
 				<li><a href="http://github.com/nvie/vim-pyflakes/">vim-pyflakes</a></li>
 				<li><a href="http://github.com/nvie/vim-pyunit/">vim-pyunit</a></li>
 			</ul>
+			<% end %>
 		</div>
 		<div id="footer">
 			<div class="boxed">
 			<h1>About this blog</h1>
 			<p>This blog is maintained by Vincent Driessen. You may have
-			noticed that the variety of subjects on this blog tends to differ,
-			which is &quot;as designed&quot;.
+			noticed that the subjects on this blog tend to vary, which is
+			&quot;as intended&quot;.  A lot of things and technologies interest
+			me, whether it is Cocoa/Objective-C, Python, Git, or Vim.  I write
+			about all of those, and about any of my open source projects, or
+			about any other kind of thing that pops to my mind or that I think
+			is worth sharing with the world.
 			</p>
-
-			<h1>About Vincent</h1>
-			<p>I work as a software engineer at the IT department of the Dutch Tax and Customs Administration by day, but I’m a Cocoa/Python developer by night/weekends.</p>
+			<p>This blog is rendered as intended in
+			<img id="_chrome" class="browser" src="/img/chrome0.png" alt="Google Chrome" title="Google Chrome" />,
+			<img id="_safari" class="browser" src="/img/safari0.png" alt="Safari" title="Safari" />,
+			<img id="_firefox" class="browser" src="/img/firefox0.png" alt="Firefox" title="Firefox" />, and
+			<img id="_opera" class="browser" src="/img/opera0.png" alt="Opera" title="Opera" />, but not in
+			<img id="_ie" class="misfit" src="/img/ie0.png" alt="Internet Exporer" title="...and I couldn't care less about it." />.
+			</p>
+			<p>You may consider <a href="/flattring"><img id="_flattrwhite" class="hoverc" src="/img/flattrwhite0.png" />'ing this</a>.</p>
 			</div>
 		</div>
+
+		<%# Google analytics tracker %>
+		<% if $add_google_analytics then %>
+		<script type="text/javascript"> 
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script> 
+		<script type="text/javascript"> 
+		var pageTracker = _gat._getTracker("UA-7780973-1");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+		</script>
+		<% end %>
+
+		<%# Disqus comment counter%>
+		<% if @item[:kind] == 'article' and $add_disqus_comments then %>
+		<script type="text/javascript">
+			(function () {
+			var s = document.createElement('script'); s.async = true;
+			s.src = 'http://disqus.com/forums/<%= $disqus_shortname %>/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+			}());
+		</script>
+		<% end %>
 	</body>
 </html>

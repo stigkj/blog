@@ -1,13 +1,16 @@
 # A list of file extensions that nanoc will consider to be textual rather than
 # binary. If an item with an extension not in this list is found,  the file
 # will be considered as binary.
-text_extensions: [ 'css', 'erb', 'haml', 'htm', 'html', 'js', 'less', 'mdown', 'markdown', 'md', 'php', 'rb', 'sass', 'scss', 'txt', 'textile', 'xhtml', 'xml' ]
+text_extensions: [ 'css', 'erb', 'haml', 'htm', 'html', 'js', 'less', 'md', 'php', 'rb', 'sass', 'scss', 'txt', 'textile', 'xhtml', 'xml', 'csv' ]
 
 # The path to the directory where all generated files will be written to. This
 # can be an absolute path starting with a slash, but it can also be path
 # relative to the site directory.
 content_dir: src
 output_dir: output
+
+# Base URL, used for the Atom feed
+base_url: http://nvie.com
 
 # A list of index filenames, i.e. names of files that will be served by a web
 # server when a directory is requested. Usually, index files are named
@@ -44,3 +47,7 @@ data_sources:
 deploy:
     default:
         dst: "nviecom@nvie.com:subdomains/dev/httpdocs"
+        options: [ '-prtvz', '--delete-after' ]
+    prd:
+        dst: "nviecom@nvie.com:httpdocs"
+        options: [ '-prtvz', '--delete-after' ]

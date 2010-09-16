@@ -1,0 +1,48 @@
+---
+title: An upgrade of gitflow
+author: Vincent Driessen
+kind: article
+published: true
+created_at: 2010-03-04
+updated_at: 2010-03-04
+alt_url: /archives/492
+disqus_id: '492 http://nvie.com/?p=492'
+excerpt: |
+   Last week, I silently tagged "gitflow
+   0.2":http://github.com/nvie/gitflow/tree/0.2. These are the most important
+   changes since 0.1.
+---
+Last week, I silently tagged "gitflow
+0.2":http://github.com/nvie/gitflow/tree/0.2. The most important changes since
+0.1 are:
+
+* Order of arguments changed to have a more "gitish" subcommand structure. For
+  example, you now say:
+  <pre><code>git flow feature start myfeature</code></pre>
+* Better initializer. @git flow init@ now prompts interactively to set up a
+  gitflow enabled repo.
+* Added a command to list all feature/release/hotfix/support branches, e.g.:
+  <pre><code>git flow feature list</code></pre>
+* Made all merge/rebase operations failsafe, providing a non-destructive
+  workflow in case of merge conflicts.
+* Easy diff'ing of all changes on a specific (or the current) feature branch:
+  <pre><code>git flow feature diff [feature]</code></pre>
+* Add support for feature branch rebasing:
+  <pre><code>git flow feature rebase</code></pre>
+* Some subactions now take name prefixes as their arguments, for convenience.
+  For example, if you have feature branches called "experimental",
+  "refactoring" and "feature-X", you could say:
+  <pre><code>git flow feature finish ref</code></pre>
+  And gitflow will know you mean the "refactoring" feature branch.<br/>
+  These actions are: @finish@, @diff@ and @rebase@.
+* Much better overall sanity checking.
+* Better portability (POSIX compliant code)
+* Better (more portable) flag parsing using Kate Ward's
+  "shFlags":http://code.google.com/p/shflags/.
+* Improved installer. To install @git flow@ as a first-class Git subcommand,
+  simply type:
+  <pre><code>sudo make install</code></pre>
+
+* Major and minor bug fixes.
+
+That's all for now.

@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+require 'defaults'
+begin
+	require 'settings'
+rescue LoadError => boom
+	# All is fine
+end
+
 # A few helpful tips about the Rules file:
 #
 # * The order of rules is important: for each item, only the first matching
@@ -9,12 +16,37 @@
 #	 “content/about.html”). To select all children, grandchildren, … of an
 #	 item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #	 because “*” matches zero or more characters.
-debug = true
+
+preprocess do
+	sorted_articles.each do |p|
+		if not p[:excerpt] then
+			# Extract the excerpt from the body, if not already given explicitly.
+			p[:excerpt] = p.raw_content.split("\n\n")[0]
+		end
+
+  		if p[:excerpt] then
+			p[:excerpt] = Nanoc3::Filters::RedCloth.new.run(p[:excerpt], :hard_breaks => false)
+		end
+
+		p[:source_url] = '/posts/' + p.slug
+	end
+end
 
 # Static content (simply copied into output) {{{
 compile '/static/css/*/' do
-	# compress CSS :)
-	filter :rainpress
+	filter :less
+	
+	if $use_minified_css then
+		# compress CSS :)
+		filter :rainpress
+	end
+end
+
+compile '/static/js/*/' do
+	# minify JS :)
+	if $use_minified_js then
+		filter :shellcmd, "java -jar scripts/js-compiler.jar"
+	end
 end
 
 compile '/static/*/' do
@@ -23,6 +55,11 @@ end
 
 compile '/files/*/' do
 	# don't compile
+end
+
+route '/static/css/*/' do
+	path = @item.identifier.chop.gsub(/^\/static/, '')
+	path + '.css'
 end
 
 route '/static/*/' do
@@ -39,49 +76,69 @@ end
 # Compiling blog posts {{{
 compile '/posts/' do
 	filter :erb
+	layout 'item'
 	layout 'default'
 end
 
 compile '/posts/*/' do
-    if debug or @item[:status] == 'published' then
-		layout 'post'
+    if $include_drafts or @item[:published] then
 		filter :redcloth, :hard_breaks => false
-		filter :colorize_syntax,
-			:default_colorizer => :pygmentize
+		if $highlight_syntax then
+			filter :colorize_syntax,
+				:default_colorizer => :pygmentize,
+				:pygmentize => { :encoding => "utf-8" }
+		end
+		layout 'post'
+		if $add_disqus_comments then
+			layout 'disqus_comments'
+		end
 		layout 'default'
 	end
 end
 
-compile '/posts/*/', :rep => :alt_url do
-    if debug or @item[:status] == 'published' then
-		@item[:source_url] = @item.identifier.chop + '/index.html'
-		layout 'redirect'
-	end
+compile '/posts/*/', :rep => :rss_content do
+		filter :redcloth, :hard_breaks => false
+		filter :absolutify  # make links/images all absolute for RSS readers
+end
+
+route '/posts/*/', :rep => :rss_content do
+	nil
 end
 
 route '/posts/*/' do
-    if debug or @item[:status] == 'published' then
-		parts = @item.name.split('-', 4)
-		if @item[:created_at]
-			'/posts/' + @item[:created_at].year().to_s + '/' + parts[3] + '/index.html'
-		else
-			puts "Skipping " + @item.name
-		end
+    if $include_drafts or @item[:published] then
+		'/posts/' + @item.slug + '/index.html'
 	end
 end
 
-route '/posts/*/', :rep => :alt_url do
-    if debug or @item[:status] == 'published' then
-		@item[:alt_url]
-	end
+# }}}
+
+# Compiling the RSS feed {{{
+compile '/feed/' do
+	filter :erb
+end
+
+compile '/feed/', :rep => :old_feed do
+	filter :erb
+end
+
+route '/feed/' do
+	'/private_feed.xml'
+end
+
+route '/feed/', :rep => :old_feed do
+	'/feed/index.html'
 end
 # }}}
 
 # Blog post imagery {{{
+compile '/img/postimgs/*/' do
+end
+
 compile '/img/*/' do
 	# make images fit the blog's size
 	if @item[:extension] == 'png' then
-		filter :thumbnailize, :width => 520, :height => 800
+		filter :thumbnailize, :width => 580, :height => 800
 		#if item[:extension] == "png"
 		#	filter :pngcrush, :level => 7
 		#end
@@ -96,22 +153,38 @@ end
 # Home page {{{
 compile '/' do
 	filter :erb
-	filter :redcloth, :hard_breaks => false
-	filter :colorize_syntax,
-	       :default_colorizer => :pygmentize
+	layout 'item'
 	layout 'default'
 end
 # }}}
 
-# About me {{{
+# About me + Flattr'ing {{{
 compile '/about/' do
-	filter :kramdown
+	filter :redcloth, :hard_breaks => false
+	layout 'item'
 	layout 'default'
+end
+
+compile '/flattring/' do
+	filter :redcloth, :hard_breaks => false
+	layout 'item'
+	layout 'default'
+end
+# }}}
+
+# {{{ .htaccess File
+compile '/htaccess/' do
+	filter :erb
+end
+
+route '/htaccess/' do
+	'/.htaccess'
 end
 # }}}
 
 compile '*' do
 	filter :erb
+	layout 'item'
 	layout 'default'
 end
 
