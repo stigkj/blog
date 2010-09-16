@@ -406,8 +406,21 @@ Ah, finally.  Arrived at the magical stuff that is Vim plugins.  This is a
 listing of the Vim plugins I depend on most and that really offer added value
 when you work with Vim every day.
 
+!(right)/img/2010/08/textmate.png!
 
-h3. NERDTree explorer
+Almost any person I know who owns a Mac has at least tried or purchased the
+"TextMate":http://macromates.com/ editor.  It is a great programmer's editor
+that has a lot of nice features, but of course, lacks Vim-style navigation :)
+
++Some of its features have inspired Vim plugin developers to clone the
+awesomeness.  TextMate's best two features (super-quick file opening and
+snippets) have been "ported" to Vim plugins.+
+
+
+h3(#command-t). +Command-T: TextMate-style file opening+ -NERDTree explorer-
+
+<!-- Old NERDTree explorer stuff {{{ -->
+<div class="del">
 
 The NERDTree plugin is an absolute must for almost any Vim user.  For those
 who don't know it yet, NERDTree is a visual file browser that allows you to
@@ -455,17 +468,55 @@ directories), which works really well, too.
 More documentation available at: the "plugin
 page":http://www.vim.org/scripts/script.php?script_id=1658.
 
+</div>
+<!-- }}} -->
+<div class="ins">
+
+I used to have a whole discussion on the "NERDTree
+explorer":http://www.vim.org/scripts/script.php?script_id=1658 plugin here, but
+I was pointed towards "Command-T":https://wincent.com/products/command-t by a
+few readers.  Once I tried that plugin for a few minutes, it became clear that
+there would be no need for NERDTree anymore.
+
+The name Command-T is a reference to the original shortcut for "Go to File" in
+TextMate, which opens the quick file opener.  Setting up this plugin is a bit
+more tricky than usual, because some files need to be compiled, but the
+instructions on the website are very clear and simple.  There's even a
+screencast for Windows users.
+
+The plugin registers itself under @<leader>t@ (in my case that's @,t@).  And if
+it does, it shows a list of all the files from the current directory and a
+search box in which you can type any character progression.  By typing more
+characters, the list of files is narrowed down to contain only files that have
+that string as a subset.  But here's the real added value: you can type any
+sequence of characters that are in the file's path, they don't have to be
+subsequent characters.  For example, if you have the following list of files:
+
+bc. foo/bar.py
+foo/qux.py
+tests/test_foo/test_bar.py
+tests/test_foo/test_qux.py
+
+You could type the sequence *fb* to select the file @foo/bar.py@, or *tfb* to
+select @tests/test_foo/test_bar.py@.  As you can imagine, this is a huge time
+saver.  There is much more goodness in there.  For that, please refer to
+Wincent's screencasts, or his website.
+
+You can download the plugin at
+"vim.org":http://www.vim.org/scripts/script.php?script_id=3025.
+
+*Note*: On Vim instances that don't have Ruby support enabled (type @:version@
+to check this), the Commant-T plugin won't work.  If it isn't an option to
+recompile Vim to add Ruby support, the "NERDTree
+explorer":http://www.vim.org/scripts/script.php?script_id=1658 still is a good
+alternative.
+
+</div>
+
 
 h3. Snipmate: TextMate-style snippets for Vim
 
-!(right)/img/2010/08/textmate.png!
-
-Almost any person I know who owns a Mac has at least tried or purchased the
-"TextMate":http://macromates.com/ editor.  It is a great programmer's editor
-that has a lot of nice features, but of course, lacks Vim-style cursor
-navigation :)
-
-The best feature of TextMate, I have always found the intelligent snippets: you
+Another killer feature of TextMate are the intelligent snippets: you
 type some text, press Tab and TextMate creates a snippet for you, with
 placeholders at key positions within the snippet.  The first placeholder is
 selected, your overwrite it with the text you want, then press Tab to select
