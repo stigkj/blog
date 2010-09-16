@@ -107,7 +107,9 @@ function toggle_edits() {
 	$('a#toggle-edits').toggle(
 		function() {
 			$('ins,div.ins').css({ 'text-decoration': 'underline', color: 'green' });
-			$('del,div.del').css({ 'text-decoration': 'line-through', color: 'red', display: 'inherit' });
+			$('del,div.del').css({ 'text-decoration': 'line-through', color: 'red' });
+			$('div.del').css({ display: 'block' });
+			$('del').css({ display: 'inline' });
 			$(this).html('(hide updates)');
 			var $target = $('ins,del,div.ins,div.del').first();
 			var offset = $target.offset().top - 40;
