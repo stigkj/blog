@@ -103,6 +103,24 @@ function resolve_anti_spam_link() {
 	});
 }
 
+function toggle_edits() {
+	$('a#toggle-edits').toggle(
+		function() {
+			$('ins').css({ 'text-decoration': 'underline', color: 'green' });
+			$('del').css({ 'text-decoration': 'line-through', color: 'red' });
+			$(this).html('(hide updates)');
+			var $target = $('ins,del').first();
+			var offset = $target.offset().top - 40;
+			$('html,body').animate({ scrollTop: offset }, 800);
+		},
+		function() {
+			$('ins').css({ 'text-decoration': 'none', color: 'inherit' });
+			$('del').css({ 'text-decoration': 'none', color: 'inherit' });
+			$(this).html('(highlight updates)');
+		}
+	);
+}
+
 // Once the DOM is fully loaded
 $(document).ready(function () {
 	relatize_dates();
@@ -111,6 +129,7 @@ $(document).ready(function () {
 	hover_browser_icons();
 	hover_rightbar_icons();
 	resolve_anti_spam_link();
+	toggle_edits();
 });
 
 // Once all image's are loaded
