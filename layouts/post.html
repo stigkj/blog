@@ -1,6 +1,6 @@
 <div id="post">
 <h1><%= @item[:title] %></h1>
-<%= @item.html_dateline %>
+<%= @item.html_dateline(true) %>
 <%= yield %>
 </div>
 

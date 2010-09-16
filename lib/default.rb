@@ -11,7 +11,7 @@ class Nanoc3::Item
 	self.name.downcase
   end
 
-  def html_dateline(show_highlights = true)
+  def html_dateline(show_highlights = false)
     html = ""
     if self[:created_at] then
       html += "<p class=\"created_at dateline\">Published: <span class=\"reldate\">#{self[:created_at].strftime('%B %d, %Y')}</span></p>"
@@ -23,7 +23,7 @@ class Nanoc3::Item
     html
   end
 
-  def html_summary
+  def html_summary(show_highlights = false)
 	img_html = ""
 	if self[:image] then
 	  img_html = "<img class=\"postimg\" src=\"/img/postimgs/#{self[:image]}\" alt=\"#{self[:title]}\" />"
@@ -37,7 +37,7 @@ class Nanoc3::Item
 	html = "<div class=\"post-summary\">" +
 		   "<h2 style=\"clear: none\">#{title_link}#{post_status}</h2>" +
 		   "#{img_html}" +
-		   self.html_dateline +
+		   self.html_dateline(show_highlights) +
 	       "#{self[:excerpt]}" +
 	       "</div>"
 	html
