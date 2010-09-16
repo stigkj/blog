@@ -572,7 +572,21 @@ regularly):
   (@crm@) to UPPER_CASE (@cru@) and vice versa.
 * +"LustyJuggler":http://www.vim.org/scripts/script.php?script_id=2050: a quick
   buffer switcher and a great companion to Command-T. See "this
-  screencast":http://lococast.net/archives/185 to get excited.+
+  screencast":http://lococast.net/archives/185 (Lococast) to get excited.+
+
+
+<div class="ins">
+
+h3. Other resources
+
+Some of the resources from where I have collected inspiration for my @.vimrc@
+file, plugins, and tricks:
+
+* "Vimcasts":http://vimcasts.org/
+* "Lococast":http://lococast.net/
+* "Derek Wyatt's videos":http://vimeo.com/user1690209/videos (on Vimeo)
+
+</div>
 
 I hope you like these tips.  Please add your comments below if you do, or if
 you have any Vim improvements or tips you'd like to bring on yourself.  +You can
