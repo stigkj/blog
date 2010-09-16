@@ -3,7 +3,7 @@ title: How I boosted my Vim
 author: Vincent Driessen
 image: vim-config.png
 created_at: 2010-09-14
-updated_at: 2010-09-15
+updated_at: 2010-09-16
 kind: article
 flattr: 61588
 published: true
@@ -135,10 +135,10 @@ set nobackup
 set noswapfile
 </code></pre>
 
-+*Update*: There have been some passionate responses about this in comments, so
-a warning may be appropriate here.  If you care about recovering after a Vim or
-terminal emulator crash, or you often load huge files into memory, do *not*
-disable the swapfile.  I personally save/commit so
++There have been some passionate responses about this in comments, so a warning
+may be appropriate here.  If you care about recovering after a Vim or terminal
+emulator crash, or you often load huge files into memory, do *not* disable the
+swapfile.  I personally save/commit so
 "often":http://jeffkreeftmeijer.com/2010/git-your-act-together/#commit-all-the-fucking-time
 that the swap file adds nothing.  Sometimes I conciously kill a terminal
 forcefully, and I only find the swap file recovery process annoying.+
@@ -261,7 +261,7 @@ p(autoalign).
 !/img/2010/08/ugly-paste.png!
 !/img/2010/08/better-paste.png!
 
-p. <ins>*Update*: Another great trick I read in a "reddit
+p. <ins>Another great trick I read in a "reddit
 comment":http://www.reddit.com/r/programming/comments/ddbuc/how_i_boosted_my_vim/c0zelsm
 is to use @<C-r>+@ to paste right from the OS paste board.  Of course, this
 only works when running Vim locally (i.e. not over an SSH connection).</ins>
@@ -383,9 +383,9 @@ this:
 nmap <silent> ,/ :nohlsearch<CR>
 </code></pre>
 
-+*Update*: I used to have it mapped to @:let @/=""<CR>@, but some users kindly
-pointed out that it is better to use @:nohlsearch@, because it keeps the search
-history intact.+
++I used to have it mapped to @:let @/=""<CR>@, but some users kindly pointed
+out that it is better to use @:nohlsearch@, because it keeps the search history
+intact.+
 
 It clears the search buffer when you press @,/@
 
