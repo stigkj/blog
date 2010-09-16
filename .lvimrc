@@ -7,3 +7,5 @@ fun! LastMod()
     execute ":%s/^updated_at: .*$/updated_at: " . strftime("%Y-%m-%d") . "/"
     norm 'z
 endfun
+
+set makeprg=rake

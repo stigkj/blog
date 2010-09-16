@@ -68,8 +68,13 @@ p.autoalign {
 	width: 100%;
 }
 
-ins {
+ins, div.ins {
 	text-decoration: none;
+}
+
+del, div.del {
+	text-decoration: none;
+	display: none;
 }
 
 img.bordered {
@@ -231,6 +236,11 @@ div#flattr {
 	p.updated_at {
 		margin-top: -12px;
 		margin-bottom: 8px;
+	}
+
+	a#toggle-edits {
+		margin-left: 8px;
+		background-color: lightyellow;
 	}
 
 	h1.year {

@@ -3,7 +3,7 @@ title: How I boosted my Vim
 author: Vincent Driessen
 image: vim-config.png
 created_at: 2010-09-14
-updated_at: 2010-09-14
+updated_at: 2010-09-16
 kind: article
 flattr: 61588
 published: true
@@ -49,20 +49,8 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 </code></pre>
 
-Besides that, this is a little tweak that is a time-saver while you're building
-up your @.vimrc@:
-
-<pre><code class="language-vim">
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-</code></pre>
-
-This maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.  (I got this from
-Derek Wyatt's @.vimrc@ file.)
-
-Notice that I've remapped the leader key to @,@ (comma) instead of the default
-@\@ (backslash), just because I like it better.  Since in Vim's default
+Next, I've remapped the leader key to @,@ (comma) instead of the default @\@
+(backslash), just because I like it better.  Since in Vim's default
 configuration, almost every key is already mapped to a command, there needs to
 be some sort of standard "free" key where you can place custom mappings under.
 This is called the "mapleader", and can be defined like this:
@@ -71,6 +59,18 @@ This is called the "mapleader", and can be defined like this:
 " change the mapleader from \ to ,
 let mapleader=","
 </code></pre>
+
+Once that is done, this is a little tweak that is a time-saver while you're
+building up your @.vimrc@.  Here, we start using the leader key:
+
+<pre><code class="language-vim">
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+</code></pre>
+
+This effectively maps the @,ev@ and @,sv@ keys to edit/reload @.vimrc@.  (I got
+this from ["Derek Wyatt":http://derekwyatt.org/]'s @.vimrc@ file.)
 
 
 h2. Change Vim behaviour
@@ -135,10 +135,10 @@ set nobackup
 set noswapfile
 </code></pre>
 
-+*Update*: There have been some passionate responses about this in comments, so
-a warning may be appropriate here.  If you care about recovering after a Vim or
-terminal emulator crash, do *not* disable the swapfile.  I personally
-save/commit so
++There have been some passionate responses about this in comments, so a warning
+may be appropriate here.  If you care about recovering after a Vim or terminal
+emulator crash, or you often load huge files into memory, do *not* disable the
+swapfile.  I personally save/commit so
 "often":http://jeffkreeftmeijer.com/2010/git-your-act-together/#commit-all-the-fucking-time
 that the swap file adds nothing.  Sometimes I conciously kill a terminal
 forcefully, and I only find the swap file recovery process annoying.+
@@ -261,7 +261,7 @@ p(autoalign).
 !/img/2010/08/ugly-paste.png!
 !/img/2010/08/better-paste.png!
 
-p. <ins>*Update*: Another great trick I read in a "reddit
+p. <ins>Another great trick I read in a "reddit
 comment":http://www.reddit.com/r/programming/comments/ddbuc/how_i_boosted_my_vim/c0zelsm
 is to use @<C-r>+@ to paste right from the OS paste board.  Of course, this
 only works when running Vim locally (i.e. not over an SSH connection).</ins>
@@ -380,8 +380,12 @@ Tired of clearing highlighted searches by searching for "ldsfhjkhgakjks"?  Use
 this:
 
 <pre><code class="language-vim">
-nmap <silent> ,/ :let @/=""<CR>
+nmap <silent> ,/ :nohlsearch<CR>
 </code></pre>
+
++I used to have it mapped to @:let @/=""<CR>@, but some users kindly pointed
+out that it is better to use @:nohlsearch@, because it keeps the search history
+intact.+
 
 It clears the search buffer when you press @,/@
 
@@ -402,8 +406,21 @@ Ah, finally.  Arrived at the magical stuff that is Vim plugins.  This is a
 listing of the Vim plugins I depend on most and that really offer added value
 when you work with Vim every day.
 
+!(right)/img/2010/08/textmate.png!
 
-h3. NERDTree explorer
+Almost any person I know who owns a Mac has at least tried or purchased the
+"TextMate":http://macromates.com/ editor.  It is a great programmer's editor
+that has a lot of nice features, but of course, lacks Vim-style navigation :)
+
++Some of its features have inspired Vim plugin developers to clone the
+awesomeness.  TextMate's best two features (super-quick file opening and
+snippets) have been "ported" to Vim plugins.+
+
+
+h3(#command-t). +Command-T: TextMate-style file opening+ -NERDTree explorer-
+
+<!-- Old NERDTree explorer stuff {{{ -->
+<div class="del">
 
 The NERDTree plugin is an absolute must for almost any Vim user.  For those
 who don't know it yet, NERDTree is a visual file browser that allows you to
@@ -451,17 +468,55 @@ directories), which works really well, too.
 More documentation available at: the "plugin
 page":http://www.vim.org/scripts/script.php?script_id=1658.
 
+</div>
+<!-- }}} -->
+<div class="ins">
+
+I used to have a whole discussion on the "NERDTree
+explorer":http://www.vim.org/scripts/script.php?script_id=1658 plugin here, but
+I was pointed towards "Command-T":https://wincent.com/products/command-t by a
+few readers.  Once I tried that plugin for a few minutes, it became clear that
+there would be no need for NERDTree anymore.
+
+The name Command-T is a reference to the original shortcut for "Go to File" in
+TextMate, which opens the quick file opener.  Setting up this plugin is a bit
+more tricky than usual, because some files need to be compiled, but the
+instructions on the website are very clear and simple.  There's even a
+screencast for Windows users.
+
+The plugin registers itself under @<leader>t@ (in my case that's @,t@).  And if
+it does, it shows a list of all the files from the current directory and a
+search box in which you can type any character progression.  By typing more
+characters, the list of files is narrowed down to contain only files that have
+that string as a subset.  But here's the real added value: you can type any
+sequence of characters that are in the file's path, they don't have to be
+subsequent characters.  For example, if you have the following list of files:
+
+bc. foo/bar.py
+foo/qux.py
+tests/test_foo/test_bar.py
+tests/test_foo/test_qux.py
+
+You could type the sequence *fb* to select the file @foo/bar.py@, or *tfb* to
+select @tests/test_foo/test_bar.py@.  As you can imagine, this is a huge time
+saver.  There is much more goodness in there.  For that, please refer to
+Wincent's screencasts, or his website.
+
+You can download the plugin at
+"vim.org":http://www.vim.org/scripts/script.php?script_id=3025.
+
+*Note*: On Vim instances that don't have Ruby support enabled (type @:version@
+to check this), the Commant-T plugin won't work.  If it isn't an option to
+recompile Vim to add Ruby support, the "NERDTree
+explorer":http://www.vim.org/scripts/script.php?script_id=1658 still is a good
+alternative.
+
+</div>
+
 
 h3. Snipmate: TextMate-style snippets for Vim
 
-!(right)/img/2010/08/textmate.png!
-
-Almost any person I know who owns a Mac has at least tried or purchased the
-"TextMate":http://macromates.com/ editor.  It is a great programmer's editor
-that has a lot of nice features, but of course, lacks Vim-style cursor
-navigation :)
-
-The best feature of TextMate, I have always found the intelligent snippets: you
+Another killer feature of TextMate are the intelligent snippets: you
 type some text, press Tab and TextMate creates a snippet for you, with
 placeholders at key positions within the snippet.  The first placeholder is
 selected, your overwrite it with the text you want, then press Tab to select
@@ -475,10 +530,11 @@ to get you excited about it.
 
 h4. Writing your own snippets
 
-There are already lots of specific language plugins for snipMate available, but
-writing your own is simple in case you ever miss functionality.  Just create a
-file called @~/.vim/snippets/foo.snippet@, where @foo@ is the filetype you want
-to load the snippets for.
+There are already lots of specific language -plugins-
++"snippets":http://github.com/scrooloose/snipmate-snippets+ for snipMate
+available, but writing your own is simple in case you ever miss functionality.
+Just create a file called @~/.vim/snippets/foo.snippet@, where @foo@ is the
+filetype you want to load the snippets for.
 
 Then, declare your snippets.  That's really as easy as this:
 
@@ -514,6 +570,23 @@ regularly):
   autocorrections (abbreviations) for many conjugations of words and smart
   conversion of words from snake_case (@crs@) to camelCase (@cr_@) or MixedCase
   (@crm@) to UPPER_CASE (@cru@) and vice versa.
+* +"LustyJuggler":http://www.vim.org/scripts/script.php?script_id=2050: a quick
+  buffer switcher and a great companion to Command-T. See "this
+  screencast":http://lococast.net/archives/185 (Lococast) to get excited.+
+
+
+<div class="ins">
+
+h3. Other resources
+
+Some of the resources from where I have collected inspiration for my @.vimrc@
+file, plugins, and tricks:
+
+* "Vimcasts":http://vimcasts.org/
+* "Lococast":http://lococast.net/
+* "Derek Wyatt's videos":http://vimeo.com/user1690209/videos (on Vimeo)
+
+</div>
 
 I hope you like these tips.  Please add your comments below if you do, or if
 you have any Vim improvements or tips you'd like to bring on yourself.  +You can
