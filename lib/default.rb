@@ -11,13 +11,14 @@ class Nanoc3::Item
 	self.name.downcase
   end
 
-  def html_dateline
+  def html_dateline(show_highlights = true)
     html = ""
     if self[:created_at] then
       html += "<p class=\"created_at dateline\">Published: <span class=\"reldate\">#{self[:created_at].strftime('%B %d, %Y')}</span></p>"
     end
     if self[:updated_at] and self[:updated_at] != self[:created_at] then
-      html += "<p class=\"updated_at dateline\">Last updated: <span class=\"reldate\">#{self[:updated_at].strftime('%B %d, %Y')}</span> <a id=\"toggle-edits\" href=\"#\">(highlight updates)</a></p>"
+      html += "<p class=\"updated_at dateline\">Last updated: <span class=\"reldate\">#{self[:updated_at].strftime('%B %d, %Y')}</span>"
+      html += " <a id=\"toggle-edits\" href=\"#\">(highlight updates)</a></p>" if show_highlights
     end
     html
   end
