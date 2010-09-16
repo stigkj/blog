@@ -530,10 +530,11 @@ to get you excited about it.
 
 h4. Writing your own snippets
 
-There are already lots of specific language plugins for snipMate available, but
-writing your own is simple in case you ever miss functionality.  Just create a
-file called @~/.vim/snippets/foo.snippet@, where @foo@ is the filetype you want
-to load the snippets for.
+There are already lots of specific language -plugins-
++"snippets":http://github.com/scrooloose/snipmate-snippets+ for snipMate
+available, but writing your own is simple in case you ever miss functionality.
+Just create a file called @~/.vim/snippets/foo.snippet@, where @foo@ is the
+filetype you want to load the snippets for.
 
 Then, declare your snippets.  That's really as easy as this:
 
