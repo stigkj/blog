@@ -48,6 +48,9 @@ deploy:
     default:
         dst: "nviecom@nvie.com:subdomains/dev/httpdocs"
         options: [ '-prtvz', '--delete-after' ]
+    dev:
+        dst: "nviecom@nvie.com:subdomains/dev/httpdocs"
+        options: [ '-prtvz', '--delete-after' ]
     prd:
         dst: "nviecom@nvie.com:httpdocs"
         options: [ '-prtvz', '--delete-after' ]
