@@ -5,8 +5,10 @@ $highlight_syntax = false
 $use_minified_js = false
 $use_minified_css = false
 
-# Include this
 $add_google_analytics = false
 #$add_disqus_comments = false
 #$disqus_develop_mode = false
 #$disqus_shortname = 'nvie'
+
+# Set an .htaccess file, preventing login
+$protect_site = true
