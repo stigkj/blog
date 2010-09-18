@@ -2,8 +2,8 @@
 title: PEP8, pyflakes and PyUnit for Vim
 author: Vincent Driessen
 image: ppp.png
-created_at: 2010-08-30
-updated_at: 2010-09-07
+created_at: 2010-09-15
+updated_at: 2010-09-18
 kind: article
 published: false
 disqus_id: 'pep8-pyflakes-and-pyunit-for-vim'
