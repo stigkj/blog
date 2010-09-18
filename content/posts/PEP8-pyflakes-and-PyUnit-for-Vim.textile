@@ -17,7 +17,6 @@ gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque
 elit in tortor. Mauris gravida, purus at ultrices sollicitudin, purus diam
 dapibus leo, ut eleifend dolor tellus feugiat lacus. Class aptent taciti
 sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam ut
-fringilla dolor. Cras elit tellus, egestas eget congue sit amet, consequat in
 orci.
 
 
