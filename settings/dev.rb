@@ -1,11 +1,11 @@
 $include_drafts = true
-#$recent_posts_limit = 7
-#$use_googles_jquery = false
-#$highlight_syntax = false
-#$use_minified_js = false
-#$use_minified_css = false
+$recent_posts_limit = 7
+$use_googles_jquery = true
+$highlight_syntax = true
+$use_minified_js = true
+$use_minified_css = true
 
 $add_google_analytics = false
-#$add_disqus_comments = false
-#$disqus_develop_mode = false
-#$disqus_shortname = 'nvie'
+$add_disqus_comments = true
+$disqus_develop_mode = false
+$disqus_shortname = 'nvie'
