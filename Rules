@@ -1,11 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'defaults'
-begin
-	require 'settings'
-rescue LoadError => boom
-	# All is fine
-end
+require 'settings'
 
 # A few helpful tips about the Rules file:
 #
