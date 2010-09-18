@@ -71,6 +71,14 @@ route '/files/*/' do
 	path = @item.identifier.chop.gsub(/^\/content/, '')
 	path + '.' + @item[:extension]
 end
+
+# Google site verification
+compile '/google*/' do
+end
+
+route '/google*/' do
+	@item.identifier.chop + '.' + @item[:extension]
+end
 # }}}
 
 # Compiling blog posts {{{
