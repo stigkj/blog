@@ -1,11 +1,12 @@
 <div id="post">
 <h1><%= @item[:title] %></h1>
+<p id="permalink" class="print-only"><%= @config[:base_url] + @item[:source_url] %></p>
 <%= @item.html_dateline(true) %>
 <%= yield %>
 </div>
 
 <% if @item[:flattr] %>
-<div class="flattr-reminder">
+<div class="flattr-reminder no-print">
 If you find this post useful, you may consider
 <a class="flattr-link" href="https://flattr.com/thing/<%=@item[:flattr]%>/"><img src="/img/flattrblack.png" height="10" />'ing</a>
 it.
