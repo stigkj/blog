@@ -1,10 +1,9 @@
-map <buffer> <F5> <Esc>:w<CR>:!rake<CR>
-map!  <buffer> <F5> <Esc>:w<CR>:!rake<CR>
-
 autocmd BufWritePre,FileWritePre *posts/*.textile call LastMod()
 fun! LastMod()
     norm mz
     execute ":%s/^updated_at: .*$/updated_at: " . strftime("%Y-%m-%d") . "/"
+    "norm msHmtgg/^updated_at:\s*/e+1<CR>"_D"=strftime("%Y %b %d")<CR>p'tzt`s
+    " from: http://vimdoc.sourceforge.net/htmldoc/tips.html#restore-position
     norm 'z
 endfun
 
