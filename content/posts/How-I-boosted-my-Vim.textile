@@ -3,7 +3,7 @@ title: How I boosted my Vim
 author: Vincent Driessen
 image: vim-config.png
 created_at: 2010-09-14
-updated_at: 2010-09-16
+updated_at: 2010-09-23
 kind: article
 flattr: 61588
 published: true
@@ -153,10 +153,7 @@ plugin only makes sense in a Python file.  Finally, indenting intelligence is
 enabled based on the syntax rules for the file type.
 
 <pre><code class="language-vim">
-" set filetype stuff to on
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 </code></pre>
 
 To set some file type specific settings, you can now use the following:
@@ -556,6 +553,14 @@ regularly):
 * "localrc":http://www.vim.org/scripts/script.php?script_id=1408: lets you load
   specific Vim settings for any file in the same directory (or a subdirectory
   thereof).  Comes in super handy for project-wide settings.
+* +"Sparkup":http://github.com/rstacruz/sparkup: write HTML lightning fast by
+  jotting down a "CSS selector"-like line and pressing a shortcut.  Super time
+  saver when you edit HTML manually. Go see "the demo
+  video":http://www.youtube.com/watch?v=Jw3jipcenKc.+
+* +"YankRing":http://www.vim.org/scripts/script.php?script_id=1234: quickly
+  cycle through your registers when pasting, to select the appropriate paste.
+  How often have you "cut" a line, then "deleted" a line, only to find the
+  "deleted" line in your last paste register?+
 * "Pastie":http://www.vim.org/scripts/script.php?script_id=1624: lets you
   visually select a piece of code and submit it to
   "pastie.org":http://pastie.org.  It even has automatic filetype recognition.
@@ -585,6 +590,9 @@ file, plugins, and tricks:
 * "Vimcasts":http://vimcasts.org/
 * "Lococast":http://lococast.net/
 * "Derek Wyatt's videos":http://vimeo.com/user1690209/videos (on Vimeo)
+* +Steve Losh blogged about "moving back to
+  Vim":http://stevelosh.com/blog/2010/09/coming-home-to-vim/ and has some great
+  tips and tricks.+
 
 </div>
 
