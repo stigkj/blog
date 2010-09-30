@@ -20,9 +20,3 @@ end
 task :ping do
 	system('scripts/ping.sh')
 end
-
-task :publish do
-	hudson_url = 'http://94.213.31.147:8657/'
-	system('curl', '-s', hudson_url + 'job/nvie.com/build?token=hgfdishg78hegw8hieuh82h0gq')
-	puts "Watch the build on " + hudson_url
-end
