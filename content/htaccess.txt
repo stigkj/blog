@@ -5,7 +5,7 @@ all_articles.select { |a| a[:alt_url] }.each do |a|
 	output += "Redirect 301 #{a[:alt_url2]} #{@config[:base_url]}/posts/#{a.slug}\n" if a[:alt_url2]
 end
 
-output += "<FilesMatch \"\.(html|css|js|xml|otf)$\">\n"
+output += "<FilesMatch \"\.(html|css|js|xml|ico|otf)$\">\n"
 output += "    SetOutputFilter DEFLATE\n"
 output += "</FilesMatch>\n"
 %><%= output %>
