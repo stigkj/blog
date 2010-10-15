@@ -3,7 +3,7 @@ title: About me
 author: Vincent Driessen
 ---
 
-!(right shadow)/img/vincent.png!
+!(right shadow#vincent)/img/vincent.png!
 
 This blog is maintained by Vincent Driessen. I work as a software engineer at
 the IT department of the "Dutch Tax and Customs
