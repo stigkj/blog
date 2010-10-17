@@ -8,7 +8,7 @@ class Nanoc3::Item
   end
 
   def slug
-	self.name.downcase
+    self.name.downcase
   end
 
   def html_dateline(show_highlights = false)
@@ -24,23 +24,34 @@ class Nanoc3::Item
   end
 
   def html_summary(show_highlights = false)
-	img_html = ""
-	if self[:image] then
-	  img_html = "<img class=\"postimg\" src=\"/img/postimgs/#{self[:image]}\" alt=\"#{self[:title]}\" />"
-	  img_html = link_to(img_html, self)
-	end
+    img_html = ""
+    if self[:image] then
+      img_html = "<img class=\"postimg\" src=\"/img/postimgs/#{self[:image]}\" alt=\"#{self[:title]}\" />"
+      img_html = link_to(img_html, self)
+    end
 
-	title_link = link_to(self[:title], self)
-	post_status = ""
-	post_status = " (draft)" unless self[:published]
-	post_date = self[:created_at].strftime('%B %d, %Y')
-	html = "<div class=\"post-summary\">" +
-		   "<h2 style=\"clear: none\">#{title_link}#{post_status}</h2>" +
-		   "#{img_html}" +
-		   self.html_dateline(show_highlights) +
-	       "#{self[:excerpt]}" +
-	       "</div>"
-	html
+    flattr_link = ""
+    if self[:flattr] then
+      #link = @config[:base_url] + '/posts/' + self.slug
+      # TODO: This should somehow use @config["base_url], but therefore, I'd
+      # have to move this method out of this subclass.
+      # According to ddfreyne, Nanoc3::Item should never be subclassed!
+      link = 'http://nvie.com/posts/' + self.slug
+      flattr_link = "<div style=\"float: right; margin-top: 8px;\"><a class=\"FlattrButton\" style=\"display:none;\" rev=\"flattr;button:compact;\" href=\"#{link}\"></a></div>"
+    end
+
+    title_link = link_to(self[:title], self)
+    post_status = ""
+    post_status = " (draft)" unless self[:published]
+    post_date = self[:created_at].strftime('%B %d, %Y')
+    html = "<div class=\"post-summary\">" +
+        "#{flattr_link}" +
+        "<h2 style=\"clear: none\">#{title_link}#{post_status}</h2>" +
+        "#{img_html}" +
+        self.html_dateline(show_highlights) +
+          "#{self[:excerpt]}" +
+          "</div>"
+    html
   end
 end
 
@@ -52,9 +63,9 @@ class Nanoc3::Site
 end
 
 def all_articles
-	if $include_drafts then
-		sorted_articles
-	else
-		sorted_articles.select { |a| a[:published] }
-	end
+  if $include_drafts then
+    sorted_articles
+  else
+    sorted_articles.select { |a| a[:published] }
+  end
 end
