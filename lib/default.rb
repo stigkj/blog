@@ -37,7 +37,7 @@ class Nanoc3::Item
       # have to move this method out of this subclass.
       # According to ddfreyne, Nanoc3::Item should never be subclassed!
       link = 'http://nvie.com/posts/' + self.slug
-      flattr_link = "<div style=\"float: right; margin-top: 8px;\"><a class=\"FlattrButton\" style=\"display:none;\" rev=\"flattr;button:compact;\" href=\"#{link}\"></a></div>"
+      flattr_link = "<div class=\"flattr-quick no-print\"><a class=\"FlattrButton\" style=\"display:none;\" rev=\"flattr;button:compact;\" href=\"#{link}\"></a></div>"
     end
 
     title_link = link_to(self[:title], self)
