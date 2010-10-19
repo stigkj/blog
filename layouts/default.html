@@ -45,40 +45,17 @@
 	<body>
 		<div id="header">
 			<h1><a href="/"><span id="nvie">nvie</span><span id="dot">.</span><span id="ext">com</span></a></h1>
-		</div>
-		<div class="ricon" id="rss"><a href="http://feeds.feedburner.com/nvie"><img src="/img/rss.png" alt="Subscribe" title="Subscribe" /></a></div>
-		<div class="ricon" id="twitter"><a href="http://twitter.com/nvie"><img src="/img/twitter.png" alt="Follow me on Twitter" title="Follow me on Twitter" /></a></div>
+			<ul>
+                <li<%= " class='current'" if @item.identifier == '/' %>><%= link_to_unless_current('Home', '/') %></li>
+                <li<%= " class='current'" if @item.identifier.match(/^\/posts\//) %>><%= link_to_unless_current('Posts', '/posts/') %></li>
+                <!--<li<%= " class='current'" if @item.identifier.match(/^\/projects\//) %>><%= link_to_unless_current('Projects', '/projects/') %></li>-->
+                <li<%= " class='current'" if @item.identifier == '/about/' %>><%= link_to_unless_current('About me', '/about/') %></li>
+			</ul>
+        </div>
 		<div id="main">
 			<%= yield %>
 		</div>
-		<div id="sidebar">
-			<h2 class="first"><span>Default</span></h2>
-			<ul>
-				<li class="menu"><%= link_to_unless_current('Home', '/') %></li>
-				<li class="menu"><%= link_to_unless_current('About me', '/about/') %></li>
-			</ul>
-
-			<h2><span>Recent posts</span></h2>
-			<ul>
-				<li class="all menu"><%= link_to_unless_current('All posts', '/posts/') %></li>
-				<% all_articles.first($recent_posts_limit).each do |p| %>
-				<li><%= link_to_unless_current(p[:title], p) %></li>
-				<% end %>
-			</ul>
-
-			<% if false %>
-			<h2><span>Projects</span></h2>
-			<ul>
-				<li class="all menu"><%= link_to_unless_current('All projects', '/projects/') %></li>
-				<li><a href="http://github.com/nvie/gitflow/">git-flow</a></li>
-				<li><a href="http://github.com/nvie/vim-pep8/">vim-pep8</a></li>
-				<li><a href="http://github.com/nvie/vim-pyflakes/">vim-pyflakes</a></li>
-				<li><a href="http://github.com/nvie/vim-pyunit/">vim-pyunit</a></li>
-			</ul>
-			<% end %>
-		</div>
 		<div id="footer">
-			<div class="boxed">
 			<h1>About this blog</h1>
 			<p>This blog is maintained by Vincent Driessen. You may have
 			noticed that the subjects on this blog tend to vary, which is
@@ -95,7 +72,6 @@
 			<img id="_opera" class="browser" src="/img/opera0.png" alt="Opera" title="Opera" width="18" height="18" />, but not in
 			<img id="_ie" class="misfit" src="/img/ie0.png" alt="Internet Exporer" title="...and I couldn't care less about it." width="18" height="18" />.
 			</p>
-			</div>
 		</div>
 
 		<%# Google analytics tracker %>
