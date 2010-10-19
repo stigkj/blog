@@ -53,6 +53,10 @@ class Nanoc3::Item
           "</div>"
     html
   end
+
+  def is_post?
+    self[:kind] == "article"
+  end
 end
 
 # Extend Item
