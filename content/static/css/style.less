@@ -26,6 +26,13 @@
 	-o-border-radius: @radius;
 }
 
+.rotate (@angle: -90deg) {
+    transform: rotate(@angle);
+    -webkit-transform: rotate(@angle);
+    -moz-transform: rotate(@angle);
+    -o-transform: rotate(@angle);
+}
+
 /* Allow "shadow" classes */
 .shadow { .shadow; }
 
@@ -287,10 +294,7 @@ img.bordered {
 		padding-top: 40px;
 		font-size: 60px;
 		color: #fff;
-		transform: rotate(-90deg);
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-		-o-transform: rotate(-90deg);
+		.rotate(-90deg);
 	}
 
 	hr {
@@ -376,10 +380,7 @@ img.bordered {
 	}
 
 	img#vincent {
-		-webkit-transform: rotate(-3deg);
-		-moz-transform: rotate(-3deg);
-		-o-transform: rotate(-3deg);
-		transform: rotate(-3deg);
+		.rotate(-3deg);
 		margin: 20px;
 	}
 
