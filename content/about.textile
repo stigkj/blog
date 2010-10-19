@@ -5,11 +5,12 @@ author: Vincent Driessen
 
 !(right shadow#vincent)/img/vincent.png!
 
-This blog is maintained by Vincent Driessen. I work as a software engineer at
-the IT department of the "Dutch Tax and Customs
-Administration":http://www.belastingdienst.nl by day, designing and building
-one of the coolest enterprise deployment tools, but I'm a
-"Python":http://python.org and
+This blog is maintained by Vincent Driessen.  I live in
+"Deventer":http://maps.google.nl/maps?f=q&source=s_q&hl=nl&geocode=&q=deventer&sll=52.469397,5.509644&sspn=4.585004,7.591553&ie=UTF8&hq=&hnear=Deventer,+Gelderland&z=14
+in the Netherlands.  I work as a software engineer at the IT department of the
+"Dutch Tax and Customs Administration":http://www.belastingdienst.nl by day,
+designing and building one of the coolest enterprise deployment tools, but I'm
+a "Python":http://python.org and
 "Cocoa":http://developer.apple.com/technologies/mac/cocoa.html developer by
 night/weekends.
 
