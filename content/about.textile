@@ -10,15 +10,11 @@ This blog is maintained by Vincent Driessen.  I live in
 in the Netherlands.  I work as a software engineer at the IT department of the
 "Dutch Tax and Customs Administration":http://www.belastingdienst.nl by day,
 designing and building one of the coolest enterprise deployment tools, but I'm
-a "Python":http://python.org and
-"Cocoa":http://developer.apple.com/technologies/mac/cocoa.html developer by
-night/weekends.
+a Python and Cocoa developer by night/weekends.
 
-This blog essentially has nothing to do with my daily work, but has merely been
-created to share ideas on anything that I find interesting hobby-wise.  I'm an
-Apple fan and I like getting to know new frameworks for programming the Mac,
-"iPad":http://www.apple.com/ipad and the "iPhone":http://www.apple.com/iphone/
-platforms.
+I'm an Apple fan and I like programming for the Mac and iOS platforms.
+Besides that, you may see me blog on (distributed) version control,
+programming languages, parser/compiler design or the Vim editor.
 
 
 h2. Contact
@@ -29,7 +25,7 @@ You can find my public GPG below. I mainly use it to tag my public "Git
 repos":http://github.com/nvie, not for encrypting mail traffic.  You can use
 this key to verify my tags.
 
-bc.. -----BEGIN PGP PUBLIC KEY BLOCK-----
+bc{font-size: 78%}.. -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.9 (Darwin)
 
 mQGiBEttZpsRBACuQ8e1uttjT+q1CwGmtChHXIOqcSR4ksx5UElhwDeJABldVmkS
