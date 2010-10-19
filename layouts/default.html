@@ -45,13 +45,30 @@
 	<body>
 		<div id="header">
 			<h1><a href="/"><span id="nvie">nvie</span><span id="dot">.</span><span id="ext">com</span></a></h1>
+            <%#
+            prev_html = "&laquo;"
+            next_html = "&raquo;"
+            if @item.is_post? then
+                curr_index = all_articles.index(@item)
+                prev_item = all_articles[curr_index-1] if curr_index > 0
+                next_item = all_articles[curr_index+1]
+
+                prev_html = link_to("&laquo;", prev_item) if prev_item
+                next_html = link_to("&raquo;", next_item) if next_item
+            end %>
 			<ul>
-                <li<%= " class='current'" if @item.identifier == '/' %>><%= link_to_unless_current('Home', '/') %></li>
-                <li<%= " class='current'" if @item.identifier.match(/^\/posts\//) %>><%= link_to_unless_current('Posts', '/posts/') %></li>
-                <!--<li<%= " class='current'" if @item.identifier.match(/^\/projects\//) %>><%= link_to_unless_current('Projects', '/projects/') %></li>-->
-                <li<%= " class='current'" if @item.identifier == '/about/' %>><%= link_to_unless_current('About me', '/about/') %></li>
+                <li id="home" <%= " class='current'" if @item.identifier == '/' %>><%= link_to_unless_current('Home', '/') %></li>
+                <li id="posts" <%= " class='current'" if @item.identifier.match(/^\/posts\//) %>><%= link_to_unless_current('Posts', '/posts/') %></li>
+                <%#
+                <li<%= " class='current'" if @item.identifier.match(/^\/projects\//) % >><%= link_to_unless_current('Projects', '/projects/') % ></li>
+                %>
+                <li id="about" <%= " class='current'" if @item.identifier == '/about/' %>><%= link_to_unless_current('About me', '/about/') %></li>
 			</ul>
         </div>
+		<div id="actionbox" style="display: none">
+            <div id="rss"><%= link_to_unless_current('<img src="/img/rss.png" alt="Subscribe" title="Subscribe" width="16" height="16" />', 'http://feeds.feedburner.com/nvie') %></div>
+            <div id="tweet"><a href="http://twitter.com/share?url=<%= config[:base_url] + @item.identifier %>&via=nvie&text=<%= (@item[:title]) ? (@item[:title]) : "nvie.com" %>"><img src='/img/twitter.png' width="16" height="16" alt="Tweet this!" title="Tweet this!" /></a></div>
+		</div>
 		<div id="main">
 			<%= yield %>
 		</div>
@@ -88,7 +105,7 @@
 		<% end %>
 
 		<%# Disqus comment counter%>
-		<% if @item[:kind] == 'article' and $add_disqus_comments then %>
+		<% if @item.is_post? and $add_disqus_comments then %>
 		<script type="text/javascript">
 			(function () {
 			var s = document.createElement('script'); s.async = true;

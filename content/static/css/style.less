@@ -114,9 +114,9 @@ img.bordered {
 	color: #eee;
 
 	/* Center the header, just like #main */
-	width: 600px;
+	width: 640px;
 	margin: 0 auto;
-	padding: 0;
+	padding: 0 8px 0 20px;
 
 	h1 {
 		position: absolute;
@@ -168,6 +168,8 @@ img.bordered {
 			a {
 				color: inherit;
 			}
+
+			pointer: hand;
 		}
 
 		li:hover, li.current {
@@ -180,6 +182,30 @@ img.bordered {
 	}
 }
 /* }}} */
+ 
+
+/* Action buttons on the right side {{{ */
+#actionbox {
+    /* The actionbox starts hidden by default, jQuery will show it dynamically */
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+
+    #rss, #tweet {
+        width: 16px;
+        padding: 0;
+
+        margin: 8px;
+
+        img {
+            vertical-align: middle;
+        }
+    }
+}
+/* }}} */
+
 
 /* Main {{{ */
 #main {
