@@ -27,10 +27,15 @@
 }
 
 .rotate (@angle: -90deg) {
-    transform: rotate(@angle);
-    -webkit-transform: rotate(@angle);
-    -moz-transform: rotate(@angle);
-    -o-transform: rotate(@angle);
+	transform: rotate(@angle);
+	-webkit-transform: rotate(@angle);
+	-moz-transform: rotate(@angle);
+	-o-transform: rotate(@angle);
+}
+
+.gradient (@from: #000, @to: #fff) {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to));
+	background-image: -moz-linear-gradient(top, @from 1%, @to 100%);
 }
 
 /* Allow "shadow" classes */
@@ -173,7 +178,8 @@ img.bordered {
 		}
 
 		li:hover, li.current {
-			background-color: #ddd; /* TODO: Add a gradient to the "button" */
+			background-color: #ddd;
+			.gradient(#ddd, #999);
 			color: #222;
 			text-shadow: none;
 
@@ -186,23 +192,23 @@ img.bordered {
 
 /* Action buttons on the right side {{{ */
 #actionbox {
-    /* The actionbox starts hidden by default, jQuery will show it dynamically */
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 32px;
+	/* The actionbox starts hidden by default, jQuery will show it dynamically */
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 32px;
 
-    #rss, #tweet {
-        width: 16px;
-        padding: 0;
+	#rss, #tweet {
+		width: 16px;
+		padding: 0;
 
-        margin: 8px;
+		margin: 8px;
 
-        img {
-            vertical-align: middle;
-        }
-    }
+		img {
+			vertical-align: middle;
+		}
+	}
 }
 /* }}} */
 
@@ -485,7 +491,7 @@ img.bordered {
 input#moreposts {
 	width: 100%;
 	background-color: #00adee;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00adee), to(#3270ae));
+	.gradient(#00adee, #3270ae);
 	border: 1px solid #0076A3;
 	color: #D9EEF7;
 	.border-radius(6px);
