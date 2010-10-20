@@ -85,14 +85,30 @@ function toggle_edits() {
 	);
 }
 
+function reposition_actionbox() {
+	var d = $(window);
+	var m = $('#main');
+	var pos = m.position();
+	var t = pos.top + 32;
+	var l = Math.max(0, (d.width() - m.outerWidth())) / 2 + 600 + 48;
+	$('#actionbox').css({top: t, left: l})
+}
+
+function show_actionbox() {
+    reposition_actionbox();
+    $('#actionbox').show();
+}
+
 // Once the DOM is fully loaded
 $(document).ready(function () {
 	relatize_dates();
+	show_actionbox();
 	expand_pre_boxes();
 	open_external_links_in_new_window();
 	hover_browser_icons();
 	resolve_anti_spam_link();
 	toggle_edits();
+	$(window).resize(reposition_actionbox);
 });
 
 // Once all image's are loaded
