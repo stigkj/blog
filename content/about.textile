@@ -5,19 +5,16 @@ author: Vincent Driessen
 
 !(right shadow#vincent)/img/vincent.png!
 
-This blog is maintained by Vincent Driessen. I work as a software engineer at
-the IT department of the "Dutch Tax and Customs
-Administration":http://www.belastingdienst.nl by day, designing and building
-one of the coolest enterprise deployment tools, but I'm a
-"Python":http://python.org and
-"Cocoa":http://developer.apple.com/technologies/mac/cocoa.html developer by
-night/weekends.
+This blog is maintained by Vincent Driessen.  I live in
+"Deventer":http://maps.google.nl/maps?f=q&source=s_q&hl=nl&geocode=&q=deventer&sll=52.469397,5.509644&sspn=4.585004,7.591553&ie=UTF8&hq=&hnear=Deventer,+Gelderland&z=14
+in the Netherlands.  I work as a software engineer at the IT department of the
+"Dutch Tax and Customs Administration":http://www.belastingdienst.nl by day,
+designing and building one of the coolest enterprise deployment tools, but I'm
+a Python and Cocoa developer by night/weekends.
 
-This blog essentially has nothing to do with my daily work, but has merely been
-created to share ideas on anything that I find interesting hobby-wise.  I'm an
-Apple fan and I like getting to know new frameworks for programming the Mac,
-"iPad":http://www.apple.com/ipad and the "iPhone":http://www.apple.com/iphone/
-platforms.
+I'm an Apple fan and I like programming for the Mac and iOS platforms.
+Besides that, you may see me blog on (distributed) version control,
+programming languages, parser/compiler design or the Vim editor.
 
 
 h2. Contact

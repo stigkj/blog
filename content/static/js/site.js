@@ -43,44 +43,6 @@ function hover_browser_icons() {
 	);
 }
 
-function showhide_ricon(id, show) {
-   	var pixels_string = (RSS_LOGO_WIDTH / 2) + "px";
-   	$('#' + id).stop(true, true)
-   		.css({'left': RSS_LOGO_LEFT, 'z-index': (show) ? 1 : 3})
-   		.animate({ 'left': '+=' + pixels_string }, 150, function() { $('#' + id).css({'z-index': (show) ? 3 : 1 }); })
-   		.animate({ 'left': '-=' + pixels_string }, 150);
-}
-
-function hover_rightbar_icons() {
-	// Skip this for the iPhone
-	if (/(iphone|ipad)/i.test(navigator.userAgent))
-		return;
-
-	var func_timers = {};
-	$('.ricon').hover(
-		function () {
-			var id = $(this).attr('id');
-			if (func_timers[id] != null) {
-				clearTimeout(func_timers[id]);
-				delete func_timers[id];
-				//console.log('Removed key ' + id + 'from func_timers');
-			} else {
-				showhide_ricon(id, true);
-			}
-		}
-		,
-		function () {
-			var id = $(this).attr('id');
-			func_timers[id] = setTimeout(function () {
-				showhide_ricon(id, false);
-				delete func_timers[id];
-				//console.log('Removed key ' + id + 'from func_timers');
-			}, 2000);
-			//console.log('Added key ' + id + 'to func_timers');
-		}
-	);
-}
-
 function auto_align_images() {
 	$('p.autoalign').each(function () {
 		var sum = 0;
@@ -123,15 +85,30 @@ function toggle_edits() {
 	);
 }
 
+function reposition_actionbox() {
+	var d = $(window);
+	var m = $('#main');
+	var pos = m.position();
+	var t = pos.top + 32;
+	var l = Math.max(0, (d.width() - m.outerWidth())) / 2 + 600 + 48;
+	$('#actionbox').css({top: t, left: l})
+}
+
+function show_actionbox() {
+    reposition_actionbox();
+    $('#actionbox').show();
+}
+
 // Once the DOM is fully loaded
 $(document).ready(function () {
 	relatize_dates();
+	show_actionbox();
 	expand_pre_boxes();
 	open_external_links_in_new_window();
 	hover_browser_icons();
-	hover_rightbar_icons();
 	resolve_anti_spam_link();
 	toggle_edits();
+	$(window).resize(reposition_actionbox);
 });
 
 // Once all image's are loaded
