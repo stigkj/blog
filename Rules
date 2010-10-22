@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'settings'
+require './settings'
 
 # A few helpful tips about the Rules file:
 #
