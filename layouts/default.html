@@ -4,7 +4,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title>nvie.com<%= " - " + @item[:title] if @item[:title] %></title>
+		<title><%= @item[:title] + " &raquo; " if @item[:title] %>nvie.com</title>
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="/css/syntax.css" />
@@ -57,7 +57,7 @@
         </div>
 		<div id="actionbox" style="display: none">
             <div id="rss"><%= link_to_unless_current('<img src="/img/rss.png" alt="Subscribe" title="Subscribe" width="16" height="16" />', 'http://feeds.feedburner.com/nvie') %></div>
-            <div id="tweet"><a href="http://twitter.com/share?url=<%= URI.escape(config[:base_url] + @item.identifier) %>&via=nvie&text=<%= (@item[:title]) ? URI.escape(@item[:title]) : "nvie.com" %>"><img src='/img/twitter.png' width="16" height="16" alt="Tweet this!" title="Tweet this!" /></a></div>
+            <div id="tweet"><a href="http://twitter.com/share?url=<%= URI.escape(config[:base_url] + @item.path) %>&via=nvie&text=<%= (@item[:title]) ? URI.escape(@item[:title]) : "nvie.com" %>"><img src='/img/twitter.png' width="16" height="16" alt="Tweet this!" title="Tweet this!" /></a></div>
 		</div>
 		<div id="main">
 			<%= yield %>
