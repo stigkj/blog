@@ -14,7 +14,7 @@ end
 task :deploy => 'deploy:rsync'
 
 task :compile do
-	system('nanoc', 'compile')
+	system('nanoc3', 'compile')
 end
 
 task :ping do
