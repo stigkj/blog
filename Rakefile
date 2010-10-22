@@ -1,22 +1,34 @@
 require 'nanoc3/tasks'
 
 task :default => [:compile]
+task :rebuild => [:fullclean, :compile]
 
 task :fullclean => :clean do
-	system('git', 'clean', '-qdf')
-	system('rm', '-r', 'output', 'tmp')
+  system('git', 'clean', '-qdf')
+  system('rm', '-r', 'output', 'tmp')
 end
-
-task :rebuild => :fullclean do
-	system('rake')
-end
-
-task :deploy => 'deploy:rsync'
 
 task :compile do
-	system('nanoc3', 'compile')
+  system('nanoc3', 'compile')
 end
 
 task :ping do
-	system('scripts/ping.sh')
+  system('scripts/ping.sh')
+end
+
+task :optimize_pngs do
+  system('find', 'output', '-name', '*.png', '-exec', 'optipng', '-o7', '{}', ';')
+end
+
+task :build_production do
+  system('cp', 'settings/prd.rb', 'settings.rb')
+  Rake::Task["rebuild"].invoke
+  Rake::Task["optimize_pngs"].invoke
+  Rake::Task["deploy:rsync"].invoke(:config => :prd)
+end
+
+task :publish do
+  system("scripts/confirm.sh")
+  Rake::Task["build_production"].invoke
+  Rake::Task["deploy:rsync"].invoke(:config => :prd)
 end
