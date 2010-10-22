@@ -6,7 +6,7 @@ all_articles.select { |a| a[:alt_url] }.each do |a|
 
     # This line fixes a bug in the Tweet link. There are tweets out there with
     # broken links now. So be sure to redirect them to the good URL anyway.
-	output += "Redirect 301 #{a.identifier} #{@config[:base_url]}#{a.path}\n" if a.identifier != "#{@config[:base_url]}#{a.path}"
+	output += "Redirect 301 #{a.identifier} #{@config[:base_url]}#{a.path}\n" if a.identifier != a.path
 end
 
 output += "<FilesMatch \"\.(html|css|js|xml|ico|otf)$\">\n"
