@@ -4,7 +4,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title>nvie.com<%= " - " + @item[:title] if @item[:title] %></title>
+		<title><%= @item[:title] + " &raquo; " if @item[:title] %>nvie.com</title>
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="/css/syntax.css" />
