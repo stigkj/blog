@@ -32,11 +32,10 @@ class Nanoc3::Item
 
     flattr_link = ""
     if self[:flattr] then
-      #link = @config[:base_url] + '/posts/' + self.slug
       # TODO: This should somehow use @config["base_url], but therefore, I'd
       # have to move this method out of this subclass.
       # According to ddfreyne, Nanoc3::Item should never be subclassed!
-      link = 'http://nvie.com/posts/' + self.slug
+      link = 'http://nvie.com' + self.path
       flattr_link = "<div class=\"flattr-quick no-print\"><a class=\"FlattrButton\" style=\"display:none;\" rev=\"flattr;button:compact;\" href=\"#{link}\"></a></div>"
     end
 

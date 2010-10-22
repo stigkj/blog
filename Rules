@@ -22,8 +22,6 @@ preprocess do
     if p[:excerpt] then
       p[:excerpt] = Nanoc3::Filters::RedCloth.new.run(p[:excerpt], :hard_breaks => false)
     end
-
-    p[:source_url] = '/posts/' + p.slug
   end
 end
 

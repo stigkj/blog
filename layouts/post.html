@@ -1,11 +1,11 @@
 <div id="post">
 <% if @item[:flattr] %>
-<div class="flattr-quick no-print"><a class="FlattrButton" style="display:none;" href="<%= @config[:base_url] %>/posts/<%= @item.slug %>/"></a></div>
+<div class="flattr-quick no-print"><a class="FlattrButton" style="display:none;" href="<%= @config[:base_url] + @item.path %>"></a></div>
 <h1 style="clear: left"><%= @item[:title] %></h1>
 <% else %>
 <h1><%= @item[:title] %></h1>
 <% end %>
-<p id="permalink" class="print-only"><%= @config[:base_url] + @item[:source_url] %></p>
+<p id="permalink" class="print-only"><%= @config[:base_url] + @item.path %></p>
 <%= @item.html_dateline(true) %>
 <%= yield %>
 </div>
