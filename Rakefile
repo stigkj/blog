@@ -28,7 +28,7 @@ task :build_production do
 end
 
 task :publish do
-  system("scripts/confirm.sh")
+  exit unless system("scripts/confirm.sh")
   Rake::Task["build_production"].invoke
   Rake::Task["deploy:rsync"].invoke(:config => :prd)
 end
