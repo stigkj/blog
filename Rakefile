@@ -24,7 +24,6 @@ task :build_production do
   system('cp', 'settings/prd.rb', 'settings.rb')
   Rake::Task["rebuild"].invoke
   Rake::Task["optimize_pngs"].invoke
-  Rake::Task["deploy:rsync"].invoke(:config => :prd)
 end
 
 task :publish do
