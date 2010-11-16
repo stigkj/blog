@@ -6,6 +6,7 @@ created_at: 2010-11-16
 updated_at: 2010-11-16
 published: false
 image: py-vs-ruby.png
+flattr: 84515
 excerpt: |
     In this post I call out for participation in "a
     survey":http://bit.ly/nvie-survey that I quickly put together this evening
