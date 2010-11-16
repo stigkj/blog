@@ -35,7 +35,7 @@ it's the more naive brother of the two that gets in trouble in its teen years
 (think drugs and jail).
 
 
-h3. Lovable and Loathsome Language Features
+h2. Lovable and Loathsome Language Features
 
 I have always found it really hard to express what I dislike about Ruby.  In
 my college years, I really enjoyed functional programming and I absolutely
@@ -53,7 +53,7 @@ together for me.  In this talk, Gary puts to words what my feelings about the
 two languages are to a great extent.  Result: I love both and I hate both.
 
 
-h3. Uncovering Test Ecosystems
+h2. Uncovering Test Ecosystems
 
 Especially the conclusions Gary draws about RSpec being a superiour
 specification language is something I share.  There simply is no good
@@ -79,7 +79,7 @@ as well as I know Python's, but maybe there has been a lot more consensus and
 standardisation already.
 
 
-h3. Only one way to find out
+h2. Only one way to find out
 
 This made me curious, so I decided to pull up a "quick
 survey":http://goo.gl/j0blw.  I hereby invite all Python and Ruby
