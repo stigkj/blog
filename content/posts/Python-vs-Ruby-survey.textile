@@ -9,14 +9,14 @@ image: py-vs-ruby.png
 flattr: 84515
 excerpt: |
     In this post I call out for participation in "a
-    survey":http://bit.ly/nvie-survey that I quickly put together this evening
+    survey":http://goo.gl/j0blw that I quickly put together this evening
     to get a better overview of the most-used unit testing, spec and code
     coverage tools for both Python and Ruby.
 
     Suffice to say that I will blog about any interesting results or
     conclusions that I will draw from this survey.
 ---
-*tl;dr* Please help out and take "the survey":http://bit.ly/nvie-survey.  It
+*tl;dr* Please help out and take "the survey":http://goo.gl/j0blw.  It
 only takes one or two minutes.
 
 In my spare time, I love to read up on many different topics that are
@@ -82,7 +82,7 @@ standardisation already.
 h3. Only one way to find out
 
 This made me curious, so I decided to pull up a "quick
-survey":http://bit.ly/nvie-survey.  I hereby invite all Python and Ruby
+survey":http://goo.gl/j0blw.  I hereby invite all Python and Ruby
 developers out there to participate in it.  Please help spread the word on
 Twitter to get as many participants as possible.  The more answers received,
 the stronger the map of available and popular tools will be.  I've also
