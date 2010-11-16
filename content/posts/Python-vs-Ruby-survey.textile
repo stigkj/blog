@@ -62,8 +62,8 @@ in Python, due to Python's inability to inject methods into @object@ and its
 lack of blocks, and therefore, its lack of DSL capabilities.  (Oh yes, there
 "have":http://darcs.idyll.org/~t/projects/pinocchio/doc/#spec-generate-test-description-from-test-class-method-names
 "been":http://bitbucket.org/garybernhardt/mote/
-"attempts":https://gist.github.com/327596.  None of them are as beautiful as
-RSpec.)
+"attempts":https://gist.github.com/327596.  None of them are as good as the
+real thing.)
 
 This made me think.  Does Ruby have a more mature testing culture?  If
 I browse around interesting projects on Github, for example, I always get the
