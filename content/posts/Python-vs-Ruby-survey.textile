@@ -1,15 +1,26 @@
 ---
-title: "Survey: Python vs Ruby Testing Culture"
+title: "Survey: Python vs Ruby Test Ecosystems"
 kind: article
 author: Vincent Driessen
-created_at: 2010-11-15
-updated_at: 2010-11-15
+created_at: 2010-11-16
+updated_at: 2010-11-16
 published: false
 image: py-vs-ruby.png
+excerpt: |
+    In this post I call out for participation in "a
+    survey":http://bit.ly/nvie-survey that I quickly put together this evening
+    to get a better overview of the most-used unit testing, spec and code
+    coverage tools for both Python and Ruby.
+
+    Suffice to say that I will blog about any interesting results or
+    conclusions that I will draw from this survey.
 ---
+*tl;dr* Please help out and take "the survey":http://bit.ly/nvie-survey.  It
+only takes one or two minutes.
+
 In my spare time, I love to read up on many different topics that are
 happening in the modern world of software development.  On many occasions, the
-technologies that I find most interesting are happening in the Python and Ruby
+initiatives that I find most interesting are happening in the Python and Ruby
 communities.
 
 !(center)/img/2010/11/py-vs-ruby.png!
@@ -19,8 +30,11 @@ community yet.  It is a language that I don't have much "handson experience"
 with.  Although I think the Ruby community is a bit more chaotic than
 Python's, I also believe that more exciting things are happening there.  Ruby
 definitely got the more snazzy and sexier appeal of the two, but I also think
-it's the more naive brother of the two that gets in trouble (think drugs and
-jail) in its teen years.
+it's the more naive brother of the two that gets in trouble in its teen years
+(think drugs and jail).
+
+
+h3. Lovable and Loathsome Language Features
 
 I have always found it really hard to express what I dislike about Ruby.  In
 my college years, I really enjoyed functional programming and I absolutely
@@ -29,28 +43,33 @@ with the typical Ruby language constructs like blocks is very satisfying and
 feels really elegant.  Next to that, Ruby makes a gorgeous language for
 creating DSLs.
 
-Yet, the "black magic" and the implicit behaviour give me the eerie feeling
-that I'm not in control.
+Yet, the "black magic" and the implicit behaviour that also accompany Ruby
+give me the eerie feeling that I'm not in control.
 
-Then, I stumbled upon this video by Gary Bernhardt:
+When I stumbled upon this video by Gary Bernhardt: "Python vs Ruby: A Battle
+to The Death":http://vimeo.com/9471538, all the pieces of the puzzle fell
+together for me.  In this talk, Gary puts to words what my feelings about the
+two languages are to a great extent.  Result: I love both and I hate both.
 
-p(center). "Python vs Ruby: A Battle to The Death":http://vimeo.com/9471538
 
-And all the pieces of the puzzle fell together for me.  He summarized exactly
-(and better!) what my feelings about the two languages are.  Result: I love
-both and I hate both.
+h3. Uncovering Test Ecosystems
 
 Especially the conclusions Gary draws about RSpec being a superiour
 specification language is something I share.  There simply is no good
-equivalent of RSpec for Python, which is caused exactly by Python's lack of
-blocks, and therefore, by its lack of DSL capabilities.
+equivalent of RSpec for Python.  In fact, it's impossible to ever create one
+in Python, due to Python's inability to inject methods into @object@ and its
+lack of blocks, and therefore, its lack of DSL capabilities.  (Oh yes, there
+"have":http://darcs.idyll.org/~t/projects/pinocchio/doc/#spec-generate-test-description-from-test-class-method-names
+"been":http://bitbucket.org/garybernhardt/mote/
+"attempts":https://gist.github.com/327596.  None of them are as beautiful as
+RSpec.)
 
 This made me think.  Does Ruby have a more mature testing culture?  If
 I browse around interesting projects on Github, for example, I always get the
 feeling that the Ruby projects have better tests and better coverage than the
 Python ones (sorry, no scientific proof here).  But most importantly, the Ruby
 culture seem to _care more_ about actually testing their code at all.
-<small>&lt;bait&gt;Maybe this is _because_ of the magic in Ruby?
+<small>&lt;bait type="j-kidding"&gt;Maybe this is _because_ of the magic in Ruby?
 ;)&lt;/bait&gt;</small>
 
 At the same time, I get the feeling that the Ruby culture has _less_ testing
@@ -58,7 +77,16 @@ tools available.  Maybe this is because I simply don't know the Ruby community
 as well as I know Python's, but maybe there has been a lot more consensus and
 standardisation already.
 
-This made me curious, so I decided to pull up a small survey and I invite all
-Python and Ruby developers out there to take it.  After taking the survey you
-can see the results so far, and I'll make sure to blog about any interesting
-conclusions that can be drawn from the numbers that I will gather with this.
+
+h3. Only one way to find out
+
+This made me curious, so I decided to pull up a "quick
+survey":http://bit.ly/nvie-survey.  I invite all Python and Ruby developers
+out there to take it.  Please help spread the word and tweet about the survey.
+The more answers received, the stronger the map of available and popular tools
+will be.  I've also included a few questions on the use of continuous build
+and integration systems.  After taking the survey you can see the results so
+far.
+
+I'll make sure to blog about any interesting conclusions that can be drawn
+from the numbers that I will gather with this.
