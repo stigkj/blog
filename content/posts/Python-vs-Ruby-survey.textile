@@ -68,10 +68,10 @@ real thing.)
 This made me think.  Does Ruby have a more mature testing culture?  If
 I browse around interesting projects on Github, for example, I always get the
 feeling that the Ruby projects have better tests and better coverage than the
-Python ones (sorry, no scientific proof here).  But most importantly, the Ruby
-culture seem to _care more_ about actually testing their code at all.
-<small>&lt;bait type="j-kidding"&gt;Maybe this is _because_ of the magic in Ruby?
-;)&lt;/bait&gt;</small>
+Python ones (sorry, no scientific proof here).
+%(small lite)&lt;bait&gt;Maybe they have to _because_ of the magic in Ruby?
+;)&lt;/bait&gt;%  But most importantly, the Ruby culture seem to _care more_
+(or at least have higher awareness) about actually testing their code at all.
 
 At the same time, I get the feeling that the Ruby culture has _less_ testing
 tools available.  Maybe this is because I simply don't know the Ruby community
@@ -82,12 +82,12 @@ standardisation already.
 h3. Only one way to find out
 
 This made me curious, so I decided to pull up a "quick
-survey":http://bit.ly/nvie-survey.  I invite all Python and Ruby developers
-out there to take it.  Please help spread the word and tweet about the survey.
-The more answers received, the stronger the map of available and popular tools
-will be.  I've also included a few questions on the use of continuous build
-and integration systems.  After taking the survey you can see the results so
-far.
+survey":http://bit.ly/nvie-survey.  I hereby invite all Python and Ruby
+developers out there to participate in it.  Please help spread the word on
+Twitter to get as many participants as possible.  The more answers received,
+the stronger the map of available and popular tools will be.  I've also
+included a few questions on the use of continuous build and integration
+systems.  After taking the survey you can see the results so far.
 
 I'll make sure to blog about any interesting conclusions that can be drawn
 from the numbers that I will gather with this.
