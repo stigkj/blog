@@ -1,0 +1,18 @@
+---
+title: A git-flow screencast
+kind: article
+author: Vincent Driessen
+created_at: 2011-01-27
+updated_at: 2011-01-27
+published: true
+image: screencast_gitflow.jpg
+excerpt: |
+   Dave Bock created a nice video on using git-flow.
+---
+Mr. "Dave Bock":http://www.davebock.com/ of Code Sherpa's put together a nice
+screencast demonstrating a few of the most important git-flow features on
+their "publications":http://codesherpas.com/publications page.
+
+"!(center)/img/2011/01/screencast_still.png!":http://codesherpas.com/screencasts/on_the_path_gitflow.mov
+
+Many thanks to Dave for creating this!
