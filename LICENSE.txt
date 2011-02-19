@@ -1,0 +1,6 @@
+NVIE.COM LICENSE
+Copyright (C) 2010-2011 Vincent Driessen
+
+Everyone is permitted to look at, experiment with, and learn
+from the code of this blog, but not to steal or republish its
+content or design.
